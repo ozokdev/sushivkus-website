@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "WebFetch(domain:sushimechta.ru)",
+      "WebFetch(domain:xn--80aditpe0b5b7a8a.xn--p1ai)"
+    ]
+  }
+}
