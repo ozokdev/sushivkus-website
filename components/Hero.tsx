@@ -80,7 +80,7 @@ export default function Hero() {
   };
 
   useEffect(() => {
-    const timer = setInterval(next, 4500);
+    const timer = setInterval(next, 6500);
     return () => clearInterval(timer);
   }, [next]);
 

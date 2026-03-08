@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingCart, Menu, X, MapPin, Phone, Clock, MessageCircle, Send } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
-import ThemeToggle from "./ThemeToggle";
+
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -82,10 +82,6 @@ export default function Header() {
 
           {/* Правая часть */}
           <div className="flex items-center gap-3">
-            {/* Тема */}
-            <div className="hidden sm:block">
-              <ThemeToggle />
-            </div>
             {/* Кнопка корзины */}
             <button
               onClick={toggleCart}
@@ -131,10 +127,15 @@ export default function Header() {
             className="lg:hidden bg-dark/98 backdrop-blur-lg border-t border-white/5"
           >
             <div className="px-6 py-4 space-y-3">
-              <div className="flex items-center gap-2 text-gray-400 text-sm">
+              <a
+                href="https://yandex.ru/maps/?text=г.+Люберцы,+ул.+Шоссейная,+42"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-gray-300 hover:text-accent text-sm transition-colors"
+              >
                 <MapPin className="w-4 h-4 text-accent" />
-                <span>г. Люберцы</span>
-              </div>
+                <span>ул. Шоссейная, 42, г. Люберцы</span>
+              </a>
               <a href="tel:+79253206190" className="flex items-center gap-2 text-gray-300 text-sm">
                 <Phone className="w-4 h-4 text-accent" />
                 8 (925) 320-61-90
