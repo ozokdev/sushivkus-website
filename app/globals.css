@@ -131,12 +131,28 @@ html.light-mode .text-gray-600 {
   color: #999 !important;
 }
 
-/* Кнопки акцента не трогаем */
+/* Элементы, где текст ВСЕГДА должен быть белым */
 html.light-mode .bg-accent .text-white,
 html.light-mode .bg-accent-hover .text-white,
 html.light-mode .bg-emerald-600 .text-white,
-html.light-mode .bg-green-600 .text-white {
+html.light-mode .bg-green-600 .text-white,
+html.light-mode [class*="bg-black\/"] .text-white,
+html.light-mode [class*="bg-orange-500"] .text-white,
+html.light-mode [class*="bg-blue-500"] .text-white,
+html.light-mode [class*="bg-red-"] .text-white,
+html.light-mode [class*="bg-accent\/"] .text-white {
   color: #ffffff !important;
+}
+
+/* Контент поверх фото/оверлеев — текст остаётся белым */
+html.light-mode .keep-white,
+html.light-mode .keep-white * {
+  color: #ffffff !important;
+}
+
+html.light-mode .keep-white .text-white\/70,
+html.light-mode .keep-white .text-white\/80 {
+  color: rgba(255, 255, 255, 0.7) !important;
 }
 
 html.light-mode .shadow-lg {
@@ -145,4 +161,26 @@ html.light-mode .shadow-lg {
 
 html.light-mode .placeholder-gray-600::placeholder {
   color: #aaa !important;
+}
+
+/* Цветные тексты — чуть темнее для читаемости на светлом */
+html.light-mode .text-emerald-400 {
+  color: #059669 !important;
+}
+
+html.light-mode .text-red-400 {
+  color: #dc2626 !important;
+}
+
+html.light-mode .text-green-500 {
+  color: #16a34a !important;
+}
+
+html.light-mode .text-blue-400 {
+  color: #2563eb !important;
+}
+
+/* MobileNav фон */
+html.light-mode .bg-dark\/95 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
 }

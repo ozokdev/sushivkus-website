@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingCart, Menu, X, MapPin, Phone, Clock, MessageCircle, Send } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
+import ThemeToggle from "./ThemeToggle";
 
 
 export default function Header() {
@@ -34,10 +35,16 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Логотип */}
-          <a href="#" className="flex items-center gap-2 flex-shrink-0">
+          <a href="#" className="flex items-center gap-2.5 flex-shrink-0">
             <span className="text-xl md:text-2xl font-black tracking-tight">
               <span className="text-accent">Суши</span>
               <span className="text-white ml-1">Вкус</span>
+            </span>
+            <span className="hidden sm:block w-px h-6 bg-white/10" />
+            <span className="hidden sm:block text-[11px] md:text-xs text-gray-400 leading-tight max-w-[120px]">
+              Свежие роллы.
+              <br />
+              Быстрая доставка.
             </span>
           </a>
 
@@ -82,6 +89,7 @@ export default function Header() {
 
           {/* Правая часть */}
           <div className="flex items-center gap-3">
+            <ThemeToggle />
             {/* Кнопка корзины */}
             <button
               onClick={toggleCart}

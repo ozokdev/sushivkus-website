@@ -9,7 +9,7 @@ export default function TopBar() {
   if (!visible) return null;
 
   return (
-    <div className="bg-accent text-white text-xs sm:text-sm py-2 relative z-[60]">
+    <div className="bg-accent text-white text-xs sm:text-sm py-2 relative z-[60] keep-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2">
         <a
           href="https://yandex.ru/maps/?text=г.+Люберцы,+ул.+Шоссейная,+42"

@@ -40,7 +40,7 @@ export default function CategoryGrid() {
               >
                 <Link
                   href={`/category/${card.slug}`}
-                  className="relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer group block"
+                  className="relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer group block keep-white"
                 >
                   <Image
                     src={card.image}
