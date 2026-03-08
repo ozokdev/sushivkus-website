@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Plus, Minus, Search, X } from "lucide-react";
+import { ArrowLeft, Plus, Minus, Search, X, ChevronRight, Home } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
 import { useToast } from "@/components/Toast";
 import type { CategoryInfo } from "@/data/categories";
@@ -84,13 +84,23 @@ export default function CategoryPageClient({
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/50 to-black/30" />
           <div className="absolute inset-0 flex flex-col justify-end">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6 w-full">
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm mb-3 transition-colors"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                Назад в меню
-              </Link>
+              {/* Breadcrumbs — SEO */}
+              <nav aria-label="Навигация" className="mb-3">
+                <ol className="flex items-center gap-1 text-sm" itemScope itemType="https://schema.org/BreadcrumbList">
+                  <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                    <Link href="/" className="text-white/60 hover:text-white transition-colors flex items-center gap-1" itemProp="item">
+                      <Home className="w-3.5 h-3.5" />
+                      <span itemProp="name">Главная</span>
+                    </Link>
+                    <meta itemProp="position" content="1" />
+                  </li>
+                  <ChevronRight className="w-3.5 h-3.5 text-white/30" />
+                  <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                    <span className="text-white font-medium" itemProp="name">{category.nameFull}</span>
+                    <meta itemProp="position" content="2" />
+                  </li>
+                </ol>
+              </nav>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-wide">
                 {category.nameFull}
               </h1>
@@ -98,6 +108,20 @@ export default function CategoryPageClient({
                 {items.length} {items.length === 1 ? "позиция" : items.length < 5 ? "позиции" : "позиций"} · от {minPrice} ₽
               </p>
             </div>
+          </div>
+        </div>
+
+        {/* Sticky "Назад" кнопка — мобил */}
+        <div className="sticky top-16 z-30 md:hidden bg-dark/95 backdrop-blur-xl border-b border-white/5">
+          <div className="px-4 py-2.5 flex items-center justify-between">
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-gray-400 hover:text-white text-sm transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Назад в меню
+            </Link>
+            <span className="text-sm font-semibold">{category.nameFull}</span>
           </div>
         </div>
 
