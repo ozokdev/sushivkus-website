@@ -36,8 +36,8 @@ export default function Header() {
           {/* Логотип */}
           <a href="#" className="flex items-center gap-2 flex-shrink-0">
             <span className="text-xl md:text-2xl font-black tracking-tight">
-              <span className="text-accent">KELECHEK</span>
-              <span className="text-white ml-1">SUSHI</span>
+              <span className="text-accent">Суши</span>
+              <span className="text-white ml-1">Вкус</span>
             </span>
           </a>
 

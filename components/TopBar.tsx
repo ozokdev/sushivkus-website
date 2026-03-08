@@ -22,10 +22,10 @@ export default function TopBar() {
         </a>
         <div className="flex items-center gap-2">
           <span className="hidden sm:inline">
-            🔥 Промокод <strong className="underline">KELECHEK20</strong> — скидка 20%
+            🔥 Промокод <strong className="underline">VKUS20</strong> — скидка 20%
           </span>
           <span className="sm:hidden">
-            <strong>KELECHEK20</strong> = −20%
+            <strong>VKUS20</strong> = −20%
           </span>
           <button
             onClick={() => setVisible(false)}

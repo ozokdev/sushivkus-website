@@ -138,29 +138,36 @@ export default function PopularSection() {
                       {item.price} ₽
                     </span>
                     {count > 0 ? (
-                      <div className="flex items-center gap-1 bg-accent rounded-xl">
-                        <button
+                      <motion.div
+                        initial={{ scale: 0.8 }}
+                        animate={{ scale: 1 }}
+                        className="flex items-center gap-1 bg-accent rounded-xl"
+                      >
+                        <motion.button
+                          whileTap={{ scale: 0.85 }}
                           onClick={() => updateQuantity(item.id, count - 1)}
                           className="p-2 text-white hover:bg-white/20 rounded-l-xl transition-colors"
                         >
                           <Minus className="w-3.5 h-3.5" />
-                        </button>
+                        </motion.button>
                         <span className="text-white font-bold text-sm w-6 text-center">{count}</span>
-                        <button
+                        <motion.button
+                          whileTap={{ scale: 0.85 }}
                           onClick={() => handleAdd(item)}
                           className="p-2 text-white hover:bg-white/20 rounded-r-xl transition-colors"
                         >
                           <Plus className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
+                        </motion.button>
+                      </motion.div>
                     ) : (
-                      <button
+                      <motion.button
+                        whileTap={{ scale: 0.9 }}
                         onClick={() => handleAdd(item)}
                         className="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-medium bg-accent/10 text-accent hover:bg-accent hover:text-white transition-all duration-200"
                       >
                         <Plus className="w-3.5 h-3.5" />
                         <span className="hidden sm:inline">В корзину</span>
-                      </button>
+                      </motion.button>
                     )}
                   </div>
                 </div>

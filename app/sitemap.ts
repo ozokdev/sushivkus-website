@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { categoryList } from "@/data/categories";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://kelecheksushi.ru"; // ← сайтыңдын домени
+  const baseUrl = "https://sushivkus.ru"; // ← сайтыңдын домени
 
   // Категория беттери
   const categoryPages = categoryList.map((cat) => ({

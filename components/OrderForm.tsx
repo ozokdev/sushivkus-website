@@ -32,7 +32,7 @@ export default function OrderForm() {
       .map((item) => `• ${item.name} x${item.quantity} — ${item.price * item.quantity}₽`)
       .join("\n");
 
-    const message = `🍣 *Новый заказ — KELECHEK SUSHI*\n\n` +
+    const message = `🍣 *Новый заказ — Суши Вкус*\n\n` +
       `👤 Имя: ${form.name}\n` +
       `📱 Телефон: ${form.phone}\n` +
       `📍 Адрес: ${form.address}\n` +

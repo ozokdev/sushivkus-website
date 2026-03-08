@@ -10,10 +10,10 @@ export default function Footer() {
           {/* Логотип и описание */}
           <div>
             <h3 className="text-2xl font-black mb-4">
-              <span className="text-accent">KELECHEK</span> SUSHI
+              <span className="text-accent">Суши</span> Вкус
             </h3>
             <p className="text-gray-500 leading-relaxed mb-6">
-              Доставка свежих суши и роллов. Готовим с любовью из качественных
+              Свежие роллы. Быстрая доставка. Готовим с любовью из качественных
               ингредиентов.
             </p>
             <div className="flex gap-3">
@@ -95,7 +95,7 @@ export default function Footer() {
 
         {/* Копирайт */}
         <div className="border-t border-white/5 mt-12 pt-8 text-center text-gray-600 text-sm">
-          © {new Date().getFullYear()} KELECHEK SUSHI. Все права защищены.
+          © {new Date().getFullYear()} Суши Вкус. Все права защищены.
         </div>
       </div>
     </footer>

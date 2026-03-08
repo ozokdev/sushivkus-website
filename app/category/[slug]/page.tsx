@@ -22,11 +22,11 @@ export function generateMetadata({
   const minPrice = items.length > 0 ? Math.min(...items.map((i) => i.price)) : 0;
 
   return {
-    title: `${category.nameFull} — заказать с доставкой | KELECHEK SUSHI`,
+    title: `${category.nameFull} — заказать с доставкой | Суши Вкус`,
     description: category.description,
-    keywords: `${category.nameFull.toLowerCase()}, доставка, Люберцы, суши, KELECHEK`,
+    keywords: `${category.nameFull.toLowerCase()}, доставка, Люберцы, суши, Суши Вкус`,
     openGraph: {
-      title: `${category.nameFull} от ${minPrice} ₽ | KELECHEK SUSHI`,
+      title: `${category.nameFull} от ${minPrice} ₽ | Суши Вкус`,
       description: category.description,
       type: "website",
       images: [category.image],

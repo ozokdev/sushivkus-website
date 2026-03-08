@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://kelecheksushi.ru/sitemap.xml",
+    sitemap: "https://sushivkus.ru/sitemap.xml",
   };
 }

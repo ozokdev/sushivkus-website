@@ -9,7 +9,7 @@ import { menuItems } from "@/data/menu";
 
 const MIN_ORDER = 500;
 const PROMO_CODES: Record<string, number> = {
-  KELECHEK20: 20,
+  VKUS20: 20,
   SUSHI10: 10,
   WELCOME: 15,
 };

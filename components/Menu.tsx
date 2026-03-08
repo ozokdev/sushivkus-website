@@ -312,8 +312,13 @@ function ProductCard({
           </span>
 
           {count > 0 ? (
-            <div className="flex items-center gap-1 bg-accent rounded-xl">
-              <button
+            <motion.div
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              className="flex items-center gap-1 bg-accent rounded-xl"
+            >
+              <motion.button
+                whileTap={{ scale: 0.85 }}
                 onClick={(e) => {
                   e.stopPropagation();
                   onMinus();
@@ -321,11 +326,12 @@ function ProductCard({
                 className="p-2 text-white hover:bg-white/20 rounded-l-xl transition-colors"
               >
                 <Minus className="w-3.5 h-3.5" />
-              </button>
+              </motion.button>
               <span className="text-white font-bold text-sm w-6 text-center">
                 {count}
               </span>
-              <button
+              <motion.button
+                whileTap={{ scale: 0.85 }}
                 onClick={(e) => {
                   e.stopPropagation();
                   onAdd();
@@ -333,10 +339,11 @@ function ProductCard({
                 className="p-2 text-white hover:bg-white/20 rounded-r-xl transition-colors"
               >
                 <Plus className="w-3.5 h-3.5" />
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
           ) : (
-            <button
+            <motion.button
+              whileTap={{ scale: 0.9 }}
               onClick={(e) => {
                 e.stopPropagation();
                 onAdd();
@@ -345,7 +352,7 @@ function ProductCard({
             >
               <Plus className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">В корзину</span>
-            </button>
+            </motion.button>
           )}
         </div>
       </div>

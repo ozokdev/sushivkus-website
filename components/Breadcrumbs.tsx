@@ -17,7 +17,7 @@ export default function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
       "@type": "ListItem",
       position: index + 1,
       name: item.label,
-      item: item.href ? `https://kelecheksushi.ru${item.href}` : undefined,
+      item: item.href ? `https://sushivkus.ru${item.href}` : undefined,
     })),
   };
 

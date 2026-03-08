@@ -16,7 +16,7 @@ export default function DeliveryInfo() {
             <div>
               <p className="text-xs text-gray-500">Наш адрес</p>
               <p className="text-sm font-medium">ул. Шоссейная, 42, г. Люберцы</p>
-              <p className="text-[11px] text-gray-500">Суши Пицца KELECHEK</p>
+              <p className="text-[11px] text-gray-500">Суши Вкус</p>
             </div>
           </div>
 
@@ -103,7 +103,7 @@ export default function DeliveryInfo() {
               <div>
                 <p className="text-sm font-medium mb-1">Адрес самовывоза</p>
                 <p className="text-[11px] text-gray-500">
-                  г. Люберцы, ул. Шоссейная, 42 — «Суши Пицца KELECHEK». Скидка 10% при самовывозе!
+                  г. Люберцы, ул. Шоссейная, 42 — «Суши Вкус». Скидка 10% при самовывозе!
                 </p>
               </div>
             </div>

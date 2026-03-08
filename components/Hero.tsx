@@ -10,7 +10,7 @@ const slides = [
   {
     id: 1,
     title: "Скидка 20% на первый заказ",
-    subtitle: "Для новых клиентов при заказе от 1500₽. Промокод KELECHEK20",
+    subtitle: "Для новых клиентов при заказе от 1500₽. Промокод VKUS20",
     image: "/photo/set_elita.jpg",
     badge: "АКЦИЯ",
     gradient: "from-accent/80 to-orange-600/60",

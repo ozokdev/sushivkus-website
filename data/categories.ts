@@ -17,7 +17,7 @@ export const categoryList: CategoryInfo[] = [
     nameFull: "Роллы",
     image: "/photo/california_tempura.jpg",
     description:
-      "Свежие роллы с доставкой в Люберцах. Филадельфия, Калифорния, запечённые и классические роллы от KELECHEK SUSHI.",
+      "Свежие роллы с доставкой в Люберцах. Филадельфия, Калифорния, запечённые и классические роллы от Суши Вкус.",
   },
   {
     id: "sets",
@@ -53,7 +53,7 @@ export const categoryList: CategoryInfo[] = [
     nameFull: "Супы",
     image: "/photo/tom_yam_shrimp.jpg",
     description:
-      "Том Ям и Мисо супы с доставкой. Горячие супы азиатской кухни от KELECHEK SUSHI.",
+      "Том Ям и Мисо супы с доставкой. Горячие супы азиатской кухни от Суши Вкус.",
   },
   {
     id: "snacks",
@@ -71,7 +71,7 @@ export const categoryList: CategoryInfo[] = [
     nameFull: "Салаты",
     image: "/photo/salat_caesar.jpg",
     description:
-      "Свежие салаты: Цезарь и Чука с доставкой в Люберцах от KELECHEK SUSHI.",
+      "Свежие салаты: Цезарь и Чука с доставкой в Люберцах от Суши Вкус.",
   },
   {
     id: "sauces",
