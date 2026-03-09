@@ -7,7 +7,9 @@
       "Bash(npm run dev)",
       "Bash(npx next lint --file app/admin/promos/page.tsx)",
       "Bash(curl -s http://localhost:3000/admin/promos)",
-      "Bash(npx next build --no-lint)"
+      "Bash(npx next build --no-lint)",
+      "Bash(npx next build)",
+      "Bash(taskkill //F //IM node.exe)"
     ]
   }
 }

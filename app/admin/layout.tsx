@@ -15,27 +15,33 @@ import {
   Menu,
   X,
   User,
+  Users,
+  Bell,
+  BarChart3,
+  Bot,
+  Gift,
+  Download,
 } from "lucide-react";
 
 const navItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/orders", label: "Заказы", icon: ClipboardList },
   { href: "/admin/menu", label: "Меню", icon: UtensilsCrossed },
+  { href: "/admin/customers", label: "Клиенты", icon: Users },
+  { href: "/admin/analytics", label: "Аналитика", icon: BarChart3 },
   { href: "/admin/delivery", label: "Доставка", icon: MapPin },
   { href: "/admin/banners", label: "Баннеры", icon: ImageIcon },
   { href: "/admin/promos", label: "Промокоды", icon: Tag },
+  { href: "/admin/promotions", label: "Акции", icon: Gift },
+  { href: "/admin/notifications", label: "Уведомления", icon: Bell },
+  { href: "/admin/telegram", label: "Telegram", icon: Bot },
+  { href: "/admin/export", label: "Экспорт", icon: Download },
   { href: "/admin/settings", label: "Настройки", icon: Settings },
 ];
 
 function getPageTitle(pathname: string) {
-  if (pathname === "/admin") return "Dashboard";
-  if (pathname === "/admin/orders") return "Заказы";
-  if (pathname === "/admin/menu") return "Меню";
-  if (pathname === "/admin/delivery") return "Доставка";
-  if (pathname === "/admin/banners") return "Баннеры";
-  if (pathname === "/admin/promos") return "Промокоды";
-  if (pathname === "/admin/settings") return "Настройки";
-  return "Админ";
+  const item = navItems.find((n) => n.href === pathname);
+  return item?.label || "Админ";
 }
 
 export default function AdminLayout({
