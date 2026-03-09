@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -13,7 +13,10 @@ import {
   User,
   ShoppingBag,
   Printer,
+  RefreshCw,
 } from "lucide-react";
+
+const API_URL = "https://api.sushivkus.ru/api";
 
 type OrderStatus = "new" | "preparing" | "delivered" | "cancelled";
 
@@ -39,86 +42,6 @@ interface Order {
   payment: string;
 }
 
-// TODO: Go API менен алмаштыруу
-const initialOrders: Order[] = [
-  {
-    id: 1001, name: "Алексей К.", phone: "+7 925 123-45-67",
-    address: "ул. Люберецкая, 15, кв. 23",
-    items: "Филадельфия Классик x2, Том Ям x1",
-    itemsList: [
-      { name: "Филадельфия Классик", qty: 2, price: 450 },
-      { name: "Том Ям с креветками", qty: 1, price: 490 },
-    ],
-    total: 2990, status: "delivered", time: "10:30", date: "09.03.2026",
-    comment: "Без васаби, домофон 23", delivery: 150, payment: "Картой онлайн",
-  },
-  {
-    id: 1002, name: "Мария С.", phone: "+7 916 234-56-78",
-    address: "ул. Шоссейная, 8, кв. 45",
-    items: "Сет Мечта x1, Поке лосось x1",
-    itemsList: [
-      { name: "Сет Мечта (40 шт.)", qty: 1, price: 2690 },
-      { name: "Поке с лососем", qty: 1, price: 450 },
-    ],
-    total: 3140, status: "preparing", time: "11:15", date: "09.03.2026",
-    delivery: 0, payment: "Наличными",
-  },
-  {
-    id: 1003, name: "Дмитрий П.", phone: "+7 903 345-67-89",
-    address: "пр. Октября, 22, кв. 5",
-    items: "Сет Корпоратив x1",
-    itemsList: [{ name: "Сет Корпоратив (64 шт.)", qty: 1, price: 3990 }],
-    total: 3990, status: "new", time: "11:45", date: "09.03.2026",
-    comment: "Позвонить за 10 мин до доставки", delivery: 0, payment: "Картой курьеру",
-  },
-  {
-    id: 1004, name: "Анна В.", phone: "+7 926 456-78-90",
-    address: "ул. Красная, 3, кв. 12",
-    items: "Калифорния Темпура x2, Мисо суп x1",
-    itemsList: [
-      { name: "Калифорния Темпура", qty: 2, price: 420 },
-      { name: "Мисо суп", qty: 1, price: 220 },
-    ],
-    total: 1210, status: "new", time: "12:00", date: "09.03.2026",
-    delivery: 150, payment: "Наличными",
-  },
-  {
-    id: 1005, name: "Иван М.", phone: "+7 915 567-89-01",
-    address: "ул. Зелёная, 7, кв. 34",
-    items: "Манчестер x1, Поке тунец x1",
-    itemsList: [
-      { name: "Манчестер", qty: 1, price: 490 },
-      { name: "Поке с тунцом", qty: 1, price: 450 },
-    ],
-    total: 2490, status: "cancelled", time: "09:00", date: "09.03.2026",
-    delivery: 150, payment: "Картой онлайн",
-  },
-  {
-    id: 1006, name: "Елена Р.", phone: "+7 917 678-90-12",
-    address: "ул. Советская, 11, кв. 67",
-    items: "Сет Романтика x1",
-    itemsList: [{ name: "Сет Романтика (32 шт.)", qty: 1, price: 1890 }],
-    total: 1890, status: "delivered", time: "09:30", date: "09.03.2026",
-    delivery: 0, payment: "Картой онлайн",
-  },
-  {
-    id: 1007, name: "Сергей Т.", phone: "+7 918 789-01-23",
-    address: "пр. Мира, 45, кв. 2",
-    items: "Пепперони x2",
-    itemsList: [{ name: "Пепперони", qty: 2, price: 520 }],
-    total: 1040, status: "preparing", time: "12:30", date: "09.03.2026",
-    delivery: 150, payment: "Наличными",
-  },
-  {
-    id: 1008, name: "Ольга Н.", phone: "+7 919 890-12-34",
-    address: "ул. Ленина, 19, кв. 88",
-    items: "Сет All Inclusive x1",
-    itemsList: [{ name: "Сет All Inclusive (48 шт.)", qty: 1, price: 2990 }],
-    total: 2990, status: "new", time: "13:00", date: "09.03.2026",
-    comment: "2 пары палочек", delivery: 0, payment: "Картой онлайн",
-  },
-];
-
 const statusConfig: Record<OrderStatus, { label: string; class: string }> = {
   new: { label: "Новый", class: "bg-blue-500/20 text-blue-400" },
   preparing: { label: "Готовится", class: "bg-yellow-500/20 text-yellow-400" },
@@ -134,12 +57,71 @@ const filterTabs: { value: OrderStatus | "all"; label: string }[] = [
   { value: "cancelled", label: "Отменён" },
 ];
 
+// API'дан заказдарды Order форматына которуу
+function mapApiOrders(apiOrders: any[]): Order[] {
+  return apiOrders.map((o: any) => {
+    const createdAt = new Date(o.CreatedAt);
+    const orderItems = (o.items || []).map((it: any) => ({
+      name: it.name,
+      qty: it.quantity,
+      price: it.price,
+    }));
+    const itemsSummary = orderItems.map((it: OrderItem) => `${it.name} x${it.qty}`).join(", ");
+    return {
+      id: o.ID,
+      name: o.customer_name,
+      phone: o.phone,
+      address: o.address,
+      items: itemsSummary,
+      itemsList: orderItems,
+      total: o.total,
+      status: o.status as OrderStatus,
+      time: createdAt.toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" }),
+      date: createdAt.toLocaleDateString("ru-RU"),
+      comment: o.comment || undefined,
+      delivery: 0,
+      payment: "Не указано",
+    };
+  });
+}
+
 export default function AdminOrders() {
-  const [orders, setOrders] = useState<Order[]>(initialOrders);
+  const [orders, setOrders] = useState<Order[]>([]);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState<OrderStatus | "all">("all");
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
+  const [loading, setLoading] = useState(true);
   const printRef = useRef<HTMLDivElement>(null);
+
+  const getToken = () => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("admin_token") || "";
+    }
+    return "";
+  };
+
+  const fetchOrders = useCallback(async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(`${API_URL}/orders`, {
+        headers: { Authorization: `Bearer ${getToken()}` },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setOrders(mapApiOrders(data.orders || []));
+      }
+    } catch {
+      // API недоступен
+    }
+    setLoading(false);
+  }, []);
+
+  useEffect(() => {
+    fetchOrders();
+    // Автоматтык жаңыртуу — 30 секунд сайын
+    const interval = setInterval(fetchOrders, 30000);
+    return () => clearInterval(interval);
+  }, [fetchOrders]);
 
   const filteredOrders = useMemo(() => {
     return orders.filter((o) => {
@@ -157,12 +139,26 @@ export default function AdminOrders() {
     return orders.filter((o) => o.status === status).length;
   };
 
-  const handleStatusChange = (id: number, newStatus: OrderStatus) => {
+  const handleStatusChange = async (id: number, newStatus: OrderStatus) => {
+    // Локал жаңыртуу
     setOrders((prev) =>
       prev.map((o) => (o.id === id ? { ...o, status: newStatus } : o))
     );
     if (selectedOrder && selectedOrder.id === id) {
       setSelectedOrder({ ...selectedOrder, status: newStatus });
+    }
+    // API'га жөнөтүү
+    try {
+      await fetch(`${API_URL}/orders/${id}/status`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${getToken()}`,
+        },
+        body: JSON.stringify({ status: newStatus }),
+      });
+    } catch {
+      // API катасы
     }
   };
 
@@ -233,6 +229,13 @@ export default function AdminOrders() {
           <span className="bg-accent/10 text-accent text-sm font-medium px-2.5 py-0.5 rounded-full">
             {orders.length}
           </span>
+          <button
+            onClick={fetchOrders}
+            className="p-2 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition-colors"
+            title="Жаңыртуу"
+          >
+            <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
+          </button>
         </div>
         <div className="relative w-full sm:w-72">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />

@@ -15,6 +15,7 @@ export default function OrderForm() {
     address: "",
     comment: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Обновление полей формы
   const handleChange = (
@@ -23,11 +24,33 @@ export default function OrderForm() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // Отправка заказа в WhatsApp
-  const handleSubmit = (e: React.FormEvent) => {
+  // Отправка заказа в API + WhatsApp
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
-    // Формируем текст заказа
+    // 1. Отправляем в Go API
+    try {
+      await fetch("https://api.sushivkus.ru/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customer_name: form.name,
+          phone: form.phone,
+          address: form.address,
+          comment: form.comment,
+          items: items.map((item) => ({
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+          })),
+        }),
+      });
+    } catch {
+      // API недоступен — не блокируем заказ
+    }
+
+    // 2. Формируем текст и открываем WhatsApp
     const orderItems = items
       .map((item) => `• ${item.name} x${item.quantity} — ${item.price * item.quantity}₽`)
       .join("\n");
@@ -40,15 +63,15 @@ export default function OrderForm() {
       `\n📋 *Заказ:*\n${orderItems}\n\n` +
       `💰 *Итого: ${getTotalPrice()}₽*`;
 
-    // Открываем WhatsApp с текстом заказа
-    const whatsappUrl = `https://wa.me/79253206190?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/79255372825?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
 
-    // Очищаем корзину и показываем success
+    // 3. Очищаем корзину и показываем success
     clearCart();
     closeOrderForm();
     openOrderSuccess();
     setForm({ name: "", phone: "", address: "", comment: "" });
+    setIsSubmitting(false);
   };
 
   return (
@@ -168,10 +191,11 @@ export default function OrderForm() {
                 {/* Кнопка отправки */}
                 <button
                   type="submit"
-                  className="w-full py-4 bg-green-600 hover:bg-green-700 rounded-xl text-white font-semibold text-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-green-600/20"
+                  disabled={isSubmitting}
+                  className="w-full py-4 bg-green-600 hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl text-white font-semibold text-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-green-600/20"
                 >
                   <Send className="w-5 h-5" />
-                  Отправить в WhatsApp
+                  {isSubmitting ? "Отправка..." : "Отправить в WhatsApp"}
                 </button>
               </form>
             </div>

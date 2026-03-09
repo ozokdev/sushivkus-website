@@ -9,7 +9,20 @@
       "Bash(curl -s http://localhost:3000/admin/promos)",
       "Bash(npx next build --no-lint)",
       "Bash(npx next build)",
-      "Bash(taskkill //F //IM node.exe)"
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(go mod init sushivkus-api)",
+      "Bash(go mod tidy)",
+      "Bash(go build ./...)",
+      "Bash(sshpass -p 's6WjXMZ3qKMD' ssh -o StrictHostKeyChecking=no root@81.90.182.17 \"uname -a && cat /etc/os-release && which node && which nginx && which pm2 && df -h / && free -m\")",
+      "Bash(ssh -o StrictHostKeyChecking=no -o BatchMode=yes root@81.90.182.17 \"echo test\")",
+      "Bash(pip install sshpass)",
+      "Bash(choco install sshpass)",
+      "Bash(python deploy.py)",
+      "Bash(python -c \":*)",
+      "Bash(python upload.py)",
+      "Bash(python -c:*)",
+      "Bash(python upload_api.py)",
+      "Bash(python deploy_update.py)"
     ]
   }
 }

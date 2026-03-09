@@ -18,14 +18,23 @@ export default function AdminLogin() {
     setError("");
     setLoading(true);
 
-    // Имитация задержки сети
-    await new Promise((r) => setTimeout(r, 800));
+    try {
+      const res = await fetch("https://api.sushivkus.ru/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await res.json();
 
-    if (email === "admin@sushivkus.ru" && password === "admin123") {
-      localStorage.setItem("admin_auth", "true");
-      router.push("/admin");
-    } else {
-      setError("Неверный логин или пароль");
+      if (res.ok && data.token) {
+        localStorage.setItem("admin_auth", "true");
+        localStorage.setItem("admin_token", data.token);
+        router.push("/admin");
+      } else {
+        setError(data.error || "Неверный логин или пароль");
+      }
+    } catch {
+      setError("Сервер менен байланыш жок");
     }
 
     setLoading(false);
