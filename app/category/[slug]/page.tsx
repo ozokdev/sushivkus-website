@@ -4,12 +4,10 @@ import { categoryList, getCategoryBySlug } from "@/data/categories";
 import { menuItems } from "@/data/menu";
 import CategoryPageClient from "./CategoryPageClient";
 
-// Генерируем статические пути для всех категорий
 export function generateStaticParams() {
   return categoryList.map((cat) => ({ slug: cat.slug }));
 }
 
-// Динамические мета-теги для SEO
 export function generateMetadata({
   params,
 }: {
@@ -22,13 +20,25 @@ export function generateMetadata({
   const minPrice = items.length > 0 ? Math.min(...items.map((i) => i.price)) : 0;
 
   return {
-    title: `${category.nameFull} — заказать с доставкой | Суши Вкус`,
-    description: category.description,
-    keywords: `${category.nameFull.toLowerCase()}, доставка, Люберцы, суши, Суши Вкус`,
+    title: `${category.nameFull} — заказать с доставкой в Люберцах | Суши Вкус`,
+    description: `${category.description} Доставка по Люберцам от ${minPrice} ₽. Заказать онлайн на sushivkus.ru`,
+    keywords: `${category.nameFull.toLowerCase()}, доставка ${category.nameFull.toLowerCase()} Люберцы, суши, Суши Вкус, заказать ${category.nameFull.toLowerCase()}`,
+    alternates: {
+      canonical: `/category/${params.slug}`,
+    },
     openGraph: {
       title: `${category.nameFull} от ${minPrice} ₽ | Суши Вкус`,
-      description: category.description,
+      description: `${category.description} Доставка по Люберцам.`,
       type: "website",
+      url: `https://sushivkus.ru/category/${params.slug}`,
+      images: [category.image],
+      siteName: "Суши Вкус",
+      locale: "ru_RU",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${category.nameFull} от ${minPrice} ₽ | Суши Вкус`,
+      description: category.description,
       images: [category.image],
     },
   };
@@ -44,5 +54,43 @@ export default function CategoryPage({
 
   const items = menuItems.filter((i) => i.category === category.id);
 
-  return <CategoryPageClient category={category} items={items} />;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: category.nameFull,
+    description: category.description,
+    url: `https://sushivkus.ru/category/${params.slug}`,
+    numberOfItems: items.length,
+    itemListElement: items.map((item, idx) => ({
+      "@type": "ListItem",
+      position: idx + 1,
+      item: {
+        "@type": "Product",
+        name: item.name,
+        description: item.description,
+        image: `https://sushivkus.ru${item.image}`,
+        url: `https://sushivkus.ru/category/${params.slug}`,
+        offers: {
+          "@type": "Offer",
+          price: item.price,
+          priceCurrency: "RUB",
+          availability: "https://schema.org/InStock",
+          seller: {
+            "@type": "Organization",
+            name: "Суши Вкус",
+          },
+        },
+      },
+    })),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <CategoryPageClient category={category} items={items} />
+    </>
+  );
 }

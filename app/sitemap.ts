@@ -12,6 +12,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  const seoPages = [
+    "dostavka-sushi-lyubertsy",
+    "rolly-lyubertsy",
+    "sety-lyubertsy",
+    "yaponskaya-kuhnya-lyubertsy",
+    "dostavka-lyubertsy",
+    "dostavka-nekrasovka",
+    "dostavka-zhulebino",
+    "akcii",
+  ].map((slug) => ({
+    url: `${baseUrl}/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   return [
     {
       url: baseUrl,
@@ -20,5 +36,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     ...categoryPages,
+    ...seoPages,
   ];
 }

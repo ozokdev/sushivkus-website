@@ -22,7 +22,9 @@
       "Bash(python upload.py)",
       "Bash(python -c:*)",
       "Bash(python upload_api.py)",
-      "Bash(python deploy_update.py)"
+      "Bash(python deploy_update.py)",
+      "WebFetch(domain:sushivkus.ru)",
+      "WebFetch(domain:pagespeed.web.dev)"
     ]
   }
 }
