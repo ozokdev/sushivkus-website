@@ -21,7 +21,7 @@ interface CartState {
   closeCart: () => void;
   openOrderForm: () => void;
   closeOrderForm: () => void;
-  openOrderSuccess: () => void;
+  openOrderSuccess: (orderNumber?: number) => void;
   closeOrderSuccess: () => void;
   addItem: (item: Omit<CartItem, "quantity">) => void;
   removeItem: (id: number) => void;
@@ -43,10 +43,10 @@ export const useCartStore = create<CartState>((set, get) => ({
   closeCart: () => set({ isOpen: false }),
   openOrderForm: () => set({ isOrderFormOpen: true, isOpen: false }),
   closeOrderForm: () => set({ isOrderFormOpen: false }),
-  openOrderSuccess: () =>
+  openOrderSuccess: (orderNumber?: number) =>
     set({
       isOrderSuccessOpen: true,
-      lastOrderNumber: Math.floor(1000 + Math.random() * 9000),
+      lastOrderNumber: orderNumber || Math.floor(1000 + Math.random() * 9000),
     }),
   closeOrderSuccess: () => set({ isOrderSuccessOpen: false }),
 

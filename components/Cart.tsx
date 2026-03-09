@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { X, Minus, Plus, ShoppingBag, Trash2, Tag, AlertCircle } from "lucide-react";
@@ -15,6 +16,7 @@ const PROMO_CODES: Record<string, number> = {
 };
 
 export default function Cart() {
+  const router = useRouter();
   const {
     items,
     isOpen,
@@ -23,7 +25,6 @@ export default function Cart() {
     updateQuantity,
     clearCart,
     getTotalPrice,
-    openOrderForm,
     addItem,
   } = useCartStore();
 
@@ -284,7 +285,10 @@ export default function Cart() {
                 </div>
 
                 <button
-                  onClick={openOrderForm}
+                  onClick={() => {
+                    closeCart();
+                    router.push("/checkout");
+                  }}
                   disabled={remaining > 0}
                   className={`w-full py-3.5 rounded-xl text-white font-semibold transition-all duration-200 ${
                     remaining > 0

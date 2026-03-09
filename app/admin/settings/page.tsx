@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import {
   Save,
@@ -14,65 +14,54 @@ import {
   Store,
   CreditCard,
   CheckCircle,
+  GripVertical,
+  ArrowUp,
+  ArrowDown,
 } from "lucide-react";
 
+interface PaymentMethod {
+  ID: number;
+  key: string;
+  name: string;
+  description: string;
+  enabled: boolean;
+  sort_order: number;
+}
+
 interface SiteSettings {
-  // Основная информация
   siteName: string;
   description: string;
-
-  // Контакты
   phone: string;
   email: string;
   address: string;
   addressLink: string;
-
-  // Время работы
   workStart: string;
   workEnd: string;
   workDays: string;
-
-  // Соц. сети
   whatsapp: string;
   telegram: string;
   instagram: string;
-
-  // Доставка
   minOrderAmount: number;
   freeDeliveryFrom: number;
   deliveryPrice: number;
-
-  // Оплата
-  cashPayment: boolean;
-  cardPayment: boolean;
-  onlinePayment: boolean;
 }
 
 const initialSettings: SiteSettings = {
   siteName: "Суши Вкус",
   description: "Свежие роллы. Быстрая доставка.",
-
   phone: "8 (925) 320-61-90",
   email: "admin@sushivkus.ru",
   address: "ул. Шоссейная, 42, г. Люберцы",
-  addressLink:
-    "https://yandex.ru/maps/-/CDaZjT",
-
+  addressLink: "https://yandex.ru/maps/-/CDaZjT",
   workStart: "10:00",
   workEnd: "23:00",
   workDays: "Ежедневно",
-
   whatsapp: "79253206190",
   telegram: "kelechek_sushi",
   instagram: "sushivkus_lybertsy",
-
   minOrderAmount: 500,
   freeDeliveryFrom: 2000,
   deliveryPrice: 200,
-
-  cashPayment: true,
-  cardPayment: true,
-  onlinePayment: false,
 };
 
 const container = {
@@ -87,17 +76,73 @@ const item = {
 
 export default function SettingsPage() {
   const [settings, setSettings] = useState<SiteSettings>(initialSettings);
+  const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
   const [saved, setSaved] = useState(false);
+  const [saving, setSaving] = useState(false);
+
+  const getToken = useCallback(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("admin_token") || "";
+    }
+    return "";
+  }, []);
+
+  useEffect(() => {
+    fetch("https://api.sushivkus.ru/api/payment-methods")
+      .then((r) => r.json())
+      .then((data) => {
+        if (Array.isArray(data)) setPaymentMethods(data);
+      })
+      .catch(() => {});
+  }, []);
 
   const update = (key: keyof SiteSettings, value: string | number | boolean) => {
     setSettings({ ...settings, [key]: value });
     setSaved(false);
   };
 
-  const handleSave = () => {
-    // TODO: Go API менен сактоо
-    setSaved(true);
-    setTimeout(() => setSaved(false), 3000);
+  const togglePayment = (key: string) => {
+    setPaymentMethods((prev) =>
+      prev.map((m) => (m.key === key ? { ...m, enabled: !m.enabled } : m))
+    );
+    setSaved(false);
+  };
+
+  const movePayment = (index: number, direction: "up" | "down") => {
+    const newMethods = [...paymentMethods];
+    const swapIndex = direction === "up" ? index - 1 : index + 1;
+    if (swapIndex < 0 || swapIndex >= newMethods.length) return;
+    [newMethods[index], newMethods[swapIndex]] = [newMethods[swapIndex], newMethods[index]];
+    newMethods.forEach((m, i) => (m.sort_order = i));
+    setPaymentMethods(newMethods);
+    setSaved(false);
+  };
+
+  const handleSave = async () => {
+    setSaving(true);
+    try {
+      await fetch("https://api.sushivkus.ru/api/payment-methods", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${getToken()}`,
+        },
+        body: JSON.stringify(
+          paymentMethods.map((m, i) => ({
+            key: m.key,
+            name: m.name,
+            description: m.description,
+            enabled: m.enabled,
+            sort_order: i,
+          }))
+        ),
+      });
+      setSaved(true);
+      setTimeout(() => setSaved(false), 3000);
+    } catch {
+      // error
+    }
+    setSaving(false);
   };
 
   return (
@@ -357,42 +402,43 @@ export default function SettingsPage() {
           <h2 className="font-semibold text-lg">Способы оплаты</h2>
         </div>
         <div className="space-y-3">
-          {[
-            {
-              key: "cashPayment" as const,
-              label: "Наличные",
-              desc: "Оплата курьеру при получении",
-            },
-            {
-              key: "cardPayment" as const,
-              label: "Банковская карта",
-              desc: "Оплата картой курьеру (терминал)",
-            },
-            {
-              key: "onlinePayment" as const,
-              label: "Онлайн-оплата",
-              desc: "Оплата на сайте при оформлении",
-            },
-          ].map((method) => (
+          {paymentMethods.map((method, index) => (
             <div
               key={method.key}
               className="flex items-center justify-between p-4 bg-white/[0.03] rounded-xl"
             >
-              <div>
-                <p className="text-sm font-medium">{method.label}</p>
-                <p className="text-xs text-gray-500 mt-0.5">{method.desc}</p>
+              <div className="flex items-center gap-3">
+                <div className="flex flex-col gap-0.5">
+                  <button
+                    onClick={() => movePayment(index, "up")}
+                    disabled={index === 0}
+                    className="p-0.5 text-gray-500 hover:text-white disabled:opacity-20 transition-colors"
+                  >
+                    <ArrowUp className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    onClick={() => movePayment(index, "down")}
+                    disabled={index === paymentMethods.length - 1}
+                    className="p-0.5 text-gray-500 hover:text-white disabled:opacity-20 transition-colors"
+                  >
+                    <ArrowDown className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+                <GripVertical className="w-4 h-4 text-gray-600" />
+                <div>
+                  <p className="text-sm font-medium">{method.name}</p>
+                  <p className="text-xs text-gray-500 mt-0.5">{method.description}</p>
+                </div>
               </div>
               <button
-                onClick={() =>
-                  update(method.key, !settings[method.key])
-                }
+                onClick={() => togglePayment(method.key)}
                 className={`relative w-11 h-6 rounded-full transition-colors ${
-                  settings[method.key] ? "bg-accent" : "bg-gray-700"
+                  method.enabled ? "bg-accent" : "bg-gray-700"
                 }`}
               >
                 <div
                   className={`absolute top-0.5 w-5 h-5 bg-white rounded-full transition-transform ${
-                    settings[method.key] ? "left-[22px]" : "left-0.5"
+                    method.enabled ? "left-[22px]" : "left-0.5"
                   }`}
                 />
               </button>
