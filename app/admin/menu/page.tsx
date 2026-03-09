@@ -1,10 +1,27 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Plus, Pencil, X, Search } from "lucide-react";
-import { menuItems as originalMenuItems, categories, type MenuItem, type Category } from "@/data/menu";
+import { Plus, Pencil, X, Search, RefreshCw, Loader2 } from "lucide-react";
+
+const API_URL = "https://api.sushivkus.ru/api";
+
+type Category = "all" | "rolls" | "sets" | "pizza" | "poke" | "soups" | "snacks" | "salads" | "sauces";
+
+const categories: { id: Category; name: string }[] = [
+  { id: "all", name: "Все" },
+  { id: "rolls", name: "Роллы" },
+  { id: "sets", name: "Сеты" },
+  { id: "pizza", name: "Пицца" },
+  { id: "poke", name: "Поке" },
+  { id: "soups", name: "Супы" },
+  { id: "snacks", name: "Закуски" },
+  { id: "salads", name: "Салаты" },
+  { id: "sauces", name: "Соусы" },
+];
+
+const editCategories = categories.filter((c) => c.id !== "all");
 
 const badgeOptions: { value: "" | "new" | "hot" | "spicy"; label: string }[] = [
   { value: "", label: "Нет" },
@@ -13,14 +30,19 @@ const badgeOptions: { value: "" | "new" | "hot" | "spicy"; label: string }[] = [
   { value: "spicy", label: "Острое" },
 ];
 
-interface AdminMenuItem extends MenuItem {
+interface AdminMenuItem {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+  category: Category;
+  weight?: string;
+  pieces?: string;
+  isPopular?: boolean;
   isActive: boolean;
+  badge?: string;
 }
-
-// Категории без "all" и "popular"
-const editCategories = categories.filter(
-  (c) => c.id !== "all" && c.id !== "popular"
-);
 
 interface FormData {
   name: string;
@@ -44,16 +66,64 @@ const emptyForm: FormData = {
   image: "/photo/philadelphia_classic.jpg",
 };
 
+function mapApiItem(item: any): AdminMenuItem {
+  return {
+    id: item.ID,
+    name: item.name,
+    description: item.description || "",
+    price: item.price,
+    image: item.image || "/photo/philadelphia_classic.jpg",
+    category: item.category as Category,
+    weight: item.weight || undefined,
+    pieces: item.pieces || undefined,
+    isPopular: item.is_popular || false,
+    isActive: item.is_active !== false,
+    badge: item.badge || undefined,
+  };
+}
+
 export default function AdminMenu() {
-  // TODO: Go API менен алмаштыруу
-  const [items, setItems] = useState<AdminMenuItem[]>(
-    originalMenuItems.map((i) => ({ ...i, isActive: true }))
-  );
+  const [items, setItems] = useState<AdminMenuItem[]>([]);
   const [filterCat, setFilterCat] = useState<Category>("all");
   const [search, setSearch] = useState("");
   const [editItem, setEditItem] = useState<AdminMenuItem | null>(null);
   const [isAdding, setIsAdding] = useState(false);
   const [form, setForm] = useState<FormData>(emptyForm);
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
+
+  const getToken = () => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("admin_token") || "";
+    }
+    return "";
+  };
+
+  const showToast = (message: string, type: "success" | "error" = "success") => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 3000);
+  };
+
+  const fetchMenu = useCallback(async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(`${API_URL}/menu?is_active=`, {
+        headers: { Authorization: `Bearer ${getToken()}` },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setItems((data.items || []).map(mapApiItem));
+      }
+    } catch {
+      showToast("Меню жүктөө катасы", "error");
+    }
+    setLoading(false);
+  }, []);
+
+  useEffect(() => {
+    fetchMenu();
+  }, [fetchMenu]);
 
   const filteredItems = useMemo(() => {
     return items.filter((item) => {
@@ -64,10 +134,50 @@ export default function AdminMenu() {
     });
   }, [items, filterCat, search]);
 
-  const toggleActive = (id: number) => {
+  const toggleActive = async (id: number) => {
+    const item = items.find((i) => i.id === id);
+    if (!item) return;
+
+    const newActive = !item.isActive;
     setItems((prev) =>
-      prev.map((i) => (i.id === id ? { ...i, isActive: !i.isActive } : i))
+      prev.map((i) => (i.id === id ? { ...i, isActive: newActive } : i))
     );
+
+    try {
+      if (!newActive) {
+        // Soft delete
+        await fetch(`${API_URL}/menu/${id}`, {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${getToken()}` },
+        });
+      } else {
+        // Reactivate
+        await fetch(`${API_URL}/menu/${id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`,
+          },
+          body: JSON.stringify({
+            name: item.name,
+            description: item.description,
+            price: item.price,
+            image: item.image,
+            category: item.category,
+            weight: item.weight || "",
+            is_popular: item.isPopular || false,
+            is_active: true,
+            badge: item.badge || "",
+          }),
+        });
+      }
+      showToast(newActive ? "Товар активдештирилди" : "Товар жашырылды");
+    } catch {
+      showToast("Ката болду", "error");
+      setItems((prev) =>
+        prev.map((i) => (i.id === id ? { ...i, isActive: !newActive } : i))
+      );
+    }
   };
 
   const openEdit = (item: AdminMenuItem) => {
@@ -79,7 +189,7 @@ export default function AdminMenu() {
       weight: item.weight || "",
       description: item.description,
       isPopular: item.isPopular || false,
-      badge: item.badge || "",
+      badge: (item.badge as FormData["badge"]) || "",
       image: item.image,
     });
   };
@@ -94,28 +204,65 @@ export default function AdminMenu() {
     setIsAdding(false);
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!form.name || !form.price) return;
+    setSaving(true);
 
-    const newItem: AdminMenuItem = {
-      id: editItem ? editItem.id : Date.now(),
+    const body = {
       name: form.name,
-      price: Number(form.price),
-      category: form.category,
       description: form.description,
+      price: Number(form.price),
       image: form.image,
-      weight: form.weight || undefined,
-      isPopular: form.isPopular || undefined,
-      badge: form.badge || undefined,
-      isActive: editItem ? editItem.isActive : true,
+      category: form.category,
+      weight: form.weight || "",
+      is_popular: form.isPopular,
+      is_active: true,
+      badge: form.badge || "",
     };
 
-    if (editItem) {
-      setItems((prev) => prev.map((i) => (i.id === editItem.id ? newItem : i)));
-    } else {
-      setItems((prev) => [newItem, ...prev]);
+    try {
+      if (editItem) {
+        // PUT — жаңыртуу
+        const res = await fetch(`${API_URL}/menu/${editItem.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`,
+          },
+          body: JSON.stringify(body),
+        });
+        if (res.ok) {
+          const data = await res.json();
+          const updated = mapApiItem(data.data);
+          setItems((prev) => prev.map((i) => (i.id === editItem.id ? updated : i)));
+          showToast("Товар сакталды");
+        } else {
+          showToast("Сактоо катасы", "error");
+        }
+      } else {
+        // POST — жаңы товар
+        const res = await fetch(`${API_URL}/menu`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`,
+          },
+          body: JSON.stringify(body),
+        });
+        if (res.ok) {
+          const data = await res.json();
+          const newItem = mapApiItem(data.data);
+          setItems((prev) => [newItem, ...prev]);
+          showToast("Товар кошулду");
+        } else {
+          showToast("Кошуу катасы", "error");
+        }
+      }
+    } catch {
+      showToast("Сервер менен байланыш жок", "error");
     }
 
+    setSaving(false);
     closeModal();
   };
 
@@ -128,6 +275,24 @@ export default function AdminMenu() {
       transition={{ duration: 0.3 }}
       className="space-y-6"
     >
+      {/* Toast */}
+      <AnimatePresence>
+        {toast && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className={`fixed top-4 right-4 z-[100] px-4 py-3 rounded-xl text-sm font-medium shadow-lg ${
+              toast.type === "success"
+                ? "bg-green-500/90 text-white"
+                : "bg-red-500/90 text-white"
+            }`}
+          >
+            {toast.message}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Заголовок */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div className="flex items-center gap-3">
@@ -135,6 +300,13 @@ export default function AdminMenu() {
           <span className="bg-accent/10 text-accent text-sm font-medium px-2.5 py-0.5 rounded-full">
             {items.length}
           </span>
+          <button
+            onClick={fetchMenu}
+            className="p-2 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition-colors"
+            title="Жаңыртуу"
+          >
+            <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
+          </button>
         </div>
         <div className="flex items-center gap-3">
           <div className="relative flex-1 sm:w-60">
@@ -159,7 +331,7 @@ export default function AdminMenu() {
 
       {/* Категория фильтр */}
       <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-1">
-        {categories.filter((c) => c.id !== "popular").map((cat) => {
+        {categories.map((cat) => {
           const active = filterCat === cat.id;
           return (
             <button
@@ -177,103 +349,112 @@ export default function AdminMenu() {
         })}
       </div>
 
-      {/* Товарлар grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
-        {filteredItems.map((item) => (
-          <motion.div
-            key={item.id}
-            layout
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className={`bg-[#111] border rounded-2xl overflow-hidden group transition-opacity ${
-              item.isActive
-                ? "border-white/10"
-                : "border-white/5 opacity-50"
-            }`}
-          >
-            {/* Сүрөт */}
-            <div className="relative aspect-video overflow-hidden">
-              <Image
-                src={item.image}
-                alt={item.name}
-                fill
-                className={`object-cover ${!item.isActive ? "grayscale" : ""}`}
-                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              />
-              {!item.isActive && (
-                <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                  <span className="bg-red-500/80 text-white text-[10px] font-bold px-2 py-0.5 rounded-md">
-                    СКРЫТО
-                  </span>
-                </div>
-              )}
-              <div className="absolute top-2 right-2 flex flex-col gap-1">
-                {item.isPopular && (
-                  <span className="bg-accent text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md">
-                    ХИТ
-                  </span>
-                )}
-                {item.badge === "new" && (
-                  <span className="bg-blue-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md">
-                    NEW
-                  </span>
-                )}
-                {item.badge === "hot" && (
-                  <span className="bg-orange-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md">
-                    HOT
-                  </span>
-                )}
-                {item.badge === "spicy" && (
-                  <span className="bg-red-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md">
-                    SPICY
-                  </span>
-                )}
-              </div>
-            </div>
-
-            {/* Маалымат */}
-            <div className="p-3 lg:p-4">
-              <h3 className="font-semibold text-sm line-clamp-1">{item.name}</h3>
-              <p className="text-gray-400 text-xs line-clamp-2 mt-1 leading-relaxed">
-                {item.description}
-              </p>
-              <div className="flex items-center justify-between mt-3">
-                <div>
-                  <span className="text-accent font-bold">{item.price} ₽</span>
-                  {item.weight && (
-                    <span className="text-gray-500 text-xs ml-2">{item.weight}</span>
-                  )}
-                </div>
-              </div>
-              <div className="flex gap-2 mt-3">
-                <button
-                  onClick={() => openEdit(item)}
-                  className="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white text-sm transition-all duration-200"
-                >
-                  <Pencil className="w-3.5 h-3.5" />
-                  <span className="hidden lg:inline">Редакт.</span>
-                </button>
-                <button
-                  onClick={() => toggleActive(item.id)}
-                  className={`px-3 py-2 rounded-xl text-xs font-medium transition-all duration-200 ${
-                    item.isActive
-                      ? "bg-green-500/10 text-green-400 hover:bg-red-500/10 hover:text-red-400"
-                      : "bg-red-500/10 text-red-400 hover:bg-green-500/10 hover:text-green-400"
-                  }`}
-                  title={item.isActive ? "Скрыть из меню" : "Показать в меню"}
-                >
-                  {item.isActive ? "ON" : "OFF"}
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
-      {filteredItems.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-gray-500">Ничего не найдено</p>
+      {/* Loading */}
+      {loading && items.length === 0 ? (
+        <div className="flex items-center justify-center py-20">
+          <Loader2 className="w-8 h-8 text-accent animate-spin" />
         </div>
+      ) : (
+        <>
+          {/* Товарлар grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
+            {filteredItems.map((item) => (
+              <motion.div
+                key={item.id}
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className={`bg-[#111] border rounded-2xl overflow-hidden group transition-opacity ${
+                  item.isActive
+                    ? "border-white/10"
+                    : "border-white/5 opacity-50"
+                }`}
+              >
+                {/* Сүрөт */}
+                <div className="relative aspect-video overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    fill
+                    className={`object-cover ${!item.isActive ? "grayscale" : ""}`}
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  />
+                  {!item.isActive && (
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                      <span className="bg-red-500/80 text-white text-[10px] font-bold px-2 py-0.5 rounded-md">
+                        СКРЫТО
+                      </span>
+                    </div>
+                  )}
+                  <div className="absolute top-2 right-2 flex flex-col gap-1">
+                    {item.isPopular && (
+                      <span className="bg-accent text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md">
+                        ХИТ
+                      </span>
+                    )}
+                    {item.badge === "new" && (
+                      <span className="bg-blue-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md">
+                        NEW
+                      </span>
+                    )}
+                    {item.badge === "hot" && (
+                      <span className="bg-orange-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md">
+                        HOT
+                      </span>
+                    )}
+                    {item.badge === "spicy" && (
+                      <span className="bg-red-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md">
+                        SPICY
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Маалымат */}
+                <div className="p-3 lg:p-4">
+                  <h3 className="font-semibold text-sm line-clamp-1">{item.name}</h3>
+                  <p className="text-gray-400 text-xs line-clamp-2 mt-1 leading-relaxed">
+                    {item.description}
+                  </p>
+                  <div className="flex items-center justify-between mt-3">
+                    <div>
+                      <span className="text-accent font-bold">{item.price} ₽</span>
+                      {item.weight && (
+                        <span className="text-gray-500 text-xs ml-2">{item.weight}</span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex gap-2 mt-3">
+                    <button
+                      onClick={() => openEdit(item)}
+                      className="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white text-sm transition-all duration-200"
+                    >
+                      <Pencil className="w-3.5 h-3.5" />
+                      <span className="hidden lg:inline">Редакт.</span>
+                    </button>
+                    <button
+                      onClick={() => toggleActive(item.id)}
+                      className={`px-3 py-2 rounded-xl text-xs font-medium transition-all duration-200 ${
+                        item.isActive
+                          ? "bg-green-500/10 text-green-400 hover:bg-red-500/10 hover:text-red-400"
+                          : "bg-red-500/10 text-red-400 hover:bg-green-500/10 hover:text-green-400"
+                      }`}
+                      title={item.isActive ? "Скрыть из меню" : "Показать в меню"}
+                    >
+                      {item.isActive ? "ON" : "OFF"}
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {filteredItems.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-gray-500">Ничего не найдено</p>
+            </div>
+          )}
+        </>
       )}
 
       {/* Модал: Редактирование / Добавление */}
@@ -428,10 +609,17 @@ export default function AdminMenu() {
                   </button>
                   <button
                     onClick={handleSave}
-                    disabled={!form.name || !form.price}
-                    className="flex-1 py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-white text-sm font-medium transition-all duration-200 disabled:opacity-50"
+                    disabled={!form.name || !form.price || saving}
+                    className="flex-1 py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-white text-sm font-medium transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-2"
                   >
-                    Сохранить
+                    {saving ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Сактоо...
+                      </>
+                    ) : (
+                      "Сохранить"
+                    )}
                   </button>
                 </div>
               </div>
