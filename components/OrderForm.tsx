@@ -6,7 +6,7 @@ import { X, Send, User, Phone, MapPin, MessageSquare } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
 
 export default function OrderForm() {
-  const { items, isOrderFormOpen, closeOrderForm, getTotalPrice, clearCart } =
+  const { items, isOrderFormOpen, closeOrderForm, getTotalPrice, clearCart, openOrderSuccess } =
     useCartStore();
 
   const [form, setForm] = useState({
@@ -44,9 +44,10 @@ export default function OrderForm() {
     const whatsappUrl = `https://wa.me/79253206190?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
 
-    // Очищаем корзину и закрываем форму
+    // Очищаем корзину и показываем success
     clearCart();
     closeOrderForm();
+    openOrderSuccess();
     setForm({ name: "", phone: "", address: "", comment: "" });
   };
 

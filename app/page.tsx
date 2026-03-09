@@ -13,6 +13,10 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import MobileNav from "@/components/MobileNav";
 import Toast from "@/components/Toast";
+import OrderSuccess from "@/components/OrderSuccess";
+
+import FAQ from "@/components/FAQ";
+import InstagramGallery from "@/components/InstagramGallery";
 
 export default function Home() {
   return (
@@ -24,11 +28,15 @@ export default function Home() {
         <WorkTimer />
         <CategoryGrid />
         <PopularSection />
+
         <MenuSection />
+        <InstagramGallery />
+        <FAQ />
       </main>
       <Footer />
       <Cart />
       <OrderForm />
+      <OrderSuccess />
       <ScrollToTop />
       <MobileNav />
       <Toast />

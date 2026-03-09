@@ -10,6 +10,7 @@ import { useToast } from "@/components/Toast";
 import type { CategoryInfo } from "@/data/categories";
 import type { MenuItem } from "@/data/menu";
 import ProductModal from "@/components/ProductModal";
+import FavoriteButton from "@/components/FavoriteButton";
 import Header from "@/components/Header";
 import TopBar from "@/components/TopBar";
 import Footer from "@/components/Footer";
@@ -193,7 +194,8 @@ export default function CategoryPageClient({
                         </span>
                       )}
                     </div>
-                    <div className="absolute top-2 right-2 flex flex-col gap-1">
+                    <div className="absolute top-2 right-2 flex flex-col items-end gap-1">
+                      <FavoriteButton id={item.id} className="bg-black/30 backdrop-blur-sm rounded-lg" />
                       {badge && (
                         <span className={`${badge.class} text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md`}>
                           {badge.text}

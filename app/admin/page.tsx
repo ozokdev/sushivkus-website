@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ShoppingBag,
   TrendingUp,
@@ -10,6 +10,11 @@ import {
   ArrowRight,
   Phone,
   MessageCircle,
+  Percent,
+  Calendar,
+  ChevronDown,
+  Minus,
+  Plus,
 } from "lucide-react";
 import {
   AreaChart,
@@ -23,13 +28,14 @@ import {
   Bar,
 } from "recharts";
 
-// TODO: Go API менен алмаштыруу
-const stats = {
-  todayOrders: 12,
-  todayRevenue: 48500,
-  pendingOrders: 3,
-  deliveredOrders: 9,
-};
+// Мөөнөт тандоо опциялары
+const periodOptions = [
+  { label: "7 күн", days: 7 },
+  { label: "14 күн", days: 14 },
+  { label: "30 күн", days: 30 },
+  { label: "60 күн", days: 60 },
+  { label: "90 күн", days: 90 },
+];
 
 type OrderStatus = "new" | "preparing" | "delivered" | "cancelled";
 
@@ -40,15 +46,48 @@ interface RecentOrder {
   total: number;
   status: OrderStatus;
   time: string;
+  date: string;
+}
+
+// TODO: Go API менен алмаштыруу — демо маалыматтар
+function generateDemoData(days: number) {
+  const data = [];
+  const now = new Date();
+  const dayNames = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
+
+  for (let i = days - 1; i >= 0; i--) {
+    const date = new Date(now);
+    date.setDate(date.getDate() - i);
+    const dayName = dayNames[date.getDay()];
+    const dateStr = date.toLocaleDateString("ru-RU", { day: "numeric", month: "short" });
+
+    const orders = Math.floor(Math.random() * 30) + 5;
+    const revenue = orders * (Math.floor(Math.random() * 2000) + 1500);
+
+    data.push({
+      day: days <= 14 ? dayName : dateStr,
+      fullDate: dateStr,
+      orders,
+      revenue,
+    });
+  }
+  return data;
 }
 
 // TODO: Go API менен алмаштыруу
-const recentOrders: RecentOrder[] = [
-  { id: 1001, name: "Алексей К.", phone: "+7 925 123-45-67", total: 2990, status: "delivered", time: "12:30" },
-  { id: 1002, name: "Мария С.", phone: "+7 916 234-56-78", total: 1590, status: "preparing", time: "13:15" },
-  { id: 1003, name: "Дмитрий П.", phone: "+7 903 345-67-89", total: 3990, status: "new", time: "13:45" },
-  { id: 1004, name: "Анна В.", phone: "+7 926 456-78-90", total: 890, status: "new", time: "14:00" },
-  { id: 1005, name: "Иван М.", phone: "+7 915 567-89-01", total: 2490, status: "cancelled", time: "11:00" },
+const allOrders: RecentOrder[] = [
+  { id: 1001, name: "Алексей К.", phone: "+7 925 123-45-67", total: 2990, status: "delivered", time: "12:30", date: "2026-03-09" },
+  { id: 1002, name: "Мария С.", phone: "+7 916 234-56-78", total: 1590, status: "preparing", time: "13:15", date: "2026-03-09" },
+  { id: 1003, name: "Дмитрий П.", phone: "+7 903 345-67-89", total: 3990, status: "new", time: "13:45", date: "2026-03-09" },
+  { id: 1004, name: "Анна В.", phone: "+7 926 456-78-90", total: 890, status: "new", time: "14:00", date: "2026-03-09" },
+  { id: 1005, name: "Иван М.", phone: "+7 915 567-89-01", total: 2490, status: "cancelled", time: "11:00", date: "2026-03-09" },
+  { id: 1006, name: "Елена Р.", phone: "+7 903 111-22-33", total: 3200, status: "delivered", time: "10:00", date: "2026-03-08" },
+  { id: 1007, name: "Сергей Т.", phone: "+7 916 444-55-66", total: 1800, status: "delivered", time: "18:30", date: "2026-03-08" },
+  { id: 1008, name: "Ольга К.", phone: "+7 925 777-88-99", total: 4500, status: "delivered", time: "15:00", date: "2026-03-07" },
+  { id: 1009, name: "Павел Н.", phone: "+7 903 222-33-44", total: 2100, status: "delivered", time: "12:15", date: "2026-03-07" },
+  { id: 1010, name: "Наталья Б.", phone: "+7 916 555-66-77", total: 3700, status: "delivered", time: "19:45", date: "2026-03-06" },
+  { id: 1011, name: "Артём Д.", phone: "+7 925 888-99-00", total: 1450, status: "delivered", time: "11:30", date: "2026-03-06" },
+  { id: 1012, name: "Виктор С.", phone: "+7 903 333-44-55", total: 5200, status: "delivered", time: "20:00", date: "2026-03-05" },
 ];
 
 const statusConfig: Record<OrderStatus, { label: string; class: string }> = {
@@ -57,24 +96,6 @@ const statusConfig: Record<OrderStatus, { label: string; class: string }> = {
   delivered: { label: "Доставлен", class: "bg-green-500/20 text-green-400" },
   cancelled: { label: "Отменён", class: "bg-red-500/20 text-red-400" },
 };
-
-const statCards = [
-  { label: "Заказов сегодня", value: stats.todayOrders, icon: ShoppingBag, color: "bg-accent/10 text-accent" },
-  { label: "Выручка сегодня", value: `${stats.todayRevenue.toLocaleString("ru-RU")} ₽`, icon: TrendingUp, color: "bg-emerald-500/10 text-emerald-400" },
-  { label: "В ожидании", value: stats.pendingOrders, icon: Clock, color: "bg-yellow-500/10 text-yellow-400" },
-  { label: "Доставлено", value: stats.deliveredOrders, icon: CheckCircle, color: "bg-green-500/10 text-green-400" },
-];
-
-// TODO: Go API менен алмаштыруу
-const weeklyData = [
-  { day: "Пн", orders: 18, revenue: 42000 },
-  { day: "Вт", orders: 14, revenue: 35000 },
-  { day: "Ср", orders: 22, revenue: 58000 },
-  { day: "Чт", orders: 16, revenue: 41000 },
-  { day: "Пт", orders: 28, revenue: 72000 },
-  { day: "Сб", orders: 35, revenue: 95000 },
-  { day: "Вс", orders: 12, revenue: 48500 },
-];
 
 const container = {
   hidden: { opacity: 0 },
@@ -104,6 +125,49 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 
 export default function AdminDashboard() {
   const [chartMode, setChartMode] = useState<"orders" | "revenue">("orders");
+  const [selectedPeriod, setSelectedPeriod] = useState(7);
+  const [periodOpen, setPeriodOpen] = useState(false);
+  const [commission, setCommission] = useState(10);
+  const [showCommissionEdit, setShowCommissionEdit] = useState(false);
+  const [tempCommission, setTempCommission] = useState(10);
+
+  // localStorage'дон комиссияны окуу
+  useEffect(() => {
+    const saved = localStorage.getItem("admin_commission");
+    if (saved) {
+      const val = Number(saved);
+      setCommission(val);
+      setTempCommission(val);
+    }
+  }, []);
+
+  // Мөөнөткө жараша маалыматтар
+  const [chartData, setChartData] = useState(() => generateDemoData(7));
+
+  useEffect(() => {
+    setChartData(generateDemoData(selectedPeriod));
+  }, [selectedPeriod]);
+
+  const totalOrders = chartData.reduce((s, d) => s + d.orders, 0);
+  const totalRevenue = chartData.reduce((s, d) => s + d.revenue, 0);
+  const myEarnings = Math.round(totalRevenue * (commission / 100));
+
+  // Бүгүнкү статистика
+  const todayData = chartData[chartData.length - 1];
+  const todayOrders = todayData?.orders || 0;
+  const todayRevenue = todayData?.revenue || 0;
+  const todayEarnings = Math.round(todayRevenue * (commission / 100));
+
+  const pendingOrders = allOrders.filter((o) => o.status === "new" || o.status === "preparing").length;
+  const deliveredOrders = allOrders.filter((o) => o.status === "delivered").length;
+
+  const saveCommission = () => {
+    const val = Math.max(1, Math.min(100, tempCommission));
+    setCommission(val);
+    setTempCommission(val);
+    localStorage.setItem("admin_commission", String(val));
+    setShowCommissionEdit(false);
+  };
 
   const today = new Date().toLocaleDateString("ru-RU", {
     weekday: "long",
@@ -112,6 +176,8 @@ export default function AdminDashboard() {
     year: "numeric",
   });
 
+  const currentPeriodLabel = periodOptions.find((p) => p.days === selectedPeriod)?.label || `${selectedPeriod} күн`;
+
   return (
     <motion.div
       variants={container}
@@ -119,15 +185,151 @@ export default function AdminDashboard() {
       animate="show"
       className="space-y-6"
     >
-      {/* Заголовок */}
-      <motion.div variants={item}>
-        <h1 className="text-2xl font-bold">Добро пожаловать!</h1>
-        <p className="text-gray-500 text-sm mt-1 capitalize">{today}</p>
+      {/* Заголовок + Мөөнөт тандоо */}
+      <motion.div variants={item} className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-bold">Добро пожаловать!</h1>
+          <p className="text-gray-500 text-sm mt-1 capitalize">{today}</p>
+        </div>
+
+        <div className="flex items-center gap-3">
+          {/* Комиссия */}
+          <div className="relative">
+            <button
+              onClick={() => {
+                setShowCommissionEdit(!showCommissionEdit);
+                setTempCommission(commission);
+              }}
+              className="flex items-center gap-2 bg-accent/10 text-accent px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-accent/20 transition-colors"
+            >
+              <Percent className="w-4 h-4" />
+              Моя комиссия: {commission}%
+            </button>
+
+            <AnimatePresence>
+              {showCommissionEdit && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  className="absolute right-0 top-full mt-2 bg-[#1a1a1a] border border-white/10 rounded-2xl p-4 z-20 w-64 shadow-2xl"
+                >
+                  <p className="text-sm text-gray-400 mb-3">Комиссия процент</p>
+                  <div className="flex items-center gap-3 mb-4">
+                    <button
+                      onClick={() => setTempCommission(Math.max(1, tempCommission - 1))}
+                      className="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
+                    >
+                      <Minus className="w-4 h-4" />
+                    </button>
+                    <div className="flex-1 relative">
+                      <input
+                        type="number"
+                        value={tempCommission}
+                        onChange={(e) => setTempCommission(Number(e.target.value))}
+                        min={1}
+                        max={100}
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-center text-2xl font-bold text-accent focus:outline-none focus:border-accent/40"
+                      />
+                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg">%</span>
+                    </div>
+                    <button
+                      onClick={() => setTempCommission(Math.min(100, tempCommission + 1))}
+                      className="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
+                    >
+                      <Plus className="w-4 h-4" />
+                    </button>
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setShowCommissionEdit(false)}
+                      className="flex-1 px-3 py-2 rounded-xl text-sm bg-white/5 text-gray-400 hover:bg-white/10 transition-colors"
+                    >
+                      Отмена
+                    </button>
+                    <button
+                      onClick={saveCommission}
+                      className="flex-1 px-3 py-2 rounded-xl text-sm bg-accent text-white hover:bg-accent/90 transition-colors font-medium"
+                    >
+                      Сактоо
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Мөөнөт тандоо */}
+          <div className="relative">
+            <button
+              onClick={() => setPeriodOpen(!periodOpen)}
+              className="flex items-center gap-2 bg-[#111] border border-white/10 px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-white/5 transition-colors"
+            >
+              <Calendar className="w-4 h-4 text-gray-400" />
+              {currentPeriodLabel}
+              <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${periodOpen ? "rotate-180" : ""}`} />
+            </button>
+
+            <AnimatePresence>
+              {periodOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  className="absolute right-0 top-full mt-2 bg-[#1a1a1a] border border-white/10 rounded-xl overflow-hidden z-20 shadow-2xl min-w-[140px]"
+                >
+                  {periodOptions.map((opt) => (
+                    <button
+                      key={opt.days}
+                      onClick={() => {
+                        setSelectedPeriod(opt.days);
+                        setPeriodOpen(false);
+                      }}
+                      className={`w-full text-left px-4 py-2.5 text-sm hover:bg-white/5 transition-colors ${
+                        selectedPeriod === opt.days
+                          ? "text-accent bg-accent/5"
+                          : "text-gray-300"
+                      }`}
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
       </motion.div>
 
-      {/* Статистика */}
+      {/* Статистика карточкалары */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
-        {statCards.map((card, i) => (
+        {[
+          {
+            label: "Заказов сегодня",
+            value: todayOrders,
+            icon: ShoppingBag,
+            color: "bg-accent/10 text-accent",
+          },
+          {
+            label: `Мой доход (${commission}%)`,
+            value: `${todayEarnings.toLocaleString("ru-RU")} ₽`,
+            subtitle: `из ${todayRevenue.toLocaleString("ru-RU")} ₽`,
+            icon: TrendingUp,
+            color: "bg-emerald-500/10 text-emerald-400",
+          },
+          {
+            label: "В ожидании",
+            value: pendingOrders,
+            icon: Clock,
+            color: "bg-yellow-500/10 text-yellow-400",
+          },
+          {
+            label: "Доставлено",
+            value: deliveredOrders,
+            icon: CheckCircle,
+            color: "bg-green-500/10 text-green-400",
+          },
+        ].map((card) => (
           <motion.div
             key={card.label}
             variants={item}
@@ -138,9 +340,28 @@ export default function AdminDashboard() {
             </div>
             <p className="text-2xl lg:text-3xl font-bold">{card.value}</p>
             <p className="text-gray-400 text-xs lg:text-sm mt-1">{card.label}</p>
+            {"subtitle" in card && card.subtitle && (
+              <p className="text-gray-600 text-[11px] mt-0.5">{card.subtitle}</p>
+            )}
           </motion.div>
         ))}
       </div>
+
+      {/* Мөөнөт боюнча жалпы */}
+      <motion.div variants={item} className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div className="bg-[#111] border border-white/10 rounded-2xl p-4 lg:p-5">
+          <p className="text-gray-500 text-xs mb-1">{currentPeriodLabel} — Заказы</p>
+          <p className="text-xl font-bold">{totalOrders.toLocaleString("ru-RU")}</p>
+        </div>
+        <div className="bg-[#111] border border-white/10 rounded-2xl p-4 lg:p-5">
+          <p className="text-gray-500 text-xs mb-1">{currentPeriodLabel} — Жалпы выручка</p>
+          <p className="text-xl font-bold">{totalRevenue.toLocaleString("ru-RU")} ₽</p>
+        </div>
+        <div className="bg-gradient-to-br from-accent/10 to-accent/5 border border-accent/20 rounded-2xl p-4 lg:p-5">
+          <p className="text-accent/70 text-xs mb-1">{currentPeriodLabel} — Менин кирешем ({commission}%)</p>
+          <p className="text-xl font-bold text-accent">{myEarnings.toLocaleString("ru-RU")} ₽</p>
+        </div>
+      </motion.div>
 
       {/* График */}
       <motion.div
@@ -148,7 +369,9 @@ export default function AdminDashboard() {
         className="bg-[#111] border border-white/10 rounded-2xl p-4 lg:p-6"
       >
         <div className="flex items-center justify-between mb-6">
-          <h3 className="font-semibold text-lg">Статистика за неделю</h3>
+          <h3 className="font-semibold text-lg">
+            Статистика — {currentPeriodLabel}
+          </h3>
           <div className="flex gap-1 bg-white/5 rounded-xl p-1">
             <button
               onClick={() => setChartMode("orders")}
@@ -168,22 +391,22 @@ export default function AdminDashboard() {
                   : "text-gray-400 hover:text-white"
               }`}
             >
-              Выручка
+              Мой доход
             </button>
           </div>
         </div>
         <div className="h-[250px] lg:h-[300px]">
           <ResponsiveContainer width="100%" height="100%">
             {chartMode === "orders" ? (
-              <BarChart data={weeklyData} barSize={32}>
+              <BarChart data={chartData} barSize={selectedPeriod <= 14 ? 32 : 12}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#ffffff08" vertical={false} />
-                <XAxis dataKey="day" stroke="#666" fontSize={12} tickLine={false} axisLine={false} />
+                <XAxis dataKey="day" stroke="#666" fontSize={11} tickLine={false} axisLine={false} interval={selectedPeriod > 30 ? Math.floor(selectedPeriod / 15) : 0} />
                 <YAxis stroke="#666" fontSize={12} tickLine={false} axisLine={false} />
                 <Tooltip content={<CustomTooltip />} cursor={{ fill: "rgba(255,255,255,0.03)" }} />
-                <Bar dataKey="orders" name="orders" fill="#e63946" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="orders" name="orders" fill="#e63946" radius={[4, 4, 0, 0]} />
               </BarChart>
             ) : (
-              <AreaChart data={weeklyData}>
+              <AreaChart data={chartData.map((d) => ({ ...d, revenue: Math.round(d.revenue * (commission / 100)) }))}>
                 <defs>
                   <linearGradient id="revenueGradient" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#e63946" stopOpacity={0.3} />
@@ -191,8 +414,8 @@ export default function AdminDashboard() {
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#ffffff08" vertical={false} />
-                <XAxis dataKey="day" stroke="#666" fontSize={12} tickLine={false} axisLine={false} />
-                <YAxis stroke="#666" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(v) => `${v / 1000}к`} />
+                <XAxis dataKey="day" stroke="#666" fontSize={11} tickLine={false} axisLine={false} interval={selectedPeriod > 30 ? Math.floor(selectedPeriod / 15) : 0} />
+                <YAxis stroke="#666" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(v) => `${(v / 1000).toFixed(0)}к`} />
                 <Tooltip content={<CustomTooltip />} />
                 <Area type="monotone" dataKey="revenue" name="revenue" stroke="#e63946" strokeWidth={2} fill="url(#revenueGradient)" />
               </AreaChart>
@@ -225,15 +448,17 @@ export default function AdminDashboard() {
                 <th className="text-left px-4 py-3 font-medium">Клиент</th>
                 <th className="text-left px-4 py-3 font-medium hidden sm:table-cell">Телефон</th>
                 <th className="text-left px-4 py-3 font-medium">Сумма</th>
+                <th className="text-left px-4 py-3 font-medium">Мой %</th>
                 <th className="text-left px-4 py-3 font-medium">Статус</th>
                 <th className="text-left px-4 py-3 font-medium">Время</th>
                 <th className="text-left px-4 lg:px-6 py-3 font-medium">Связь</th>
               </tr>
             </thead>
             <tbody>
-              {recentOrders.map((order) => {
+              {allOrders.slice(0, 5).map((order) => {
                 const status = statusConfig[order.status];
                 const phoneClean = order.phone.replace(/\D/g, "");
+                const myPart = Math.round(order.total * (commission / 100));
                 return (
                   <tr
                     key={order.id}
@@ -246,8 +471,11 @@ export default function AdminDashboard() {
                     <td className="px-4 py-3 text-sm text-gray-400 hidden sm:table-cell">
                       {order.phone}
                     </td>
-                    <td className="px-4 py-3 text-sm font-semibold">
+                    <td className="px-4 py-3 text-sm text-gray-400">
                       {order.total.toLocaleString("ru-RU")} ₽
+                    </td>
+                    <td className="px-4 py-3 text-sm font-semibold text-accent">
+                      {myPart.toLocaleString("ru-RU")} ₽
                     </td>
                     <td className="px-4 py-3">
                       <span className={`inline-block rounded-full px-3 py-1 text-xs font-medium ${status.class}`}>

@@ -9,6 +9,7 @@ import { useCartStore } from "@/store/cartStore";
 import { useToast } from "./Toast";
 import CategoryNav from "./CategoryNav";
 import ProductModal from "./ProductModal";
+import FavoriteButton from "./FavoriteButton";
 
 // Бейджи на карточках
 const badgeConfig = {
@@ -71,28 +72,6 @@ export default function MenuSection() {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-24 md:pb-6">
-        {/* Поиск */}
-        <div className="flex items-center gap-3 mb-8">
-          <div className="relative flex-1">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Поиск по меню..."
-              className="w-full bg-white/[0.05] border border-white/[0.08] rounded-xl pl-12 pr-10 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent/40 transition-colors text-sm"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 hover:bg-white/10 rounded-lg transition-colors"
-              >
-                <X className="w-4 h-4 text-gray-500" />
-              </button>
-            )}
-          </div>
-        </div>
-
         {/* Популярное */}
         {(activeCategory === "all" || activeCategory === "popular") &&
           popularItems.length > 0 && (
@@ -257,8 +236,9 @@ function ProductCard({
             </span>
           )}
         </div>
-        {/* Бейдж справа: Хит/Новинка/Острый */}
-        <div className="absolute top-2 right-2 flex flex-col gap-1">
+        {/* Избранное + Бейдж справа */}
+        <div className="absolute top-2 right-2 flex flex-col items-end gap-1">
+          <FavoriteButton id={item.id} className="bg-black/30 backdrop-blur-sm rounded-lg" />
           {badge && (
             <span
               className={`${badge.class} text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md`}

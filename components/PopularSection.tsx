@@ -8,6 +8,7 @@ import { menuItems, type MenuItem } from "@/data/menu";
 import { useCartStore } from "@/store/cartStore";
 import { useToast } from "./Toast";
 import ProductModal from "./ProductModal";
+import FavoriteButton from "./FavoriteButton";
 
 const badgeConfig = {
   new: { text: "NEW", class: "bg-blue-500" },
@@ -96,7 +97,8 @@ export default function PopularSection() {
                       </span>
                     )}
                   </div>
-                  <div className="absolute top-2 right-2">
+                  <div className="absolute top-2 right-2 flex flex-col items-end gap-1">
+                    <FavoriteButton id={item.id} className="bg-black/30 backdrop-blur-sm rounded-lg" />
                     {badge ? (
                       <span className={`${badge.class} text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md`}>
                         {badge.text}

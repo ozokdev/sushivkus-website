@@ -7,6 +7,10 @@ import {
   LayoutDashboard,
   ClipboardList,
   UtensilsCrossed,
+  MapPin,
+  ImageIcon,
+  Tag,
+  Settings,
   LogOut,
   Menu,
   X,
@@ -17,12 +21,20 @@ const navItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/orders", label: "Заказы", icon: ClipboardList },
   { href: "/admin/menu", label: "Меню", icon: UtensilsCrossed },
+  { href: "/admin/delivery", label: "Доставка", icon: MapPin },
+  { href: "/admin/banners", label: "Баннеры", icon: ImageIcon },
+  { href: "/admin/promos", label: "Промокоды", icon: Tag },
+  { href: "/admin/settings", label: "Настройки", icon: Settings },
 ];
 
 function getPageTitle(pathname: string) {
   if (pathname === "/admin") return "Dashboard";
   if (pathname === "/admin/orders") return "Заказы";
   if (pathname === "/admin/menu") return "Меню";
+  if (pathname === "/admin/delivery") return "Доставка";
+  if (pathname === "/admin/banners") return "Баннеры";
+  if (pathname === "/admin/promos") return "Промокоды";
+  if (pathname === "/admin/settings") return "Настройки";
   return "Админ";
 }
 
