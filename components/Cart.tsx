@@ -5,15 +5,8 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { X, Minus, Plus, ShoppingBag, Trash2, Tag, AlertCircle } from "lucide-react";
-import { useCartStore } from "@/store/cartStore";
+import { useCartStore, MIN_ORDER } from "@/store/cartStore";
 import { menuItems } from "@/data/menu";
-
-const MIN_ORDER = 500;
-const PROMO_CODES: Record<string, number> = {
-  VKUS20: 20,
-  SUSHI10: 10,
-  WELCOME: 15,
-};
 
 export default function Cart() {
   const router = useRouter();
@@ -26,27 +19,29 @@ export default function Cart() {
     clearCart,
     getTotalPrice,
     addItem,
+    appliedPromo,
+    applyPromo,
+    removePromo,
+    getDiscount,
+    getDiscountAmount,
+    getFinalPrice,
   } = useCartStore();
 
   const [promoCode, setPromoCode] = useState("");
-  const [appliedPromo, setAppliedPromo] = useState<string | null>(null);
   const [promoError, setPromoError] = useState("");
 
   const total = getTotalPrice();
-  const discount = appliedPromo ? PROMO_CODES[appliedPromo] || 0 : 0;
-  const discountAmount = Math.round(total * (discount / 100));
-  const finalTotal = total - discountAmount;
+  const discount = getDiscount();
+  const discountAmount = getDiscountAmount();
+  const finalTotal = getFinalPrice();
   const remaining = MIN_ORDER - total;
 
-  // Применить промокод
-  const applyPromo = () => {
-    const code = promoCode.trim().toUpperCase();
-    if (PROMO_CODES[code]) {
-      setAppliedPromo(code);
+  const handleApplyPromo = () => {
+    const success = applyPromo(promoCode);
+    if (success) {
       setPromoError("");
     } else {
       setPromoError("Промокод не найден");
-      setAppliedPromo(null);
     }
   };
 
@@ -231,7 +226,7 @@ export default function Cart() {
                       </div>
                       <button
                         onClick={() => {
-                          setAppliedPromo(null);
+                          removePromo();
                           setPromoCode("");
                         }}
                         className="text-gray-500 hover:text-white"
@@ -252,7 +247,7 @@ export default function Cart() {
                         className="flex-1 bg-white/[0.05] border border-white/[0.08] rounded-xl px-3 py-2 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accent/40"
                       />
                       <button
-                        onClick={applyPromo}
+                        onClick={handleApplyPromo}
                         className="px-4 py-2 bg-white/[0.05] hover:bg-accent/20 border border-white/[0.08] rounded-xl text-sm font-medium text-gray-300 hover:text-accent transition-all"
                       >
                         ОК

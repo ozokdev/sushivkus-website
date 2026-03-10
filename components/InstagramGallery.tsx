@@ -8,7 +8,7 @@ const galleryPhotos = [
   "/photo/california_tempura.jpg",
   "/photo/manchester.jpg",
   "/photo/philadelphia_classic.jpg",
-  "/photo/set_druzheskiy.jpg",
+  "/photo/california_zapechen.jpg",
   "/photo/poke_salmon.jpg",
   "/photo/caesar_pizza.jpg",
   "/photo/mister_krabs.jpg",
@@ -68,7 +68,7 @@ export default function InstagramGallery() {
           className="text-center mt-8"
         >
           <a
-            href="#"
+            href="https://instagram.com/sushivkus_lybertsy"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-xl font-medium hover:opacity-90 transition-opacity"

@@ -100,20 +100,18 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                   {product.name}
                 </h2>
 
-                <p className="text-gray-400 leading-relaxed mb-6">
-                  {product.description}
-                </p>
-
                 {/* Состав */}
                 <div className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-4 mb-6">
                   <h4 className="text-xs text-gray-500 uppercase tracking-wider mb-2">
                     Состав
                   </h4>
-                  <p className="text-sm text-gray-300">{product.description}</p>
-                  <div className="flex gap-4 mt-3 text-xs text-gray-500">
-                    {product.weight && <span>Вес: {product.weight}</span>}
-                    {product.pieces && <span>Кол-во: {product.pieces}</span>}
-                  </div>
+                  <p className="text-sm text-gray-300 leading-relaxed">{product.description}</p>
+                  {(product.weight || product.pieces) && (
+                    <div className="flex gap-4 mt-3 pt-3 border-t border-white/[0.06] text-xs text-gray-500">
+                      {product.weight && <span>Вес: {product.weight}</span>}
+                      {product.pieces && <span>Кол-во: {product.pieces}</span>}
+                    </div>
+                  )}
                 </div>
 
                 {/* Цена и кнопки */}

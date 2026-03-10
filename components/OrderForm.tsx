@@ -7,7 +7,7 @@ import { useCartStore } from "@/store/cartStore";
 import Image from "next/image";
 
 export default function OrderForm() {
-  const { items, isOrderFormOpen, closeOrderForm, getTotalPrice, clearCart, openOrderSuccess, openCart } =
+  const { items, isOrderFormOpen, closeOrderForm, getTotalPrice, clearCart, openOrderSuccess, openCart, appliedPromo, getDiscount, getDiscountAmount, getFinalPrice } =
     useCartStore();
 
   const [form, setForm] = useState({
@@ -47,6 +47,8 @@ export default function OrderForm() {
           apartment: form.apartment,
           door_code: form.doorCode,
           comment: form.comment,
+          promo_code: appliedPromo || "",
+          discount_percent: getDiscount(),
           items: items.map((item) => ({
             name: item.name,
             price: item.price,
@@ -189,6 +191,8 @@ export default function OrderForm() {
                       value={form.phone}
                       onChange={handleChange}
                       required
+                      pattern="[\d\s\+\-\(\)]{10,18}"
+                      title="Введите корректный номер телефона"
                       placeholder="+7 (XXX) XXX-XX-XX"
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent/50 transition-colors"
                     />
@@ -305,13 +309,19 @@ export default function OrderForm() {
                     <span className="text-gray-400">{totalItems} {totalItems === 1 ? "товар" : totalItems < 5 ? "товара" : "товаров"}</span>
                     <span className="text-gray-300">{getTotalPrice()} ₽</span>
                   </div>
+                  {appliedPromo && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-emerald-400">Промокод {appliedPromo} (-{getDiscount()}%)</span>
+                      <span className="text-emerald-400 font-medium">-{getDiscountAmount()} ₽</span>
+                    </div>
+                  )}
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-400">Доставка</span>
                     <span className="text-green-400 font-medium">Бесплатно</span>
                   </div>
                   <div className="border-t border-white/10 pt-2 flex justify-between items-center">
                     <span className="text-white font-bold text-lg">Итого:</span>
-                    <span className="text-2xl font-black text-accent">{getTotalPrice()} ₽</span>
+                    <span className="text-2xl font-black text-accent">{getFinalPrice()} ₽</span>
                   </div>
                 </div>
 

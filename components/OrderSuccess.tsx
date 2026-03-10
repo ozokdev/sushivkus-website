@@ -115,8 +115,8 @@ export default function OrderSuccess() {
                   </div>
                   <span className="text-gray-400">
                     Вопросы? Звоните:{" "}
-                    <a href="tel:+79253206190" className="text-accent hover:underline">
-                      8 (925) 320-61-90
+                    <a href="tel:+79255372825" className="text-accent hover:underline">
+                      8 (925) 537-28-25
                     </a>
                   </span>
                 </div>

@@ -61,41 +61,105 @@ const periodOptions = [
 const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.05 } } };
 const itemAnim = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } };
 
-// CSV генерация
-function generateCSV(type: ExportType): string {
-  const headers: Record<ExportType, string> = {
-    orders: "Номер,Дата,Клиент,Телефон,Сумма,Статус\n",
-    customers: "Имя,Телефон,Email,Заказов,Потрачено,Ср.чек\n",
-    analytics: "Дата,Заказов,Выручка,Ср.чек\n",
-    menu: "Название,Категория,Цена,Вес,Описание\n",
-  };
+function getToken() {
+  return typeof window !== "undefined" ? localStorage.getItem("admin_token") || "" : "";
+}
 
-  const demoData: Record<ExportType, string> = {
-    orders: [
-      "1001,2026-03-09,Алексей К.,+79251234567,2990,Доставлен",
-      "1002,2026-03-09,Мария С.,+79162345678,1590,Готовится",
-      "1003,2026-03-09,Дмитрий П.,+79033456789,3990,Новый",
-      "1004,2026-03-09,Анна В.,+79264567890,890,Новый",
-      "1005,2026-03-09,Иван М.,+79155678901,2490,Отменён",
-    ].join("\n"),
-    customers: [
-      "Алексей Козлов,+79251234567,alexey@mail.ru,47,142500,3032",
-      "Мария Сидорова,+79162345678,maria.s@gmail.com,32,89600,2800",
-      "Дмитрий Петров,+79033456789,dmitry.p@yandex.ru,18,54200,3011",
-    ].join("\n"),
-    analytics: [
-      "2026-03-09,12,48500,4042",
-      "2026-03-08,15,52000,3467",
-      "2026-03-07,18,61000,3389",
-    ].join("\n"),
-    menu: [
-      "Филадельфия,Роллы,800,250г,Классический ролл с лососем",
-      "Калифорния,Роллы,700,230г,Ролл с крабом и авокадо",
-      "Дракон ролл,Роллы,900,280г,С угрём и авокадо",
-    ].join("\n"),
-  };
+const statusLabels: Record<string, string> = {
+  new: "Новый",
+  preparing: "Готовится",
+  delivered: "Доставлен",
+  cancelled: "Отменён",
+};
 
-  return headers[type] + demoData[type];
+async function generateCSV(type: ExportType): Promise<string> {
+  const token = getToken();
+
+  if (type === "orders") {
+    try {
+      const res = await fetch("https://api.sushivkus.ru/api/orders?limit=100", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        const orders = data.orders || [];
+        let csv = "Номер,Дата,Клиент,Телефон,Сумма,Статус\n";
+        for (const o of orders) {
+          const date = new Date(o.CreatedAt).toLocaleDateString("ru-RU");
+          const status = statusLabels[o.status] || o.status;
+          csv += `${o.ID},${date},"${o.customer_name}",${o.phone},${o.total},${status}\n`;
+        }
+        return csv;
+      }
+    } catch {}
+    return "Номер,Дата,Клиент,Телефон,Сумма,Статус\nНет данных\n";
+  }
+
+  if (type === "customers") {
+    try {
+      const res = await fetch("https://api.sushivkus.ru/api/orders?limit=100", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        const orders = data.orders || [];
+        const customers: Record<string, { name: string; phone: string; count: number; total: number }> = {};
+        for (const o of orders) {
+          const key = o.phone;
+          if (!customers[key]) {
+            customers[key] = { name: o.customer_name, phone: o.phone, count: 0, total: 0 };
+          }
+          customers[key].count++;
+          customers[key].total += o.total;
+        }
+        let csv = "Имя,Телефон,Заказов,Потрачено,Ср.чек\n";
+        for (const c of Object.values(customers)) {
+          csv += `"${c.name}",${c.phone},${c.count},${c.total},${Math.round(c.total / c.count)}\n`;
+        }
+        return csv;
+      }
+    } catch {}
+    return "Имя,Телефон,Заказов,Потрачено,Ср.чек\nНет данных\n";
+  }
+
+  if (type === "analytics") {
+    try {
+      const res = await fetch("https://api.sushivkus.ru/api/orders?limit=100", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        const orders = data.orders || [];
+        const days: Record<string, { count: number; revenue: number }> = {};
+        for (const o of orders) {
+          const date = new Date(o.CreatedAt).toLocaleDateString("ru-RU");
+          if (!days[date]) days[date] = { count: 0, revenue: 0 };
+          days[date].count++;
+          days[date].revenue += o.total;
+        }
+        let csv = "Дата,Заказов,Выручка,Ср.чек\n";
+        for (const [date, d] of Object.entries(days)) {
+          csv += `${date},${d.count},${d.revenue},${Math.round(d.revenue / d.count)}\n`;
+        }
+        return csv;
+      }
+    } catch {}
+    return "Дата,Заказов,Выручка,Ср.чек\nНет данных\n";
+  }
+
+  // menu
+  try {
+    const res = await fetch("https://api.sushivkus.ru/api/menu");
+    if (res.ok) {
+      const items = await res.json();
+      let csv = "Название,Категория,Цена,Вес,Описание\n";
+      for (const m of Array.isArray(items) ? items : []) {
+        csv += `"${m.name}","${m.category}",${m.price},"${m.weight || ""}","${(m.description || "").replace(/"/g, '""')}"\n`;
+      }
+      return csv;
+    }
+  } catch {}
+  return "Название,Категория,Цена,Вес,Описание\nНет данных\n";
 }
 
 export default function ExportPage() {
@@ -105,13 +169,13 @@ export default function ExportPage() {
   const [exporting, setExporting] = useState(false);
   const [exported, setExported] = useState(false);
 
-  const handleExport = () => {
+  const handleExport = async () => {
     if (!selectedType) return;
 
     setExporting(true);
 
-    setTimeout(() => {
-      const csv = generateCSV(selectedType);
+    try {
+      const csv = await generateCSV(selectedType);
       const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
@@ -122,10 +186,12 @@ export default function ExportPage() {
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
 
-      setExporting(false);
       setExported(true);
       setTimeout(() => setExported(false), 3000);
-    }, 1000);
+    } catch {
+      // Export error
+    }
+    setExporting(false);
   };
 
   return (

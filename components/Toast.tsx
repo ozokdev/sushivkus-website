@@ -17,7 +17,7 @@ export const useToast = create<ToastState>((set) => ({
   visible: false,
   show: (msg) => {
     set({ message: msg, visible: true });
-    setTimeout(() => set({ visible: false }), 2000);
+    setTimeout(() => set({ visible: false }), 4000);
   },
   hide: () => set({ visible: false }),
 }));

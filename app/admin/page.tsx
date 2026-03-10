@@ -28,7 +28,6 @@ import {
   Bar,
 } from "recharts";
 
-// Мөөнөт тандоо опциялары
 const periodOptions = [
   { label: "7 күн", days: 7 },
   { label: "14 күн", days: 14 },
@@ -39,6 +38,15 @@ const periodOptions = [
 
 type OrderStatus = "new" | "preparing" | "delivered" | "cancelled";
 
+interface ApiOrder {
+  ID: number;
+  customer_name: string;
+  phone: string;
+  total: number;
+  status: OrderStatus;
+  CreatedAt: string;
+}
+
 interface RecentOrder {
   id: number;
   name: string;
@@ -48,47 +56,6 @@ interface RecentOrder {
   time: string;
   date: string;
 }
-
-// TODO: Go API менен алмаштыруу — демо маалыматтар
-function generateDemoData(days: number) {
-  const data = [];
-  const now = new Date();
-  const dayNames = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
-
-  for (let i = days - 1; i >= 0; i--) {
-    const date = new Date(now);
-    date.setDate(date.getDate() - i);
-    const dayName = dayNames[date.getDay()];
-    const dateStr = date.toLocaleDateString("ru-RU", { day: "numeric", month: "short" });
-
-    const orders = Math.floor(Math.random() * 30) + 5;
-    const revenue = orders * (Math.floor(Math.random() * 2000) + 1500);
-
-    data.push({
-      day: days <= 14 ? dayName : dateStr,
-      fullDate: dateStr,
-      orders,
-      revenue,
-    });
-  }
-  return data;
-}
-
-// TODO: Go API менен алмаштыруу
-const allOrders: RecentOrder[] = [
-  { id: 1001, name: "Алексей К.", phone: "+7 925 123-45-67", total: 2990, status: "delivered", time: "12:30", date: "2026-03-09" },
-  { id: 1002, name: "Мария С.", phone: "+7 916 234-56-78", total: 1590, status: "preparing", time: "13:15", date: "2026-03-09" },
-  { id: 1003, name: "Дмитрий П.", phone: "+7 903 345-67-89", total: 3990, status: "new", time: "13:45", date: "2026-03-09" },
-  { id: 1004, name: "Анна В.", phone: "+7 926 456-78-90", total: 890, status: "new", time: "14:00", date: "2026-03-09" },
-  { id: 1005, name: "Иван М.", phone: "+7 915 567-89-01", total: 2490, status: "cancelled", time: "11:00", date: "2026-03-09" },
-  { id: 1006, name: "Елена Р.", phone: "+7 903 111-22-33", total: 3200, status: "delivered", time: "10:00", date: "2026-03-08" },
-  { id: 1007, name: "Сергей Т.", phone: "+7 916 444-55-66", total: 1800, status: "delivered", time: "18:30", date: "2026-03-08" },
-  { id: 1008, name: "Ольга К.", phone: "+7 925 777-88-99", total: 4500, status: "delivered", time: "15:00", date: "2026-03-07" },
-  { id: 1009, name: "Павел Н.", phone: "+7 903 222-33-44", total: 2100, status: "delivered", time: "12:15", date: "2026-03-07" },
-  { id: 1010, name: "Наталья Б.", phone: "+7 916 555-66-77", total: 3700, status: "delivered", time: "19:45", date: "2026-03-06" },
-  { id: 1011, name: "Артём Д.", phone: "+7 925 888-99-00", total: 1450, status: "delivered", time: "11:30", date: "2026-03-06" },
-  { id: 1012, name: "Виктор С.", phone: "+7 903 333-44-55", total: 5200, status: "delivered", time: "20:00", date: "2026-03-05" },
-];
 
 const statusConfig: Record<OrderStatus, { label: string; class: string }> = {
   new: { label: "Новый", class: "bg-blue-500/20 text-blue-400" },
@@ -123,6 +90,39 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   );
 };
 
+function getToken() {
+  return localStorage.getItem("admin_token") || "";
+}
+
+function buildChartData(orders: ApiOrder[], days: number) {
+  const now = new Date();
+  const dayNames = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
+  const data = [];
+
+  for (let i = days - 1; i >= 0; i--) {
+    const date = new Date(now);
+    date.setDate(date.getDate() - i);
+    const dateKey = date.toISOString().split("T")[0];
+    const dayName = dayNames[date.getDay()];
+    const dateStr = date.toLocaleDateString("ru-RU", { day: "numeric", month: "short" });
+
+    const dayOrders = orders.filter((o) => {
+      const orderDate = new Date(o.CreatedAt).toISOString().split("T")[0];
+      return orderDate === dateKey && o.status !== "cancelled";
+    });
+
+    const revenue = dayOrders.reduce((s, o) => s + o.total, 0);
+
+    data.push({
+      day: days <= 14 ? dayName : dateStr,
+      fullDate: dateStr,
+      orders: dayOrders.length,
+      revenue: Math.round(revenue),
+    });
+  }
+  return data;
+}
+
 export default function AdminDashboard() {
   const [chartMode, setChartMode] = useState<"orders" | "revenue">("orders");
   const [selectedPeriod, setSelectedPeriod] = useState(7);
@@ -130,8 +130,10 @@ export default function AdminDashboard() {
   const [commission, setCommission] = useState(10);
   const [showCommissionEdit, setShowCommissionEdit] = useState(false);
   const [tempCommission, setTempCommission] = useState(10);
+  const [allOrders, setAllOrders] = useState<RecentOrder[]>([]);
+  const [allApiOrders, setAllApiOrders] = useState<ApiOrder[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // localStorage'дон комиссияны окуу
   useEffect(() => {
     const saved = localStorage.getItem("admin_commission");
     if (saved) {
@@ -141,18 +143,45 @@ export default function AdminDashboard() {
     }
   }, []);
 
-  // Мөөнөткө жараша маалыматтар
-  const [chartData, setChartData] = useState(() => generateDemoData(7));
-
   useEffect(() => {
-    setChartData(generateDemoData(selectedPeriod));
-  }, [selectedPeriod]);
+    async function fetchOrders() {
+      try {
+        const res = await fetch("https://api.sushivkus.ru/api/orders?limit=100", {
+          headers: { Authorization: `Bearer ${getToken()}` },
+        });
+        if (res.ok) {
+          const data = await res.json();
+          const orders: ApiOrder[] = data.orders || [];
+          setAllApiOrders(orders);
+          setAllOrders(
+            orders.slice(0, 12).map((o) => {
+              const d = new Date(o.CreatedAt);
+              return {
+                id: o.ID,
+                name: o.customer_name,
+                phone: o.phone,
+                total: o.total,
+                status: o.status as OrderStatus,
+                time: d.toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" }),
+                date: d.toISOString().split("T")[0],
+              };
+            })
+          );
+        }
+      } catch {
+        // API жок болсо бош калсын
+      }
+      setLoading(false);
+    }
+    fetchOrders();
+  }, []);
+
+  const chartData = buildChartData(allApiOrders, selectedPeriod);
 
   const totalOrders = chartData.reduce((s, d) => s + d.orders, 0);
   const totalRevenue = chartData.reduce((s, d) => s + d.revenue, 0);
   const myEarnings = Math.round(totalRevenue * (commission / 100));
 
-  // Бүгүнкү статистика
   const todayData = chartData[chartData.length - 1];
   const todayOrders = todayData?.orders || 0;
   const todayRevenue = todayData?.revenue || 0;
@@ -177,6 +206,14 @@ export default function AdminDashboard() {
   });
 
   const currentPeriodLabel = periodOptions.find((p) => p.days === selectedPeriod)?.label || `${selectedPeriod} күн`;
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="w-10 h-10 border-3 border-accent border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -440,77 +477,84 @@ export default function AdminDashboard() {
           </a>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[640px]">
-            <thead>
-              <tr className="text-gray-500 text-xs uppercase border-b border-white/5">
-                <th className="text-left px-4 lg:px-6 py-3 font-medium">№</th>
-                <th className="text-left px-4 py-3 font-medium">Клиент</th>
-                <th className="text-left px-4 py-3 font-medium hidden sm:table-cell">Телефон</th>
-                <th className="text-left px-4 py-3 font-medium">Сумма</th>
-                <th className="text-left px-4 py-3 font-medium">Мой %</th>
-                <th className="text-left px-4 py-3 font-medium">Статус</th>
-                <th className="text-left px-4 py-3 font-medium">Время</th>
-                <th className="text-left px-4 lg:px-6 py-3 font-medium">Связь</th>
-              </tr>
-            </thead>
-            <tbody>
-              {allOrders.slice(0, 5).map((order) => {
-                const status = statusConfig[order.status];
-                const phoneClean = order.phone.replace(/\D/g, "");
-                const myPart = Math.round(order.total * (commission / 100));
-                return (
-                  <tr
-                    key={order.id}
-                    className="border-b border-white/5 hover:bg-white/[0.02] transition-colors"
-                  >
-                    <td className="px-4 lg:px-6 py-3 text-sm font-medium text-gray-300">
-                      #{order.id}
-                    </td>
-                    <td className="px-4 py-3 text-sm">{order.name}</td>
-                    <td className="px-4 py-3 text-sm text-gray-400 hidden sm:table-cell">
-                      {order.phone}
-                    </td>
-                    <td className="px-4 py-3 text-sm text-gray-400">
-                      {order.total.toLocaleString("ru-RU")} ₽
-                    </td>
-                    <td className="px-4 py-3 text-sm font-semibold text-accent">
-                      {myPart.toLocaleString("ru-RU")} ₽
-                    </td>
-                    <td className="px-4 py-3">
-                      <span className={`inline-block rounded-full px-3 py-1 text-xs font-medium ${status.class}`}>
-                        {status.label}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3 text-sm text-gray-400">
-                      {order.time}
-                    </td>
-                    <td className="px-4 lg:px-6 py-3">
-                      <div className="flex items-center gap-1.5">
-                        <a
-                          href={`tel:+${phoneClean}`}
-                          className="p-1.5 rounded-lg hover:bg-white/5 text-gray-400 hover:text-white transition-colors"
-                          title="Позвонить"
-                        >
-                          <Phone className="w-4 h-4" />
-                        </a>
-                        <a
-                          href={`https://wa.me/${phoneClean}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-1.5 rounded-lg hover:bg-green-500/10 text-gray-400 hover:text-green-400 transition-colors"
-                          title="WhatsApp"
-                        >
-                          <MessageCircle className="w-4 h-4" />
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+        {allOrders.length === 0 ? (
+          <div className="p-8 text-center text-gray-500">
+            <ShoppingBag className="w-12 h-12 mx-auto mb-3 opacity-30" />
+            <p>Заказов пока нет</p>
+          </div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[640px]">
+              <thead>
+                <tr className="text-gray-500 text-xs uppercase border-b border-white/5">
+                  <th className="text-left px-4 lg:px-6 py-3 font-medium">№</th>
+                  <th className="text-left px-4 py-3 font-medium">Клиент</th>
+                  <th className="text-left px-4 py-3 font-medium hidden sm:table-cell">Телефон</th>
+                  <th className="text-left px-4 py-3 font-medium">Сумма</th>
+                  <th className="text-left px-4 py-3 font-medium">Мой %</th>
+                  <th className="text-left px-4 py-3 font-medium">Статус</th>
+                  <th className="text-left px-4 py-3 font-medium">Время</th>
+                  <th className="text-left px-4 lg:px-6 py-3 font-medium">Связь</th>
+                </tr>
+              </thead>
+              <tbody>
+                {allOrders.slice(0, 5).map((order) => {
+                  const status = statusConfig[order.status];
+                  const phoneClean = order.phone.replace(/\D/g, "");
+                  const myPart = Math.round(order.total * (commission / 100));
+                  return (
+                    <tr
+                      key={order.id}
+                      className="border-b border-white/5 hover:bg-white/[0.02] transition-colors"
+                    >
+                      <td className="px-4 lg:px-6 py-3 text-sm font-medium text-gray-300">
+                        #{order.id}
+                      </td>
+                      <td className="px-4 py-3 text-sm">{order.name}</td>
+                      <td className="px-4 py-3 text-sm text-gray-400 hidden sm:table-cell">
+                        {order.phone}
+                      </td>
+                      <td className="px-4 py-3 text-sm text-gray-400">
+                        {order.total.toLocaleString("ru-RU")} ₽
+                      </td>
+                      <td className="px-4 py-3 text-sm font-semibold text-accent">
+                        {myPart.toLocaleString("ru-RU")} ₽
+                      </td>
+                      <td className="px-4 py-3">
+                        <span className={`inline-block rounded-full px-3 py-1 text-xs font-medium ${status.class}`}>
+                          {status.label}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3 text-sm text-gray-400">
+                        {order.time}
+                      </td>
+                      <td className="px-4 lg:px-6 py-3">
+                        <div className="flex items-center gap-1.5">
+                          <a
+                            href={`tel:+${phoneClean}`}
+                            className="p-1.5 rounded-lg hover:bg-white/5 text-gray-400 hover:text-white transition-colors"
+                            title="Позвонить"
+                          >
+                            <Phone className="w-4 h-4" />
+                          </a>
+                          <a
+                            href={`https://wa.me/${phoneClean}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-1.5 rounded-lg hover:bg-green-500/10 text-gray-400 hover:text-green-400 transition-colors"
+                            title="WhatsApp"
+                          >
+                            <MessageCircle className="w-4 h-4" />
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
       </motion.div>
     </motion.div>
   );

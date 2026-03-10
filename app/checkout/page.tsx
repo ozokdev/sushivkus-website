@@ -4,12 +4,12 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, ShoppingBag, ChevronLeft, Banknote, CreditCard, Globe, Minus, Plus, Trash2, CheckCircle, Package, Clock } from "lucide-react";
-import { useCartStore } from "@/store/cartStore";
+import { Phone, ShoppingBag, ChevronLeft, Banknote, CreditCard, Globe, Minus, Plus, Trash2, CheckCircle, Package, Clock, Tag, X } from "lucide-react";
+import { useCartStore, MIN_ORDER } from "@/store/cartStore";
 
 export default function CheckoutPage() {
   const router = useRouter();
-  const { items, getTotalPrice, updateQuantity, removeItem, clearCart } = useCartStore();
+  const { items, getTotalPrice, updateQuantity, removeItem, clearCart, appliedPromo, applyPromo, removePromo, getDiscount, getDiscountAmount, getFinalPrice } = useCartStore();
 
   const [form, setForm] = useState({
     name: "",
@@ -23,6 +23,8 @@ export default function CheckoutPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [promoInput, setPromoInput] = useState("");
+  const [promoError, setPromoError] = useState("");
   const [orderSuccess, setOrderSuccess] = useState<{ id: number; total: number } | null>(null);
   const [mounted, setMounted] = useState(false);
   const [paymentMethods, setPaymentMethods] = useState<{ key: string; name: string; description: string; enabled: boolean }[]>([]);
@@ -70,6 +72,8 @@ export default function CheckoutPage() {
             price: item.price,
             quantity: item.quantity,
           })),
+          promo_code: appliedPromo || "",
+          discount_percent: getDiscount(),
         }),
       });
 
@@ -77,7 +81,7 @@ export default function CheckoutPage() {
 
       if (res.ok) {
         const orderId = data.id || data.ID || data.order?.ID || 0;
-        const total = getTotalPrice();
+        const total = getFinalPrice();
         clearCart();
         setOrderSuccess({ id: orderId, total });
       } else {
@@ -137,8 +141,8 @@ export default function CheckoutPage() {
               </div>
               <span className="text-gray-400">
                 Вопросы?{" "}
-                <a href="tel:+79253206190" className="text-accent hover:underline">
-                  8 (925) 320-61-90
+                <a href="tel:+79255372825" className="text-accent hover:underline">
+                  8 (925) 537-28-25
                 </a>
               </span>
             </div>
@@ -181,9 +185,11 @@ export default function CheckoutPage() {
     );
   }
 
-  const MIN_ORDER = 500;
   const totalPrice = getTotalPrice();
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+  const discount = getDiscount();
+  const discountAmount = getDiscountAmount();
+  const finalPrice = getFinalPrice();
   const isBelowMinimum = totalPrice < MIN_ORDER;
 
   return (
@@ -259,6 +265,7 @@ export default function CheckoutPage() {
               <div>
                 <label className="text-xs text-gray-500 mb-1 block">Телефон</label>
                 <input type="tel" name="phone" value={form.phone} onChange={handleChange} required
+                  pattern="[\d\s\+\-\(\)]{10,18}" title="Введите корректный номер телефона"
                   placeholder="+7 (XXX) XXX-XX-XX"
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accent/50 transition-colors" />
               </div>
@@ -296,9 +303,9 @@ export default function CheckoutPage() {
 
             <div>
               <label className="text-xs text-gray-500 mb-1 block">Комментарий</label>
-              <input type="text" name="comment" value={form.comment} onChange={handleChange}
+              <textarea name="comment" value={form.comment} onChange={handleChange} rows={2}
                 placeholder="Пожелания, кол-во приборов..."
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accent/50 transition-colors" />
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accent/50 transition-colors resize-none" />
             </div>
           </section>
 
@@ -324,8 +331,39 @@ export default function CheckoutPage() {
             </div>
           </section>
 
-          {/* Итого + кнопка */}
+          {/* Промокод + Итого */}
           <section className="bg-[#111] border border-white/10 rounded-2xl p-4 space-y-3">
+            {/* Промокод */}
+            <div>
+              {appliedPromo ? (
+                <div className="flex items-center justify-between bg-emerald-500/10 border border-emerald-500/20 rounded-xl px-4 py-2.5">
+                  <div className="flex items-center gap-2 text-emerald-400 text-sm">
+                    <Tag className="w-4 h-4" />
+                    <span>{appliedPromo} (−{discount}%)</span>
+                  </div>
+                  <button type="button" onClick={() => { removePromo(); setPromoInput(""); }} className="text-gray-500 hover:text-white">
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              ) : (
+                <div className="flex gap-2">
+                  <input type="text" value={promoInput}
+                    onChange={(e) => { setPromoInput(e.target.value); setPromoError(""); }}
+                    placeholder="Промокод"
+                    className="flex-1 bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accent/50" />
+                  <button type="button" onClick={() => {
+                    const ok = applyPromo(promoInput);
+                    if (!ok) setPromoError("Промокод не найден");
+                    else setPromoError("");
+                  }}
+                    className="px-4 py-2.5 bg-white/5 hover:bg-accent/20 border border-white/10 rounded-xl text-sm font-medium text-gray-300 hover:text-accent transition-all">
+                    ОК
+                  </button>
+                </div>
+              )}
+              {promoError && <p className="text-red-400 text-xs mt-1.5">{promoError}</p>}
+            </div>
+
             <div className="flex justify-between items-center text-sm">
               <span className="text-gray-400">
                 {totalItems} {totalItems === 1 ? "товар" : totalItems < 5 ? "товара" : "товаров"}
@@ -336,9 +374,15 @@ export default function CheckoutPage() {
               <span className="text-gray-400">Доставка</span>
               <span className="text-green-400 font-medium">Бесплатно</span>
             </div>
+            {discountAmount > 0 && (
+              <div className="flex justify-between items-center text-sm">
+                <span className="text-emerald-400">Скидка {discount}%</span>
+                <span className="text-emerald-400 font-medium">−{discountAmount.toLocaleString("ru-RU")} ₽</span>
+              </div>
+            )}
             <div className="border-t border-white/10 pt-3 flex justify-between items-center">
               <span className="text-white font-bold">К оплате:</span>
-              <span className="text-2xl font-black text-accent">{totalPrice.toLocaleString("ru-RU")} ₽</span>
+              <span className="text-2xl font-black text-accent">{finalPrice.toLocaleString("ru-RU")} ₽</span>
             </div>
 
             {isBelowMinimum && (

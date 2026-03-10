@@ -9,6 +9,14 @@ export interface CartItem {
   quantity: number;
 }
 
+export const MIN_ORDER = 500;
+
+export const PROMO_CODES: Record<string, number> = {
+  VKUS20: 20,
+  SUSHI10: 10,
+  WELCOME: 15,
+};
+
 // Тип состояния корзины
 interface CartState {
   items: CartItem[];
@@ -16,6 +24,7 @@ interface CartState {
   isOrderFormOpen: boolean;
   isOrderSuccessOpen: boolean;
   lastOrderNumber: number;
+  appliedPromo: string | null;
   toggleCart: () => void;
   openCart: () => void;
   closeCart: () => void;
@@ -29,6 +38,11 @@ interface CartState {
   clearCart: () => void;
   getTotalPrice: () => number;
   getTotalItems: () => number;
+  applyPromo: (code: string) => boolean;
+  removePromo: () => void;
+  getDiscount: () => number;
+  getDiscountAmount: () => number;
+  getFinalPrice: () => number;
 }
 
 export const useCartStore = create<CartState>((set, get) => ({
@@ -37,6 +51,7 @@ export const useCartStore = create<CartState>((set, get) => ({
   isOrderFormOpen: false,
   isOrderSuccessOpen: false,
   lastOrderNumber: 0,
+  appliedPromo: null,
 
   toggleCart: () => set((state) => ({ isOpen: !state.isOpen })),
   openCart: () => set({ isOpen: true }),
@@ -82,7 +97,7 @@ export const useCartStore = create<CartState>((set, get) => ({
     }),
 
   // Очистить корзину
-  clearCart: () => set({ items: [] }),
+  clearCart: () => set({ items: [], appliedPromo: null }),
 
   // Общая сумма
   getTotalPrice: () =>
@@ -91,4 +106,31 @@ export const useCartStore = create<CartState>((set, get) => ({
   // Общее количество товаров
   getTotalItems: () =>
     get().items.reduce((sum, item) => sum + item.quantity, 0),
+
+  // Промокод
+  applyPromo: (code: string) => {
+    const upper = code.trim().toUpperCase();
+    if (PROMO_CODES[upper]) {
+      set({ appliedPromo: upper });
+      return true;
+    }
+    return false;
+  },
+
+  removePromo: () => set({ appliedPromo: null }),
+
+  getDiscount: () => {
+    const promo = get().appliedPromo;
+    return promo ? PROMO_CODES[promo] || 0 : 0;
+  },
+
+  getDiscountAmount: () => {
+    const total = get().getTotalPrice();
+    const discount = get().getDiscount();
+    return Math.round(total * (discount / 100));
+  },
+
+  getFinalPrice: () => {
+    return get().getTotalPrice() - get().getDiscountAmount();
+  },
 }));

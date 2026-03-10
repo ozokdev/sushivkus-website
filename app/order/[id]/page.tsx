@@ -203,8 +203,8 @@ export default function OrderTrackPage() {
             </div>
             <div>
               <p className="text-gray-400 text-sm">Вопросы по заказу?</p>
-              <a href="tel:+79253206190" className="text-accent font-semibold hover:underline">
-                8 (925) 320-61-90
+              <a href="tel:+79255372825" className="text-accent font-semibold hover:underline">
+                8 (925) 537-28-25
               </a>
             </div>
           </div>

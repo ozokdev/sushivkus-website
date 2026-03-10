@@ -35,7 +35,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Логотип */}
-          <a href="#" className="flex items-center gap-2.5 flex-shrink-0">
+          <a href="/" className="flex items-center gap-2.5 flex-shrink-0">
             <span className="text-xl md:text-2xl font-black tracking-tight">
               <span className="text-accent">Суши</span>
               <span className="text-white ml-1">Вкус</span>
@@ -55,11 +55,11 @@ export default function Header() {
               <span>г. Люберцы</span>
             </div>
             <a
-              href="tel:+79253206190"
+              href="tel:+79255372825"
               className="flex items-center gap-2 text-gray-300 hover:text-white text-sm font-medium transition-colors"
             >
               <Phone className="w-4 h-4 text-accent" />
-              8 (925) 320-61-90
+              8 (925) 537-28-25
             </a>
             <div className="flex items-center gap-2 text-gray-400 text-sm">
               <Clock className="w-4 h-4 text-accent" />
@@ -67,7 +67,7 @@ export default function Header() {
             </div>
             <div className="flex items-center gap-2">
               <a
-                href="https://wa.me/79253206190"
+                href="https://wa.me/79255372825"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-green-600/10 hover:bg-green-600/20 transition-colors"
@@ -144,9 +144,9 @@ export default function Header() {
                 <MapPin className="w-4 h-4 text-accent" />
                 <span>ул. Шоссейная, 42, г. Люберцы</span>
               </a>
-              <a href="tel:+79253206190" className="flex items-center gap-2 text-gray-300 text-sm">
+              <a href="tel:+79255372825" className="flex items-center gap-2 text-gray-300 text-sm">
                 <Phone className="w-4 h-4 text-accent" />
-                8 (925) 320-61-90
+                8 (925) 537-28-25
               </a>
               <div className="flex items-center gap-2 text-gray-400 text-sm">
                 <Clock className="w-4 h-4 text-accent" />
@@ -154,7 +154,7 @@ export default function Header() {
               </div>
               <div className="flex items-center gap-3 pt-2">
                 <a
-                  href="https://wa.me/79253206190"
+                  href="https://wa.me/79255372825"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-3 py-2 bg-green-600/10 rounded-lg text-green-500 text-sm"

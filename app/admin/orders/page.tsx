@@ -191,7 +191,7 @@ export default function AdminOrders() {
       </head>
       <body>
         <h2>СУШИ ВКУС</h2>
-        <p class="center" style="margin:0;font-size:11px">ул. Шоссейная, 42, г. Люберцы<br>тел: 8 (925) 320-61-90</p>
+        <p class="center" style="margin:0;font-size:11px">ул. Шоссейная, 42, г. Люберцы<br>тел: 8 (925) 537-28-25</p>
         <hr>
         <p><strong>Заказ #${selectedOrder.id}</strong> от ${selectedOrder.date} ${selectedOrder.time}</p>
         <p>${selectedOrder.name}<br>${selectedOrder.phone}</p>

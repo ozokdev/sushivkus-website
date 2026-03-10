@@ -18,7 +18,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               <a
-                href="https://wa.me/79253206190"
+                href="https://wa.me/79255372825"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-green-600/10 hover:bg-green-600/20 border border-green-600/20 rounded-xl flex items-center justify-center transition-all"
@@ -36,7 +36,9 @@ export default function Footer() {
                 <Send className="w-5 h-5 text-blue-400" />
               </a>
               <a
-                href="#"
+                href="https://instagram.com/sushivkus_lybertsy"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/5 hover:bg-accent/20 border border-white/10 rounded-xl flex items-center justify-center transition-all"
                 title="Instagram"
               >
@@ -58,10 +60,10 @@ export default function Footer() {
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-accent flex-shrink-0" />
                 <a
-                  href="tel:+79253206190"
+                  href="tel:+79255372825"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  8 (925) 320-61-90
+                  8 (925) 537-28-25
                 </a>
               </div>
               <div className="flex items-center gap-3">

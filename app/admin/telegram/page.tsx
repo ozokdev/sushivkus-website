@@ -58,15 +58,30 @@ export default function TelegramPage() {
     setTimeout(() => setSaved(false), 2000);
   };
 
-  const handleTestMessage = () => {
+  const handleTestMessage = async () => {
     if (!settings.botToken || !settings.chatId) {
       setTestError(true);
       setTimeout(() => setTestError(false), 3000);
       return;
     }
-    // TODO: чыныгы Telegram API чакыруу
-    setTestSent(true);
-    setTimeout(() => setTestSent(false), 3000);
+    try {
+      const text = "✅ Тест: Суши Вкус бот подключён и работает!";
+      const res = await fetch(`https://api.telegram.org/bot${settings.botToken}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chat_id: settings.chatId, text, parse_mode: "Markdown" }),
+      });
+      if (res.ok) {
+        setTestSent(true);
+        setTimeout(() => setTestSent(false), 3000);
+      } else {
+        setTestError(true);
+        setTimeout(() => setTestError(false), 3000);
+      }
+    } catch {
+      setTestError(true);
+      setTimeout(() => setTestError(false), 3000);
+    }
   };
 
   const copyTemplate = () => {

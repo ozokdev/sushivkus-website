@@ -35,7 +35,7 @@ export default function MobileNav() {
 
         {/* Телефон */}
         <a
-          href="tel:+79253206190"
+          href="tel:+79255372825"
           className="flex flex-col items-center justify-center gap-1 text-gray-400 hover:text-accent transition-colors"
         >
           <Phone className="w-5 h-5" />
