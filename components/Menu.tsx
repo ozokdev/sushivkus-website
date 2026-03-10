@@ -211,11 +211,7 @@ function ProductCard({
   const count = getItemCount(cartId);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ delay: Math.min(index * 0.05, 0.3) }}
+    <div
       className={`group bg-white/[0.03] border rounded-2xl overflow-hidden hover:bg-white/[0.05] transition-all duration-300 ${
         isAdding
           ? "border-accent/50 shadow-lg shadow-accent/10"
@@ -233,6 +229,7 @@ function ProductCard({
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-500"
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+          loading="eager"
         />
         {/* Бейджи слева */}
         <div className="absolute top-2 left-2 flex flex-col gap-1">
@@ -373,6 +370,6 @@ function ProductCard({
           )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

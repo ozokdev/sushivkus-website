@@ -312,23 +312,38 @@ export default function CheckoutPage() {
           {/* Способ оплаты — компактные кнопки */}
           <section className="bg-[#111] border border-white/10 rounded-2xl p-4">
             <h2 className="font-bold text-white text-sm mb-2.5">Способ оплаты</h2>
-            <div className="flex gap-2">
-              {paymentMethods.map((method) => {
-                const isSelected = selectedPayment === method.key;
-                const Icon = method.key === "cash" ? Banknote : method.key === "card" ? CreditCard : Globe;
-                return (
-                  <button key={method.key} type="button" onClick={() => setSelectedPayment(method.key)}
-                    className={`flex-1 rounded-xl py-3 px-3 flex flex-col items-center gap-1.5 transition-all ${
-                      isSelected
-                        ? "bg-accent/10 border-2 border-accent/40"
-                        : "bg-white/[0.03] border-2 border-transparent hover:border-white/10"
-                    }`}>
-                    <Icon className={`w-5 h-5 ${isSelected ? "text-accent" : "text-gray-500"}`} />
-                    <span className={`text-xs font-medium ${isSelected ? "text-white" : "text-gray-400"}`}>{method.name}</span>
-                  </button>
-                );
-              })}
-            </div>
+            {paymentMethods.length > 0 ? (
+              <div className="flex gap-2">
+                {paymentMethods.map((method) => {
+                  const isSelected = selectedPayment === method.key;
+                  const Icon = method.key === "cash" ? Banknote : method.key === "card" ? CreditCard : Globe;
+                  return (
+                    <button key={method.key} type="button" onClick={() => setSelectedPayment(method.key)}
+                      className={`flex-1 rounded-xl py-3 px-3 flex flex-col items-center gap-1.5 transition-all ${
+                        isSelected
+                          ? "bg-accent/10 border-2 border-accent/40"
+                          : "bg-white/[0.03] border-2 border-transparent hover:border-white/10"
+                      }`}>
+                      <Icon className={`w-5 h-5 ${isSelected ? "text-accent" : "text-gray-500"}`} />
+                      <span className={`text-xs font-medium ${isSelected ? "text-white" : "text-gray-400"}`}>{method.name}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="flex gap-2">
+                <button type="button"
+                  className="flex-1 rounded-xl py-3 px-3 flex flex-col items-center gap-1.5 bg-accent/10 border-2 border-accent/40">
+                  <Banknote className="w-5 h-5 text-accent" />
+                  <span className="text-xs font-medium text-white">Наличными</span>
+                </button>
+                <button type="button"
+                  className="flex-1 rounded-xl py-3 px-3 flex flex-col items-center gap-1.5 bg-white/[0.03] border-2 border-transparent">
+                  <CreditCard className="w-5 h-5 text-gray-500" />
+                  <span className="text-xs font-medium text-gray-400">Картой</span>
+                </button>
+              </div>
+            )}
           </section>
 
           {/* Промокод + Итого */}
