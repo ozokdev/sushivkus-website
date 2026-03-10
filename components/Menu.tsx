@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Plus, Minus, Search, X } from "lucide-react";
-import { menuItems, categories, type Category, type MenuItem } from "@/data/menu";
+import { categories, type Category, type MenuItem } from "@/data/menu";
 import { useCartStore } from "@/store/cartStore";
+import { useMenuStore } from "@/store/menuStore";
 import { useToast } from "./Toast";
 import CategoryNav from "./CategoryNav";
 import ProductModal from "./ProductModal";
@@ -27,6 +28,10 @@ export default function MenuSection() {
   const showToast = useToast((s) => s.show);
   const updateQuantity = useCartStore((s) => s.updateQuantity);
   const cartItems = useCartStore((s) => s.items);
+  const menuItems = useMenuStore((s) => s.items);
+  const fetchMenu = useMenuStore((s) => s.fetchMenu);
+
+  useEffect(() => { fetchMenu(); }, [fetchMenu]);
 
   const getItemCount = (id: number) => {
     const item = cartItems.find((i) => i.id === id);
@@ -51,21 +56,16 @@ export default function MenuSection() {
     menuItems.filter((item) => item.isPopular)
   );
 
-  // Добавление в корзину с учётом размера
-  const handleAdd = (item: MenuItem, size?: 4 | 8) => {
-    const is4 = size === 4 && item.price4;
-    const cartId = is4 ? item.id + 1000 : item.id;
-    const cartPrice = is4 ? item.price4! : item.price;
-    const cartName = is4 ? `${item.name} (4шт)` : item.price4 ? `${item.name} (8шт)` : item.name;
-
+  // Добавление в корзину
+  const handleAdd = (item: MenuItem) => {
     addItem({
-      id: cartId,
-      name: cartName,
-      price: cartPrice,
+      id: item.id,
+      name: item.name,
+      price: item.price,
       image: item.image,
     });
     setAddedId(item.id);
-    showToast(`${cartName} добавлен в корзину!`);
+    showToast(`${item.name} добавлен в корзину!`);
     setTimeout(() => setAddedId(null), 600);
   };
 
@@ -102,7 +102,7 @@ export default function MenuSection() {
                     index={index}
                     getItemCount={getItemCount}
                     isAdding={addedId === item.id}
-                    onAdd={(size) => handleAdd(item, size)}
+                    onAdd={() => handleAdd(item)}
                     onMinus={(cartId) =>
                       updateQuantity(cartId, getItemCount(cartId) - 1)
                     }
@@ -153,7 +153,7 @@ export default function MenuSection() {
                     index={index}
                     getItemCount={getItemCount}
                     isAdding={addedId === item.id}
-                    onAdd={(size) => handleAdd(item, size)}
+                    onAdd={() => handleAdd(item)}
                     onMinus={(cartId) =>
                       updateQuantity(cartId, getItemCount(cartId) - 1)
                     }
@@ -198,16 +198,14 @@ function ProductCard({
   index: number;
   getItemCount: (id: number) => number;
   isAdding: boolean;
-  onAdd: (size?: 4 | 8) => void;
+  onAdd: () => void;
   onMinus: (cartId: number) => void;
   onClickCard: () => void;
 }) {
-  const [selectedSize, setSelectedSize] = useState<4 | 8>(4);
   const badge = item.badge ? badgeConfig[item.badge] : null;
-  const has4 = !!item.price4;
 
-  const currentPrice = has4 ? (selectedSize === 4 ? item.price4! : item.price) : item.price;
-  const cartId = has4 && selectedSize === 4 ? item.id + 1000 : item.id;
+  const currentPrice = item.price;
+  const cartId = item.id;
   const count = getItemCount(cartId);
 
   return (
@@ -294,32 +292,6 @@ function ProductCard({
           {item.description}
         </p>
 
-        {/* 4шт / 8шт toggle */}
-        {has4 && (
-          <div className="flex mb-3 bg-white/[0.04] rounded-lg p-0.5">
-            <button
-              onClick={(e) => { e.stopPropagation(); setSelectedSize(4); }}
-              className={`flex-1 py-1.5 text-xs font-medium rounded-md transition-all ${
-                selectedSize === 4
-                  ? "bg-accent text-white shadow-sm"
-                  : "text-gray-400 hover:text-white"
-              }`}
-            >
-              4 шт.
-            </button>
-            <button
-              onClick={(e) => { e.stopPropagation(); setSelectedSize(8); }}
-              className={`flex-1 py-1.5 text-xs font-medium rounded-md transition-all ${
-                selectedSize === 8
-                  ? "bg-accent text-white shadow-sm"
-                  : "text-gray-400 hover:text-white"
-              }`}
-            >
-              8 шт.
-            </button>
-          </div>
-        )}
-
         <div className="flex items-center justify-between gap-2">
           <span className="text-accent font-bold text-base md:text-lg">
             {currentPrice} ₽
@@ -348,7 +320,7 @@ function ProductCard({
                 whileTap={{ scale: 0.85 }}
                 onClick={(e) => {
                   e.stopPropagation();
-                  onAdd(has4 ? selectedSize : undefined);
+                  onAdd();
                 }}
                 className="p-2 text-white hover:bg-white/20 rounded-r-xl transition-colors"
               >
@@ -360,7 +332,7 @@ function ProductCard({
               whileTap={{ scale: 0.9 }}
               onClick={(e) => {
                 e.stopPropagation();
-                onAdd(has4 ? selectedSize : undefined);
+                onAdd();
               }}
               className="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-medium bg-accent/10 text-accent hover:bg-accent hover:text-white transition-all duration-200"
             >

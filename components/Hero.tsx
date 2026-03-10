@@ -9,8 +9,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const slides = [
   {
     id: 1,
-    title: "Скидка 20% на первый заказ",
-    subtitle: "Для новых клиентов при заказе от 1500₽. Промокод VKUS20",
+    title: "Скидка 20% в дневное время!",
+    subtitle: "При заказе от 2000₽ с понедельника по пятницу",
     image: "/photo/set_elita.jpg",
     badge: "АКЦИЯ",
     gradient: "from-accent/80 to-orange-600/60",

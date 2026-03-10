@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Plus, Minus } from "lucide-react";
-import { menuItems, type MenuItem } from "@/data/menu";
+import { type MenuItem } from "@/data/menu";
 import { useCartStore } from "@/store/cartStore";
+import { useMenuStore } from "@/store/menuStore";
 import { useToast } from "./Toast";
 import ProductModal from "./ProductModal";
 import FavoriteButton from "./FavoriteButton";
@@ -23,6 +24,10 @@ export default function PopularSection() {
   const showToast = useToast((s) => s.show);
   const updateQuantity = useCartStore((s) => s.updateQuantity);
   const cartItems = useCartStore((s) => s.items);
+  const menuItems = useMenuStore((s) => s.items);
+  const fetchMenu = useMenuStore((s) => s.fetchMenu);
+
+  useEffect(() => { fetchMenu(); }, [fetchMenu]);
 
   const popularItems = menuItems.filter((item) => item.isPopular).slice(0, 5);
 

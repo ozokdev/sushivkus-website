@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { Package, Clock, Truck, CheckCircle, XCircle, Phone, ChefHat, ShoppingBag } from "lucide-react";
+import { useOrderStore } from "@/store/orderStore";
 
 interface TrackItem {
   name: string;
@@ -56,6 +57,9 @@ export default function OrderTrackPage() {
       .then((data) => {
         setOrder(data);
         setLoading(false);
+        if (data.status === "delivered" || data.status === "cancelled") {
+          useOrderStore.getState().clearLastOrder();
+        }
       })
       .catch(() => {
         setError("Заказ не найден");

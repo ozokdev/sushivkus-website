@@ -3,7 +3,7 @@
 import { useState, useMemo, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Plus, Pencil, X, Search, RefreshCw, Loader2 } from "lucide-react";
+import { Plus, Pencil, X, Search, RefreshCw, Loader2, Upload, ImageIcon } from "lucide-react";
 
 const API_URL = "https://api.sushivkus.ru/api";
 
@@ -51,6 +51,7 @@ interface FormData {
   price4: string;
   category: Category;
   weight: string;
+  pieces: string;
   description: string;
   isPopular: boolean;
   badge: "" | "new" | "hot" | "spicy";
@@ -63,6 +64,7 @@ const emptyForm: FormData = {
   price4: "",
   category: "rolls",
   weight: "",
+  pieces: "",
   description: "",
   isPopular: false,
   badge: "",
@@ -95,6 +97,7 @@ export default function AdminMenu() {
   const [form, setForm] = useState<FormData>(emptyForm);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
 
   const getToken = () => {
@@ -107,6 +110,29 @@ export default function AdminMenu() {
   const showToast = (message: string, type: "success" | "error" = "success") => {
     setToast({ message, type });
     setTimeout(() => setToast(null), 3000);
+  };
+
+  const handleImageUpload = async (file: File) => {
+    setUploading(true);
+    try {
+      const formData = new globalThis.FormData();
+      formData.append("image", file);
+      const res = await fetch(`${API_URL}/upload`, {
+        method: "POST",
+        headers: { Authorization: `Bearer ${getToken()}` },
+        body: formData,
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setForm((prev) => ({ ...prev, image: data.path }));
+        showToast("Фото жүктөлдү");
+      } else {
+        showToast("Фото жүктөө катасы", "error");
+      }
+    } catch {
+      showToast("Сервер менен байланыш жок", "error");
+    }
+    setUploading(false);
   };
 
   const fetchMenu = useCallback(async () => {
@@ -170,6 +196,7 @@ export default function AdminMenu() {
             image: item.image,
             category: item.category,
             weight: item.weight || "",
+            pieces: item.pieces || "",
             is_popular: item.isPopular || false,
             is_active: true,
             badge: item.badge || "",
@@ -193,6 +220,7 @@ export default function AdminMenu() {
       price4: item.price4 ? item.price4.toString() : "",
       category: item.category,
       weight: item.weight || "",
+      pieces: item.pieces || "",
       description: item.description,
       isPopular: item.isPopular || false,
       badge: (item.badge as FormData["badge"]) || "",
@@ -222,6 +250,7 @@ export default function AdminMenu() {
       image: form.image,
       category: form.category,
       weight: form.weight || "",
+      pieces: form.pieces || "",
       is_popular: form.isPopular,
       is_active: true,
       badge: form.badge || "",
@@ -564,8 +593,8 @@ export default function AdminMenu() {
                     </div>
                   </div>
 
-                  {/* Вес + Бейдж */}
-                  <div className="grid grid-cols-2 gap-3">
+                  {/* Вес + Порция + Бейдж */}
+                  <div className="grid grid-cols-3 gap-3">
                     <div>
                       <label className="block text-gray-400 text-sm mb-1.5">Вес</label>
                       <input
@@ -573,6 +602,16 @@ export default function AdminMenu() {
                         value={form.weight}
                         onChange={(e) => setForm({ ...form, weight: e.target.value })}
                         placeholder="280г"
+                        className="bg-[#1a1a1a] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-accent/50 transition-colors w-full"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-gray-400 text-sm mb-1.5">Порция</label>
+                      <input
+                        type="text"
+                        value={form.pieces}
+                        onChange={(e) => setForm({ ...form, pieces: e.target.value })}
+                        placeholder="8шт"
                         className="bg-[#1a1a1a] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-accent/50 transition-colors w-full"
                       />
                     </div>
@@ -591,6 +630,61 @@ export default function AdminMenu() {
                           </option>
                         ))}
                       </select>
+                    </div>
+                  </div>
+
+                  {/* Фото */}
+                  <div>
+                    <label className="block text-gray-400 text-sm mb-1.5">Фото</label>
+                    <div className="flex gap-3 items-start">
+                      {/* Preview */}
+                      <div className="relative w-20 h-20 rounded-xl overflow-hidden bg-white/5 border border-white/10 flex-shrink-0">
+                        {form.image ? (
+                          <Image
+                            src={form.image}
+                            alt="Preview"
+                            fill
+                            className="object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <ImageIcon className="w-6 h-6 text-gray-600" />
+                          </div>
+                        )}
+                      </div>
+                      <div className="flex-1 space-y-2">
+                        {/* Upload button */}
+                        <label className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium cursor-pointer transition-all duration-200 ${
+                          uploading
+                            ? "bg-white/5 text-gray-500 cursor-wait"
+                            : "bg-accent/10 text-accent hover:bg-accent hover:text-white"
+                        }`}>
+                          {uploading ? (
+                            <>
+                              <Loader2 className="w-4 h-4 animate-spin" />
+                              Жүктөлүүдө...
+                            </>
+                          ) : (
+                            <>
+                              <Upload className="w-4 h-4" />
+                              Фото жүктөө
+                            </>
+                          )}
+                          <input
+                            type="file"
+                            accept="image/jpeg,image/png,image/webp"
+                            className="hidden"
+                            disabled={uploading}
+                            onChange={(e) => {
+                              const file = e.target.files?.[0];
+                              if (file) handleImageUpload(file);
+                              e.target.value = "";
+                            }}
+                          />
+                        </label>
+                        {/* Path display */}
+                        <p className="text-gray-500 text-xs truncate">{form.image || "Фото жүктөлгөн жок"}</p>
+                      </div>
                     </div>
                   </div>
 

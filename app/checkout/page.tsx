@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Phone, ShoppingBag, ChevronLeft, Banknote, CreditCard, Globe, Minus, Plus, Trash2, CheckCircle, Package, Clock, Tag, X } from "lucide-react";
 import { useCartStore, MIN_ORDER } from "@/store/cartStore";
+import { useOrderStore } from "@/store/orderStore";
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -82,6 +83,7 @@ export default function CheckoutPage() {
       if (res.ok) {
         const orderId = data.id || data.ID || data.order?.ID || 0;
         const total = getFinalPrice();
+        useOrderStore.getState().setLastOrderId(orderId);
         clearCart();
         setOrderSuccess({ id: orderId, total });
       } else {
@@ -332,15 +334,23 @@ export default function CheckoutPage() {
               </div>
             ) : (
               <div className="flex gap-2">
-                <button type="button"
-                  className="flex-1 rounded-xl py-3 px-3 flex flex-col items-center gap-1.5 bg-accent/10 border-2 border-accent/40">
-                  <Banknote className="w-5 h-5 text-accent" />
-                  <span className="text-xs font-medium text-white">Наличными</span>
+                <button type="button" onClick={() => setSelectedPayment("cash")}
+                  className={`flex-1 rounded-xl py-3 px-3 flex flex-col items-center gap-1.5 transition-all ${
+                    selectedPayment === "cash"
+                      ? "bg-accent/10 border-2 border-accent/40"
+                      : "bg-white/[0.03] border-2 border-transparent hover:border-white/10"
+                  }`}>
+                  <Banknote className={`w-5 h-5 ${selectedPayment === "cash" ? "text-accent" : "text-gray-500"}`} />
+                  <span className={`text-xs font-medium ${selectedPayment === "cash" ? "text-white" : "text-gray-400"}`}>Наличными</span>
                 </button>
-                <button type="button"
-                  className="flex-1 rounded-xl py-3 px-3 flex flex-col items-center gap-1.5 bg-white/[0.03] border-2 border-transparent">
-                  <CreditCard className="w-5 h-5 text-gray-500" />
-                  <span className="text-xs font-medium text-gray-400">Картой</span>
+                <button type="button" onClick={() => setSelectedPayment("card")}
+                  className={`flex-1 rounded-xl py-3 px-3 flex flex-col items-center gap-1.5 transition-all ${
+                    selectedPayment === "card"
+                      ? "bg-accent/10 border-2 border-accent/40"
+                      : "bg-white/[0.03] border-2 border-transparent hover:border-white/10"
+                  }`}>
+                  <CreditCard className={`w-5 h-5 ${selectedPayment === "card" ? "text-accent" : "text-gray-500"}`} />
+                  <span className={`text-xs font-medium ${selectedPayment === "card" ? "text-white" : "text-gray-400"}`}>Картой</span>
                 </button>
               </div>
             )}

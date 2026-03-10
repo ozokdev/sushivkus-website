@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, User, Phone, MapPin, MessageSquare, ShoppingBag, ChevronLeft, Banknote, Building2, DoorOpen, Hash, KeyRound } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
+import { useOrderStore } from "@/store/orderStore";
 import Image from "next/image";
 
 export default function OrderForm() {
@@ -60,9 +61,11 @@ export default function OrderForm() {
       const data = await res.json();
 
       if (res.ok) {
+        const orderId = data.order?.ID || data.ID;
+        useOrderStore.getState().setLastOrderId(orderId);
         clearCart();
         closeOrderForm();
-        openOrderSuccess(data.order?.ID || data.ID);
+        openOrderSuccess(orderId);
         setForm({ name: "", phone: "", address: "", entrance: "", floor: "", apartment: "", doorCode: "", comment: "" });
       } else {
         setError(data.error || "Ошибка при отправке заказа");

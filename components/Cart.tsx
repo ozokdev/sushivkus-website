@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { X, Minus, Plus, ShoppingBag, Trash2, Tag, AlertCircle } from "lucide-react";
 import { useCartStore, MIN_ORDER } from "@/store/cartStore";
-import { menuItems } from "@/data/menu";
+import { useMenuStore } from "@/store/menuStore";
 
 export default function Cart() {
   const router = useRouter();
@@ -46,6 +46,7 @@ export default function Cart() {
   };
 
   // "С этим заказывают" — рандомные товары, которых нет в корзине
+  const menuItems = useMenuStore((s) => s.items);
   const suggestions = menuItems
     .filter((item) => !items.find((i) => i.id === item.id) && item.isPopular)
     .slice(0, 3);
