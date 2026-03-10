@@ -34,7 +34,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 1,
     name: "Филадельфия Классик",
-    description: "Лосось, сливочный сыр, огурец, рис, нори",
+    description: "Рис, нори, сливочный сыр, лосось, огурец, икра масаго",
     price: 490,
     price4: 270,
     image: "/photo/philadelphia_classic.jpg",
@@ -45,7 +45,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 2,
     name: "Калифорния Темпура",
-    description: "Креветка темпура, авокадо, сливочный сыр, тобико",
+    description: "Рис, нори, краб микс, огурец, сухари панировочные, смесь темпура, спайс соус",
     price: 490,
     price4: 280,
     image: "/photo/california_tempura.jpg",
@@ -56,7 +56,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 3,
     name: "Калифорния Запечённая",
-    description: "Краб, авокадо, сливочный сыр, соус спайси",
+    description: "Рис, нори, краб микс, огурец, сливочный сыр, спайс соус",
     price: 495,
     price4: 265,
     image: "/photo/california_zapechen.jpg",
@@ -66,7 +66,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 4,
     name: "Эби Темпура",
-    description: "Креветка темпура, авокадо, сливочный сыр, унаги",
+    description: "Рис, нори, креветки, огурец, сухари панировочные, смесь темпура, ореховый соус",
     price: 590,
     price4: 320,
     image: "/photo/ebi_tempura.jpg",
@@ -76,7 +76,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 5,
     name: "Горячие Сяке",
-    description: "Лосось, сливочный сыр, огурец, запечённый соус",
+    description: "Рис, нори, лосось, огурец, сухари панировочные, смесь темпура, ореховый соус",
     price: 590,
     price4: 320,
     image: "/photo/goryachie_syake.jpg",
@@ -86,7 +86,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 6,
     name: "Лава Запечённая",
-    description: "Лосось, сливочный сыр, соус лава, кунжут",
+    description: "Рис, нори, сливочный сыр, краб, лосось, икра масаго",
     price: 530,
     price4: 295,
     image: "/photo/lava_zapechen.jpg",
@@ -97,7 +97,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 7,
     name: "Магуро Запечённый",
-    description: "Тунец, сливочный сыр, огурец, спайси соус",
+    description: "Рис, нори, сливочный сыр, тунец, огурец, спайс соус",
     price: 495,
     price4: 260,
     image: "/photo/maguro_zapechen.jpg",
@@ -107,7 +107,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 8,
     name: "Манчестер",
-    description: "Лосось, угорь, сливочный сыр, авокадо, тобико",
+    description: "Рис, нори, угорь, креветки, огурец, смесь темпура, сухари панировочные",
     price: 620,
     price4: 330,
     image: "/photo/manchester.jpg",
@@ -118,7 +118,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 9,
     name: "Мистер Крабс",
-    description: "Снежный краб, сливочный сыр, огурец, тобико",
+    description: "Рис, нори, майонез, огурец, микс краб, кунжут, фирменный соус",
     price: 390,
     price4: 295,
     image: "/photo/mister_krabs.jpg",
@@ -128,7 +128,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 10,
     name: "Опалённый Карамель",
-    description: "Лосось опалённый, карамельный соус, сливочный сыр",
+    description: "Рис, нори, лосось опалённый, карамельный соус, сливочный сыр",
     price: 580,
     price4: 310,
     image: "/photo/opalenny_karamel.jpg",
@@ -139,7 +139,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 11,
     name: "Ролл Чеддер",
-    description: "Лосось, сыр чеддер, огурец, сливочный сыр",
+    description: "Рис, нори, чеддер, угорь, твёрдый сыр, унаги соус",
     price: 490,
     price4: 260,
     image: "/photo/roll_cheddar.jpg",
@@ -149,7 +149,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 12,
     name: "Сяке Запечённый",
-    description: "Лосось запечённый, сливочный сыр, соус спайси",
+    description: "Рис, нори, сливочный сыр, лосось, икра масаго, спайс соус",
     price: 590,
     price4: 310,
     image: "/photo/syake_zapechen.jpg",
@@ -159,7 +159,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 13,
     name: "Тори Запечённый",
-    description: "Курица, сливочный сыр, огурец, запечённый соус",
+    description: "Рис, нори, сливочный сыр, курица, огурец, кунжут жареный",
     price: 415,
     price4: 250,
     image: "/photo/tori_zapechen.jpg",
@@ -169,7 +169,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 14,
     name: "Миди Горячий",
-    description: "Мидии, сливочный сыр, спайси соус, кунжут",
+    description: "Рис, нори, мидии, сливочный сыр, спайс соус, кунжут",
     price: 490,
     price4: 290,
     image: "/photo/midi_goryachy.jpg",
@@ -180,7 +180,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 15,
     name: "Миди Ракушка",
-    description: "Мидии, авокадо, сливочный сыр, тобико",
+    description: "Рис, нори, мидии, авокадо, сливочный сыр, тобико",
     price: 540,
     price4: 290,
     image: "/photo/midi_rakushka.jpg",
@@ -338,7 +338,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 40,
     name: "Пицца Цезарь",
-    description: "Курица, салат, пармезан, соус цезарь",
+    description: "Сыр моцарелла, соус цезарь, куриные грудки, твёрдый сыр, помидоры черри",
     price: 740,
     image: "/photo/caesar_pizza.jpg",
     category: "pizza",
@@ -347,7 +347,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 41,
     name: "Четыре Сыра",
-    description: "Моцарелла, чеддер, пармезан, дор-блю",
+    description: "Сливки, сыр моцарелла, сыр с плесенью, твёрдый сыр, сыр чеддер",
     price: 720,
     image: "/photo/four_cheese.jpg",
     category: "pizza",
@@ -356,7 +356,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 42,
     name: "Маргарита",
-    description: "Томатный соус, моцарелла, базилик",
+    description: "Сыр моцарелла, томатный соус, помидоры",
     price: 690,
     image: "/photo/margarita.jpg",
     category: "pizza",
@@ -365,7 +365,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 43,
     name: "Пепперони",
-    description: "Пепперони, моцарелла, томатный соус",
+    description: "Сыр моцарелла, пепперони, томатный соус",
     price: 690,
     image: "/photo/pepperoni.jpg",
     category: "pizza",
@@ -375,7 +375,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 44,
     name: "Пицца Филадельфия",
-    description: "Лосось, сливочный сыр, моцарелла",
+    description: "Сыр моцарелла, сливочный сыр, лосось",
     price: 760,
     image: "/photo/pizza_philadelphia.jpg",
     category: "pizza",
@@ -384,7 +384,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 45,
     name: "Ветчина и Грибы",
-    description: "Ветчина, шампиньоны, моцарелла, томатный соус",
+    description: "Сыр моцарелла, ветчина, шампиньоны, томатный соус",
     price: 730,
     image: "/photo/vetshina_griby.jpg",
     category: "pizza",
@@ -395,7 +395,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 50,
     name: "Поке с Угрём",
-    description: "Угорь, рис, авокадо, эдамаме, соус унаги",
+    description: "Рис, угорь, соус поке, помидоры черри, огурец, салат чука",
     price: 590,
     image: "/photo/poke_eel.jpg",
     category: "poke",
@@ -404,7 +404,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 51,
     name: "Поке с Лососем",
-    description: "Лосось, рис, авокадо, манго, кунжут",
+    description: "Рис, лосось, соус поке, помидоры черри, огурец, салат чука",
     price: 590,
     image: "/photo/poke_salmon.jpg",
     category: "poke",
@@ -414,7 +414,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 52,
     name: "Поке с Креветкой",
-    description: "Креветки, рис, авокадо, огурец, спайси соус",
+    description: "Рис, креветки, соус поке, помидоры черри, огурец, салат чука",
     price: 590,
     image: "/photo/poke_shrimp.jpg",
     category: "poke",
@@ -423,7 +423,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 53,
     name: "Поке с Тунцом",
-    description: "Тунец, рис, авокадо, эдамаме, понзу",
+    description: "Рис, тунец, соус поке, помидоры черри, огурец, салат чука",
     price: 590,
     image: "/photo/poke_tuna.jpg",
     category: "poke",
@@ -444,7 +444,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 61,
     name: "Мисо Суп с Лососем",
-    description: "Лосось, тофу, водоросли, грибы шиитаке",
+    description: "Мисо паста, хондаши, сыр тофу, лосось, кунжут",
     price: 490,
     image: "/photo/miso_soup2.jpg",
     category: "soups",
@@ -453,7 +453,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 62,
     name: "Том Ям с Лососем",
-    description: "Лосось, кокосовое молоко, грибы, лемонграсс",
+    description: "Паста том-ям, кокосовое молоко, лосось, рыбный соус",
     price: 590,
     image: "/photo/tom_yam_salmon.jpg",
     category: "soups",
@@ -462,7 +462,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 63,
     name: "Том Ям с Креветками",
-    description: "Креветки, кокосовое молоко, лайм, чили",
+    description: "Паста том-ям, кокосовое молоко, креветки, рыбный соус",
     price: 540,
     image: "/photo/tom_yam_shrimp.jpg",
     category: "soups",
@@ -492,7 +492,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 72,
     name: "Креветки Темпура",
-    description: "Креветки в хрустящем кляре темпура",
+    description: "Креветки жареные в кляре темпура",
     price: 520,
     image: "/photo/krevetki_tempura.jpg",
     category: "snacks",
@@ -530,7 +530,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 80,
     name: "Салат Цезарь",
-    description: "Курица, айсберг, пармезан, гренки, соус цезарь",
+    description: "Салат айсберг, куриные грудки, соус цезарь, помидоры черри",
     price: 390,
     image: "/photo/salat_caesar.jpg",
     category: "salads",
@@ -539,7 +539,7 @@ export const menuItems: MenuItem[] = [
   {
     id: 81,
     name: "Салат Чука",
-    description: "Водоросли чука с ореховым соусом и кунжутом",
+    description: "Салат чука водоросли, ореховый соус, кунжут",
     price: 290,
     image: "/photo/salat_chuka.jpg",
     category: "salads",
