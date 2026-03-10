@@ -49,14 +49,14 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
           >
-            <div className="bg-[#111] border border-white/10 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row">
-              {/* Фото слева */}
-              <div className="relative w-full md:w-1/2 h-72 md:min-h-[420px] flex-shrink-0">
+            <div className="bg-[#111] border border-white/10 rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto flex flex-col">
+              {/* Сүрөт үстүндө чоң */}
+              <div className="relative w-full aspect-[4/3] flex-shrink-0">
                 <Image
                   src={product.image}
                   alt={product.name}
                   fill
-                  className="object-cover"
+                  className="object-cover rounded-t-2xl"
                 />
                 {/* Бейджи */}
                 <div className="absolute top-3 left-3 flex flex-col gap-1">
@@ -72,71 +72,58 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                   )}
                 </div>
                 {product.isPopular && (
-                  <span className="absolute top-3 right-3 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-lg">
-                    🔥 HIT
+                  <span className="absolute top-3 right-14 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-lg">
+                    HIT
                   </span>
                 )}
 
-                {/* Закрыть на мобилке */}
+                {/* Закрыть */}
                 <button
                   onClick={onClose}
-                  className="absolute top-3 right-3 md:hidden p-2 bg-black/50 rounded-full"
+                  className="absolute top-3 right-3 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors"
                 >
-                  <X className="w-4 h-4 text-white" />
+                  <X className="w-5 h-5 text-white" />
                 </button>
               </div>
 
-              {/* Инфо справа */}
-              <div className="flex flex-col p-6 md:p-8 flex-1">
-                {/* Закрыть десктоп */}
-                <button
-                  onClick={onClose}
-                  className="hidden md:flex self-end p-2 hover:bg-white/5 rounded-xl transition-colors -mt-2 -mr-2"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-
-                <h2 className="text-2xl md:text-3xl font-bold mb-2">
+              {/* Маалымат ылдыйында */}
+              <div className="flex flex-col p-5 md:p-6">
+                <h2 className="text-xl md:text-2xl font-bold mb-3">
                   {product.name}
                 </h2>
 
-                {/* Состав */}
-                <div className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-4 mb-6">
-                  <h4 className="text-xs text-gray-500 uppercase tracking-wider mb-2">
-                    Состав
-                  </h4>
-                  <p className="text-sm text-gray-300 leading-relaxed">{product.description}</p>
-                  {(product.weight || product.pieces) && (
-                    <div className="flex gap-4 mt-3 pt-3 border-t border-white/[0.06] text-xs text-gray-500">
-                      {product.weight && <span>Вес: {product.weight}</span>}
-                      {product.pieces && <span>Кол-во: {product.pieces}</span>}
-                    </div>
-                  )}
-                </div>
+                <p className="text-sm text-gray-400 leading-relaxed mb-3">
+                  {product.description}
+                </p>
+
+                {(product.weight || product.pieces) && (
+                  <div className="flex gap-4 mb-4 text-xs text-gray-500">
+                    {product.weight && <span>Вес: {product.weight}</span>}
+                    {product.pieces && <span>Кол-во: {product.pieces}</span>}
+                  </div>
+                )}
 
                 {/* Цена и кнопки */}
-                <div className="mt-auto">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-3xl font-bold text-accent">
-                      {product.price} ₽
-                    </span>
-                  </div>
+                <div className="flex items-center justify-between mt-auto pt-3 border-t border-white/[0.06]">
+                  <span className="text-2xl font-bold text-accent">
+                    {product.price} ₽
+                  </span>
 
                   {count > 0 ? (
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-3">
                       <div className="flex items-center bg-white/[0.05] rounded-xl">
                         <button
                           onClick={() => updateQuantity(product.id, count - 1)}
-                          className="p-3 hover:bg-white/10 rounded-l-xl transition-colors"
+                          className="p-2.5 hover:bg-white/10 rounded-l-xl transition-colors"
                         >
-                          <Minus className="w-5 h-5" />
+                          <Minus className="w-4 h-4" />
                         </button>
-                        <span className="px-5 font-bold text-lg">{count}</span>
+                        <span className="px-4 font-bold">{count}</span>
                         <button
                           onClick={handleAdd}
-                          className="p-3 hover:bg-white/10 rounded-r-xl transition-colors"
+                          className="p-2.5 hover:bg-white/10 rounded-r-xl transition-colors"
                         >
-                          <Plus className="w-5 h-5" />
+                          <Plus className="w-4 h-4" />
                         </button>
                       </div>
                       <span className="text-gray-400 text-sm">
@@ -146,10 +133,10 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                   ) : (
                     <button
                       onClick={handleAdd}
-                      className="w-full py-4 bg-accent hover:bg-accent-hover rounded-xl text-white font-semibold text-lg transition-all duration-200 glow-red flex items-center justify-center gap-2"
+                      className="py-3 px-6 bg-accent hover:bg-accent-hover rounded-xl text-white font-semibold transition-all duration-200 glow-red flex items-center gap-2"
                     >
                       <ShoppingCart className="w-5 h-5" />
-                      В корзину за {product.price} ₽
+                      В корзину
                     </button>
                   )}
                 </div>
