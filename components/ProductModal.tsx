@@ -51,7 +51,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
           >
             <div className="bg-[#111] border border-white/10 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row">
               {/* Фото слева */}
-              <div className="relative w-full md:w-1/2 h-64 md:h-auto flex-shrink-0">
+              <div className="relative w-full md:w-1/2 h-72 md:min-h-[420px] flex-shrink-0">
                 <Image
                   src={product.image}
                   alt={product.name}
