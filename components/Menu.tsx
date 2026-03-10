@@ -51,16 +51,21 @@ export default function MenuSection() {
     menuItems.filter((item) => item.isPopular)
   );
 
-  // Анимация добавления в корзину
-  const handleAdd = (item: MenuItem) => {
+  // Добавление в корзину с учётом размера
+  const handleAdd = (item: MenuItem, size?: 4 | 8) => {
+    const is4 = size === 4 && item.price4;
+    const cartId = is4 ? item.id + 1000 : item.id;
+    const cartPrice = is4 ? item.price4! : item.price;
+    const cartName = is4 ? `${item.name} (4шт)` : item.price4 ? `${item.name} (8шт)` : item.name;
+
     addItem({
-      id: item.id,
-      name: item.name,
-      price: item.price,
+      id: cartId,
+      name: cartName,
+      price: cartPrice,
       image: item.image,
     });
     setAddedId(item.id);
-    showToast(`${item.name} добавлен в корзину!`);
+    showToast(`${cartName} добавлен в корзину!`);
     setTimeout(() => setAddedId(null), 600);
   };
 
@@ -95,11 +100,11 @@ export default function MenuSection() {
                     key={`pop-${item.id}`}
                     item={item}
                     index={index}
-                    count={getItemCount(item.id)}
+                    getItemCount={getItemCount}
                     isAdding={addedId === item.id}
-                    onAdd={() => handleAdd(item)}
-                    onMinus={() =>
-                      updateQuantity(item.id, getItemCount(item.id) - 1)
+                    onAdd={(size) => handleAdd(item, size)}
+                    onMinus={(cartId) =>
+                      updateQuantity(cartId, getItemCount(cartId) - 1)
                     }
                     onClickCard={() => setSelectedProduct(item)}
                   />
@@ -146,11 +151,11 @@ export default function MenuSection() {
                     key={item.id}
                     item={item}
                     index={index}
-                    count={getItemCount(item.id)}
+                    getItemCount={getItemCount}
                     isAdding={addedId === item.id}
-                    onAdd={() => handleAdd(item)}
-                    onMinus={() =>
-                      updateQuantity(item.id, getItemCount(item.id) - 1)
+                    onAdd={(size) => handleAdd(item, size)}
+                    onMinus={(cartId) =>
+                      updateQuantity(cartId, getItemCount(cartId) - 1)
                     }
                     onClickCard={() => setSelectedProduct(item)}
                   />
@@ -183,7 +188,7 @@ export default function MenuSection() {
 function ProductCard({
   item,
   index,
-  count,
+  getItemCount,
   isAdding,
   onAdd,
   onMinus,
@@ -191,13 +196,19 @@ function ProductCard({
 }: {
   item: MenuItem;
   index: number;
-  count: number;
+  getItemCount: (id: number) => number;
   isAdding: boolean;
-  onAdd: () => void;
-  onMinus: () => void;
+  onAdd: (size?: 4 | 8) => void;
+  onMinus: (cartId: number) => void;
   onClickCard: () => void;
 }) {
+  const [selectedSize, setSelectedSize] = useState<4 | 8>(4);
   const badge = item.badge ? badgeConfig[item.badge] : null;
+  const has4 = !!item.price4;
+
+  const currentPrice = has4 ? (selectedSize === 4 ? item.price4! : item.price) : item.price;
+  const cartId = has4 && selectedSize === 4 ? item.id + 1000 : item.id;
+  const count = getItemCount(cartId);
 
   return (
     <motion.div
@@ -286,9 +297,35 @@ function ProductCard({
           {item.description}
         </p>
 
+        {/* 4шт / 8шт toggle */}
+        {has4 && (
+          <div className="flex mb-3 bg-white/[0.04] rounded-lg p-0.5">
+            <button
+              onClick={(e) => { e.stopPropagation(); setSelectedSize(4); }}
+              className={`flex-1 py-1.5 text-xs font-medium rounded-md transition-all ${
+                selectedSize === 4
+                  ? "bg-accent text-white shadow-sm"
+                  : "text-gray-400 hover:text-white"
+              }`}
+            >
+              4 шт.
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); setSelectedSize(8); }}
+              className={`flex-1 py-1.5 text-xs font-medium rounded-md transition-all ${
+                selectedSize === 8
+                  ? "bg-accent text-white shadow-sm"
+                  : "text-gray-400 hover:text-white"
+              }`}
+            >
+              8 шт.
+            </button>
+          </div>
+        )}
+
         <div className="flex items-center justify-between gap-2">
           <span className="text-accent font-bold text-base md:text-lg">
-            {item.price} ₽
+            {currentPrice} ₽
           </span>
 
           {count > 0 ? (
@@ -301,7 +338,7 @@ function ProductCard({
                 whileTap={{ scale: 0.85 }}
                 onClick={(e) => {
                   e.stopPropagation();
-                  onMinus();
+                  onMinus(cartId);
                 }}
                 className="p-2 text-white hover:bg-white/20 rounded-l-xl transition-colors"
               >
@@ -314,7 +351,7 @@ function ProductCard({
                 whileTap={{ scale: 0.85 }}
                 onClick={(e) => {
                   e.stopPropagation();
-                  onAdd();
+                  onAdd(has4 ? selectedSize : undefined);
                 }}
                 className="p-2 text-white hover:bg-white/20 rounded-r-xl transition-colors"
               >
@@ -326,7 +363,7 @@ function ProductCard({
               whileTap={{ scale: 0.9 }}
               onClick={(e) => {
                 e.stopPropagation();
-                onAdd();
+                onAdd(has4 ? selectedSize : undefined);
               }}
               className="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-medium bg-accent/10 text-accent hover:bg-accent hover:text-white transition-all duration-200"
             >

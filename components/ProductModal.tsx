@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { X, Plus, Minus, ShoppingCart } from "lucide-react";
@@ -15,17 +16,23 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
   const addItem = useCartStore((s) => s.addItem);
   const updateQuantity = useCartStore((s) => s.updateQuantity);
   const cartItems = useCartStore((s) => s.items);
+  const [selectedSize, setSelectedSize] = useState<4 | 8>(4);
 
   if (!product) return null;
 
-  const cartItem = cartItems.find((i) => i.id === product.id);
+  const has4 = !!product.price4;
+  const currentPrice = has4 ? (selectedSize === 4 ? product.price4! : product.price) : product.price;
+  const cartId = has4 && selectedSize === 4 ? product.id + 1000 : product.id;
+  const cartItem = cartItems.find((i) => i.id === cartId);
   const count = cartItem?.quantity || 0;
 
   const handleAdd = () => {
+    const is4 = has4 && selectedSize === 4;
+    const name = is4 ? `${product.name} (4шт)` : has4 ? `${product.name} (8шт)` : product.name;
     addItem({
-      id: product.id,
-      name: product.name,
-      price: product.price,
+      id: cartId,
+      name,
+      price: currentPrice,
       image: product.image,
     });
   };
@@ -103,17 +110,43 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                   </div>
                 )}
 
+                {/* 4шт / 8шт toggle */}
+                {has4 && (
+                  <div className="flex mb-4 bg-white/[0.04] rounded-xl p-1">
+                    <button
+                      onClick={() => setSelectedSize(4)}
+                      className={`flex-1 py-2.5 text-sm font-semibold rounded-lg transition-all ${
+                        selectedSize === 4
+                          ? "bg-accent text-white shadow-sm"
+                          : "text-gray-400 hover:text-white"
+                      }`}
+                    >
+                      4 шт. — {product.price4} ₽
+                    </button>
+                    <button
+                      onClick={() => setSelectedSize(8)}
+                      className={`flex-1 py-2.5 text-sm font-semibold rounded-lg transition-all ${
+                        selectedSize === 8
+                          ? "bg-accent text-white shadow-sm"
+                          : "text-gray-400 hover:text-white"
+                      }`}
+                    >
+                      8 шт. — {product.price} ₽
+                    </button>
+                  </div>
+                )}
+
                 {/* Цена и кнопки */}
                 <div className="flex items-center justify-between mt-auto pt-3 border-t border-white/[0.06]">
                   <span className="text-2xl font-bold text-accent">
-                    {product.price} ₽
+                    {currentPrice} ₽
                   </span>
 
                   {count > 0 ? (
                     <div className="flex items-center gap-3">
                       <div className="flex items-center bg-white/[0.05] rounded-xl">
                         <button
-                          onClick={() => updateQuantity(product.id, count - 1)}
+                          onClick={() => updateQuantity(cartId, count - 1)}
                           className="p-2.5 hover:bg-white/10 rounded-l-xl transition-colors"
                         >
                           <Minus className="w-4 h-4" />
@@ -127,7 +160,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                         </button>
                       </div>
                       <span className="text-gray-400 text-sm">
-                        = {product.price * count} ₽
+                        = {currentPrice * count} ₽
                       </span>
                     </div>
                   ) : (
