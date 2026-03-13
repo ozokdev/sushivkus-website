@@ -94,7 +94,7 @@ export default function MenuSection() {
                   {popularItems.length}
                 </span>
               </motion.div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
                 {popularItems.map((item, index) => (
                   <ProductCard
                     key={`pop-${item.id}`}
@@ -145,7 +145,7 @@ export default function MenuSection() {
                   {items.length}
                 </span>
               </motion.div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
                 {items.map((item, index) => (
                   <ProductCard
                     key={item.id}
