@@ -597,23 +597,72 @@ export default function AdminMenu() {
                   <div className="grid grid-cols-3 gap-3">
                     <div>
                       <label className="block text-gray-400 text-sm mb-1.5">Вес</label>
-                      <input
-                        type="text"
+                      <select
                         value={form.weight}
                         onChange={(e) => setForm({ ...form, weight: e.target.value })}
-                        placeholder="280г"
                         className="bg-[#1a1a1a] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-accent/50 transition-colors w-full"
-                      />
+                      >
+                        <option value="">Жок</option>
+                        <option value="10г">10г</option>
+                        <option value="20г">20г</option>
+                        <option value="30г">30г</option>
+                        <option value="40г">40г</option>
+                        <option value="50г">50г</option>
+                        <option value="60г">60г</option>
+                        <option value="70г">70г</option>
+                        <option value="80г">80г</option>
+                        <option value="90г">90г</option>
+                        <option value="100г">100г</option>
+                        <option value="30мл">30мл</option>
+                        <option value="40мл">40мл</option>
+                        <option value="50мл">50мл</option>
+                        <option value="100мл">100мл</option>
+                        <option value="200г">200г</option>
+                        <option value="250г">250г</option>
+                        <option value="280г">280г</option>
+                        <option value="290г">290г</option>
+                        <option value="300г">300г</option>
+                        <option value="310г">310г</option>
+                        <option value="320г">320г</option>
+                        <option value="350г">350г</option>
+                        <option value="400г">400г</option>
+                        <option value="450г">450г</option>
+                        <option value="500г">500г</option>
+                        <option value="600г">600г</option>
+                        <option value="700г">700г</option>
+                        <option value="800г">800г</option>
+                        <option value="900г">900г</option>
+                        <option value="1000г">1000г</option>
+                        <option value="1200г">1200г</option>
+                        <option value="1500г">1500г</option>
+                        <option value="2000г">2000г</option>
+                        <option value="2600г">2600г</option>
+                        <option value="3000г">3000г</option>
+                      </select>
                     </div>
                     <div>
                       <label className="block text-gray-400 text-sm mb-1.5">Порция</label>
-                      <input
-                        type="text"
+                      <select
                         value={form.pieces}
                         onChange={(e) => setForm({ ...form, pieces: e.target.value })}
-                        placeholder="8шт"
                         className="bg-[#1a1a1a] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-accent/50 transition-colors w-full"
-                      />
+                      >
+                        <option value="">Жок</option>
+                        <option value="4шт">4шт</option>
+                        <option value="6шт">6шт</option>
+                        <option value="8шт">8шт</option>
+                        <option value="10шт">10шт</option>
+                        <option value="12шт">12шт</option>
+                        <option value="16шт">16шт</option>
+                        <option value="20шт">20шт</option>
+                        <option value="24шт">24шт</option>
+                        <option value="32шт">32шт</option>
+                        <option value="40шт">40шт</option>
+                        <option value="48шт">48шт</option>
+                        <option value="56шт">56шт</option>
+                        <option value="64шт">64шт</option>
+                        <option value="96шт">96шт</option>
+                      </select>
                     </div>
                     <div>
                       <label className="block text-gray-400 text-sm mb-1.5">Бейдж</label>
