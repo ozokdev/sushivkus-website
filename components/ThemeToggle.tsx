@@ -1,12 +1,15 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 import { useThemeStore } from "@/store/themeStore";
 
 export default function ThemeToggle() {
-  const { theme, toggleTheme } = useThemeStore();
+  const { theme, toggleTheme, initTheme } = useThemeStore();
   const isDark = theme === "dark";
+
+  useEffect(() => { initTheme(); }, [initTheme]);
 
   return (
     <button

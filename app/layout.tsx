@@ -146,8 +146,13 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="ru">
+    <html lang="ru" className="light-mode" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{if(location.pathname.startsWith("/admin")){document.documentElement.className="dark-mode";return}var t=localStorage.getItem("theme");if(t==="dark"){document.documentElement.className="dark-mode"}else{document.documentElement.className="light-mode"}}catch(e){}})()`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

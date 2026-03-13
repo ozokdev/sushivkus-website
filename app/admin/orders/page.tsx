@@ -18,7 +18,7 @@ import {
 
 const API_URL = "https://api.sushivkus.ru/api";
 
-type OrderStatus = "new" | "preparing" | "delivered" | "cancelled";
+type OrderStatus = "new" | "paid" | "preparing" | "delivered" | "cancelled";
 
 interface OrderItem {
   name: string;
@@ -42,16 +42,21 @@ interface Order {
   payment: string;
 }
 
-const statusConfig: Record<OrderStatus, { label: string; class: string }> = {
+const statusConfigMap: Record<string, { label: string; class: string }> = {
   new: { label: "Новый", class: "bg-blue-500/20 text-blue-400" },
+  paid: { label: "Оплачен", class: "bg-emerald-500/20 text-emerald-400" },
   preparing: { label: "Готовится", class: "bg-yellow-500/20 text-yellow-400" },
+  delivering: { label: "В пути", class: "bg-purple-500/20 text-purple-400" },
   delivered: { label: "Доставлен", class: "bg-green-500/20 text-green-400" },
   cancelled: { label: "Отменён", class: "bg-red-500/20 text-red-400" },
 };
+const defaultStatus = { label: "Неизвестно", class: "bg-gray-500/20 text-gray-400" };
+const getStatus = (s: string) => statusConfigMap[s] || defaultStatus;
 
 const filterTabs: { value: OrderStatus | "all"; label: string }[] = [
   { value: "all", label: "Все" },
   { value: "new", label: "Новые" },
+  { value: "paid", label: "Оплачен" },
   { value: "preparing", label: "Готовится" },
   { value: "delivered", label: "Доставлен" },
   { value: "cancelled", label: "Отменён" },
@@ -299,7 +304,7 @@ export default function AdminOrders() {
               </thead>
               <tbody>
                 {filteredOrders.map((order) => {
-                  const status = statusConfig[order.status];
+                  const status = getStatus(order.status);
                   const phoneClean = order.phone.replace(/\D/g, "");
                   return (
                     <tr
@@ -423,7 +428,7 @@ export default function AdminOrders() {
                       onChange={(e) =>
                         handleStatusChange(selectedOrder.id, e.target.value as OrderStatus)
                       }
-                      className={`rounded-lg px-3 py-1.5 text-sm font-medium border-0 cursor-pointer focus:outline-none ${statusConfig[selectedOrder.status].class}`}
+                      className={`rounded-lg px-3 py-1.5 text-sm font-medium border-0 cursor-pointer focus:outline-none ${getStatus(selectedOrder.status).class}`}
                       style={{ backgroundColor: "transparent" }}
                     >
                       <option value="new" className="bg-[#1a1a1a] text-white">Новый</option>
