@@ -76,16 +76,16 @@ export default function MenuSection() {
         onCategoryChange={setActiveCategory}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-24 md:pb-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 pb-24 md:pb-4">
         {/* Популярное */}
         {(activeCategory === "all" || activeCategory === "popular") &&
           popularItems.length > 0 && (
-            <div id="cat-popular" className="mb-12 scroll-mt-32">
+            <div id="cat-popular" className="mb-6 scroll-mt-32">
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="flex items-center gap-3 mb-6"
+                className="flex items-center gap-3 mb-3"
               >
                 <h2 className="text-2xl sm:text-3xl font-bold">
                   🔥 Популярное
@@ -115,10 +115,6 @@ export default function MenuSection() {
 
         {/* Остальные категории */}
         {displayCategories.map((category) => {
-          const items = filterBySearch(
-            menuItems.filter((item) => item.category === category.id)
-          );
-          if (items.length === 0) return null;
           if (
             activeCategory !== "all" &&
             activeCategory !== "popular" &&
@@ -126,17 +122,23 @@ export default function MenuSection() {
           )
             return null;
 
+          const items = filterBySearch(
+            menuItems.filter((item) => item.category === category.id)
+          );
+
+          if (activeCategory === "all" && items.length === 0) return null;
+
           return (
             <div
               key={category.id}
               id={`cat-${category.id}`}
-              className="mb-12 scroll-mt-32"
+              className="mb-6 scroll-mt-32"
             >
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="flex items-center gap-3 mb-6"
+                className="flex items-center gap-3 mb-3"
               >
                 <h2 className="text-2xl sm:text-3xl font-bold">
                   {category.name}
@@ -145,22 +147,28 @@ export default function MenuSection() {
                   {items.length}
                 </span>
               </motion.div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-                {items.map((item, index) => (
-                  <ProductCard
-                    key={item.id}
-                    item={item}
-                    index={index}
-                    getItemCount={getItemCount}
-                    isAdding={addedId === item.id}
-                    onAdd={() => handleAdd(item)}
-                    onMinus={(cartId) =>
-                      updateQuantity(cartId, getItemCount(cartId) - 1)
-                    }
-                    onClickCard={() => setSelectedProduct(item)}
-                  />
-                ))}
-              </div>
+              {items.length > 0 ? (
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+                  {items.map((item, index) => (
+                    <ProductCard
+                      key={item.id}
+                      item={item}
+                      index={index}
+                      getItemCount={getItemCount}
+                      isAdding={addedId === item.id}
+                      onAdd={() => handleAdd(item)}
+                      onMinus={(cartId) =>
+                        updateQuantity(cartId, getItemCount(cartId) - 1)
+                      }
+                      onClickCard={() => setSelectedProduct(item)}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-12 text-gray-500">
+                  <p className="text-lg">Скоро здесь появятся товары</p>
+                </div>
+              )}
             </div>
           );
         })}

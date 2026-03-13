@@ -92,7 +92,7 @@ export default function Hero() {
 
   return (
     <section className="relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 md:py-3">
         <div className="relative rounded-2xl md:rounded-3xl overflow-hidden h-[200px] sm:h-[280px] md:h-[380px] lg:h-[420px] keep-white">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div

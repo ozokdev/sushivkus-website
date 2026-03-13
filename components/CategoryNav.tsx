@@ -45,7 +45,15 @@ export default function CategoryNav({
     if (catId === "all") {
       document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" });
     } else {
-      document.getElementById(`cat-${catId}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      // Элемент табылса — ага скролл, табылбаса — менюнун башына
+      setTimeout(() => {
+        const el = document.getElementById(`cat-${catId}`);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 50);
     }
   };
 
@@ -58,7 +66,7 @@ export default function CategoryNav({
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex gap-2 py-3 overflow-x-auto scrollbar-hide">
+        <div className="flex gap-1.5 py-2 overflow-x-auto scrollbar-hide">
           {categories.map((cat) => (
             <button
               key={cat.id}

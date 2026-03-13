@@ -49,13 +49,13 @@ export default function PopularSection() {
   };
 
   return (
-    <section className="py-8">
+    <section className="py-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-2xl sm:text-3xl font-bold mb-6"
+          className="text-2xl sm:text-3xl font-bold mb-3"
         >
           🔥 Популярное
         </motion.h2>

@@ -50,9 +50,9 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
           >
-            <div className="bg-[#111] border border-white/10 rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto flex flex-col">
+            <div className="bg-[#111] border border-white/10 rounded-2xl w-full max-w-lg max-h-[90vh] overflow-hidden flex flex-col" onClick={(e) => e.stopPropagation()}>
               {/* Сүрөт үстүндө чоң */}
-              <div className="relative w-full aspect-[4/3] flex-shrink-0">
+              <div className="relative w-full aspect-[3/2] flex-shrink-0">
                 <Image
                   src={product.image}
                   alt={product.name}
@@ -88,7 +88,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
               </div>
 
               {/* Маалымат ылдыйында */}
-              <div className="flex flex-col p-5 md:p-6">
+              <div className="flex flex-col p-5 md:p-6 overflow-y-auto">
                 <h2 className="text-xl md:text-2xl font-bold mb-3">
                   {product.name}
                 </h2>

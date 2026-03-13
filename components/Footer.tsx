@@ -5,14 +5,14 @@ import { MapPin, Phone, Clock, Instagram, MessageCircle, Send } from "lucide-rea
 export default function Footer() {
   return (
     <footer id="contacts" className="bg-[#080808] border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-3 gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid md:grid-cols-3 gap-8">
           {/* Логотип и описание */}
           <div>
             <h3 className="text-2xl font-black mb-4">
               <span className="text-accent">Суши</span> Вкус
             </h3>
-            <p className="text-gray-500 leading-relaxed mb-6">
+            <p className="text-gray-500 leading-relaxed mb-4">
               Свежие роллы. Быстрая доставка. Готовим с любовью из качественных
               ингредиентов.
             </p>
@@ -96,7 +96,7 @@ export default function Footer() {
         </div>
 
         {/* Копирайт */}
-        <div className="border-t border-white/5 mt-12 pt-8 text-center text-gray-600 text-sm">
+        <div className="border-t border-white/5 mt-6 pt-4 text-center text-gray-600 text-sm">
           © {new Date().getFullYear()} Суши Вкус. Все права защищены.
         </div>
       </div>
