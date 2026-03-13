@@ -288,9 +288,16 @@ function ProductCard({
         </p>
 
         <div className="flex items-center justify-between gap-2">
-          <span className="text-accent font-bold text-base md:text-lg">
-            {currentPrice} ₽
-          </span>
+          <div className="flex items-center gap-1.5">
+            <span className="text-accent font-bold text-base md:text-lg">
+              {currentPrice} ₽
+            </span>
+            {item.oldPrice && item.oldPrice > currentPrice && (
+              <span className="text-gray-400 text-xs line-through">
+                {item.oldPrice} ₽
+              </span>
+            )}
+          </div>
 
           {count > 0 ? (
             <motion.div

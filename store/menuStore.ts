@@ -7,6 +7,7 @@ interface ApiMenuItem {
   description: string;
   price: number;
   price4: number;
+  old_price: number;
   image: string;
   category: string;
   weight: string;
@@ -23,6 +24,7 @@ function mapApiItem(item: ApiMenuItem): MenuItem {
     description: item.description,
     price: item.price,
     price4: item.price4 || undefined,
+    oldPrice: item.old_price || undefined,
     image: item.image,
     category: item.category as MenuItem["category"],
     weight: item.weight || undefined,

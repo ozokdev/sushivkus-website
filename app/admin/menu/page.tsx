@@ -36,6 +36,7 @@ interface AdminMenuItem {
   description: string;
   price: number;
   price4?: number;
+  oldPrice?: number;
   image: string;
   category: Category;
   weight?: string;
@@ -49,6 +50,7 @@ interface FormData {
   name: string;
   price: string;
   price4: string;
+  oldPrice: string;
   category: Category;
   weight: string;
   pieces: string;
@@ -62,6 +64,7 @@ const emptyForm: FormData = {
   name: "",
   price: "",
   price4: "",
+  oldPrice: "",
   category: "rolls",
   weight: "",
   pieces: "",
@@ -78,6 +81,7 @@ function mapApiItem(item: any): AdminMenuItem {
     description: item.description || "",
     price: item.price,
     price4: item.price4 || 0,
+    oldPrice: item.old_price || 0,
     image: item.image || "/photo/philadelphia_classic.jpg",
     category: item.category as Category,
     weight: item.weight || undefined,
@@ -218,6 +222,7 @@ export default function AdminMenu() {
       name: item.name,
       price: item.price.toString(),
       price4: item.price4 ? item.price4.toString() : "",
+      oldPrice: item.oldPrice ? item.oldPrice.toString() : "",
       category: item.category,
       weight: item.weight || "",
       pieces: item.pieces || "",
@@ -247,6 +252,7 @@ export default function AdminMenu() {
       description: form.description,
       price: Number(form.price),
       price4: form.price4 ? Number(form.price4) : 0,
+      old_price: form.oldPrice ? Number(form.oldPrice) : 0,
       image: form.image,
       category: form.category,
       weight: form.weight || "",
@@ -550,10 +556,10 @@ export default function AdminMenu() {
                     />
                   </div>
 
-                  {/* Цена 8шт + Цена 4шт + Категория */}
-                  <div className="grid grid-cols-3 gap-3">
+                  {/* Цена + Старая цена + Цена 4шт + Категория */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                     <div>
-                      <label className="block text-gray-400 text-sm mb-1.5">Цена 8шт (₽)</label>
+                      <label className="block text-gray-400 text-sm mb-1.5">Цена (₽)</label>
                       <input
                         type="number"
                         min={0}
@@ -561,6 +567,17 @@ export default function AdminMenu() {
                         onChange={(e) => setForm({ ...form, price: e.target.value })}
                         placeholder="490"
                         required
+                        className="bg-[#1a1a1a] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-accent/50 transition-colors w-full"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-gray-400 text-sm mb-1.5">Старая цена</label>
+                      <input
+                        type="number"
+                        min={0}
+                        value={form.oldPrice}
+                        onChange={(e) => setForm({ ...form, oldPrice: e.target.value })}
+                        placeholder="590"
                         className="bg-[#1a1a1a] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-accent/50 transition-colors w-full"
                       />
                     </div>

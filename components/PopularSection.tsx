@@ -136,9 +136,16 @@ export default function PopularSection() {
                     {item.description}
                   </p>
                   <div className="flex items-center justify-between gap-2">
-                    <span className="text-accent font-bold text-base md:text-lg">
-                      {item.price} ₽
-                    </span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-accent font-bold text-base md:text-lg">
+                        {item.price} ₽
+                      </span>
+                      {item.oldPrice && item.oldPrice > item.price && (
+                        <span className="text-gray-400 text-xs line-through">
+                          {item.oldPrice} ₽
+                        </span>
+                      )}
+                    </div>
                     {count > 0 ? (
                       <motion.div
                         initial={{ scale: 0.8 }}

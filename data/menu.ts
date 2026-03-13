@@ -7,6 +7,7 @@ export interface MenuItem {
   description: string;
   price: number;
   price4?: number; // цена за 4 шт (для роллов)
+  oldPrice?: number; // старая цена (зачёркнутая)
   image: string;
   category: Category;
   weight?: string;

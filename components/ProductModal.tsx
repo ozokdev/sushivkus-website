@@ -106,9 +106,16 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
 
                 {/* Цена и кнопки */}
                 <div className="flex items-center justify-between mt-auto pt-3 border-t border-white/[0.06]">
-                  <span className="text-2xl font-bold text-accent">
-                    {currentPrice} ₽
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl font-bold text-accent">
+                      {currentPrice} ₽
+                    </span>
+                    {product.oldPrice && product.oldPrice > currentPrice && (
+                      <span className="text-gray-400 text-sm line-through">
+                        {product.oldPrice} ₽
+                      </span>
+                    )}
+                  </div>
 
                   {count > 0 ? (
                     <div className="flex items-center gap-3">
