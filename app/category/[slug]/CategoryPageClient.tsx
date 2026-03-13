@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Plus, Minus, Search, X, ChevronRight, Home } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
+import { useMenuStore } from "@/store/menuStore";
 import { useToast } from "@/components/Toast";
 import type { CategoryInfo } from "@/data/categories";
 import type { MenuItem } from "@/data/menu";
@@ -28,7 +29,7 @@ const badgeConfig = {
 
 export default function CategoryPageClient({
   category,
-  items,
+  items: staticItems,
 }: {
   category: CategoryInfo;
   items: MenuItem[];
@@ -40,6 +41,15 @@ export default function CategoryPageClient({
   const showToast = useToast((s) => s.show);
   const updateQuantity = useCartStore((s) => s.updateQuantity);
   const cartItems = useCartStore((s) => s.items);
+  const menuItems = useMenuStore((s) => s.items);
+  const fetchMenu = useMenuStore((s) => s.fetchMenu);
+
+  useEffect(() => { fetchMenu(); }, [fetchMenu]);
+
+  // API'ден жүктөлсө — аны колдонуу, жоксо — статик fallback
+  const items = menuItems.length > 0
+    ? menuItems.filter((i) => i.category === category.id)
+    : staticItems;
 
   const getItemCount = (id: number) => {
     const item = cartItems.find((i) => i.id === id);
