@@ -293,7 +293,7 @@ function ProductCard({
               {currentPrice} ₽
             </span>
             {item.oldPrice && item.oldPrice > currentPrice && (
-              <span className="text-gray-400 text-xs line-through">
+              <span className="text-red-400/70 text-sm md:text-base line-through">
                 {item.oldPrice} ₽
               </span>
             )}

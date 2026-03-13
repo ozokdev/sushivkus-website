@@ -141,7 +141,7 @@ export default function PopularSection() {
                         {item.price} ₽
                       </span>
                       {item.oldPrice && item.oldPrice > item.price && (
-                        <span className="text-gray-400 text-xs line-through">
+                        <span className="text-red-400/70 text-sm md:text-base line-through">
                           {item.oldPrice} ₽
                         </span>
                       )}

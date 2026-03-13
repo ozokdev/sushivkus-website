@@ -7,11 +7,15 @@ import { Plus, Pencil, X, Search, RefreshCw, Loader2, Upload, ImageIcon } from "
 
 const API_URL = "https://api.sushivkus.ru/api";
 
-type Category = "all" | "rolls" | "sets" | "pizza" | "poke" | "soups" | "snacks" | "salads" | "sauces";
+type Category = "all" | "rolls" | "fried_rolls" | "baked_rolls" | "classic_rolls" | "sushi_gunkan" | "sets" | "pizza" | "poke" | "soups" | "snacks" | "salads" | "sauces";
 
 const categories: { id: Category; name: string }[] = [
   { id: "all", name: "Все" },
   { id: "rolls", name: "Роллы" },
+  { id: "fried_rolls", name: "Жареные роллы" },
+  { id: "baked_rolls", name: "Запечённые роллы" },
+  { id: "classic_rolls", name: "Классические роллы" },
+  { id: "sushi_gunkan", name: "Суши и гунканы" },
   { id: "sets", name: "Сеты" },
   { id: "pizza", name: "Пицца" },
   { id: "poke", name: "Поке" },

@@ -111,7 +111,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                       {currentPrice} ₽
                     </span>
                     {product.oldPrice && product.oldPrice > currentPrice && (
-                      <span className="text-gray-400 text-sm line-through">
+                      <span className="text-red-400/70 text-lg line-through">
                         {product.oldPrice} ₽
                       </span>
                     )}
