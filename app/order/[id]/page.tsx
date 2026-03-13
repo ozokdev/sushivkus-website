@@ -22,6 +22,7 @@ interface TrackData {
 
 const STATUS_STEPS = [
   { key: "new", label: "Заказ принят", icon: ShoppingBag, color: "blue" },
+  { key: "paid", label: "Оплачен", icon: CheckCircle, color: "green" },
   { key: "preparing", label: "Готовится", icon: ChefHat, color: "yellow" },
   { key: "delivering", label: "В пути", icon: Truck, color: "purple" },
   { key: "delivered", label: "Доставлен", icon: CheckCircle, color: "green" },

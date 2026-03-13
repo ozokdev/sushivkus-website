@@ -84,6 +84,26 @@ export default function CheckoutPage() {
         const orderId = data.id || data.ID || data.order?.ID || 0;
         const total = getFinalPrice();
         useOrderStore.getState().setLastOrderId(orderId);
+
+        // Онлайн-оплата — ЮKassa
+        if (selectedPayment === "online" && orderId) {
+          try {
+            const payRes = await fetch("https://api.sushivkus.ru/api/payment/create", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ order_id: orderId, amount: total }),
+            });
+            const payData = await payRes.json();
+            if (payRes.ok && payData.confirmation_url) {
+              clearCart();
+              window.location.href = payData.confirmation_url;
+              return;
+            }
+          } catch {
+            // Если оплата не удалась — показываем успех заказа
+          }
+        }
+
         clearCart();
         setOrderSuccess({ id: orderId, total });
       } else {

@@ -36,28 +36,40 @@ interface MenuState {
   items: MenuItem[];
   loading: boolean;
   fetched: boolean;
+  lastFetch: number;
   fetchMenu: () => Promise<void>;
 }
 
+const CACHE_TTL = 60_000; // 1 мүнөт кэш
+
 export const useMenuStore = create<MenuState>((set, get) => ({
-  items: staticItems,
+  items: [],
   loading: false,
   fetched: false,
+  lastFetch: 0,
 
   fetchMenu: async () => {
-    if (get().fetched) return;
+    const now = Date.now();
+    // Кэш 1 мүнөт — андан кийин кайра fetch кылат
+    if (get().fetched && now - get().lastFetch < CACHE_TTL) return;
     set({ loading: true });
     try {
       const res = await fetch("https://api.sushivkus.ru/api/menu");
       if (!res.ok) throw new Error("API error");
       const data: ApiMenuItem[] = await res.json();
       if (Array.isArray(data) && data.length > 0) {
-        set({ items: data.map(mapApiItem), fetched: true, loading: false });
+        set({ items: data.map(mapApiItem), fetched: true, loading: false, lastFetch: now });
       } else {
-        set({ fetched: true, loading: false });
+        // API бош кайтса — fallback
+        set({ items: staticItems, fetched: true, loading: false, lastFetch: now });
       }
     } catch {
-      set({ fetched: true, loading: false });
+      // API ката болсо — fallback
+      if (get().items.length === 0) {
+        set({ items: staticItems, loading: false });
+      } else {
+        set({ loading: false });
+      }
     }
   },
 }));

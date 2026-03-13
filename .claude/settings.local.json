@@ -24,7 +24,8 @@
       "Bash(python upload_api.py)",
       "Bash(python deploy_update.py)",
       "WebFetch(domain:sushivkus.ru)",
-      "WebFetch(domain:pagespeed.web.dev)"
+      "WebFetch(domain:pagespeed.web.dev)",
+      "WebFetch(domain:api.sushivkus.ru)"
     ]
   }
 }
