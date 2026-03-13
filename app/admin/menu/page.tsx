@@ -597,48 +597,13 @@ export default function AdminMenu() {
                   <div className="grid grid-cols-3 gap-3">
                     <div>
                       <label className="block text-gray-400 text-sm mb-1.5">Вес</label>
-                      <select
+                      <input
+                        type="text"
                         value={form.weight}
                         onChange={(e) => setForm({ ...form, weight: e.target.value })}
+                        placeholder="280г, 50мл"
                         className="bg-[#1a1a1a] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-accent/50 transition-colors w-full"
-                      >
-                        <option value="">Жок</option>
-                        <option value="10г">10г</option>
-                        <option value="20г">20г</option>
-                        <option value="30г">30г</option>
-                        <option value="40г">40г</option>
-                        <option value="50г">50г</option>
-                        <option value="60г">60г</option>
-                        <option value="70г">70г</option>
-                        <option value="80г">80г</option>
-                        <option value="90г">90г</option>
-                        <option value="100г">100г</option>
-                        <option value="30мл">30мл</option>
-                        <option value="40мл">40мл</option>
-                        <option value="50мл">50мл</option>
-                        <option value="100мл">100мл</option>
-                        <option value="200г">200г</option>
-                        <option value="250г">250г</option>
-                        <option value="280г">280г</option>
-                        <option value="290г">290г</option>
-                        <option value="300г">300г</option>
-                        <option value="310г">310г</option>
-                        <option value="320г">320г</option>
-                        <option value="350г">350г</option>
-                        <option value="400г">400г</option>
-                        <option value="450г">450г</option>
-                        <option value="500г">500г</option>
-                        <option value="600г">600г</option>
-                        <option value="700г">700г</option>
-                        <option value="800г">800г</option>
-                        <option value="900г">900г</option>
-                        <option value="1000г">1000г</option>
-                        <option value="1200г">1200г</option>
-                        <option value="1500г">1500г</option>
-                        <option value="2000г">2000г</option>
-                        <option value="2600г">2600г</option>
-                        <option value="3000г">3000г</option>
-                      </select>
+                      />
                     </div>
                     <div>
                       <label className="block text-gray-400 text-sm mb-1.5">Порция</label>

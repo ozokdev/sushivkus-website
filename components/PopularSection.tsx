@@ -91,11 +91,6 @@ export default function PopularSection() {
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
                   />
                   <div className="absolute top-2 left-2 flex flex-col gap-1">
-                    {item.weight && (
-                      <span className="bg-black/60 backdrop-blur-sm text-white text-[10px] md:text-xs px-2 py-0.5 rounded-md">
-                        {item.weight}
-                      </span>
-                    )}
                     {item.pieces && (
                       <span className="bg-accent/80 backdrop-blur-sm text-white text-[10px] md:text-xs px-2 py-0.5 rounded-md font-medium">
                         {item.pieces}

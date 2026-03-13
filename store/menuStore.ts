@@ -56,8 +56,9 @@ export const useMenuStore = create<MenuState>((set, get) => ({
     try {
       const res = await fetch("https://api.sushivkus.ru/api/menu");
       if (!res.ok) throw new Error("API error");
-      const data: ApiMenuItem[] = await res.json();
-      if (Array.isArray(data) && data.length > 0) {
+      const json = await res.json();
+      const data: ApiMenuItem[] = Array.isArray(json) ? json : json.items || [];
+      if (data.length > 0) {
         set({ items: data.map(mapApiItem), fetched: true, loading: false, lastFetch: now });
       } else {
         // API бош кайтса — fallback
