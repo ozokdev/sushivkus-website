@@ -17,6 +17,8 @@ import {
   GripVertical,
   ArrowUp,
   ArrowDown,
+  Layout,
+  HelpCircle,
 } from "lucide-react";
 
 interface PaymentMethod {
@@ -77,6 +79,10 @@ const item = {
 export default function SettingsPage() {
   const [settings, setSettings] = useState<SiteSettings>(initialSettings);
   const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
+  const [sections, setSections] = useState<Record<string, boolean>>({
+    show_instagram: true,
+    show_faq: true,
+  });
   const [saved, setSaved] = useState(false);
   const [saving, setSaving] = useState(false);
 
@@ -94,10 +100,27 @@ export default function SettingsPage() {
         if (Array.isArray(data)) setPaymentMethods(data);
       })
       .catch(() => {});
+
+    fetch("https://api.sushivkus.ru/api/site-settings")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data && typeof data === "object") {
+          setSections({
+            show_instagram: data.show_instagram !== "false",
+            show_faq: data.show_faq !== "false",
+          });
+        }
+      })
+      .catch(() => {});
   }, []);
 
   const update = (key: keyof SiteSettings, value: string | number | boolean) => {
     setSettings({ ...settings, [key]: value });
+    setSaved(false);
+  };
+
+  const toggleSection = (key: string) => {
+    setSections((prev) => ({ ...prev, [key]: !prev[key] }));
     setSaved(false);
   };
 
@@ -121,22 +144,35 @@ export default function SettingsPage() {
   const handleSave = async () => {
     setSaving(true);
     try {
-      await fetch("https://api.sushivkus.ru/api/payment-methods", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${getToken()}`,
-        },
-        body: JSON.stringify(
-          paymentMethods.map((m, i) => ({
-            key: m.key,
-            name: m.name,
-            description: m.description,
-            enabled: m.enabled,
-            sort_order: i,
-          }))
-        ),
-      });
+      await Promise.all([
+        fetch("https://api.sushivkus.ru/api/payment-methods", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`,
+          },
+          body: JSON.stringify(
+            paymentMethods.map((m, i) => ({
+              key: m.key,
+              name: m.name,
+              description: m.description,
+              enabled: m.enabled,
+              sort_order: i,
+            }))
+          ),
+        }),
+        fetch("https://api.sushivkus.ru/api/site-settings", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`,
+          },
+          body: JSON.stringify({
+            show_instagram: sections.show_instagram ? "true" : "false",
+            show_faq: sections.show_faq ? "true" : "false",
+          }),
+        }),
+      ]);
       setSaved(true);
       setTimeout(() => setSaved(false), 3000);
     } catch {
@@ -386,6 +422,66 @@ export default function SettingsPage() {
               placeholder="username"
               className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accent/40 transition-colors"
             />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Секции сайта */}
+      <motion.div
+        variants={item}
+        className="bg-[#111] border border-white/10 rounded-2xl p-6"
+      >
+        <div className="flex items-center gap-3 mb-5">
+          <div className="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center">
+            <Layout className="w-5 h-5 text-purple-400" />
+          </div>
+          <div>
+            <h2 className="font-semibold text-lg">Секции сайта</h2>
+            <p className="text-xs text-gray-500 mt-0.5">Показать или скрыть блоки на главной странице</p>
+          </div>
+        </div>
+        <div className="space-y-3">
+          <div className="flex items-center justify-between p-4 bg-white/[0.03] rounded-xl">
+            <div className="flex items-center gap-3">
+              <Instagram className="w-5 h-5 text-pink-400" />
+              <div>
+                <p className="text-sm font-medium">Instagram галерея</p>
+                <p className="text-xs text-gray-500 mt-0.5">Блок с фото блюд и ссылкой на Instagram</p>
+              </div>
+            </div>
+            <button
+              onClick={() => toggleSection("show_instagram")}
+              className={`relative w-11 h-6 rounded-full transition-colors ${
+                sections.show_instagram ? "bg-accent" : "bg-gray-700"
+              }`}
+            >
+              <div
+                className={`absolute top-0.5 w-5 h-5 bg-white rounded-full transition-transform ${
+                  sections.show_instagram ? "left-[22px]" : "left-0.5"
+                }`}
+              />
+            </button>
+          </div>
+          <div className="flex items-center justify-between p-4 bg-white/[0.03] rounded-xl">
+            <div className="flex items-center gap-3">
+              <HelpCircle className="w-5 h-5 text-blue-400" />
+              <div>
+                <p className="text-sm font-medium">Вопросы и ответы (FAQ)</p>
+                <p className="text-xs text-gray-500 mt-0.5">Блок с частыми вопросами клиентов</p>
+              </div>
+            </div>
+            <button
+              onClick={() => toggleSection("show_faq")}
+              className={`relative w-11 h-6 rounded-full transition-colors ${
+                sections.show_faq ? "bg-accent" : "bg-gray-700"
+              }`}
+            >
+              <div
+                className={`absolute top-0.5 w-5 h-5 bg-white rounded-full transition-transform ${
+                  sections.show_faq ? "left-[22px]" : "left-0.5"
+                }`}
+              />
+            </button>
           </div>
         </div>
       </motion.div>

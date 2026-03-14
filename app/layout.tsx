@@ -150,7 +150,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{if(location.pathname.startsWith("/admin")){document.documentElement.className="dark-mode";return}var t=localStorage.getItem("theme");if(t==="dark"){document.documentElement.className="dark-mode"}else{document.documentElement.className="light-mode"}}catch(e){}})()`,
+            __html: `(function(){try{var p=location.pathname;if(p.startsWith("/admin")){document.documentElement.className="dark-mode";return}var t=localStorage.getItem("theme");if(t==="dark"){document.documentElement.className="dark-mode"}else{document.documentElement.className="light-mode"}}catch(e){}})()`,
           }}
         />
         <script

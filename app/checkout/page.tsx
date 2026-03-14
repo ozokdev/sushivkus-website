@@ -347,7 +347,7 @@ export default function CheckoutPage() {
                           : "bg-white/[0.03] border-2 border-transparent hover:border-white/10"
                       }`}>
                       <Icon className={`w-5 h-5 ${isSelected ? "text-accent" : "text-gray-500"}`} />
-                      <span className={`text-xs font-medium ${isSelected ? "text-white" : "text-gray-400"}`}>{method.name}</span>
+                      <span className={`text-xs font-medium ${isSelected ? "text-accent" : "text-gray-400"}`}>{method.name}</span>
                     </button>
                   );
                 })}
@@ -361,7 +361,7 @@ export default function CheckoutPage() {
                       : "bg-white/[0.03] border-2 border-transparent hover:border-white/10"
                   }`}>
                   <Banknote className={`w-5 h-5 ${selectedPayment === "cash" ? "text-accent" : "text-gray-500"}`} />
-                  <span className={`text-xs font-medium ${selectedPayment === "cash" ? "text-white" : "text-gray-400"}`}>Наличными</span>
+                  <span className={`text-xs font-medium ${selectedPayment === "cash" ? "text-accent" : "text-gray-400"}`}>Наличными</span>
                 </button>
                 <button type="button" onClick={() => setSelectedPayment("card")}
                   className={`flex-1 rounded-xl py-3 px-3 flex flex-col items-center gap-1.5 transition-all ${
@@ -370,7 +370,7 @@ export default function CheckoutPage() {
                       : "bg-white/[0.03] border-2 border-transparent hover:border-white/10"
                   }`}>
                   <CreditCard className={`w-5 h-5 ${selectedPayment === "card" ? "text-accent" : "text-gray-500"}`} />
-                  <span className={`text-xs font-medium ${selectedPayment === "card" ? "text-white" : "text-gray-400"}`}>Картой</span>
+                  <span className={`text-xs font-medium ${selectedPayment === "card" ? "text-accent" : "text-gray-400"}`}>Картой</span>
                 </button>
               </div>
             )}
