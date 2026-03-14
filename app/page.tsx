@@ -7,7 +7,7 @@ import Hero from "@/components/Hero";
 import WorkTimer from "@/components/WorkTimer";
 import MenuSection from "@/components/Menu";
 import CategoryGrid from "@/components/CategoryGrid";
-import PopularSection from "@/components/PopularSection";
+
 import Cart from "@/components/Cart";
 import OrderForm from "@/components/OrderForm";
 import Footer from "@/components/Footer";
@@ -47,8 +47,6 @@ export default function Home() {
         <Hero />
         <WorkTimer />
         <CategoryGrid />
-        <PopularSection />
-
         <MenuSection />
         {sections.show_instagram && <InstagramGallery />}
         {sections.show_faq && <FAQ />}
