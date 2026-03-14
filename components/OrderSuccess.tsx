@@ -122,15 +122,25 @@ export default function OrderSuccess() {
                 </div>
               </motion.div>
 
-              <motion.button
+              <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-                onClick={closeOrderSuccess}
-                className="w-full py-3 bg-accent hover:bg-accent-hover rounded-xl text-white font-semibold transition-colors"
+                className="space-y-3"
               >
-                Отлично!
-              </motion.button>
+                <a
+                  href={`/order/${lastOrderNumber}`}
+                  className="block w-full py-3 bg-accent hover:bg-accent-hover rounded-xl text-white font-semibold transition-colors text-center"
+                >
+                  Отслеживать заказ
+                </a>
+                <button
+                  onClick={closeOrderSuccess}
+                  className="w-full py-3 bg-white/5 hover:bg-white/10 rounded-xl text-gray-400 font-medium transition-colors"
+                >
+                  Закрыть
+                </button>
+              </motion.div>
             </div>
           </motion.div>
         </>

@@ -28,6 +28,7 @@ export default function CheckoutPage() {
   const [promoError, setPromoError] = useState("");
   const [orderSuccess, setOrderSuccess] = useState<{ id: number; total: number } | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [redirecting, setRedirecting] = useState(false);
   const [paymentMethods, setPaymentMethods] = useState<{ key: string; name: string; description: string; enabled: boolean }[]>([]);
   const [selectedPayment, setSelectedPayment] = useState("cash");
 
@@ -87,6 +88,7 @@ export default function CheckoutPage() {
 
         // Онлайн-оплата — ЮKassa
         if (selectedPayment === "online" && orderId) {
+          setRedirecting(true);
           try {
             const payRes = await fetch("https://api.sushivkus.ru/api/payment/create", {
               method: "POST",
@@ -102,6 +104,7 @@ export default function CheckoutPage() {
           } catch {
             // Если оплата не удалась — показываем успех заказа
           }
+          setRedirecting(false);
         }
 
         clearCart();
@@ -183,6 +186,19 @@ export default function CheckoutPage() {
           >
             Вернуться в меню
           </Link>
+        </div>
+      </div>
+    );
+  }
+
+  // Перенаправление на оплату
+  if (redirecting) {
+    return (
+      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center px-4">
+        <div className="text-center space-y-4">
+          <div className="w-14 h-14 border-4 border-accent border-t-transparent rounded-full animate-spin mx-auto" />
+          <h1 className="text-xl font-bold text-white">Переход к оплате...</h1>
+          <p className="text-gray-500 text-sm">Подождите, вы будете перенаправлены на страницу оплаты</p>
         </div>
       </div>
     );
