@@ -19,7 +19,6 @@ export interface MenuItem {
 // Данные меню с фотографиями из папки /photo
 export const categories: { id: Category; name: string }[] = [
   { id: "all", name: "Все" },
-  { id: "popular", name: "Популярное" },
   { id: "rolls", name: "Роллы" },
   { id: "fried_rolls", name: "Жареные роллы" },
   { id: "baked_rolls", name: "Запечённые роллы" },

@@ -77,43 +77,7 @@ export default function MenuSection() {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 pb-24 md:pb-4">
-        {/* Популярное */}
-        {(activeCategory === "all" || activeCategory === "popular") &&
-          popularItems.length > 0 && (
-            <div id="cat-popular" className="mb-6 scroll-mt-32">
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="flex items-center gap-3 mb-3"
-              >
-                <h2 className="text-2xl sm:text-3xl font-bold">
-                  🔥 Популярное
-                </h2>
-                <span className="text-sm text-gray-500 bg-white/5 px-3 py-1 rounded-lg">
-                  {popularItems.length}
-                </span>
-              </motion.div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-                {popularItems.map((item, index) => (
-                  <ProductCard
-                    key={`pop-${item.id}`}
-                    item={item}
-                    index={index}
-                    getItemCount={getItemCount}
-                    isAdding={addedId === item.id}
-                    onAdd={() => handleAdd(item)}
-                    onMinus={(cartId) =>
-                      updateQuantity(cartId, getItemCount(cartId) - 1)
-                    }
-                    onClickCard={() => setSelectedProduct(item)}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-
-        {/* Остальные категории */}
+        {/* Категории */}
         {displayCategories.map((category) => {
           if (
             activeCategory !== "all" &&

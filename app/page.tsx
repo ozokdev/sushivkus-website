@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
+// import Hero from "@/components/Hero"; // Убрано временно
 import WorkTimer from "@/components/WorkTimer";
 import MenuSection from "@/components/Menu";
 import CategoryGrid from "@/components/CategoryGrid";
@@ -44,7 +44,7 @@ export default function Home() {
       <TopBar />
       <Header />
       <main>
-        <Hero />
+        {/* <Hero /> */}
         <WorkTimer />
         <CategoryGrid />
         <MenuSection />
