@@ -266,9 +266,10 @@ export default function AdminMenu() {
       badge: form.badge || "",
     };
 
+    let success = false;
+
     try {
       if (editItem) {
-        // PUT — жаңыртуу
         const res = await fetch(`${API_URL}/menu/${editItem.id}`, {
           method: "PUT",
           headers: {
@@ -277,16 +278,23 @@ export default function AdminMenu() {
           },
           body: JSON.stringify(body),
         });
+        if (res.status === 401) {
+          localStorage.removeItem("admin_auth");
+          localStorage.removeItem("admin_token");
+          window.location.href = "/admin/login";
+          return;
+        }
         if (res.ok) {
           const data = await res.json();
           const updated = mapApiItem(data.data);
           setItems((prev) => prev.map((i) => (i.id === editItem.id ? updated : i)));
           showToast("Товар сакталды");
+          success = true;
         } else {
-          showToast("Сактоо катасы", "error");
+          const err = await res.json().catch(() => ({}));
+          showToast(err.error || "Сактоо катасы", "error");
         }
       } else {
-        // POST — жаңы товар
         const res = await fetch(`${API_URL}/menu`, {
           method: "POST",
           headers: {
@@ -295,13 +303,21 @@ export default function AdminMenu() {
           },
           body: JSON.stringify(body),
         });
+        if (res.status === 401) {
+          localStorage.removeItem("admin_auth");
+          localStorage.removeItem("admin_token");
+          window.location.href = "/admin/login";
+          return;
+        }
         if (res.ok) {
           const data = await res.json();
           const newItem = mapApiItem(data.data);
           setItems((prev) => [newItem, ...prev]);
           showToast("Товар кошулду");
+          success = true;
         } else {
-          showToast("Кошуу катасы", "error");
+          const err = await res.json().catch(() => ({}));
+          showToast(err.error || "Кошуу катасы", "error");
         }
       }
     } catch {
@@ -309,7 +325,7 @@ export default function AdminMenu() {
     }
 
     setSaving(false);
-    closeModal();
+    if (success) closeModal();
   };
 
   const modalOpen = !!editItem || isAdding;

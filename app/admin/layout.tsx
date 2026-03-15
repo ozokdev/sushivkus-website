@@ -23,24 +23,24 @@ import {
   Download,
 } from "lucide-react";
 
-const navItems = [
-  { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/admin/orders", label: "Заказы", icon: ClipboardList },
-  { href: "/admin/menu", label: "Меню", icon: UtensilsCrossed },
-  { href: "/admin/customers", label: "Клиенты", icon: Users },
-  { href: "/admin/analytics", label: "Аналитика", icon: BarChart3 },
-  { href: "/admin/delivery", label: "Доставка", icon: MapPin },
-  { href: "/admin/banners", label: "Баннеры", icon: ImageIcon },
-  { href: "/admin/promos", label: "Промокоды", icon: Tag },
-  { href: "/admin/promotions", label: "Акции", icon: Gift },
-  { href: "/admin/notifications", label: "Уведомления", icon: Bell },
-  { href: "/admin/telegram", label: "Telegram", icon: Bot },
-  { href: "/admin/export", label: "Экспорт", icon: Download },
-  { href: "/admin/settings", label: "Настройки", icon: Settings },
+const allNavItems = [
+  { href: "/admin", label: "Dashboard", icon: LayoutDashboard, roles: ["admin"] },
+  { href: "/admin/orders", label: "Заказы", icon: ClipboardList, roles: ["admin"] },
+  { href: "/admin/menu", label: "Меню", icon: UtensilsCrossed, roles: ["admin", "menu_editor"] },
+  { href: "/admin/customers", label: "Клиенты", icon: Users, roles: ["admin"] },
+  { href: "/admin/analytics", label: "Аналитика", icon: BarChart3, roles: ["admin"] },
+  { href: "/admin/delivery", label: "Доставка", icon: MapPin, roles: ["admin"] },
+  { href: "/admin/banners", label: "Баннеры", icon: ImageIcon, roles: ["admin"] },
+  { href: "/admin/promos", label: "Промокоды", icon: Tag, roles: ["admin"] },
+  { href: "/admin/promotions", label: "Акции", icon: Gift, roles: ["admin"] },
+  { href: "/admin/notifications", label: "Уведомления", icon: Bell, roles: ["admin"] },
+  { href: "/admin/telegram", label: "Telegram", icon: Bot, roles: ["admin"] },
+  { href: "/admin/export", label: "Экспорт", icon: Download, roles: ["admin"] },
+  { href: "/admin/settings", label: "Настройки", icon: Settings, roles: ["admin"] },
 ];
 
 function getPageTitle(pathname: string) {
-  const item = navItems.find((n) => n.href === pathname);
+  const item = allNavItems.find((n) => n.href === pathname);
   return item?.label || "Админ";
 }
 
@@ -54,12 +54,18 @@ export default function AdminLayout({
   const [authed, setAuthed] = useState(false);
   const [checking, setChecking] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [role, setRole] = useState("admin");
 
   // Логин бетинде layout'ту көрсөтпө
   const isLoginPage = pathname === "/admin/login";
 
+  const navItems = allNavItems.filter((item) => item.roles.includes(role));
+
   useEffect(() => {
+    document.documentElement.className = "dark-mode";
     const auth = localStorage.getItem("admin_auth");
+    const savedRole = localStorage.getItem("admin_role") || "admin";
+    setRole(savedRole);
     if (!auth && !isLoginPage) {
       router.push("/admin/login");
     } else {

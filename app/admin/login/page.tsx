@@ -1,11 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 
 export default function AdminLogin() {
+  useEffect(() => {
+    document.documentElement.className = "dark-mode";
+  }, []);
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +32,9 @@ export default function AdminLogin() {
       if (res.ok && data.token) {
         localStorage.setItem("admin_auth", "true");
         localStorage.setItem("admin_token", data.token);
-        router.push("/admin");
+        localStorage.setItem("admin_role", data.role || "admin");
+        const target = data.role === "menu_editor" ? "/admin/menu" : "/admin";
+        router.push(target);
       } else {
         setError(data.error || "Неверный логин или пароль");
       }
