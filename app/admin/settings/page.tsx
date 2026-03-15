@@ -19,6 +19,7 @@ import {
   ArrowDown,
   Layout,
   HelpCircle,
+  Truck,
 } from "lucide-react";
 
 interface PaymentMethod {
@@ -109,6 +110,15 @@ export default function SettingsPage() {
             show_instagram: data.show_instagram !== "false",
             show_faq: data.show_faq !== "false",
           });
+          if (data.min_order_amount) {
+            setSettings((prev) => ({ ...prev, minOrderAmount: parseInt(data.min_order_amount, 10) || 500 }));
+          }
+          if (data.free_delivery_from) {
+            setSettings((prev) => ({ ...prev, freeDeliveryFrom: parseInt(data.free_delivery_from, 10) || 2000 }));
+          }
+          if (data.delivery_price) {
+            setSettings((prev) => ({ ...prev, deliveryPrice: parseInt(data.delivery_price, 10) || 200 }));
+          }
         }
       })
       .catch(() => {});
@@ -170,6 +180,9 @@ export default function SettingsPage() {
           body: JSON.stringify({
             show_instagram: sections.show_instagram ? "true" : "false",
             show_faq: sections.show_faq ? "true" : "false",
+            min_order_amount: String(settings.minOrderAmount),
+            free_delivery_from: String(settings.freeDeliveryFrom),
+            delivery_price: String(settings.deliveryPrice),
           }),
         }),
       ]);
@@ -482,6 +495,54 @@ export default function SettingsPage() {
                 }`}
               />
             </button>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Доставка и заказы */}
+      <motion.div
+        variants={item}
+        className="bg-[#111] border border-white/10 rounded-2xl p-6"
+      >
+        <div className="flex items-center gap-3 mb-5">
+          <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center">
+            <Truck className="w-5 h-5 text-orange-400" />
+          </div>
+          <h2 className="font-semibold text-lg">Доставка и заказы</h2>
+        </div>
+        <div className="grid sm:grid-cols-3 gap-4">
+          <div>
+            <label className="text-sm text-gray-400 mb-1.5 block">
+              Мин. сумма заказа (₽)
+            </label>
+            <input
+              type="number"
+              value={settings.minOrderAmount}
+              onChange={(e) => update("minOrderAmount", parseInt(e.target.value) || 0)}
+              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-accent/40 transition-colors"
+            />
+          </div>
+          <div>
+            <label className="text-sm text-gray-400 mb-1.5 block">
+              Бесплатная доставка от (₽)
+            </label>
+            <input
+              type="number"
+              value={settings.freeDeliveryFrom}
+              onChange={(e) => update("freeDeliveryFrom", parseInt(e.target.value) || 0)}
+              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-accent/40 transition-colors"
+            />
+          </div>
+          <div>
+            <label className="text-sm text-gray-400 mb-1.5 block">
+              Стоимость доставки (₽)
+            </label>
+            <input
+              type="number"
+              value={settings.deliveryPrice}
+              onChange={(e) => update("deliveryPrice", parseInt(e.target.value) || 0)}
+              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-accent/40 transition-colors"
+            />
           </div>
         </div>
       </motion.div>

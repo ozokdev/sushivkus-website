@@ -9,7 +9,25 @@ export interface CartItem {
   quantity: number;
 }
 
-export const MIN_ORDER = 500;
+export let MIN_ORDER = 500;
+
+// API'ден минималдуу заказ суммасын жүктөө
+export async function loadMinOrder() {
+  try {
+    const res = await fetch("https://api.sushivkus.ru/api/site-settings");
+    const data = await res.json();
+    if (data && data.min_order_amount) {
+      MIN_ORDER = parseInt(data.min_order_amount, 10) || 500;
+    }
+  } catch {
+    // fallback 500
+  }
+}
+
+// Дароо жүктөө
+if (typeof window !== "undefined") {
+  loadMinOrder();
+}
 
 export const PROMO_CODES: Record<string, number> = {
   VKUS20: 20,
