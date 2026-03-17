@@ -21,6 +21,7 @@ interface ApiCategory {
   ID: number;
   slug: string;
   name: string;
+  icon: string;
   sort_order: number;
   is_active: boolean;
 }
@@ -45,6 +46,7 @@ function mapApiItem(item: ApiMenuItem): MenuItem {
 export interface CategoryDisplay {
   id: string;
   name: string;
+  icon: string;
 }
 
 interface MenuState {
@@ -81,8 +83,8 @@ export const useMenuStore = create<MenuState>((set, get) => ({
         if (Array.isArray(catData) && catData.length > 0) {
           const activeCats = catData.filter((c) => c.is_active);
           const mapped: CategoryDisplay[] = [
-            { id: "all", name: "Все" },
-            ...activeCats.map((c) => ({ id: c.slug, name: c.name })),
+            { id: "all", name: "Все", icon: "🍱" },
+            ...activeCats.map((c) => ({ id: c.slug, name: c.name, icon: c.icon || "📋" })),
           ];
           set({ categories: mapped });
         }

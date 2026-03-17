@@ -4,26 +4,6 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useMenuStore } from "@/store/menuStore";
 
-// Иконки-эмодзи для каждой категории
-const categoryIcons: Record<string, string> = {
-  all: "🍱",
-  popular: "🔥",
-  rolls: "🍣",
-  fried_rolls: "🍤",
-  baked_rolls: "🔥",
-  classic_rolls: "🍙",
-  sushi_gunkan: "🍣",
-  sets: "🎁",
-  pizza: "🍕",
-  poke: "🥗",
-  wok: "🍜",
-  soups: "🍜",
-  snacks: "🍟",
-  salads: "🥬",
-  sauces: "🥢",
-  zavtraki: "🍳",
-};
-
 interface CategoryNavProps {
   activeCategory: string;
   onCategoryChange: (cat: string) => void;
@@ -138,7 +118,7 @@ export default function CategoryNav({
                     : "bg-white/[0.05] text-gray-400 hover:bg-white/[0.08] hover:text-white"
                 }`}
               >
-                <span className="text-base">{categoryIcons[cat.id] || "📋"}</span>
+                <span className="text-base">{cat.icon}</span>
                 {cat.name}
               </button>
             ))}

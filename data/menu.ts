@@ -17,20 +17,20 @@ export interface MenuItem {
 }
 
 // Данные меню с фотографиями из папки /photo
-export const categories: { id: Category; name: string }[] = [
-  { id: "all", name: "Все" },
-  { id: "rolls", name: "Роллы" },
-  { id: "fried_rolls", name: "Жареные роллы" },
-  { id: "baked_rolls", name: "Запечённые роллы" },
-  { id: "classic_rolls", name: "Классические роллы" },
-  { id: "sushi_gunkan", name: "Суши и гунканы" },
-  { id: "sets", name: "Сеты" },
-  { id: "pizza", name: "Пицца" },
-  { id: "poke", name: "Поке" },
-  { id: "soups", name: "Супы" },
-  { id: "snacks", name: "Закуски" },
-  { id: "salads", name: "Салаты" },
-  { id: "sauces", name: "Соусы" },
+export const categories: { id: Category; name: string; icon: string }[] = [
+  { id: "all", name: "Все", icon: "🍱" },
+  { id: "rolls", name: "Роллы", icon: "🍣" },
+  { id: "fried_rolls", name: "Жареные роллы", icon: "🍤" },
+  { id: "baked_rolls", name: "Запечённые роллы", icon: "🔥" },
+  { id: "classic_rolls", name: "Классические роллы", icon: "🍙" },
+  { id: "sushi_gunkan", name: "Суши и гунканы", icon: "🍣" },
+  { id: "sets", name: "Сеты", icon: "🎁" },
+  { id: "pizza", name: "Пицца", icon: "🍕" },
+  { id: "poke", name: "Поке", icon: "🥗" },
+  { id: "soups", name: "Супы", icon: "🍜" },
+  { id: "snacks", name: "Закуски", icon: "🍟" },
+  { id: "salads", name: "Салаты", icon: "🥬" },
+  { id: "sauces", name: "Соусы", icon: "🥢" },
 ];
 
 export const menuItems: MenuItem[] = [

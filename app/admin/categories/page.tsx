@@ -21,6 +21,7 @@ interface CategoryItem {
   ID: number;
   slug: string;
   name: string;
+  icon: string;
   sort_order: number;
   is_active: boolean;
 }
@@ -30,8 +31,8 @@ export default function CategoriesPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [editId, setEditId] = useState<number | null>(null);
-  const [editForm, setEditForm] = useState({ name: "", slug: "" });
-  const [addForm, setAddForm] = useState({ name: "", slug: "" });
+  const [editForm, setEditForm] = useState({ name: "", slug: "", icon: "" });
+  const [addForm, setAddForm] = useState({ name: "", slug: "", icon: "" });
   const [isAdding, setIsAdding] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
 
@@ -73,13 +74,14 @@ export default function CategoriesPage() {
         body: JSON.stringify({
           name: addForm.name,
           slug: addForm.slug || addForm.name.toLowerCase().replace(/\s+/g, "_"),
+          icon: addForm.icon || "📋",
           sort_order: categories.length,
           is_active: true,
         }),
       });
       if (res.ok) {
         showToast("Категория кошулду");
-        setAddForm({ name: "", slug: "" });
+        setAddForm({ name: "", slug: "", icon: "" });
         setIsAdding(false);
         fetchCategories();
       } else {
@@ -104,6 +106,7 @@ export default function CategoriesPage() {
         body: JSON.stringify({
           name: editForm.name,
           slug: editForm.slug || cat.slug,
+          icon: editForm.icon || cat.icon,
           sort_order: cat.sort_order,
           is_active: cat.is_active,
         }),
@@ -231,7 +234,7 @@ export default function CategoriesPage() {
         <button
           onClick={() => {
             setIsAdding(true);
-            setAddForm({ name: "", slug: "" });
+            setAddForm({ name: "", slug: "", icon: "" });
           }}
           className="flex items-center gap-2 bg-accent hover:bg-accent-hover text-white rounded-xl px-4 py-2.5 text-sm font-medium transition-all"
         >
@@ -250,7 +253,7 @@ export default function CategoriesPage() {
             className="bg-[#111] border border-accent/30 rounded-2xl p-5 overflow-hidden"
           >
             <h3 className="font-semibold mb-4">Новая категория</h3>
-            <div className="grid sm:grid-cols-2 gap-3">
+            <div className="grid sm:grid-cols-3 gap-3">
               <div>
                 <label className="text-sm text-gray-400 mb-1 block">Название</label>
                 <input
@@ -267,8 +270,18 @@ export default function CategoriesPage() {
                   type="text"
                   value={addForm.slug}
                   onChange={(e) => setAddForm({ ...addForm, slug: e.target.value })}
-                  placeholder="drinks (авто-генерация)"
+                  placeholder="drinks (авто)"
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-accent/40"
+                />
+              </div>
+              <div>
+                <label className="text-sm text-gray-400 mb-1 block">Иконка (эмодзи)</label>
+                <input
+                  type="text"
+                  value={addForm.icon}
+                  onChange={(e) => setAddForm({ ...addForm, icon: e.target.value })}
+                  placeholder="🍕"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white text-center focus:outline-none focus:border-accent/40"
                 />
               </div>
             </div>
@@ -333,6 +346,12 @@ export default function CategoriesPage() {
                   <div className="flex gap-2">
                     <input
                       type="text"
+                      value={editForm.icon}
+                      onChange={(e) => setEditForm({ ...editForm, icon: e.target.value })}
+                      className="w-12 bg-white/5 border border-white/10 rounded-lg px-2 py-1.5 text-sm text-center focus:outline-none focus:border-accent/40"
+                    />
+                    <input
+                      type="text"
                       value={editForm.name}
                       onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
                       className="flex-1 bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-sm text-white focus:outline-none focus:border-accent/40"
@@ -347,6 +366,7 @@ export default function CategoriesPage() {
                   </div>
                 ) : (
                   <div className="flex items-center gap-3">
+                    <span className="text-lg">{cat.icon || "📋"}</span>
                     <span className="font-medium text-sm">{cat.name}</span>
                     <span className="text-xs text-gray-500 bg-white/5 px-2 py-0.5 rounded">
                       {cat.slug}
@@ -382,7 +402,7 @@ export default function CategoriesPage() {
                     <button
                       onClick={() => {
                         setEditId(cat.ID);
-                        setEditForm({ name: cat.name, slug: cat.slug });
+                        setEditForm({ name: cat.name, slug: cat.slug, icon: cat.icon || "📋" });
                       }}
                       className="p-1.5 text-gray-500 hover:text-white rounded-lg hover:bg-white/5"
                     >
