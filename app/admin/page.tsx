@@ -36,7 +36,7 @@ const periodOptions = [
   { label: "90 күн", days: 90 },
 ];
 
-type OrderStatus = "new" | "preparing" | "delivered" | "cancelled";
+type OrderStatus = "new" | "paid" | "preparing" | "cooking" | "delivering" | "delivered" | "cancelled";
 
 interface ApiOrder {
   ID: number;
@@ -57,12 +57,17 @@ interface RecentOrder {
   date: string;
 }
 
-const statusConfig: Record<OrderStatus, { label: string; class: string }> = {
+const statusConfig: Record<string, { label: string; class: string }> = {
   new: { label: "Новый", class: "bg-blue-500/20 text-blue-400" },
+  paid: { label: "Оплачен", class: "bg-emerald-500/20 text-emerald-400" },
   preparing: { label: "Готовится", class: "bg-yellow-500/20 text-yellow-400" },
+  cooking: { label: "Готовится", class: "bg-yellow-500/20 text-yellow-400" },
+  delivering: { label: "В пути", class: "bg-purple-500/20 text-purple-400" },
   delivered: { label: "Доставлен", class: "bg-green-500/20 text-green-400" },
   cancelled: { label: "Отменён", class: "bg-red-500/20 text-red-400" },
 };
+
+const defaultStatus = { label: "Неизвестно", class: "bg-gray-500/20 text-gray-400" };
 
 const container = {
   hidden: { opacity: 0 },
@@ -499,7 +504,7 @@ export default function AdminDashboard() {
               </thead>
               <tbody>
                 {allOrders.slice(0, 5).map((order) => {
-                  const status = statusConfig[order.status];
+                  const status = statusConfig[order.status] || defaultStatus;
                   const phoneClean = order.phone.replace(/\D/g, "");
                   const myPart = Math.round(order.total * (commission / 100));
                   return (

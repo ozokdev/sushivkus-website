@@ -2,10 +2,10 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { categories, type Category } from "@/data/menu";
+import { useMenuStore } from "@/store/menuStore";
 
 // Иконки-эмодзи для каждой категории
-const categoryIcons: Record<Category, string> = {
+const categoryIcons: Record<string, string> = {
   all: "🍱",
   popular: "🔥",
   rolls: "🍣",
@@ -16,21 +16,24 @@ const categoryIcons: Record<Category, string> = {
   sets: "🎁",
   pizza: "🍕",
   poke: "🥗",
+  wok: "🍜",
   soups: "🍜",
   snacks: "🍟",
   salads: "🥬",
   sauces: "🥢",
+  zavtraki: "🍳",
 };
 
 interface CategoryNavProps {
-  activeCategory: Category;
-  onCategoryChange: (cat: Category) => void;
+  activeCategory: string;
+  onCategoryChange: (cat: string) => void;
 }
 
 export default function CategoryNav({
   activeCategory,
   onCategoryChange,
 }: CategoryNavProps) {
+  const categories = useMenuStore((s) => s.categories);
   const [isSticky, setIsSticky] = useState(false);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -67,7 +70,7 @@ export default function CategoryNav({
     el.scrollBy({ left: dir === "right" ? 200 : -200, behavior: "smooth" });
   };
 
-  const handleClick = (catId: Category) => {
+  const handleClick = (catId: string) => {
     onCategoryChange(catId);
     if (catId === "all") {
       document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" });
@@ -135,7 +138,7 @@ export default function CategoryNav({
                     : "bg-white/[0.05] text-gray-400 hover:bg-white/[0.08] hover:text-white"
                 }`}
               >
-                <span className="text-base">{categoryIcons[cat.id]}</span>
+                <span className="text-base">{categoryIcons[cat.id] || "📋"}</span>
                 {cat.name}
               </button>
             ))}

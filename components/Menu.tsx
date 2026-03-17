@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Plus, Minus, Search, X } from "lucide-react";
-import { categories, type Category, type MenuItem } from "@/data/menu";
+import { type MenuItem } from "@/data/menu";
 import { useCartStore } from "@/store/cartStore";
 import { useMenuStore } from "@/store/menuStore";
 import { useToast } from "./Toast";
@@ -20,7 +20,7 @@ const badgeConfig = {
 };
 
 export default function MenuSection() {
-  const [activeCategory, setActiveCategory] = useState<Category>("all");
+  const [activeCategory, setActiveCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedProduct, setSelectedProduct] = useState<MenuItem | null>(null);
   const [addedId, setAddedId] = useState<number | null>(null);
@@ -29,6 +29,7 @@ export default function MenuSection() {
   const updateQuantity = useCartStore((s) => s.updateQuantity);
   const cartItems = useCartStore((s) => s.items);
   const menuItems = useMenuStore((s) => s.items);
+  const categories = useMenuStore((s) => s.categories);
   const fetchMenu = useMenuStore((s) => s.fetchMenu);
 
   useEffect(() => { fetchMenu(); }, [fetchMenu]);

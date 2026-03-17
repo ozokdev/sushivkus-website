@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { menuItems as staticItems, type MenuItem } from "@/data/menu";
+import { menuItems as staticItems, categories as staticCategories, type MenuItem } from "@/data/menu";
 
 interface ApiMenuItem {
   ID: number;
@@ -15,6 +15,14 @@ interface ApiMenuItem {
   is_popular: boolean;
   is_active: boolean;
   badge: string;
+}
+
+interface ApiCategory {
+  ID: number;
+  slug: string;
+  name: string;
+  sort_order: number;
+  is_active: boolean;
 }
 
 function mapApiItem(item: ApiMenuItem): MenuItem {
@@ -34,8 +42,14 @@ function mapApiItem(item: ApiMenuItem): MenuItem {
   };
 }
 
+export interface CategoryDisplay {
+  id: string;
+  name: string;
+}
+
 interface MenuState {
   items: MenuItem[];
+  categories: CategoryDisplay[];
   loading: boolean;
   fetched: boolean;
   lastFetch: number;
@@ -46,28 +60,44 @@ const CACHE_TTL = 60_000; // 1 мүнөт кэш
 
 export const useMenuStore = create<MenuState>((set, get) => ({
   items: [],
+  categories: staticCategories,
   loading: false,
   fetched: false,
   lastFetch: 0,
 
   fetchMenu: async () => {
     const now = Date.now();
-    // Кэш 1 мүнөт — андан кийин кайра fetch кылат
     if (get().fetched && now - get().lastFetch < CACHE_TTL) return;
     set({ loading: true });
     try {
-      const res = await fetch("https://api.sushivkus.ru/api/menu");
-      if (!res.ok) throw new Error("API error");
-      const json = await res.json();
+      const [menuRes, catRes] = await Promise.all([
+        fetch("https://api.sushivkus.ru/api/menu"),
+        fetch("https://api.sushivkus.ru/api/categories"),
+      ]);
+
+      // Категориялар
+      if (catRes.ok) {
+        const catData: ApiCategory[] = await catRes.json();
+        if (Array.isArray(catData) && catData.length > 0) {
+          const activeCats = catData.filter((c) => c.is_active);
+          const mapped: CategoryDisplay[] = [
+            { id: "all", name: "Все" },
+            ...activeCats.map((c) => ({ id: c.slug, name: c.name })),
+          ];
+          set({ categories: mapped });
+        }
+      }
+
+      // Меню
+      if (!menuRes.ok) throw new Error("API error");
+      const json = await menuRes.json();
       const data: ApiMenuItem[] = Array.isArray(json) ? json : json.items || [];
       if (data.length > 0) {
         set({ items: data.map(mapApiItem), fetched: true, loading: false, lastFetch: now });
       } else {
-        // API бош кайтса — fallback
         set({ items: staticItems, fetched: true, loading: false, lastFetch: now });
       }
     } catch {
-      // API ката болсо — fallback
       if (get().items.length === 0) {
         set({ items: staticItems, loading: false });
       } else {

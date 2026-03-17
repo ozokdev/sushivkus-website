@@ -21,12 +21,14 @@ import {
   Bot,
   Gift,
   Download,
+  Layers,
 } from "lucide-react";
 
 const allNavItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard, roles: ["admin"] },
   { href: "/admin/orders", label: "Заказы", icon: ClipboardList, roles: ["admin"] },
   { href: "/admin/menu", label: "Меню", icon: UtensilsCrossed, roles: ["admin", "menu_editor"] },
+  { href: "/admin/categories", label: "Категории", icon: Layers, roles: ["admin", "menu_editor"] },
   { href: "/admin/customers", label: "Клиенты", icon: Users, roles: ["admin"] },
   { href: "/admin/analytics", label: "Аналитика", icon: BarChart3, roles: ["admin"] },
   { href: "/admin/delivery", label: "Доставка", icon: MapPin, roles: ["admin"] },

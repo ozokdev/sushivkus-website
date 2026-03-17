@@ -7,25 +7,7 @@ import { Plus, Pencil, X, Search, RefreshCw, Loader2, Upload, ImageIcon } from "
 
 const API_URL = "https://api.sushivkus.ru/api";
 
-type Category = "all" | "rolls" | "fried_rolls" | "baked_rolls" | "classic_rolls" | "sushi_gunkan" | "sets" | "pizza" | "poke" | "soups" | "snacks" | "salads" | "sauces";
-
-const categories: { id: Category; name: string }[] = [
-  { id: "all", name: "Все" },
-  { id: "rolls", name: "Роллы" },
-  { id: "fried_rolls", name: "Жареные роллы" },
-  { id: "baked_rolls", name: "Запечённые роллы" },
-  { id: "classic_rolls", name: "Классические роллы" },
-  { id: "sushi_gunkan", name: "Суши и гунканы" },
-  { id: "sets", name: "Сеты" },
-  { id: "pizza", name: "Пицца" },
-  { id: "poke", name: "Поке" },
-  { id: "soups", name: "Супы" },
-  { id: "snacks", name: "Закуски" },
-  { id: "salads", name: "Салаты" },
-  { id: "sauces", name: "Соусы" },
-];
-
-const editCategories = categories.filter((c) => c.id !== "all");
+type Category = string;
 
 const badgeOptions: { value: "" | "new" | "hot" | "spicy"; label: string }[] = [
   { value: "", label: "Нет" },
@@ -98,6 +80,8 @@ function mapApiItem(item: any): AdminMenuItem {
 
 export default function AdminMenu() {
   const [items, setItems] = useState<AdminMenuItem[]>([]);
+  const [categories, setCategories] = useState<{ id: Category; name: string }[]>([{ id: "all", name: "Все" }]);
+  const [editCategories, setEditCategories] = useState<{ id: Category; name: string }[]>([]);
   const [filterCat, setFilterCat] = useState<Category>("all");
   const [search, setSearch] = useState("");
   const [editItem, setEditItem] = useState<AdminMenuItem | null>(null);
@@ -161,6 +145,19 @@ export default function AdminMenu() {
 
   useEffect(() => {
     fetchMenu();
+    // API'ден категорияларды жүктөө
+    fetch(`${API_URL}/categories`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (Array.isArray(data)) {
+          const cats = data
+            .filter((c: any) => c.is_active)
+            .map((c: any) => ({ id: c.slug, name: c.name }));
+          setCategories([{ id: "all", name: "Все" }, ...cats]);
+          setEditCategories(cats);
+        }
+      })
+      .catch(() => {});
   }, [fetchMenu]);
 
   const filteredItems = useMemo(() => {
