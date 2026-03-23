@@ -5,6 +5,12 @@
 /* Импорт шрифта Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
+/* Фокус для клавиатурной навигации */
+*:focus-visible {
+  outline: 2px solid #e63946;
+  outline-offset: 2px;
+}
+
 /* Базовые стили */
 @layer base {
   * {

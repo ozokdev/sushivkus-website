@@ -80,6 +80,7 @@ export default function CategoryNav({
           {canScrollLeft && (
             <button
               onClick={() => scroll("left")}
+              aria-label="Прокрутить влево"
               className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center bg-dark/90 border border-white/10 rounded-full shadow-lg text-white hover:bg-white/10 transition-colors"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -90,6 +91,7 @@ export default function CategoryNav({
           {canScrollRight && (
             <button
               onClick={() => scroll("right")}
+              aria-label="Прокрутить вправо"
               className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center bg-dark/90 border border-white/10 rounded-full shadow-lg text-white hover:bg-white/10 transition-colors"
             >
               <ChevronRight className="w-4 h-4" />

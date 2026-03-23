@@ -27,6 +27,7 @@ export default function FavoriteButton({
           : "text-white/50 hover:text-white/80"
       } ${className}`}
       title={isFav ? "Удалить из избранного" : "В избранное"}
+      aria-label={isFav ? "Удалить из избранного" : "Добавить в избранное"}
     >
       <Heart
         className="w-5 h-5"

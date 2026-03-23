@@ -103,12 +103,13 @@ export default function OrderForm() {
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
           >
-            <div className="bg-[#111] border border-white/10 rounded-2xl w-full max-w-2xl max-h-[92vh] overflow-y-auto">
+            <div role="dialog" aria-modal="true" aria-label="Оформление заказа" className="bg-[#111] border border-white/10 rounded-2xl w-full max-w-2xl max-h-[92vh] overflow-y-auto">
               {/* Шапка */}
               <div className="flex items-center justify-between p-5 border-b border-white/10 sticky top-0 bg-[#111] z-10 rounded-t-2xl">
                 <div className="flex items-center gap-3">
                   <button
                     onClick={handleBackToCart}
+                    aria-label="Назад в корзину"
                     className="p-1.5 hover:bg-white/5 rounded-lg transition-colors"
                   >
                     <ChevronLeft className="w-5 h-5 text-gray-400" />
@@ -117,6 +118,7 @@ export default function OrderForm() {
                 </div>
                 <button
                   onClick={closeOrderForm}
+                  aria-label="Закрыть"
                   className="p-2 hover:bg-white/5 rounded-xl transition-colors"
                 >
                   <X className="w-5 h-5" />

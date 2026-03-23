@@ -13,16 +13,12 @@ import ProductModal from "./ProductModal";
 import WokConstructor from "./WokConstructor";
 import FavoriteButton from "./FavoriteButton";
 
-// Бейджи на карточках
-const badgeConfig = {
-  new: { text: "NEW", class: "bg-blue-500" },
-  hot: { text: "🔥 ХИТ", class: "bg-orange-500" },
-  spicy: { text: "🌶️ ОСТР.", class: "bg-red-600" },
-};
+import { badgeConfig } from "@/data/badges";
 
 export default function MenuSection() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedQuery, setDebouncedQuery] = useState("");
   const [selectedProduct, setSelectedProduct] = useState<MenuItem | null>(null);
   const [addedId, setAddedId] = useState<number | null>(null);
   const [wokOpen, setWokOpen] = useState(false);
@@ -37,6 +33,11 @@ export default function MenuSection() {
 
   useEffect(() => { fetchMenu(); }, [fetchMenu]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedQuery(searchQuery), 300);
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
+
   const getItemCount = (id: number) => {
     const item = cartItems.find((i) => i.id === id);
     return item?.quantity || 0;
@@ -47,8 +48,8 @@ export default function MenuSection() {
   );
 
   const filterBySearch = (items: typeof menuItems) => {
-    if (!searchQuery.trim()) return items;
-    const q = searchQuery.toLowerCase();
+    if (!debouncedQuery.trim()) return items;
+    const q = debouncedQuery.toLowerCase();
     return items.filter(
       (item) =>
         item.name.toLowerCase().includes(q) ||
@@ -155,11 +156,11 @@ export default function MenuSection() {
           );
         })}
 
-        {searchQuery && filterBySearch(menuItems).length === 0 && (
+        {debouncedQuery && filterBySearch(menuItems).length === 0 && (
           <div className="text-center py-16 text-gray-500">
             <Search className="w-12 h-12 mx-auto mb-4 opacity-30" />
             <p className="text-lg">
-              Ничего не найдено по запросу «{searchQuery}»
+              Ничего не найдено по запросу «{debouncedQuery}»
             </p>
           </div>
         )}
@@ -224,7 +225,7 @@ function ProductCard({
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-500"
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-          loading="eager"
+          loading="lazy"
         />
         {/* Бейджи слева */}
         <div className="absolute top-2 left-2 flex flex-col gap-1">
@@ -308,6 +309,7 @@ function ProductCard({
                   e.stopPropagation();
                   onMinus(cartId);
                 }}
+                aria-label="Уменьшить количество"
                 className="p-2 text-white hover:bg-white/20 rounded-l-xl transition-colors"
               >
                 <Minus className="w-3.5 h-3.5" />
@@ -321,6 +323,7 @@ function ProductCard({
                   e.stopPropagation();
                   onAdd();
                 }}
+                aria-label="Увеличить количество"
                 className="p-2 text-white hover:bg-white/20 rounded-r-xl transition-colors"
               >
                 <Plus className="w-3.5 h-3.5" />

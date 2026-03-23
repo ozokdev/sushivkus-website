@@ -72,6 +72,7 @@ export default function Header() {
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-green-600/10 hover:bg-green-600/20 transition-colors"
                 title="WhatsApp"
+                aria-label="WhatsApp"
               >
                 <MessageCircle className="w-4 h-4 text-green-500" />
               </a>
@@ -81,6 +82,7 @@ export default function Header() {
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 transition-colors"
                 title="Telegram"
+                aria-label="Telegram"
               >
                 <Send className="w-4 h-4 text-blue-400" />
               </a>
@@ -93,6 +95,7 @@ export default function Header() {
             {/* Кнопка корзины */}
             <button
               onClick={toggleCart}
+              aria-label="Открыть корзину"
               className="flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 bg-accent hover:bg-accent-hover rounded-xl transition-all duration-200"
             >
               <div className="relative">
@@ -117,6 +120,7 @@ export default function Header() {
             {/* Бургер мобил */}
             <button
               onClick={() => setMobileMenu(!mobileMenu)}
+              aria-label={mobileMenu ? "Закрыть меню" : "Открыть меню"}
               className="lg:hidden p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-all"
             >
               {mobileMenu ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

@@ -49,10 +49,11 @@ export default function InstagramGallery() {
             >
               <Image
                 src={photo}
-                alt="Блюдо Суши Вкус"
+                alt={`Блюдо Суши Вкус ${index + 1}`}
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-500"
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
                 <Instagram className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

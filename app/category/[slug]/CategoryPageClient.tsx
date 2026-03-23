@@ -22,11 +22,7 @@ import MobileNav from "@/components/MobileNav";
 import ScrollToTop from "@/components/ScrollToTop";
 import Toast from "@/components/Toast";
 
-const badgeConfig = {
-  new: { text: "NEW", class: "bg-blue-500" },
-  hot: { text: "🔥 ХИТ", class: "bg-orange-500" },
-  spicy: { text: "🌶️ ОСТР.", class: "bg-red-600" },
-};
+import { badgeConfig } from "@/data/badges";
 
 export default function CategoryPageClient({
   category,
@@ -36,6 +32,7 @@ export default function CategoryPageClient({
   items: MenuItem[];
 }) {
   const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedQuery, setDebouncedQuery] = useState("");
   const [selectedProduct, setSelectedProduct] = useState<MenuItem | null>(null);
   const [addedId, setAddedId] = useState<number | null>(null);
   const [wokOpen, setWokOpen] = useState(false);
@@ -49,6 +46,11 @@ export default function CategoryPageClient({
 
   useEffect(() => { fetchMenu(); }, [fetchMenu]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedQuery(searchQuery), 300);
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
+
   // API'ден жүктөлсө — аны колдонуу, жоксо — статик fallback
   const items = menuItems.length > 0
     ? menuItems.filter((i) => i.category === category.id)
@@ -59,11 +61,11 @@ export default function CategoryPageClient({
     return item?.quantity || 0;
   };
 
-  const filteredItems = searchQuery.trim()
+  const filteredItems = debouncedQuery.trim()
     ? items.filter(
         (item) =>
-          item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.description.toLowerCase().includes(searchQuery.toLowerCase())
+          item.name.toLowerCase().includes(debouncedQuery.toLowerCase()) ||
+          item.description.toLowerCase().includes(debouncedQuery.toLowerCase())
       )
     : items;
 
@@ -158,6 +160,7 @@ export default function CategoryPageClient({
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
+                aria-label="Очистить поиск"
                 className="absolute right-3 top-1/2 -translate-y-1/2 p-1 hover:bg-white/10 rounded-lg transition-colors"
               >
                 <X className="w-4 h-4 text-gray-500" />
@@ -273,6 +276,7 @@ export default function CategoryPageClient({
                           <motion.button
                             whileTap={{ scale: 0.85 }}
                             onClick={() => updateQuantity(item.id, count - 1)}
+                            aria-label="Уменьшить количество"
                             className="p-2 text-white hover:bg-white/20 rounded-l-xl transition-colors"
                           >
                             <Minus className="w-3.5 h-3.5" />
@@ -281,6 +285,7 @@ export default function CategoryPageClient({
                           <motion.button
                             whileTap={{ scale: 0.85 }}
                             onClick={() => handleAdd(item)}
+                            aria-label="Увеличить количество"
                             className="p-2 text-white hover:bg-white/20 rounded-r-xl transition-colors"
                           >
                             <Plus className="w-3.5 h-3.5" />
@@ -313,7 +318,7 @@ export default function CategoryPageClient({
           {filteredItems.length === 0 && (
             <div className="text-center py-16 text-gray-500">
               <Search className="w-12 h-12 mx-auto mb-4 opacity-30" />
-              <p className="text-lg">Ничего не найдено по запросу «{searchQuery}»</p>
+              <p className="text-lg">Ничего не найдено по запросу «{debouncedQuery}»</p>
             </div>
           )}
         </div>

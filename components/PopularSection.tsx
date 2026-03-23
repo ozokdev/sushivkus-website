@@ -11,11 +11,7 @@ import { useToast } from "./Toast";
 import ProductModal from "./ProductModal";
 import FavoriteButton from "./FavoriteButton";
 
-const badgeConfig = {
-  new: { text: "NEW", class: "bg-blue-500" },
-  hot: { text: "🔥 ХИТ", class: "bg-orange-500" },
-  spicy: { text: "🌶️ ОСТР.", class: "bg-red-600" },
-};
+import { badgeConfig } from "@/data/badges";
 
 export default function PopularSection() {
   const [selectedProduct, setSelectedProduct] = useState<MenuItem | null>(null);

@@ -7,6 +7,15 @@ import { X, Plus, Minus, ShoppingCart, ChevronDown, ChevronUp, Check } from "luc
 import { useCartStore } from "@/store/cartStore";
 import type { MenuItem } from "@/data/menu";
 
+function hashCode(str: string): number {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = ((hash << 5) - hash) + str.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash % 10000);
+}
+
 interface ToppingItem {
   ID: number;
   name: string;
@@ -79,9 +88,11 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
 
   const handleAdd = () => {
     if (isPizza && selectedToppings.size > 0) {
-      // Пицца + топпинг — уникальный ID
+      // Пицца + топпинг — детерминистик ID
+      const toppingIds = Array.from(selectedToppings).sort().join('-');
+      const comboId = product.id * 10000 + hashCode(toppingIds);
       addItem({
-        id: Date.now(),
+        id: comboId,
         name: product.name,
         price: currentPrice,
         image: product.image,
@@ -124,7 +135,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
           >
-            <div className="bg-[#111] border border-white/10 rounded-2xl w-full max-w-lg max-h-[90vh] overflow-hidden flex flex-col" onClick={(e) => e.stopPropagation()}>
+            <div role="dialog" aria-modal="true" aria-label={product.name} className="bg-[#111] border border-white/10 rounded-2xl w-full max-w-lg max-h-[90vh] overflow-hidden flex flex-col" onClick={(e) => e.stopPropagation()}>
               {/* Сүрөт */}
               <div className="relative w-full aspect-[3/2] flex-shrink-0">
                 <Image src={product.image} alt={product.name} fill className="object-cover rounded-t-2xl" />
@@ -139,7 +150,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                 {product.isPopular && (
                   <span className="absolute top-3 right-14 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-lg">HIT</span>
                 )}
-                <button onClick={onClose} className="absolute top-3 right-3 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors">
+                <button onClick={onClose} aria-label="Закрыть" className="absolute top-3 right-3 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors">
                   <X className="w-5 h-5 text-white" />
                 </button>
               </div>
@@ -244,11 +255,11 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                   {count > 0 && selectedToppings.size === 0 ? (
                     <div className="flex items-center gap-3">
                       <div className="flex items-center bg-white/[0.05] rounded-xl">
-                        <button onClick={() => updateQuantity(cartId, count - 1)} className="p-2.5 hover:bg-white/10 rounded-l-xl transition-colors">
+                        <button onClick={() => updateQuantity(cartId, count - 1)} aria-label="Уменьшить количество" className="p-2.5 hover:bg-white/10 rounded-l-xl transition-colors">
                           <Minus className="w-4 h-4" />
                         </button>
                         <span className="px-4 font-bold">{count}</span>
-                        <button onClick={handleAdd} className="p-2.5 hover:bg-white/10 rounded-r-xl transition-colors">
+                        <button onClick={handleAdd} aria-label="Увеличить количество" className="p-2.5 hover:bg-white/10 rounded-r-xl transition-colors">
                           <Plus className="w-4 h-4" />
                         </button>
                       </div>

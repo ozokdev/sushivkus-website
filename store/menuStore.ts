@@ -58,7 +58,7 @@ interface MenuState {
   fetchMenu: () => Promise<void>;
 }
 
-const CACHE_TTL = 60_000; // 1 мүнөт кэш
+const CACHE_TTL = 300_000; // 5 мүнөт кэш
 
 export const useMenuStore = create<MenuState>((set, get) => ({
   items: [],

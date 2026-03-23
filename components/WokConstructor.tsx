@@ -141,11 +141,8 @@ export default function WokConstructor({ isOpen, onClose, productImage }: WokCon
     if (bases.length > 0 && !selectedBase) setSelectedBase(bases[0].id);
   }, [bases, selectedBase]);
 
-  useEffect(() => {
-    if (vegetables.length > 0 && selectedVegetables.size === 0) {
-      setSelectedVegetables(new Set(vegetables.map((v) => v.id)));
-    }
-  }, [vegetables, selectedVegetables.size]);
+  // Овощи — колдонуучу өзү тандайт, баштапкы абалда бош
+  // useEffect removed: no default vegetable selection
 
   useEffect(() => {
     if (sauces.length > 0 && !selectedSauce) setSelectedSauce(sauces[sauces.length - 1].id);
@@ -255,6 +252,9 @@ export default function WokConstructor({ isOpen, onClose, productImage }: WokCon
           >
             <div
               className="bg-[#111] border border-white/10 rounded-t-3xl sm:rounded-2xl w-full sm:max-w-lg max-h-[92vh] sm:max-h-[90vh] overflow-hidden flex flex-col"
+              role="dialog"
+              aria-modal="true"
+              aria-label="WOK Конструктор"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
@@ -265,6 +265,7 @@ export default function WokConstructor({ isOpen, onClose, productImage }: WokCon
                 </div>
                 <button
                   onClick={onClose}
+                  aria-label="Закрыть"
                   className="p-2 bg-white/5 hover:bg-white/10 rounded-full transition-colors"
                 >
                   <X className="w-5 h-5" />
@@ -420,6 +421,7 @@ function CounterRow({ name, price, count, onPlus, onMinus }: { name: string; pri
         <button
           onClick={onMinus}
           disabled={count === 0}
+          aria-label={`Уменьшить ${name}`}
           className={`w-7 h-7 flex items-center justify-center rounded-lg transition-colors ${
             count > 0 ? "bg-accent/20 text-accent hover:bg-accent/30" : "bg-white/5 text-gray-600"
           }`}
@@ -429,6 +431,7 @@ function CounterRow({ name, price, count, onPlus, onMinus }: { name: string; pri
         <span className="w-5 text-center text-sm font-bold">{count}</span>
         <button
           onClick={onPlus}
+          aria-label={`Добавить ${name}`}
           className="w-7 h-7 flex items-center justify-center rounded-lg bg-accent/20 text-accent hover:bg-accent/30 transition-colors"
         >
           <Plus className="w-3.5 h-3.5" />
