@@ -109,7 +109,7 @@ export default function MenuSection() {
                 viewport={{ once: true }}
                 className="flex items-center gap-3 mb-3"
               >
-                <h2 className="text-2xl sm:text-3xl font-bold">
+                <h2 className="text-2xl sm:text-3xl font-bold font-display">
                   {category.name}
                 </h2>
                 <span className="text-sm text-gray-500 bg-white/5 px-3 py-1 rounded-lg">
@@ -208,7 +208,7 @@ function ProductCard({
 
   return (
     <div
-      className={`group bg-white/[0.03] border rounded-2xl overflow-hidden hover:bg-white/[0.05] transition-all duration-300 ${
+      className={`group bg-white/[0.03] border rounded-2xl overflow-hidden hover:bg-white/[0.05] transition-all duration-300 card-hover ${
         isAdding
           ? "border-accent/50 shadow-lg shadow-accent/10"
           : "border-white/[0.06] hover:border-accent/20"

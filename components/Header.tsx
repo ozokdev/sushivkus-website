@@ -37,8 +37,8 @@ export default function Header() {
           {/* Логотип */}
           <a href="/" className="flex items-center gap-2.5 flex-shrink-0">
             <span className="text-xl md:text-2xl font-black tracking-tight">
-              <span className="text-accent">Суши</span>
-              <span className="text-white ml-1">Вкус</span>
+              <span className="text-accent font-display">Суши</span>
+              <span className="text-white font-display ml-1">Вкус</span>
             </span>
             <span className="hidden sm:block w-px h-6 bg-white/10" />
             <span className="hidden sm:block text-[11px] md:text-xs text-gray-400 leading-tight max-w-[120px]">

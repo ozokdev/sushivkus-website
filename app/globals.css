@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Импорт шрифта Inter */
+/* Импорт шрифтов Inter и Outfit */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
 /* Фокус для клавиатурной навигации */
 *:focus-visible {
@@ -27,6 +28,35 @@
     background-color: #0a0a0a;
     color: #ffffff;
     font-family: 'Inter', sans-serif;
+  }
+
+  :root {
+    --accent: #e63946;
+    --accent-hover: #c62833;
+    --accent-glow: rgba(230, 57, 70, 0.3);
+    --bg-primary: #0a0a0a;
+    --bg-surface: #111111;
+    --bg-elevated: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.6);
+    --text-muted: rgba(255, 255, 255, 0.4);
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-default: rgba(255, 255, 255, 0.1);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+  }
+
+  html.light-mode {
+    --bg-primary: #f5f5f5;
+    --bg-surface: #ffffff;
+    --bg-elevated: #fafafa;
+    --text-primary: #1a1a1a;
+    --text-secondary: rgba(0, 0, 0, 0.6);
+    --text-muted: rgba(0, 0, 0, 0.4);
+    --border-subtle: rgba(0, 0, 0, 0.06);
+    --border-default: rgba(0, 0, 0, 0.1);
   }
 
   /* Кастомный скроллбар */
@@ -76,6 +106,80 @@
   /* Safe area для мобильной навигации */
   .safe-area-bottom {
     padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* Display font for headings */
+  .font-display {
+    font-family: 'Outfit', 'Inter', sans-serif;
+  }
+
+  /* Premium card hover effect */
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Gradient text for headings */
+  .text-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  html.light-mode .text-gradient {
+    background: linear-gradient(135deg, #1a1a1a 0%, rgba(26, 26, 26, 0.7) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Noise texture overlay for depth */
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Enhanced glow for accent buttons */
+  .glow-accent {
+    box-shadow: 0 0 20px var(--accent-glow), 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease;
+  }
+  .glow-accent:hover {
+    box-shadow: 0 0 35px var(--accent-glow), 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Shimmer loading placeholder */
+  .shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Smooth scroll snap for carousels */
+  .snap-x-smooth {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .snap-x-smooth > * {
+    scroll-snap-align: start;
+  }
+
+  /* Price highlight pulse */
+  @keyframes price-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  .price-highlight {
+    animation: price-pulse 0.3s ease-in-out;
   }
 }
 
@@ -198,4 +302,65 @@ html.light-mode .text-blue-400 {
 /* MobileNav фон */
 html.light-mode .bg-dark\/95 {
   background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Enhanced light mode input backgrounds */
+html.light-mode .bg-white\/\[0\.08\] {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+html.light-mode .bg-white\/10 {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+html.light-mode .bg-white\/20 {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Light mode hover states */
+html.light-mode .hover\:bg-white\/5:hover {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+html.light-mode .hover\:bg-white\/10:hover {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Light mode accent backgrounds */
+html.light-mode .bg-accent\/10 {
+  background-color: rgba(230, 57, 70, 0.08) !important;
+}
+
+html.light-mode .bg-accent\/15 {
+  background-color: rgba(230, 57, 70, 0.12) !important;
+}
+
+/* Light mode border-accent */
+html.light-mode .border-accent\/20,
+html.light-mode .border-accent\/30,
+html.light-mode .border-accent\/40 {
+  border-color: rgba(230, 57, 70, 0.2) !important;
+}
+
+/* Light mode backdrop-blur surfaces */
+html.light-mode .backdrop-blur-xl,
+html.light-mode .backdrop-blur-md {
+  --tw-backdrop-blur: blur(20px);
+}
+
+/* Light mode card hover */
+html.light-mode .card-hover:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Light mode text gradient */
+html.light-mode .text-gradient {
+  background: linear-gradient(135deg, #1a1a1a 0%, #555 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Light mode scrollbar accent hover */
+html.light-mode ::-webkit-scrollbar-thumb:hover {
+  background: #e63946;
 }

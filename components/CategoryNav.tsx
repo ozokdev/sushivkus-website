@@ -114,9 +114,9 @@ export default function CategoryNav({
               <button
                 key={cat.id}
                 onClick={() => handleClick(cat.id)}
-                className={`relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-200 flex-shrink-0 ${
+                className={`relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-display font-medium whitespace-nowrap transition-all duration-200 flex-shrink-0 ${
                   activeCategory === cat.id
-                    ? "bg-accent text-white shadow-lg shadow-accent/25"
+                    ? "bg-accent/10 text-accent border-b-2 border-accent shadow-lg shadow-accent/10"
                     : "bg-white/[0.05] text-gray-400 hover:bg-white/[0.08] hover:text-white"
                 }`}
               >

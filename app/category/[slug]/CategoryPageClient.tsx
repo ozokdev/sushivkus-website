@@ -117,7 +117,7 @@ export default function CategoryPageClient({
                   </li>
                 </ol>
               </nav>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-wide">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black font-display text-white uppercase tracking-wide">
                 {category.nameFull}
               </h1>
               <p className="text-white/60 text-sm mt-1">
@@ -181,7 +181,7 @@ export default function CategoryPageClient({
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: Math.min(index * 0.05, 0.3) }}
-                  className={`group bg-white/[0.03] border rounded-2xl overflow-hidden hover:bg-white/[0.05] transition-all duration-300 ${
+                  className={`group bg-white/[0.03] border rounded-2xl overflow-hidden hover:bg-white/[0.05] transition-all duration-300 card-hover ${
                     isAdding
                       ? "border-accent/50 shadow-lg shadow-accent/10"
                       : "border-white/[0.06] hover:border-accent/20"

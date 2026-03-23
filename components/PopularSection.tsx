@@ -51,7 +51,7 @@ export default function PopularSection() {
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-2xl sm:text-3xl font-bold mb-3"
+          className="text-2xl sm:text-3xl font-bold font-display mb-3"
         >
           🔥 Популярное
         </motion.h2>
@@ -69,7 +69,7 @@ export default function PopularSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ delay: Math.min(index * 0.05, 0.3) }}
-                className={`group bg-white/[0.03] border rounded-2xl overflow-hidden hover:bg-white/[0.05] transition-all duration-300 ${
+                className={`group bg-white/[0.03] border rounded-2xl overflow-hidden hover:bg-white/[0.05] transition-all duration-300 card-hover ${
                   isAdding
                     ? "border-accent/50 shadow-lg shadow-accent/10"
                     : "border-white/[0.06] hover:border-accent/20"
