@@ -7,6 +7,7 @@ export interface CartItem {
   price: number;
   image: string;
   quantity: number;
+  description?: string; // WOK конструктор опциялары
 }
 
 export let MIN_ORDER = 500;

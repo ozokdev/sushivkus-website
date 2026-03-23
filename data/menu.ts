@@ -1,5 +1,5 @@
 // Категории меню
-export type Category = "all" | "popular" | "rolls" | "fried_rolls" | "baked_rolls" | "classic_rolls" | "sushi_gunkan" | "sets" | "pizza" | "poke" | "soups" | "snacks" | "salads" | "sauces";
+export type Category = "all" | "popular" | "rolls" | "fried_rolls" | "baked_rolls" | "classic_rolls" | "sushi_gunkan" | "sets" | "pizza" | "wok" | "poke" | "soups" | "snacks" | "salads" | "sauces";
 
 export interface MenuItem {
   id: number;

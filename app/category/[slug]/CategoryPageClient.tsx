@@ -11,6 +11,7 @@ import { useToast } from "@/components/Toast";
 import type { CategoryInfo } from "@/data/categories";
 import type { MenuItem } from "@/data/menu";
 import ProductModal from "@/components/ProductModal";
+import WokConstructor from "@/components/WokConstructor";
 import FavoriteButton from "@/components/FavoriteButton";
 import Header from "@/components/Header";
 import TopBar from "@/components/TopBar";
@@ -37,6 +38,8 @@ export default function CategoryPageClient({
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedProduct, setSelectedProduct] = useState<MenuItem | null>(null);
   const [addedId, setAddedId] = useState<number | null>(null);
+  const [wokOpen, setWokOpen] = useState(false);
+  const [wokImage, setWokImage] = useState<string>("");
   const addItem = useCartStore((s) => s.addItem);
   const showToast = useToast((s) => s.show);
   const updateQuantity = useCartStore((s) => s.updateQuantity);
@@ -183,7 +186,14 @@ export default function CategoryPageClient({
                 >
                   <div
                     className="relative aspect-[4/3] overflow-hidden cursor-pointer"
-                    onClick={() => setSelectedProduct(item)}
+                    onClick={() => {
+                      if (item.category === "wok") {
+                        setWokImage(item.image);
+                        setWokOpen(true);
+                      } else {
+                        setSelectedProduct(item);
+                      }
+                    }}
                   >
                     <Image
                       src={item.image}
@@ -236,7 +246,14 @@ export default function CategoryPageClient({
                   <div className="p-3 md:p-4">
                     <h3
                       className="font-semibold text-sm md:text-base mb-0.5 line-clamp-1 cursor-pointer hover:text-accent transition-colors"
-                      onClick={() => setSelectedProduct(item)}
+                      onClick={() => {
+                        if (item.category === "wok") {
+                          setWokImage(item.image);
+                          setWokOpen(true);
+                        } else {
+                          setSelectedProduct(item);
+                        }
+                      }}
                     >
                       {item.name}
                     </h3>
@@ -272,7 +289,14 @@ export default function CategoryPageClient({
                       ) : (
                         <motion.button
                           whileTap={{ scale: 0.9 }}
-                          onClick={() => handleAdd(item)}
+                          onClick={() => {
+                            if (item.category === "wok") {
+                              setWokImage(item.image);
+                              setWokOpen(true);
+                            } else {
+                              handleAdd(item);
+                            }
+                          }}
                           className="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-medium bg-accent/10 text-accent hover:bg-accent hover:text-white transition-all duration-200"
                         >
                           <Plus className="w-3.5 h-3.5" />
@@ -297,6 +321,12 @@ export default function CategoryPageClient({
         <ProductModal
           product={selectedProduct}
           onClose={() => setSelectedProduct(null)}
+        />
+
+        <WokConstructor
+          isOpen={wokOpen}
+          onClose={() => setWokOpen(false)}
+          productImage={wokImage}
         />
       </main>
       <Footer />

@@ -10,6 +10,7 @@ import { useMenuStore } from "@/store/menuStore";
 import { useToast } from "./Toast";
 import CategoryNav from "./CategoryNav";
 import ProductModal from "./ProductModal";
+import WokConstructor from "./WokConstructor";
 import FavoriteButton from "./FavoriteButton";
 
 // Бейджи на карточках
@@ -24,6 +25,8 @@ export default function MenuSection() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedProduct, setSelectedProduct] = useState<MenuItem | null>(null);
   const [addedId, setAddedId] = useState<number | null>(null);
+  const [wokOpen, setWokOpen] = useState(false);
+  const [wokImage, setWokImage] = useState<string>("");
   const addItem = useCartStore((s) => s.addItem);
   const showToast = useToast((s) => s.show);
   const updateQuantity = useCartStore((s) => s.updateQuantity);
@@ -121,11 +124,25 @@ export default function MenuSection() {
                       index={index}
                       getItemCount={getItemCount}
                       isAdding={addedId === item.id}
-                      onAdd={() => handleAdd(item)}
+                      onAdd={() => {
+                        if (item.category === "wok") {
+                          setWokImage(item.image);
+                          setWokOpen(true);
+                        } else {
+                          handleAdd(item);
+                        }
+                      }}
                       onMinus={(cartId) =>
                         updateQuantity(cartId, getItemCount(cartId) - 1)
                       }
-                      onClickCard={() => setSelectedProduct(item)}
+                      onClickCard={() => {
+                        if (item.category === "wok") {
+                          setWokImage(item.image);
+                          setWokOpen(true);
+                        } else {
+                          setSelectedProduct(item);
+                        }
+                      }}
                     />
                   ))}
                 </div>
@@ -152,6 +169,13 @@ export default function MenuSection() {
       <ProductModal
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
+      />
+
+      {/* WOK Конструктор */}
+      <WokConstructor
+        isOpen={wokOpen}
+        onClose={() => setWokOpen(false)}
+        productImage={wokImage}
       />
     </section>
   );

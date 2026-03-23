@@ -51,7 +51,7 @@ export default function OrderForm() {
           promo_code: appliedPromo || "",
           discount_percent: getDiscount(),
           items: items.map((item) => ({
-            name: item.name,
+            name: item.description ? `${item.name} (${item.description})` : item.name,
             price: item.price,
             quantity: item.quantity,
           })),
@@ -152,6 +152,9 @@ export default function OrderForm() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <p className="text-white text-sm font-medium truncate">{item.name}</p>
+                          {item.description && (
+                            <p className="text-[10px] text-gray-500 truncate">{item.description}</p>
+                          )}
                           <p className="text-accent text-sm font-bold">{item.price} ₽</p>
                         </div>
                         <div className="text-gray-400 text-sm">x {item.quantity}</div>

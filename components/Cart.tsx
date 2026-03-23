@@ -128,6 +128,11 @@ export default function Cart() {
                         <h4 className="font-semibold text-sm truncate">
                           {item.name}
                         </h4>
+                        {item.description && (
+                          <p className="text-[10px] text-gray-500 truncate mt-0.5">
+                            {item.description}
+                          </p>
+                        )}
                         <p className="text-accent font-bold text-sm mt-0.5">
                           {item.price * item.quantity} ₽
                         </p>
