@@ -1,14 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Plus, Minus, ShoppingCart, Check } from "lucide-react";
+import { X, Plus, Minus, ShoppingCart, Check, Loader2 } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
 import { useToast } from "./Toast";
 
 // === WOK Конфигурация ===
 
-const WOK_BASE_PRICE = 420;
+const DEFAULT_BASE_PRICE = 420;
+
+interface WokApiItem {
+  ID: number;
+  name: string;
+  type: string;
+  price: number;
+  is_active: boolean;
+  sort_order: number;
+}
 
 interface WokOption {
   id: string;
@@ -16,47 +25,45 @@ interface WokOption {
   price: number;
 }
 
-// Основа — тандоо 1
-const bases: WokOption[] = [
-  { id: "base_wheat", name: "Лапша пшеничная", price: 0 },
-  { id: "base_rice", name: "Рис", price: 0 },
-  { id: "base_egg", name: "Лапша яичная", price: 0 },
-  { id: "base_crystal", name: "Лапша хрустальная", price: 0 },
-  { id: "base_buckwheat", name: "Лапша гречневая", price: 0 },
+// Fallback дайындары (API жок болсо)
+const FALLBACK_BASES: WokOption[] = [
+  { id: "base_1", name: "Лапша пшеничная", price: 0 },
+  { id: "base_2", name: "Рис", price: 0 },
+  { id: "base_3", name: "Лапша яичная", price: 0 },
+  { id: "base_4", name: "Лапша хрустальная", price: 0 },
+  { id: "base_5", name: "Лапша гречневая", price: 0 },
+];
+const FALLBACK_VEGETABLES: WokOption[] = [
+  { id: "veg_1", name: "Паприка", price: 0 },
+  { id: "veg_2", name: "Лук репчатый", price: 0 },
+  { id: "veg_3", name: "Морковь", price: 0 },
+];
+const FALLBACK_SAUCES: WokOption[] = [
+  { id: "sauce_1", name: "Соус острый", price: 0 },
+  { id: "sauce_2", name: "Соус сливочно-чесночный", price: 0 },
+  { id: "sauce_3", name: "Соус соевый", price: 0 },
+  { id: "sauce_4", name: "Соус терияки", price: 0 },
+];
+const FALLBACK_PROTEINS: WokOption[] = [
+  { id: "prot_1", name: "Курица", price: 160 },
+  { id: "prot_2", name: "Говядина", price: 185 },
+  { id: "prot_3", name: "Куриное яйцо", price: 80 },
+  { id: "prot_4", name: "Сыр пармезан", price: 125 },
+  { id: "prot_5", name: "Шампиньоны", price: 115 },
+  { id: "prot_6", name: "Сыр маасдам", price: 125 },
+];
+const FALLBACK_EXTRAS: WokOption[] = [
+  { id: "extra_1", name: "Доп соус соевый", price: 70 },
+  { id: "extra_2", name: "Доп соус терияки", price: 70 },
+  { id: "extra_3", name: "Доп соус острый", price: 70 },
+  { id: "extra_4", name: "Доп Овощи", price: 70 },
 ];
 
-// Овощтор — тандоо бир нече
-const vegetables: WokOption[] = [
-  { id: "veg_paprika", name: "Паприка", price: 0 },
-  { id: "veg_onion", name: "Лук репчатый", price: 0 },
-  { id: "veg_carrot", name: "Морковь", price: 0 },
-];
-
-// Соус — тандоо 1
-const sauces: WokOption[] = [
-  { id: "sauce_spicy", name: "Соус острый", price: 0 },
-  { id: "sauce_garlic", name: "Соус сливочно-чесночный", price: 0 },
-  { id: "sauce_soy", name: "Соус соевый", price: 0 },
-  { id: "sauce_teriyaki", name: "Соус терияки", price: 0 },
-];
-
-// Кошумча эт/белок — +/- менен
-const proteins: WokOption[] = [
-  { id: "prot_chicken", name: "Курица", price: 160 },
-  { id: "prot_beef", name: "Говядина", price: 185 },
-  { id: "prot_egg", name: "Куриное яйцо", price: 80 },
-  { id: "prot_parmesan", name: "Сыр пармезан", price: 125 },
-  { id: "prot_mushroom", name: "Шампиньоны", price: 115 },
-  { id: "prot_maasdam", name: "Сыр маасдам", price: 125 },
-];
-
-// Кошумча соустар — +/- менен
-const extras: WokOption[] = [
-  { id: "extra_soy", name: "Доп соус соевый", price: 70 },
-  { id: "extra_teriyaki", name: "Доп соус терияки", price: 70 },
-  { id: "extra_spicy", name: "Доп соус острый", price: 70 },
-  { id: "extra_vegs", name: "Доп Овощи", price: 70 },
-];
+function mapApiItems(items: WokApiItem[], type: string): WokOption[] {
+  return items
+    .filter((i) => i.type === type)
+    .map((i) => ({ id: `${type}_${i.ID}`, name: i.name, price: i.price }));
+}
 
 interface WokConstructorProps {
   isOpen: boolean;
@@ -68,14 +75,81 @@ export default function WokConstructor({ isOpen, onClose, productImage }: WokCon
   const addItem = useCartStore((s) => s.addItem);
   const showToast = useToast((s) => s.show);
 
-  // State
-  const [selectedBase, setSelectedBase] = useState<string>("base_wheat");
-  const [selectedVegetables, setSelectedVegetables] = useState<Set<string>>(
-    new Set(["veg_paprika", "veg_onion", "veg_carrot"])
-  );
-  const [selectedSauce, setSelectedSauce] = useState<string>("sauce_teriyaki");
+  // API data
+  const [bases, setBases] = useState<WokOption[]>(FALLBACK_BASES);
+  const [vegetables, setVegetables] = useState<WokOption[]>(FALLBACK_VEGETABLES);
+  const [sauces, setSauces] = useState<WokOption[]>(FALLBACK_SAUCES);
+  const [proteins, setProteins] = useState<WokOption[]>(FALLBACK_PROTEINS);
+  const [extras, setExtras] = useState<WokOption[]>(FALLBACK_EXTRAS);
+  const [wokBasePrice, setWokBasePrice] = useState(DEFAULT_BASE_PRICE);
+  const [dataLoading, setDataLoading] = useState(false);
+
+  // User selections
+  const [selectedBase, setSelectedBase] = useState<string>("");
+  const [selectedVegetables, setSelectedVegetables] = useState<Set<string>>(new Set());
+  const [selectedSauce, setSelectedSauce] = useState<string>("");
   const [proteinCounts, setProteinCounts] = useState<Record<string, number>>({});
   const [extraCounts, setExtraCounts] = useState<Record<string, number>>({});
+
+  // API'ден жүктөө
+  useEffect(() => {
+    if (!isOpen) return;
+    let cancelled = false;
+
+    async function load() {
+      setDataLoading(true);
+      try {
+        const [itemsRes, settingsRes] = await Promise.all([
+          fetch("https://api.sushivkus.ru/api/wok-items"),
+          fetch("https://api.sushivkus.ru/api/site-settings"),
+        ]);
+
+        if (itemsRes.ok && !cancelled) {
+          const data: WokApiItem[] = await itemsRes.json();
+          if (Array.isArray(data) && data.length > 0) {
+            const b = mapApiItems(data, "base");
+            const v = mapApiItems(data, "vegetable");
+            const s = mapApiItems(data, "sauce");
+            const p = mapApiItems(data, "protein");
+            const e = mapApiItems(data, "extra");
+            if (b.length > 0) setBases(b);
+            if (v.length > 0) setVegetables(v);
+            if (s.length > 0) setSauces(s);
+            if (p.length > 0) setProteins(p);
+            if (e.length > 0) setExtras(e);
+          }
+        }
+
+        if (settingsRes.ok && !cancelled) {
+          const settings = await settingsRes.json();
+          if (settings.wok_base_price) {
+            setWokBasePrice(parseInt(settings.wok_base_price, 10) || DEFAULT_BASE_PRICE);
+          }
+        }
+      } catch {
+        // fallback data is already set
+      }
+      if (!cancelled) setDataLoading(false);
+    }
+
+    load();
+    return () => { cancelled = true; };
+  }, [isOpen]);
+
+  // Defaults
+  useEffect(() => {
+    if (bases.length > 0 && !selectedBase) setSelectedBase(bases[0].id);
+  }, [bases, selectedBase]);
+
+  useEffect(() => {
+    if (vegetables.length > 0 && selectedVegetables.size === 0) {
+      setSelectedVegetables(new Set(vegetables.map((v) => v.id)));
+    }
+  }, [vegetables, selectedVegetables.size]);
+
+  useEffect(() => {
+    if (sauces.length > 0 && !selectedSauce) setSelectedSauce(sauces[sauces.length - 1].id);
+  }, [sauces, selectedSauce]);
 
   const toggleVegetable = (id: string) => {
     setSelectedVegetables((prev) => {
@@ -102,7 +176,7 @@ export default function WokConstructor({ isOpen, onClose, productImage }: WokCon
     });
   };
 
-  // Баа эсептөө
+  // Баа
   const proteinTotal = Object.entries(proteinCounts).reduce((sum, [id, count]) => {
     const item = proteins.find((p) => p.id === id);
     return sum + (item?.price || 0) * count;
@@ -113,7 +187,7 @@ export default function WokConstructor({ isOpen, onClose, productImage }: WokCon
     return sum + (item?.price || 0) * count;
   }, 0);
 
-  const totalPrice = WOK_BASE_PRICE + proteinTotal + extraTotal;
+  const totalPrice = wokBasePrice + proteinTotal + extraTotal;
 
   // Корзинага кошуу
   const handleAddToCart = () => {
@@ -145,7 +219,7 @@ export default function WokConstructor({ isOpen, onClose, productImage }: WokCon
     const description = parts.join(" · ");
 
     addItem({
-      id: Date.now(), // уникальный ID для каждого WOK
+      id: Date.now(),
       name: "WOK",
       price: totalPrice,
       image: productImage || "/photo/california_tempura.jpg",
@@ -155,7 +229,7 @@ export default function WokConstructor({ isOpen, onClose, productImage }: WokCon
     showToast("WOK добавлен в корзину!");
     onClose();
 
-    // Reset
+    // Reset extras
     setProteinCounts({});
     setExtraCounts({});
   };
@@ -187,9 +261,7 @@ export default function WokConstructor({ isOpen, onClose, productImage }: WokCon
               <div className="flex items-center justify-between p-4 pb-2 border-b border-white/[0.06] flex-shrink-0">
                 <div>
                   <h2 className="text-xl font-bold">WOK Конструктор</h2>
-                  <p className="text-xs text-gray-500 mt-0.5">
-                    Собери свой WOK · 300 г
-                  </p>
+                  <p className="text-xs text-gray-500 mt-0.5">Собери свой WOK · 300 г</p>
                 </div>
                 <button
                   onClick={onClose}
@@ -199,91 +271,97 @@ export default function WokConstructor({ isOpen, onClose, productImage }: WokCon
                 </button>
               </div>
 
-              {/* Scrollable content */}
-              <div className="overflow-y-auto flex-1 p-4 space-y-5">
-                {/* === ОСНОВА === */}
-                <Section title="Основа" subtitle="выберите 1">
-                  <div className="grid grid-cols-2 gap-2">
-                    {bases.map((item) => (
-                      <SelectableChip
-                        key={item.id}
-                        name={item.name}
-                        selected={selectedBase === item.id}
-                        onClick={() => setSelectedBase(item.id)}
-                      />
-                    ))}
-                  </div>
-                </Section>
+              {/* Content */}
+              {dataLoading ? (
+                <div className="flex items-center justify-center py-20">
+                  <Loader2 className="w-8 h-8 animate-spin text-accent" />
+                </div>
+              ) : (
+                <div className="overflow-y-auto flex-1 p-4 space-y-5">
+                  {/* ОСНОВА */}
+                  <Section title="Основа" subtitle="выберите 1">
+                    <div className="grid grid-cols-2 gap-2">
+                      {bases.map((item) => (
+                        <SelectableChip
+                          key={item.id}
+                          name={item.name}
+                          selected={selectedBase === item.id}
+                          onClick={() => setSelectedBase(item.id)}
+                        />
+                      ))}
+                    </div>
+                  </Section>
 
-                {/* === ОВОЩИ === */}
-                <Section title="Овощи" subtitle="входят в состав">
-                  <div className="grid grid-cols-3 gap-2">
-                    {vegetables.map((item) => (
-                      <SelectableChip
-                        key={item.id}
-                        name={item.name}
-                        selected={selectedVegetables.has(item.id)}
-                        onClick={() => toggleVegetable(item.id)}
-                        multi
-                      />
-                    ))}
-                  </div>
-                </Section>
+                  {/* ОВОЩИ */}
+                  <Section title="Овощи" subtitle="входят в состав">
+                    <div className="grid grid-cols-3 gap-2">
+                      {vegetables.map((item) => (
+                        <SelectableChip
+                          key={item.id}
+                          name={item.name}
+                          selected={selectedVegetables.has(item.id)}
+                          onClick={() => toggleVegetable(item.id)}
+                          multi
+                        />
+                      ))}
+                    </div>
+                  </Section>
 
-                {/* === СОУС === */}
-                <Section title="Соус" subtitle="выберите 1">
-                  <div className="grid grid-cols-2 gap-2">
-                    {sauces.map((item) => (
-                      <SelectableChip
-                        key={item.id}
-                        name={item.name}
-                        selected={selectedSauce === item.id}
-                        onClick={() => setSelectedSauce(item.id)}
-                      />
-                    ))}
-                  </div>
-                </Section>
+                  {/* СОУС */}
+                  <Section title="Соус" subtitle="выберите 1">
+                    <div className="grid grid-cols-2 gap-2">
+                      {sauces.map((item) => (
+                        <SelectableChip
+                          key={item.id}
+                          name={item.name}
+                          selected={selectedSauce === item.id}
+                          onClick={() => setSelectedSauce(item.id)}
+                        />
+                      ))}
+                    </div>
+                  </Section>
 
-                {/* === МЯСО / ДОБАВКИ === */}
-                <Section title="Мясо и добавки" subtitle="по желанию">
-                  <div className="space-y-2">
-                    {proteins.map((item) => (
-                      <CounterRow
-                        key={item.id}
-                        name={item.name}
-                        price={item.price}
-                        count={proteinCounts[item.id] || 0}
-                        onPlus={() => updateCount(setProteinCounts, item.id, 1)}
-                        onMinus={() => updateCount(setProteinCounts, item.id, -1)}
-                      />
-                    ))}
-                  </div>
-                </Section>
+                  {/* МЯСО */}
+                  <Section title="Мясо и добавки" subtitle="по желанию">
+                    <div className="space-y-2">
+                      {proteins.map((item) => (
+                        <CounterRow
+                          key={item.id}
+                          name={item.name}
+                          price={item.price}
+                          count={proteinCounts[item.id] || 0}
+                          onPlus={() => updateCount(setProteinCounts, item.id, 1)}
+                          onMinus={() => updateCount(setProteinCounts, item.id, -1)}
+                        />
+                      ))}
+                    </div>
+                  </Section>
 
-                {/* === ДОП СОУСЫ === */}
-                <Section title="Доп соуса и овощи" subtitle="по желанию">
-                  <div className="space-y-2">
-                    {extras.map((item) => (
-                      <CounterRow
-                        key={item.id}
-                        name={item.name}
-                        price={item.price}
-                        count={extraCounts[item.id] || 0}
-                        onPlus={() => updateCount(setExtraCounts, item.id, 1)}
-                        onMinus={() => updateCount(setExtraCounts, item.id, -1)}
-                      />
-                    ))}
-                  </div>
-                </Section>
-              </div>
+                  {/* ДОП */}
+                  <Section title="Доп соуса и овощи" subtitle="по желанию">
+                    <div className="space-y-2">
+                      {extras.map((item) => (
+                        <CounterRow
+                          key={item.id}
+                          name={item.name}
+                          price={item.price}
+                          count={extraCounts[item.id] || 0}
+                          onPlus={() => updateCount(setExtraCounts, item.id, 1)}
+                          onMinus={() => updateCount(setExtraCounts, item.id, -1)}
+                        />
+                      ))}
+                    </div>
+                  </Section>
+                </div>
+              )}
 
-              {/* Footer — price + add button */}
+              {/* Footer */}
               <div className="flex items-center justify-between p-4 pt-3 border-t border-white/[0.06] flex-shrink-0 bg-[#111]">
                 <div>
                   <span className="text-2xl font-bold text-accent">{totalPrice} ₽</span>
                   {proteinTotal + extraTotal > 0 && (
                     <span className="text-xs text-gray-500 block">
-                      {WOK_BASE_PRICE} ₽ + {proteinTotal + extraTotal} ₽ доп
+                      {wokBasePrice} ₽ + {proteinTotal + extraTotal} ₽ доп
                     </span>
                   )}
                 </div>
@@ -303,17 +381,7 @@ export default function WokConstructor({ isOpen, onClose, productImage }: WokCon
   );
 }
 
-// === Вспомогательные компоненты ===
-
-function Section({
-  title,
-  subtitle,
-  children,
-}: {
-  title: string;
-  subtitle: string;
-  children: React.ReactNode;
-}) {
+function Section({ title, subtitle, children }: { title: string; subtitle: string; children: React.ReactNode }) {
   return (
     <div>
       <div className="flex items-baseline gap-2 mb-2">
@@ -325,17 +393,7 @@ function Section({
   );
 }
 
-function SelectableChip({
-  name,
-  selected,
-  onClick,
-  multi,
-}: {
-  name: string;
-  selected: boolean;
-  onClick: () => void;
-  multi?: boolean;
-}) {
+function SelectableChip({ name, selected, onClick, multi }: { name: string; selected: boolean; onClick: () => void; multi?: boolean }) {
   return (
     <button
       onClick={onClick}
@@ -345,27 +403,13 @@ function SelectableChip({
           : "bg-white/[0.04] border-white/[0.08] text-gray-400 border hover:border-white/20"
       }`}
     >
-      {selected && (
-        <Check className="absolute top-1.5 right-1.5 w-3 h-3 text-accent" />
-      )}
+      {selected && <Check className="absolute top-1.5 right-1.5 w-3 h-3 text-accent" />}
       {name}
     </button>
   );
 }
 
-function CounterRow({
-  name,
-  price,
-  count,
-  onPlus,
-  onMinus,
-}: {
-  name: string;
-  price: number;
-  count: number;
-  onPlus: () => void;
-  onMinus: () => void;
-}) {
+function CounterRow({ name, price, count, onPlus, onMinus }: { name: string; price: number; count: number; onPlus: () => void; onMinus: () => void }) {
   return (
     <div className="flex items-center justify-between py-2 px-3 bg-white/[0.03] border border-white/[0.06] rounded-xl">
       <div>
@@ -377,9 +421,7 @@ function CounterRow({
           onClick={onMinus}
           disabled={count === 0}
           className={`w-7 h-7 flex items-center justify-center rounded-lg transition-colors ${
-            count > 0
-              ? "bg-accent/20 text-accent hover:bg-accent/30"
-              : "bg-white/5 text-gray-600"
+            count > 0 ? "bg-accent/20 text-accent hover:bg-accent/30" : "bg-white/5 text-gray-600"
           }`}
         >
           <Minus className="w-3.5 h-3.5" />
