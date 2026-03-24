@@ -10,20 +10,26 @@ function getStoredTheme(): "dark" | "light" {
   if (typeof window === "undefined") return "light";
   const stored = localStorage.getItem("theme");
   if (stored === "dark" || stored === "light") return stored;
-  return "light"; // дефолт — ак режим
+  return "light";
 }
 
 function applyTheme(theme: "dark" | "light") {
   if (typeof document === "undefined") return;
-  document.documentElement.classList.toggle("light-mode", theme === "light");
-  document.documentElement.classList.toggle("dark-mode", theme === "dark");
+  const root = document.documentElement;
+  if (theme === "light") {
+    root.classList.add("light-mode");
+    root.classList.remove("dark-mode");
+  } else {
+    root.classList.remove("light-mode");
+    root.classList.add("dark-mode");
+  }
 }
 
 export const useThemeStore = create<ThemeState>((set) => ({
   theme: "light",
   toggleTheme: () =>
     set((state) => {
-      const next = state.theme === "dark" ? "light" : "dark";
+      const next = state.theme === "light" ? "dark" : "light";
       localStorage.setItem("theme", next);
       applyTheme(next);
       return { theme: next };

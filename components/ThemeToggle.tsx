@@ -1,19 +1,36 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
-import { useThemeStore } from "@/store/themeStore";
 
 export default function ThemeToggle() {
-  const { theme, toggleTheme, initTheme } = useThemeStore();
-  const isDark = theme === "dark";
+  const [isDark, setIsDark] = useState(false);
 
-  useEffect(() => { initTheme(); }, [initTheme]);
+  useEffect(() => {
+    // DOM'дон чыныгы абалды окуу
+    setIsDark(!document.documentElement.classList.contains("light-mode"));
+  }, []);
+
+  const toggle = () => {
+    const root = document.documentElement;
+    const goingDark = root.classList.contains("light-mode");
+
+    if (goingDark) {
+      root.classList.remove("light-mode");
+      root.classList.add("dark-mode");
+      localStorage.setItem("theme", "dark");
+    } else {
+      root.classList.add("light-mode");
+      root.classList.remove("dark-mode");
+      localStorage.setItem("theme", "light");
+    }
+    setIsDark(goingDark);
+  };
 
   return (
     <button
-      onClick={toggleTheme}
+      onClick={toggle}
       className={`relative w-14 h-7 rounded-full p-0.5 transition-colors duration-300 ${
         isDark
           ? "bg-white/10 hover:bg-white/15"
