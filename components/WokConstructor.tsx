@@ -251,7 +251,7 @@ export default function WokConstructor({ isOpen, onClose, productImage }: WokCon
             className="fixed inset-x-0 bottom-0 top-0 sm:inset-0 z-50 flex items-end sm:items-center justify-center sm:p-4"
           >
             <div
-              className="bg-[#111] border border-white/10 rounded-t-3xl sm:rounded-2xl w-full sm:max-w-lg max-h-[92vh] sm:max-h-[90vh] overflow-hidden flex flex-col"
+              className="bg-[#1e1e22] border border-white/10 rounded-t-3xl sm:rounded-2xl w-full sm:max-w-lg max-h-[92vh] sm:max-h-[90vh] overflow-hidden flex flex-col"
               role="dialog"
               aria-modal="true"
               aria-label="WOK Конструктор"
@@ -357,9 +357,9 @@ export default function WokConstructor({ isOpen, onClose, productImage }: WokCon
               )}
 
               {/* Footer */}
-              <div className="flex items-center justify-between p-4 pt-3 border-t border-white/[0.06] flex-shrink-0 bg-[#111]">
+              <div className="flex items-center justify-between p-4 pt-3 border-t border-white/[0.06] flex-shrink-0 bg-[#1e1e22]">
                 <div>
-                  <span className="text-2xl font-bold text-accent">{totalPrice} ₽</span>
+                  <span className="text-2xl font-bold font-display text-accent">{totalPrice} ₽</span>
                   {proteinTotal + extraTotal > 0 && (
                     <span className="text-xs text-gray-500 block">
                       {wokBasePrice} ₽ + {proteinTotal + extraTotal} ₽ доп
@@ -368,7 +368,7 @@ export default function WokConstructor({ isOpen, onClose, productImage }: WokCon
                 </div>
                 <button
                   onClick={handleAddToCart}
-                  className="py-3 px-6 bg-accent hover:bg-accent-hover rounded-xl text-white font-semibold transition-all duration-200 glow-red flex items-center gap-2"
+                  className="py-3 px-6 bg-accent hover:bg-accent-hover rounded-xl text-white font-semibold font-display transition-all duration-200 glow-red flex items-center gap-2"
                 >
                   <ShoppingCart className="w-5 h-5" />
                   Добавить

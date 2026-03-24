@@ -13,6 +13,16 @@ import {
 
 const API_URL = "https://api.sushivkus.ru/api";
 
+function checkAuth(res: Response) {
+  if (res.status === 401) {
+    localStorage.removeItem("admin_token");
+    localStorage.removeItem("admin_role");
+    window.location.href = "/admin/login";
+    return true;
+  }
+  return false;
+}
+
 interface WokItem {
   ID: number;
   name: string;
@@ -132,6 +142,7 @@ export default function WokPage() {
           is_active: true,
         }),
       });
+      if (checkAuth(res)) return;
       if (res.ok) {
         showToast("Ингредиент кошулду");
         setAddForm({ name: "", type: "base", price: 0 });
@@ -167,10 +178,14 @@ export default function WokPage() {
           price: Number(editForm.price),
         }),
       });
+      if (checkAuth(res)) return;
       if (res.ok) {
         showToast("Сакталды");
         setEditId(null);
         fetchItems();
+      } else {
+        const err = await res.json().catch(() => null);
+        showToast(err?.error || `Ката: ${res.status}`, "error");
       }
     } catch {
       showToast("Ката", "error");
@@ -180,7 +195,7 @@ export default function WokPage() {
 
   const handleToggle = async (item: WokItem) => {
     try {
-      await fetch(`${API_URL}/wok-items/${item.ID}`, {
+      const res = await fetch(`${API_URL}/wok-items/${item.ID}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -188,6 +203,7 @@ export default function WokPage() {
         },
         body: JSON.stringify({ is_active: !item.is_active }),
       });
+      if (checkAuth(res)) return;
       fetchItems();
     } catch {
       showToast("Ката", "error");
@@ -197,10 +213,11 @@ export default function WokPage() {
   const handleDelete = async (id: number) => {
     if (!confirm("Чын эле жок кылабызбы?")) return;
     try {
-      await fetch(`${API_URL}/wok-items/${id}`, {
+      const res = await fetch(`${API_URL}/wok-items/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${getToken()}` },
       });
+      if (checkAuth(res)) return;
       showToast("Жок кылынды");
       fetchItems();
     } catch {

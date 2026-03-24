@@ -84,7 +84,7 @@ export default function AdminLayout({
   // Текшерүүдө
   if (checking || !authed) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
+      <div className="min-h-screen bg-dark flex items-center justify-center">
         <div className="w-8 h-8 border-2 border-accent border-t-transparent rounded-full animate-spin" />
       </div>
     );
@@ -96,9 +96,9 @@ export default function AdminLayout({
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex">
+    <div className="min-h-screen bg-dark flex">
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex flex-col w-64 bg-[#111] border-r border-white/10 h-screen sticky top-0">
+      <aside className="hidden lg:flex flex-col w-64 bg-surface border-r border-white/10 h-screen sticky top-0">
         {/* Логотип */}
         <div className="px-6 py-5 border-b border-white/10">
           <h1 className="text-xl font-black">
@@ -157,7 +157,7 @@ export default function AdminLayout({
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="fixed left-0 top-0 bottom-0 w-64 bg-[#111] border-r border-white/10 z-50 lg:hidden flex flex-col"
+              className="fixed left-0 top-0 bottom-0 w-64 bg-surface border-r border-white/10 z-50 lg:hidden flex flex-col"
             >
               {/* Логотип + жабуу */}
               <div className="px-6 py-5 border-b border-white/10 flex items-center justify-between">
@@ -216,7 +216,7 @@ export default function AdminLayout({
       {/* Main content */}
       <div className="flex-1 flex flex-col min-h-screen">
         {/* Header */}
-        <header className="h-16 border-b border-white/10 px-4 lg:px-6 flex items-center justify-between sticky top-0 bg-[#0a0a0a]/95 backdrop-blur-sm z-30">
+        <header className="h-16 border-b border-white/10 px-4 lg:px-6 flex items-center justify-between sticky top-0 bg-dark/95 backdrop-blur-sm z-30">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setSidebarOpen(true)}

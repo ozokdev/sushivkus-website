@@ -264,7 +264,7 @@ export default function CategoryPageClient({
                       {item.description}
                     </p>
                     <div className="flex items-center justify-between gap-2">
-                      <span className="text-accent font-bold text-base md:text-lg">
+                      <span className="text-accent font-bold font-display text-base md:text-lg">
                         {item.price} ₽
                       </span>
                       {count > 0 ? (

@@ -27,7 +27,7 @@ export default function OrderSuccess() {
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
           >
-            <div className="bg-[#111] border border-white/10 rounded-2xl w-full max-w-md p-8 text-center relative">
+            <div className="bg-[#1e1e22] border border-white/10 rounded-2xl w-full max-w-md p-8 text-center relative">
               <button
                 onClick={closeOrderSuccess}
                 className="absolute top-4 right-4 p-2 hover:bg-white/5 rounded-xl transition-colors"

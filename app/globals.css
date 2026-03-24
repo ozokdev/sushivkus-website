@@ -8,7 +8,7 @@
 
 /* Фокус для клавиатурной навигации */
 *:focus-visible {
-  outline: 2px solid #e63946;
+  outline: 2px solid #ef4444;
   outline-offset: 2px;
 }
 
@@ -25,21 +25,21 @@
   }
 
   body {
-    background-color: #0a0a0a;
-    color: #ffffff;
+    background-color: #09090b;
+    color: #fafafa;
     font-family: 'Inter', sans-serif;
   }
 
   :root {
-    --accent: #e63946;
-    --accent-hover: #c62833;
-    --accent-glow: rgba(230, 57, 70, 0.3);
-    --bg-primary: #0a0a0a;
-    --bg-surface: #111111;
-    --bg-elevated: #1a1a1a;
-    --text-primary: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.6);
-    --text-muted: rgba(255, 255, 255, 0.4);
+    --accent: #ef4444;
+    --accent-hover: #dc2626;
+    --accent-glow: rgba(239, 68, 68, 0.25);
+    --bg-primary: #09090b;
+    --bg-surface: #18181b;
+    --bg-elevated: #27272a;
+    --text-primary: #fafafa;
+    --text-secondary: #a1a1aa;
+    --text-muted: #71717a;
     --border-subtle: rgba(255, 255, 255, 0.06);
     --border-default: rgba(255, 255, 255, 0.1);
     --radius-sm: 8px;
@@ -65,16 +65,16 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #111;
+    background: #18181b;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #333;
+    background: #3f3f46;
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #e63946;
+    background: #ef4444;
   }
 }
 
@@ -86,11 +86,11 @@
 
   /* Эффект свечения для кнопок */
   .glow-red {
-    box-shadow: 0 0 20px rgba(230, 57, 70, 0.3);
+    box-shadow: 0 0 25px rgba(239, 68, 68, 0.25), 0 4px 15px rgba(0, 0, 0, 0.3);
   }
 
   .glow-red:hover {
-    box-shadow: 0 0 30px rgba(230, 57, 70, 0.5);
+    box-shadow: 0 0 40px rgba(239, 68, 68, 0.4), 0 8px 25px rgba(0, 0, 0, 0.4);
   }
 
   /* Скрытый скроллбар для горизонтальных списков */
@@ -115,11 +115,11 @@
 
   /* Premium card hover effect */
   .card-hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out, border-color 0.25s ease-out;
   }
   .card-hover:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(239, 68, 68, 0.06);
   }
 
   /* Gradient text for headings */
@@ -206,6 +206,22 @@ html.light-mode .bg-dark\/98 {
 
 html.light-mode .bg-\[0\.111\],
 html.light-mode .bg-\[\#111\] {
+  background-color: #ffffff !important;
+}
+
+html.light-mode .bg-surface {
+  background-color: #ffffff !important;
+}
+
+html.light-mode .bg-dark {
+  background-color: #fafafa !important;
+}
+
+html.light-mode .bg-\[\#0c0c0e\] {
+  background-color: #f0f0f0 !important;
+}
+
+html.light-mode .bg-\[\#1e1e22\] {
   background-color: #ffffff !important;
 }
 

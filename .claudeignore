@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.git/
+photo/
+*.jpg
+*.jpeg
+*.png
+*.webp
+package-lock.json

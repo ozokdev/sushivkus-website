@@ -135,7 +135,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
           >
-            <div role="dialog" aria-modal="true" aria-label={product.name} className="bg-[#111] border border-white/10 rounded-2xl w-full max-w-lg max-h-[90vh] overflow-hidden flex flex-col" onClick={(e) => e.stopPropagation()}>
+            <div role="dialog" aria-modal="true" aria-label={product.name} className="bg-[#1e1e22] border border-white/10 rounded-3xl w-full max-w-lg max-h-[90vh] overflow-hidden flex flex-col" onClick={(e) => e.stopPropagation()}>
               {/* Сүрөт */}
               <div className="relative w-full aspect-[3/2] flex-shrink-0">
                 <Image src={product.image} alt={product.name} fill className="object-cover rounded-t-2xl" />
@@ -243,7 +243,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                 {/* Цена и кнопки */}
                 <div className="flex items-center justify-between mt-auto pt-3 border-t border-white/[0.06]">
                   <div className="flex items-center gap-2">
-                    <span className="text-2xl font-bold text-accent">{currentPrice} ₽</span>
+                    <span className="text-2xl font-bold font-display text-accent">{currentPrice} ₽</span>
                     {product.oldPrice && product.oldPrice > currentPrice && (
                       <span className="text-red-400/70 text-lg line-through">{product.oldPrice} ₽</span>
                     )}
@@ -268,7 +268,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                   ) : (
                     <button
                       onClick={handleAdd}
-                      className="py-3 px-6 bg-accent hover:bg-accent-hover rounded-xl text-white font-semibold transition-all duration-200 glow-red flex items-center gap-2"
+                      className="py-3 px-6 bg-accent hover:bg-accent-hover rounded-xl text-white font-semibold font-display transition-all duration-200 glow-red flex items-center gap-2"
                     >
                       <ShoppingCart className="w-5 h-5" />
                       В корзину

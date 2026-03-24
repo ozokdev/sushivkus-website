@@ -6,6 +6,16 @@ import { Plus, Pencil, Trash2, X, Save, Loader2 } from "lucide-react";
 
 const API_URL = "https://api.sushivkus.ru/api";
 
+function checkAuth(res: Response) {
+  if (res.status === 401) {
+    localStorage.removeItem("admin_token");
+    localStorage.removeItem("admin_role");
+    window.location.href = "/admin/login";
+    return true;
+  }
+  return false;
+}
+
 interface ToppingItem {
   ID: number;
   name: string;
@@ -72,6 +82,7 @@ export default function PizzaToppingsPage() {
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${getToken()}` },
         body: JSON.stringify({ name: addForm.name, category: addForm.category, price: Number(addForm.price), is_active: true }),
       });
+      if (checkAuth(res)) return;
       if (res.ok) {
         showToast("Топпинг кошулду");
         setAddForm({ name: "", category: "meat", price: 0 });
@@ -96,18 +107,21 @@ export default function PizzaToppingsPage() {
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${getToken()}` },
         body: JSON.stringify({ name: editForm.name, category: editForm.category, price: Number(editForm.price) }),
       });
+      if (checkAuth(res)) return;
       if (res.ok) { showToast("Сакталды"); setEditId(null); fetchItems(); }
+      else { const err = await res.json().catch(() => null); showToast(err?.error || `Ката: ${res.status}`, "error"); }
     } catch { showToast("Ката", "error"); }
     setSaving(false);
   };
 
   const handleToggle = async (item: ToppingItem) => {
     try {
-      await fetch(`${API_URL}/pizza-toppings/${item.ID}`, {
+      const res = await fetch(`${API_URL}/pizza-toppings/${item.ID}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${getToken()}` },
         body: JSON.stringify({ is_active: !item.is_active }),
       });
+      if (checkAuth(res)) return;
       fetchItems();
     } catch { showToast("Ката", "error"); }
   };
@@ -115,10 +129,11 @@ export default function PizzaToppingsPage() {
   const handleDelete = async (id: number) => {
     if (!confirm("Чын эле жок кылабызбы?")) return;
     try {
-      await fetch(`${API_URL}/pizza-toppings/${id}`, {
+      const res = await fetch(`${API_URL}/pizza-toppings/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${getToken()}` },
       });
+      if (checkAuth(res)) return;
       showToast("Жок кылынды");
       fetchItems();
     } catch { showToast("Ката", "error"); }

@@ -4,7 +4,7 @@ import { MapPin, Phone, Clock, Instagram, MessageCircle, Send } from "lucide-rea
 
 export default function Footer() {
   return (
-    <footer id="contacts" className="bg-[#080808]">
+    <footer id="contacts" className="bg-[#0c0c0e]">
       <div className="bg-gradient-to-r from-transparent via-accent/30 to-transparent h-px" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid md:grid-cols-3 gap-8">

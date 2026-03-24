@@ -71,7 +71,7 @@ export default function Cart() {
             role="dialog"
             aria-modal="true"
             aria-label="Корзина"
-            className="fixed right-0 top-0 bottom-0 w-full max-w-md bg-[#111] border-l border-white/10 z-50 flex flex-col"
+            className="fixed right-0 top-0 bottom-0 w-full max-w-md bg-[#1e1e22] border-l border-white/10 z-50 flex flex-col"
           >
             {/* Шапка */}
             <div className="flex items-center justify-between p-5 border-b border-white/10">
@@ -288,7 +288,7 @@ export default function Cart() {
                   )}
                   <div className="flex justify-between pt-2 border-t border-white/[0.06]">
                     <span className="font-medium">Итого:</span>
-                    <span className="text-xl font-bold text-accent">
+                    <span className="text-xl font-bold font-display text-accent">
                       {finalTotal} ₽
                     </span>
                   </div>
