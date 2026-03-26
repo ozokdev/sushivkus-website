@@ -18,6 +18,7 @@ import OrderSuccess from "@/components/OrderSuccess";
 
 import FAQ from "@/components/FAQ";
 import InstagramGallery from "@/components/InstagramGallery";
+import DeliveryChoiceModal from "@/components/DeliveryChoiceModal";
 
 export default function Home() {
   const [sections, setSections] = useState<Record<string, boolean>>({
@@ -58,6 +59,7 @@ export default function Home() {
       <ScrollToTop />
       <MobileNav />
       <Toast />
+      <DeliveryChoiceModal />
     </>
   );
 }

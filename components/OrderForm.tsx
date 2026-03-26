@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, User, Phone, MapPin, MessageSquare, ShoppingBag, ChevronLeft, Banknote, Building2, DoorOpen, Hash, KeyRound } from "lucide-react";
+import { X, User, Phone, MapPin, MessageSquare, ShoppingBag, ChevronLeft, Banknote, Building2, DoorOpen, Hash, KeyRound, Truck } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
 import { useOrderStore } from "@/store/orderStore";
 import Image from "next/image";
@@ -10,6 +10,14 @@ import Image from "next/image";
 export default function OrderForm() {
   const { items, isOrderFormOpen, closeOrderForm, getTotalPrice, clearCart, openOrderSuccess, openCart, appliedPromo, getDiscount, getDiscountAmount, getFinalPrice } =
     useCartStore();
+
+  const [deliveryType, setDeliveryType] = useState<"delivery" | "pickup">(() => {
+    if (typeof window !== "undefined") {
+      return (localStorage.getItem("delivery_type") as "delivery" | "pickup") || "delivery";
+    }
+    return "delivery";
+  });
+  const isPickup = deliveryType === "pickup";
 
   const [form, setForm] = useState({
     name: "",
@@ -42,12 +50,13 @@ export default function OrderForm() {
         body: JSON.stringify({
           customer_name: form.name,
           phone: form.phone,
-          address: form.address,
-          entrance: form.entrance,
-          floor: form.floor,
-          apartment: form.apartment,
-          door_code: form.doorCode,
-          comment: form.comment,
+          address: isPickup ? "Самовывоз: Шоссейная 42" : form.address,
+          entrance: isPickup ? "" : form.entrance,
+          floor: isPickup ? "" : form.floor,
+          apartment: isPickup ? "" : form.apartment,
+          door_code: isPickup ? "" : form.doorCode,
+          comment: isPickup ? `[САМОВЫВОЗ] ${form.comment}`.trim() : form.comment,
+          delivery_type: deliveryType,
           promo_code: appliedPromo || "",
           discount_percent: getDiscount(),
           items: items.map((item) => ({
@@ -168,9 +177,38 @@ export default function OrderForm() {
                   </div>
                 </div>
 
+                {/* Тип доставки */}
+                <div>
+                  <h3 className="font-bold text-white mb-3">Способ получения</h3>
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      type="button"
+                      onClick={() => { setDeliveryType("delivery"); localStorage.setItem("delivery_type", "delivery"); }}
+                      className={`flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold transition-all cursor-pointer ${!isPickup ? "bg-accent text-white shadow-lg shadow-accent/20" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}
+                    >
+                      <Truck className="w-4 h-4" />
+                      Доставка
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => { setDeliveryType("pickup"); localStorage.setItem("delivery_type", "pickup"); }}
+                      className={`flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold transition-all cursor-pointer ${isPickup ? "bg-accent text-white shadow-lg shadow-accent/20" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}
+                    >
+                      <ShoppingBag className="w-4 h-4" />
+                      Самовывоз
+                    </button>
+                  </div>
+                  {isPickup && (
+                    <div className="mt-2 bg-accent/10 border border-accent/20 rounded-xl p-3 text-center">
+                      <p className="text-sm text-white font-medium">Адрес самовывоза:</p>
+                      <p className="text-accent text-sm">ул. Шоссейная 42, г. Люберцы</p>
+                    </div>
+                  )}
+                </div>
+
                 {/* Контактные данные */}
                 <div className="space-y-4">
-                  <h3 className="font-bold text-white">Данные для доставки</h3>
+                  <h3 className="font-bold text-white">{isPickup ? "Контактные данные" : "Данные для доставки"}</h3>
 
                   <div>
                     <label className="flex items-center gap-2 text-sm text-gray-400 mb-1.5">
@@ -206,80 +244,84 @@ export default function OrderForm() {
                     />
                   </div>
 
-                  <div>
-                    <label className="flex items-center gap-2 text-sm text-gray-400 mb-1.5">
-                      <MapPin className="w-4 h-4" />
-                      Улица и дом
-                    </label>
-                    <input
-                      type="text"
-                      name="address"
-                      value={form.address}
-                      onChange={handleChange}
-                      required
-                      placeholder="ул. Ленина, д. 10"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent/50 transition-colors"
-                    />
-                  </div>
+                  {!isPickup && (
+                    <>
+                      <div>
+                        <label className="flex items-center gap-2 text-sm text-gray-400 mb-1.5">
+                          <MapPin className="w-4 h-4" />
+                          Улица и дом
+                        </label>
+                        <input
+                          type="text"
+                          name="address"
+                          value={form.address}
+                          onChange={handleChange}
+                          required
+                          placeholder="ул. Ленина, д. 10"
+                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent/50 transition-colors"
+                        />
+                      </div>
 
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="flex items-center gap-2 text-sm text-gray-400 mb-1.5">
-                        <Building2 className="w-4 h-4" />
-                        Подъезд
-                      </label>
-                      <input
-                        type="text"
-                        name="entrance"
-                        value={form.entrance}
-                        onChange={handleChange}
-                        placeholder="1"
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent/50 transition-colors"
-                      />
-                    </div>
-                    <div>
-                      <label className="flex items-center gap-2 text-sm text-gray-400 mb-1.5">
-                        <Hash className="w-4 h-4" />
-                        Этаж
-                      </label>
-                      <input
-                        type="text"
-                        name="floor"
-                        value={form.floor}
-                        onChange={handleChange}
-                        placeholder="5"
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent/50 transition-colors"
-                      />
-                    </div>
-                    <div>
-                      <label className="flex items-center gap-2 text-sm text-gray-400 mb-1.5">
-                        <DoorOpen className="w-4 h-4" />
-                        Квартира
-                      </label>
-                      <input
-                        type="text"
-                        name="apartment"
-                        value={form.apartment}
-                        onChange={handleChange}
-                        placeholder="42"
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent/50 transition-colors"
-                      />
-                    </div>
-                    <div>
-                      <label className="flex items-center gap-2 text-sm text-gray-400 mb-1.5">
-                        <KeyRound className="w-4 h-4" />
-                        Код двери
-                      </label>
-                      <input
-                        type="text"
-                        name="doorCode"
-                        value={form.doorCode}
-                        onChange={handleChange}
-                        placeholder="1234"
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent/50 transition-colors"
-                      />
-                    </div>
-                  </div>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div>
+                          <label className="flex items-center gap-2 text-sm text-gray-400 mb-1.5">
+                            <Building2 className="w-4 h-4" />
+                            Подъезд
+                          </label>
+                          <input
+                            type="text"
+                            name="entrance"
+                            value={form.entrance}
+                            onChange={handleChange}
+                            placeholder="1"
+                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent/50 transition-colors"
+                          />
+                        </div>
+                        <div>
+                          <label className="flex items-center gap-2 text-sm text-gray-400 mb-1.5">
+                            <Hash className="w-4 h-4" />
+                            Этаж
+                          </label>
+                          <input
+                            type="text"
+                            name="floor"
+                            value={form.floor}
+                            onChange={handleChange}
+                            placeholder="5"
+                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent/50 transition-colors"
+                          />
+                        </div>
+                        <div>
+                          <label className="flex items-center gap-2 text-sm text-gray-400 mb-1.5">
+                            <DoorOpen className="w-4 h-4" />
+                            Квартира
+                          </label>
+                          <input
+                            type="text"
+                            name="apartment"
+                            value={form.apartment}
+                            onChange={handleChange}
+                            placeholder="42"
+                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent/50 transition-colors"
+                          />
+                        </div>
+                        <div>
+                          <label className="flex items-center gap-2 text-sm text-gray-400 mb-1.5">
+                            <KeyRound className="w-4 h-4" />
+                            Код двери
+                          </label>
+                          <input
+                            type="text"
+                            name="doorCode"
+                            value={form.doorCode}
+                            onChange={handleChange}
+                            placeholder="1234"
+                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent/50 transition-colors"
+                          />
+                        </div>
+                      </div>
+                    </>
+                  )}
 
                   <div>
                     <label className="flex items-center gap-2 text-sm text-gray-400 mb-1.5">
@@ -324,7 +366,7 @@ export default function OrderForm() {
                     </div>
                   )}
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-400">Доставка</span>
+                    <span className="text-gray-400">{isPickup ? "Самовывоз" : "Доставка"}</span>
                     <span className="text-green-400 font-medium">Бесплатно</span>
                   </div>
                   <div className="border-t border-white/10 pt-2 flex justify-between items-center">

@@ -83,6 +83,7 @@ export default function SettingsPage() {
   const [sections, setSections] = useState<Record<string, boolean>>({
     show_instagram: true,
     show_faq: true,
+    show_delivery_choice: true,
   });
   const [saved, setSaved] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -109,6 +110,7 @@ export default function SettingsPage() {
           setSections({
             show_instagram: data.show_instagram !== "false",
             show_faq: data.show_faq !== "false",
+            show_delivery_choice: data.show_delivery_choice !== "false",
           });
           if (data.min_order_amount) {
             setSettings((prev) => ({ ...prev, minOrderAmount: parseInt(data.min_order_amount, 10) || 500 }));
@@ -180,6 +182,7 @@ export default function SettingsPage() {
           body: JSON.stringify({
             show_instagram: sections.show_instagram ? "true" : "false",
             show_faq: sections.show_faq ? "true" : "false",
+            show_delivery_choice: sections.show_delivery_choice ? "true" : "false",
             min_order_amount: String(settings.minOrderAmount),
             free_delivery_from: String(settings.freeDeliveryFrom),
             delivery_price: String(settings.deliveryPrice),
@@ -492,6 +495,27 @@ export default function SettingsPage() {
               <div
                 className={`absolute top-0.5 w-5 h-5 bg-white rounded-full transition-transform ${
                   sections.show_faq ? "left-[22px]" : "left-0.5"
+                }`}
+              />
+            </button>
+          </div>
+          <div className="flex items-center justify-between p-4 bg-white/[0.03] rounded-xl">
+            <div className="flex items-center gap-3">
+              <Truck className="w-5 h-5 text-green-400" />
+              <div>
+                <p className="text-sm font-medium">Модал Доставка / Самовывоз</p>
+                <p className="text-xs text-gray-500 mt-0.5">Модальное окно выбора способа получения при входе на сайт</p>
+              </div>
+            </div>
+            <button
+              onClick={() => toggleSection("show_delivery_choice")}
+              className={`relative w-11 h-6 rounded-full transition-colors ${
+                sections.show_delivery_choice ? "bg-accent" : "bg-gray-700"
+              }`}
+            >
+              <div
+                className={`absolute top-0.5 w-5 h-5 bg-white rounded-full transition-transform ${
+                  sections.show_delivery_choice ? "left-[22px]" : "left-0.5"
                 }`}
               />
             </button>

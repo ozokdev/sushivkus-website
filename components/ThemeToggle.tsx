@@ -19,11 +19,11 @@ export default function ThemeToggle() {
     if (goingDark) {
       root.classList.remove("light-mode");
       root.classList.add("dark-mode");
-      localStorage.setItem("theme", "dark");
+      localStorage.setItem("sv_theme", "dark");
     } else {
       root.classList.add("light-mode");
       root.classList.remove("dark-mode");
-      localStorage.setItem("theme", "light");
+      localStorage.setItem("sv_theme", "light");
     }
     setIsDark(goingDark);
   };
