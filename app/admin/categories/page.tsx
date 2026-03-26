@@ -17,6 +17,74 @@ import {
 
 const API_URL = "https://api.sushivkus.ru/api";
 
+const EMOJI_GROUPS = [
+  { label: "🍣 Суши и роллы", emojis: ["🍣", "🍱", "🍥", "🥢", "🍙", "🍘", "🥟", "🫕", "🍤", "🦐", "🦑", "🐟", "🐙", "🦞", "🦀", "🦪"] },
+  { label: "🍕 Пицца и фастфуд", emojis: ["🍕", "🍔", "🌮", "🌯", "🥙", "🫔", "🌭", "🥪", "🧆"] },
+  { label: "🍜 Супы и горячее", emojis: ["🍜", "🍲", "🥘", "🍛", "🫠", "🥣", "🍝"] },
+  { label: "🥗 Салаты и овощи", emojis: ["🥗", "🥒", "🥬", "🥦", "🫒", "🥑", "🍅", "🌽", "🥕"] },
+  { label: "🍰 Десерты", emojis: ["🍰", "🧁", "🍩", "🍪", "🎂", "🍫", "🍮", "🍦", "🧇", "🥞"] },
+  { label: "🥤 Напитки", emojis: ["🥤", "☕", "🍵", "🧃", "🥛", "🍹", "🧋", "🍺", "🍷", "🥂"] },
+  { label: "🥩 Мясо", emojis: ["🥩", "🍗", "🍖", "🥓", "🥚", "🧀"] },
+  { label: "🍟 Закуски", emojis: ["🍟", "🥨", "🥯", "🧈", "🫓", "🥐"] },
+  { label: "🧂 Соусы", emojis: ["🧂", "🫙", "🍶", "🥫", "🫗"] },
+  { label: "⭐ Другое", emojis: ["🔥", "⭐", "💎", "🆕", "🎉", "❤️", "✨", "🏆", "👑", "🎯", "💥", "🌟"] },
+];
+
+function EmojiPicker({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className="w-12 h-10 bg-white/5 border border-white/10 rounded-lg text-2xl flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer"
+      >
+        {value || "📋"}
+      </button>
+      {open && (
+        <>
+          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
+          <div className="absolute top-12 left-0 z-50 bg-[#1a1a1e] border border-white/10 rounded-2xl p-4 shadow-2xl w-[380px] max-h-[70vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-3">
+              <p className="text-sm text-white font-semibold">Выберите иконку</p>
+              <button onClick={() => setOpen(false)} className="text-gray-500 hover:text-white text-xs">✕</button>
+            </div>
+            {EMOJI_GROUPS.map((group) => (
+              <div key={group.label} className="mb-3">
+                <p className="text-[11px] text-gray-500 font-medium mb-1.5">{group.label}</p>
+                <div className="grid grid-cols-8 gap-1">
+                  {group.emojis.map((emoji) => (
+                    <button
+                      key={emoji}
+                      type="button"
+                      onClick={() => { onChange(emoji); setOpen(false); }}
+                      className={`w-10 h-10 flex items-center justify-center text-2xl rounded-xl hover:bg-white/10 transition-colors cursor-pointer ${
+                        value === emoji ? "bg-accent/20 ring-2 ring-accent" : ""
+                      }`}
+                    >
+                      {emoji}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <div className="border-t border-white/10 pt-3 mt-2">
+              <p className="text-[11px] text-gray-500 mb-1.5">Или введите свой эмодзи</p>
+              <input
+                type="text"
+                value={value}
+                onChange={(e) => onChange(e.target.value)}
+                placeholder="Вставьте эмодзи..."
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-2xl text-center focus:outline-none focus:border-accent/40"
+              />
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 interface CategoryItem {
   ID: number;
   slug: string;
@@ -275,14 +343,8 @@ export default function CategoriesPage() {
                 />
               </div>
               <div>
-                <label className="text-sm text-gray-400 mb-1 block">Иконка (эмодзи)</label>
-                <input
-                  type="text"
-                  value={addForm.icon}
-                  onChange={(e) => setAddForm({ ...addForm, icon: e.target.value })}
-                  placeholder="🍕"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white text-center focus:outline-none focus:border-accent/40"
-                />
+                <label className="text-sm text-gray-400 mb-1 block">Иконка</label>
+                <EmojiPicker value={addForm.icon} onChange={(v) => setAddForm({ ...addForm, icon: v })} />
               </div>
             </div>
             <div className="flex gap-2 mt-4">
@@ -344,12 +406,7 @@ export default function CategoriesPage() {
               <div className="flex-1 min-w-0">
                 {editId === cat.ID ? (
                   <div className="flex gap-2">
-                    <input
-                      type="text"
-                      value={editForm.icon}
-                      onChange={(e) => setEditForm({ ...editForm, icon: e.target.value })}
-                      className="w-12 bg-white/5 border border-white/10 rounded-lg px-2 py-1.5 text-sm text-center focus:outline-none focus:border-accent/40"
-                    />
+                    <EmojiPicker value={editForm.icon} onChange={(v) => setEditForm({ ...editForm, icon: v })} />
                     <input
                       type="text"
                       value={editForm.name}
