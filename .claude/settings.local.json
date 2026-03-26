@@ -38,7 +38,8 @@
       "Bash(curl -s \"https://api.sushivkus.ru/api/pizza-toppings\")",
       "Bash(curl -sv \"https://api.sushivkus.ru/api/pizza-toppings\")",
       "Bash(curl -sk \"https://api.sushivkus.ru/api/pizza-toppings\")",
-      "Bash(curl -sk -X PUT \"https://api.sushivkus.ru/api/pizza-toppings/1\" -H \"Content-Type: application/json\" -H \"Authorization: Bearer test\" -d '{\"\"name\"\":\"\"test\"\",\"\"price\"\":999}')"
+      "Bash(curl -sk -X PUT \"https://api.sushivkus.ru/api/pizza-toppings/1\" -H \"Content-Type: application/json\" -H \"Authorization: Bearer test\" -d '{\"\"name\"\":\"\"test\"\",\"\"price\"\":999}')",
+      "WebFetch(domain:unsplash.com)"
     ]
   }
 }
