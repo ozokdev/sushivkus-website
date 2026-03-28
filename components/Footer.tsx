@@ -1,8 +1,10 @@
 "use client";
 
 import { MapPin, Phone, Clock, Instagram, MessageCircle, Send } from "lucide-react";
+import { useSettingsStore } from "@/store/settingsStore";
 
 export default function Footer() {
+  const s = useSettingsStore((st) => st.settings);
   return (
     <footer id="contacts" className="bg-[#0c0c0e]">
       <div className="bg-gradient-to-r from-transparent via-accent/30 to-transparent h-px" />
@@ -14,12 +16,11 @@ export default function Footer() {
               <span className="text-accent">Суши</span> Вкус
             </h3>
             <p className="text-gray-500 leading-relaxed mb-4">
-              Свежие роллы. Быстрая доставка. Готовим с любовью из качественных
-              ингредиентов.
+              {s.description} Готовим с любовью из качественных ингредиентов.
             </p>
             <div className="flex gap-3">
               <a
-                href="https://wa.me/79255372825"
+                href={s.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-green-600/10 hover:bg-green-600/20 border border-green-600/20 rounded-xl flex items-center justify-center transition-all"
@@ -28,7 +29,7 @@ export default function Footer() {
                 <MessageCircle className="w-5 h-5 text-green-500" />
               </a>
               <a
-                href="https://t.me/kelechek_sushi"
+                href={s.telegram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 rounded-xl flex items-center justify-center transition-all"
@@ -37,7 +38,7 @@ export default function Footer() {
                 <Send className="w-5 h-5 text-blue-400" />
               </a>
               <a
-                href="https://instagram.com/sushivkus_lybertsy"
+                href={s.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/5 hover:bg-accent/20 border border-white/10 rounded-xl flex items-center justify-center transition-all"
@@ -54,22 +55,24 @@ export default function Footer() {
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span className="text-gray-400">
-                  ул. Шоссейная, 42, г. Люберцы
-                </span>
+                <span className="text-gray-400">{s.address}</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-accent flex-shrink-0" />
-                <a
-                  href="tel:+79255372825"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  8 (925) 537-28-25
-                </a>
+                <div className="flex flex-col">
+                  <a href={`tel:${s.phoneRaw}`} className="text-gray-400 hover:text-white transition-colors">
+                    {s.phone}
+                  </a>
+                  {s.phone2 && (
+                    <a href={`tel:${s.phoneRaw2}`} className="text-gray-400 hover:text-white transition-colors">
+                      {s.phone2}
+                    </a>
+                  )}
+                </div>
               </div>
               <div className="flex items-center gap-3">
                 <Clock className="w-5 h-5 text-accent flex-shrink-0" />
-                <span className="text-gray-400">Ежедневно: 10:00 — 23:00</span>
+                <span className="text-gray-400">{s.workDays}: {s.hours}</span>
               </div>
             </div>
           </div>

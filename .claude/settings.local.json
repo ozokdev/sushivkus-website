@@ -39,7 +39,18 @@
       "Bash(curl -sv \"https://api.sushivkus.ru/api/pizza-toppings\")",
       "Bash(curl -sk \"https://api.sushivkus.ru/api/pizza-toppings\")",
       "Bash(curl -sk -X PUT \"https://api.sushivkus.ru/api/pizza-toppings/1\" -H \"Content-Type: application/json\" -H \"Authorization: Bearer test\" -d '{\"\"name\"\":\"\"test\"\",\"\"price\"\":999}')",
-      "WebFetch(domain:unsplash.com)"
+      "WebFetch(domain:unsplash.com)",
+      "Bash(curl -sk \"https://api.sushivkus.ru/api/categories\")",
+      "Bash(python -m json.tool)",
+      "Read(//c/kelechek/sushi/**)",
+      "Bash(scp -o StrictHostKeyChecking=no /c/kelechek/sushi/website/public/photo/cat_wok.jpg /c/kelechek/sushi/website/public/photo/cat_napitki.jpg /c/kelechek/sushi/website/public/photo/cat_novinki.jpg /c/kelechek/sushi/website/public/photo/cat_desert.jpg /c/kelechek/sushi/website/public/photo/cat_sashami.jpg /c/kelechek/sushi/website/public/photo/cat_midii.jpg root@81.90.182.17:/var/www/sushivkus/public/photo/)",
+      "Bash(curl -sk -o /dev/null -w \"%{http_code}\" \"https://api.sushivkus.ru/photo/1774682777972376027.jpeg\")",
+      "Bash(curl -sk -o /dev/null -w \"%{http_code}\" \"https://sushivkus.ru/photo/1774682777972376027.jpeg\")",
+      "Bash(curl -s \"https://api.sushivkus.ru/api/menu\")",
+      "Bash(curl -s --max-time 5 \"https://api.sushivkus.ru/api/menu\")",
+      "Bash(curl -s --max-time 5 \"https://api.sushivkus.ru/api/categories\")",
+      "Bash(curl -v --max-time 5 \"https://api.sushivkus.ru/api/menu\")",
+      "Bash(curl -sk --max-time 5 \"https://api.sushivkus.ru/api/menu\")"
     ]
   }
 }

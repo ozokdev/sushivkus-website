@@ -2,14 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Truck, ShoppingBag } from "lucide-react";
+import { Truck, Store, MapPin, Clock, ChevronRight } from "lucide-react";
 
 export default function DeliveryChoiceModal() {
   const [show, setShow] = useState(false);
   const [enabled, setEnabled] = useState(true);
 
   useEffect(() => {
-    // Админкадан өчүрүлгөнбү текшерүү
     fetch("https://api.sushivkus.ru/api/site-settings")
       .then((r) => r.json())
       .then((data) => {
@@ -17,7 +16,6 @@ export default function DeliveryChoiceModal() {
           setEnabled(false);
           return;
         }
-        // Мурда тандалганбы текшерүү
         const chosen = localStorage.getItem("delivery_type");
         if (!chosen) {
           setShow(true);
@@ -29,7 +27,6 @@ export default function DeliveryChoiceModal() {
   const choose = (type: "delivery" | "pickup") => {
     localStorage.setItem("delivery_type", type);
     setShow(false);
-    // Башка компоненттерге кабарлоо
     window.dispatchEvent(new CustomEvent("deliveryTypeChanged", { detail: type }));
   };
 
@@ -44,50 +41,75 @@ export default function DeliveryChoiceModal() {
         className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
       >
         {/* Backdrop */}
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-md" />
 
         {/* Modal */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          initial={{ opacity: 0, scale: 0.92, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 400, damping: 25 }}
-          className="relative w-full max-w-sm bg-white rounded-2xl shadow-2xl overflow-hidden"
+          transition={{ type: "spring", stiffness: 350, damping: 28 }}
+          className="relative w-full max-w-[400px] bg-white rounded-3xl shadow-2xl overflow-hidden"
         >
+          {/* Top accent line */}
+          <div className="h-1 bg-gradient-to-r from-accent via-red-400 to-accent" />
+
           {/* Header */}
-          <div className="bg-accent/5 px-6 pt-8 pb-4 text-center">
-            <h2 className="text-xl font-bold text-gray-900">
-              Способ получения заказа
+          <div className="px-8 pt-8 pb-2 text-center">
+            <div className="w-16 h-16 mx-auto mb-4 bg-accent/10 rounded-2xl flex items-center justify-center">
+              <span className="text-3xl">🍣</span>
+            </div>
+            <h2 className="text-2xl font-extrabold text-gray-900 tracking-tight">
+              Способ получения
             </h2>
-            <p className="text-sm text-gray-500 mt-1">Выберите удобный вариант</p>
+            <p className="text-sm text-gray-400 mt-1.5">Как вы хотите получить заказ?</p>
           </div>
 
-          {/* Buttons */}
+          {/* Options */}
           <div className="px-6 pb-8 pt-4 space-y-3">
+            {/* Delivery */}
             <button
               onClick={() => choose("delivery")}
-              className="w-full flex items-center gap-4 px-6 py-4 bg-accent hover:bg-accent/90 text-white rounded-xl transition-all duration-200 active:scale-[0.98] shadow-lg shadow-accent/20 cursor-pointer"
+              className="w-full group relative flex items-center gap-4 px-5 py-5 bg-gradient-to-r from-accent to-red-500 text-white rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-accent/30 active:scale-[0.97] cursor-pointer overflow-hidden"
             >
-              <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                <Truck className="w-6 h-6" />
+              <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-300" />
+              <div className="relative w-14 h-14 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center flex-shrink-0">
+                <Truck className="w-7 h-7" strokeWidth={1.8} />
               </div>
-              <div className="text-left">
-                <span className="font-bold text-lg block">ДОСТАВКА</span>
-                <span className="text-white/70 text-xs">Привезём к вашей двери</span>
+              <div className="relative text-left flex-1">
+                <span className="font-bold text-lg block tracking-wide">ДОСТАВКА</span>
+                <span className="text-white/70 text-xs flex items-center gap-1 mt-0.5">
+                  <Clock className="w-3 h-3" />
+                  45-60 мин до вашей двери
+                </span>
               </div>
+              <ChevronRight className="relative w-5 h-5 text-white/50 group-hover:text-white group-hover:translate-x-1 transition-all" />
             </button>
 
+            {/* Pickup */}
             <button
               onClick={() => choose("pickup")}
-              className="w-full flex items-center gap-4 px-6 py-4 bg-gray-900 hover:bg-gray-800 text-white rounded-xl transition-all duration-200 active:scale-[0.98] shadow-lg cursor-pointer"
+              className="w-full group relative flex items-center gap-4 px-5 py-5 bg-gray-900 hover:bg-gray-800 text-white rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-gray-900/30 active:scale-[0.97] cursor-pointer overflow-hidden"
             >
-              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <ShoppingBag className="w-6 h-6" />
+              <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-300" />
+              <div className="relative w-14 h-14 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center flex-shrink-0">
+                <Store className="w-7 h-7" strokeWidth={1.8} />
               </div>
-              <div className="text-left">
-                <span className="font-bold text-lg block">САМОВЫВОЗ</span>
-                <span className="text-white/60 text-xs">Шоссейная 42, Люберцы</span>
+              <div className="relative text-left flex-1">
+                <span className="font-bold text-lg block tracking-wide">САМОВЫВОЗ</span>
+                <span className="text-white/50 text-xs flex items-center gap-1 mt-0.5">
+                  <MapPin className="w-3 h-3" />
+                  Шоссейная 42, Люберцы
+                </span>
               </div>
+              <ChevronRight className="relative w-5 h-5 text-white/30 group-hover:text-white/60 group-hover:translate-x-1 transition-all" />
             </button>
+          </div>
+
+          {/* Footer hint */}
+          <div className="px-6 pb-6">
+            <p className="text-[11px] text-gray-300 text-center">
+              Можно изменить в корзине при оформлении
+            </p>
           </div>
         </motion.div>
       </motion.div>

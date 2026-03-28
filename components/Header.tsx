@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingCart, Menu, X, MapPin, Phone, Clock, MessageCircle, Send } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
+import { useSettingsStore } from "@/store/settingsStore";
 import ThemeToggle from "./ThemeToggle";
 
 
@@ -17,6 +18,12 @@ export default function Header() {
   const totalPrice = useCartStore((s) =>
     s.items.reduce((sum, i) => sum + i.price * i.quantity, 0)
   );
+  const s = useSettingsStore((st) => st.settings);
+  const fetchSettings = useSettingsStore((st) => st.fetchSettings);
+
+  useEffect(() => {
+    fetchSettings();
+  }, [fetchSettings]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -42,9 +49,7 @@ export default function Header() {
             </span>
             <span className="hidden sm:block w-px h-6 bg-white/10" />
             <span className="hidden sm:block text-[11px] md:text-xs text-gray-400 leading-tight max-w-[120px]">
-              Свежие роллы.
-              <br />
-              Быстрая доставка.
+              {s.description}
             </span>
           </a>
 
@@ -52,22 +57,33 @@ export default function Header() {
           <div className="hidden lg:flex items-center gap-6">
             <div className="flex items-center gap-2 text-gray-400 text-sm">
               <MapPin className="w-4 h-4 text-accent" />
-              <span>г. Люберцы</span>
+              <span>{s.city}</span>
             </div>
-            <a
-              href="tel:+79255372825"
-              className="flex items-center gap-2 text-gray-300 hover:text-white text-sm font-medium transition-colors"
-            >
-              <Phone className="w-4 h-4 text-accent" />
-              8 (925) 537-28-25
-            </a>
+            <div className="flex flex-col gap-0.5">
+              <a
+                href={`tel:${s.phoneRaw}`}
+                className="flex items-center gap-2 text-gray-300 hover:text-white text-sm font-medium transition-colors"
+              >
+                <Phone className="w-4 h-4 text-accent" />
+                {s.phone}
+              </a>
+              {s.phone2 && (
+                <a
+                  href={`tel:${s.phoneRaw2}`}
+                  className="flex items-center gap-2 text-gray-300 hover:text-white text-sm font-medium transition-colors"
+                >
+                  <Phone className="w-4 h-4 text-accent" />
+                  {s.phone2}
+                </a>
+              )}
+            </div>
             <div className="flex items-center gap-2 text-gray-400 text-sm">
               <Clock className="w-4 h-4 text-accent" />
-              <span>10:00 – 23:00</span>
+              <span>{s.hours}</span>
             </div>
             <div className="flex items-center gap-2">
               <a
-                href="https://wa.me/79255372825"
+                href={s.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-green-600/10 hover:bg-green-600/20 transition-colors"
@@ -77,7 +93,7 @@ export default function Header() {
                 <MessageCircle className="w-4 h-4 text-green-500" />
               </a>
               <a
-                href="https://t.me/kelechek_sushi"
+                href={s.telegram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 transition-colors"
@@ -140,25 +156,31 @@ export default function Header() {
           >
             <div className="px-6 py-4 space-y-3">
               <a
-                href="https://yandex.ru/maps/?text=г.+Люберцы,+ул.+Шоссейная,+42"
+                href={s.addressLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gray-300 hover:text-accent text-sm transition-colors"
               >
                 <MapPin className="w-4 h-4 text-accent" />
-                <span>ул. Шоссейная, 42, г. Люберцы</span>
+                <span>{s.address}</span>
               </a>
-              <a href="tel:+79255372825" className="flex items-center gap-2 text-gray-300 text-sm">
+              <a href={`tel:${s.phoneRaw}`} className="flex items-center gap-2 text-gray-300 text-sm">
                 <Phone className="w-4 h-4 text-accent" />
-                8 (925) 537-28-25
+                {s.phone}
               </a>
+              {s.phone2 && (
+                <a href={`tel:${s.phoneRaw2}`} className="flex items-center gap-2 text-gray-300 text-sm">
+                  <Phone className="w-4 h-4 text-accent" />
+                  {s.phone2}
+                </a>
+              )}
               <div className="flex items-center gap-2 text-gray-400 text-sm">
                 <Clock className="w-4 h-4 text-accent" />
-                <span>10:00 – 23:00</span>
+                <span>{s.hours}</span>
               </div>
               <div className="flex items-center gap-3 pt-2">
                 <a
-                  href="https://wa.me/79255372825"
+                  href={s.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-3 py-2 bg-green-600/10 rounded-lg text-green-500 text-sm"
@@ -167,7 +189,7 @@ export default function Header() {
                   WhatsApp
                 </a>
                 <a
-                  href="https://t.me/kelechek_sushi"
+                  href={s.telegram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-3 py-2 bg-blue-500/10 rounded-lg text-blue-400 text-sm"

@@ -77,10 +77,64 @@ export const categoryList: CategoryInfo[] = [
     id: "sauces",
     slug: "sauces",
     name: "СОУСЫ",
-    nameFull: "Соусы",
+    nameFull: "Соусы и добавки",
     image: "/photo/cat_sauces.jpg",
     description:
       "Соусы к суши и роллам: соевый, ореховый, спайси, кисло-сладкий, васаби.",
+  },
+  {
+    id: "wok",
+    slug: "wok",
+    name: "ВОК",
+    nameFull: "Вок",
+    image: "/photo/cat_wok.jpg",
+    description:
+      "Вок с лапшой и рисом. Курица, говядина, морепродукты — горячий вок с доставкой.",
+  },
+  {
+    id: "napitki",
+    slug: "napitki",
+    name: "НАПИТКИ",
+    nameFull: "Напитки",
+    image: "/photo/cat_napitki.jpg",
+    description:
+      "Освежающие напитки к вашему заказу: лимонады, соки, вода, чай.",
+  },
+  {
+    id: "novinki",
+    slug: "novinki",
+    name: "НОВИНКИ",
+    nameFull: "Новинки",
+    image: "/photo/cat_novinki.jpg",
+    description:
+      "Новые позиции каждые 3 месяца. Попробуйте наши новинки!",
+  },
+  {
+    id: "desert",
+    slug: "desert",
+    name: "ДЕСЕРТЫ",
+    nameFull: "Десерты",
+    image: "/photo/cat_desert.jpg",
+    description:
+      "Сладкие десерты: чизкейки, моти, японские сладости с доставкой.",
+  },
+  {
+    id: "sashami",
+    slug: "sashami",
+    name: "САШИМИ",
+    nameFull: "Сашими",
+    image: "/photo/cat_sashami.jpg",
+    description:
+      "Свежие сашими из лосося, тунца и других морепродуктов.",
+  },
+  {
+    id: "zapecheni_midii",
+    slug: "zapecheni-midii",
+    name: "МИДИИ",
+    nameFull: "Запеченные мидии",
+    image: "/photo/cat_midii.jpg",
+    description:
+      "Запечённые мидии под сырным и спайси соусом с доставкой.",
   },
 ];
 

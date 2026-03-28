@@ -2,30 +2,33 @@
 
 import { useState, useEffect } from "react";
 import { Clock } from "lucide-react";
+import { useSettingsStore } from "@/store/settingsStore";
 
 export default function WorkTimer() {
   const [timeLeft, setTimeLeft] = useState("");
   const [isOpen, setIsOpen] = useState(true);
+  const workStart = useSettingsStore((s) => s.settings.workStart);
+  const workEnd = useSettingsStore((s) => s.settings.workEnd);
 
   useEffect(() => {
+    const startH = parseInt(workStart.split(":")[0], 10) || 10;
+    const endH = parseInt(workEnd.split(":")[0], 10) || 22;
+
     const calculate = () => {
       const now = new Date();
       const hours = now.getHours();
       const minutes = now.getMinutes();
 
-      // Рабочее время: 10:00 - 23:00
-      if (hours < 10) {
-        // Ещё не открылись
-        const h = 10 - hours - 1;
+      if (hours < startH) {
+        const h = startH - hours - 1;
         const m = 60 - minutes;
         setTimeLeft(`Откроемся через ${h}ч ${m}мин`);
         setIsOpen(false);
-      } else if (hours >= 23) {
-        setTimeLeft("Мы закрыты. Работаем с 10:00");
+      } else if (hours >= endH) {
+        setTimeLeft(`Мы закрыты. Работаем с ${workStart}`);
         setIsOpen(false);
       } else {
-        // Работаем — считаем сколько осталось
-        const h = 23 - hours - 1;
+        const h = endH - hours - 1;
         const m = 60 - minutes;
         setTimeLeft(`${h}ч ${m}мин`);
         setIsOpen(true);
@@ -33,9 +36,9 @@ export default function WorkTimer() {
     };
 
     calculate();
-    const timer = setInterval(calculate, 60000); // обновляем каждую минуту
+    const timer = setInterval(calculate, 60000);
     return () => clearInterval(timer);
-  }, []);
+  }, [workStart, workEnd]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

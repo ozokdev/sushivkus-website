@@ -91,7 +91,7 @@ export default function RootLayout({
         "Sunday",
       ],
       opens: "10:00",
-      closes: "23:00",
+      closes: "22:00",
     },
     hasDeliveryMethod: {
       "@type": "DeliveryMethod",

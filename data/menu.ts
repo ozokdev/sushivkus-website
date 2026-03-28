@@ -1,5 +1,5 @@
 // Категории меню
-export type Category = "all" | "popular" | "rolls" | "fried_rolls" | "baked_rolls" | "classic_rolls" | "sushi_gunkan" | "sets" | "pizza" | "wok" | "poke" | "soups" | "snacks" | "salads" | "sauces";
+export type Category = "all" | "popular" | "rolls" | "fried_rolls" | "baked_rolls" | "classic_rolls" | "sushi_gunkan" | "sets" | "pizza" | "wok" | "poke" | "soups" | "snacks" | "salads" | "sauces" | "napitki" | "novinki" | "desert" | "sashami" | "zapecheni_midii";
 
 export interface MenuItem {
   id: number;
@@ -30,7 +30,13 @@ export const categories: { id: Category; name: string; icon: string }[] = [
   { id: "soups", name: "Супы", icon: "🍜" },
   { id: "snacks", name: "Закуски", icon: "🍟" },
   { id: "salads", name: "Салаты", icon: "🥬" },
-  { id: "sauces", name: "Соусы", icon: "🥢" },
+  { id: "sauces", name: "Соусы и добавки", icon: "🥢" },
+  { id: "wok", name: "Вок", icon: "🍜" },
+  { id: "napitki", name: "Напитки", icon: "🥤" },
+  { id: "novinki", name: "Новинки", icon: "🆕" },
+  { id: "desert", name: "Десерты", icon: "🍰" },
+  { id: "sashami", name: "Сашими", icon: "🐟" },
+  { id: "zapecheni_midii", name: "Запеч. мидии", icon: "🦪" },
 ];
 
 export const menuItems: MenuItem[] = [

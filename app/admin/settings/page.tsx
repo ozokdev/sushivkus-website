@@ -35,7 +35,11 @@ interface SiteSettings {
   siteName: string;
   description: string;
   phone: string;
+  phone2: string;
+  phoneRaw: string;
+  phoneRaw2: string;
   email: string;
+  city: string;
   address: string;
   addressLink: string;
   workStart: string;
@@ -53,11 +57,15 @@ const initialSettings: SiteSettings = {
   siteName: "Суши Вкус",
   description: "Свежие роллы. Быстрая доставка.",
   phone: "8 (925) 537-28-25",
+  phone2: "8 (916) 641-32-73",
+  phoneRaw: "+79255372825",
+  phoneRaw2: "+79166413273",
   email: "admin@sushivkus.ru",
+  city: "г. Люберцы",
   address: "ул. Шоссейная, 42, г. Люберцы",
   addressLink: "https://yandex.ru/maps/-/CDaZjT",
   workStart: "10:00",
-  workEnd: "23:00",
+  workEnd: "22:00",
   workDays: "Ежедневно",
   whatsapp: "79255372825",
   telegram: "kelechek_sushi",
@@ -112,15 +120,28 @@ export default function SettingsPage() {
             show_faq: data.show_faq !== "false",
             show_delivery_choice: data.show_delivery_choice !== "false",
           });
-          if (data.min_order_amount) {
-            setSettings((prev) => ({ ...prev, minOrderAmount: parseInt(data.min_order_amount, 10) || 500 }));
-          }
-          if (data.free_delivery_from) {
-            setSettings((prev) => ({ ...prev, freeDeliveryFrom: parseInt(data.free_delivery_from, 10) || 2000 }));
-          }
-          if (data.delivery_price) {
-            setSettings((prev) => ({ ...prev, deliveryPrice: parseInt(data.delivery_price, 10) || 200 }));
-          }
+          setSettings((prev) => ({
+            ...prev,
+            ...(data.site_name && { siteName: data.site_name }),
+            ...(data.description && { description: data.description }),
+            ...(data.phone && { phone: data.phone }),
+            ...(data.phone2 && { phone2: data.phone2 }),
+            ...(data.phone_raw && { phoneRaw: data.phone_raw }),
+            ...(data.phone_raw2 && { phoneRaw2: data.phone_raw2 }),
+            ...(data.email && { email: data.email }),
+            ...(data.city && { city: data.city }),
+            ...(data.address && { address: data.address }),
+            ...(data.address_link && { addressLink: data.address_link }),
+            ...(data.work_start && { workStart: data.work_start }),
+            ...(data.work_end && { workEnd: data.work_end }),
+            ...(data.work_days && { workDays: data.work_days }),
+            ...(data.whatsapp && { whatsapp: data.whatsapp }),
+            ...(data.telegram && { telegram: data.telegram }),
+            ...(data.instagram && { instagram: data.instagram }),
+            ...(data.min_order_amount && { minOrderAmount: parseInt(data.min_order_amount, 10) || 500 }),
+            ...(data.free_delivery_from && { freeDeliveryFrom: parseInt(data.free_delivery_from, 10) || 2000 }),
+            ...(data.delivery_price && { deliveryPrice: parseInt(data.delivery_price, 10) || 200 }),
+          }));
         }
       })
       .catch(() => {});
@@ -180,6 +201,22 @@ export default function SettingsPage() {
             Authorization: `Bearer ${getToken()}`,
           },
           body: JSON.stringify({
+            site_name: settings.siteName,
+            description: settings.description,
+            phone: settings.phone,
+            phone2: settings.phone2,
+            phone_raw: settings.phoneRaw,
+            phone_raw2: settings.phoneRaw2,
+            email: settings.email,
+            city: settings.city,
+            address: settings.address,
+            address_link: settings.addressLink,
+            work_start: settings.workStart,
+            work_end: settings.workEnd,
+            work_days: settings.workDays,
+            whatsapp: settings.whatsapp,
+            telegram: settings.telegram,
+            instagram: settings.instagram,
             show_instagram: sections.show_instagram ? "true" : "false",
             show_faq: sections.show_faq ? "true" : "false",
             show_delivery_choice: sections.show_delivery_choice ? "true" : "false",
@@ -288,7 +325,7 @@ export default function SettingsPage() {
         <div className="grid sm:grid-cols-2 gap-4">
           <div>
             <label className="text-sm text-gray-400 mb-1.5 block">
-              Телефон
+              Телефон 1 (отображаемый)
             </label>
             <div className="relative">
               <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600" />
@@ -296,9 +333,49 @@ export default function SettingsPage() {
                 type="text"
                 value={settings.phone}
                 onChange={(e) => update("phone", e.target.value)}
-                className="w-full bg-white/5 border border-white/10 rounded-xl pl-11 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-accent/40 transition-colors"
+                placeholder="8 (925) 537-28-25"
+                className="w-full bg-white/5 border border-white/10 rounded-xl pl-11 pr-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accent/40 transition-colors"
               />
             </div>
+          </div>
+          <div>
+            <label className="text-sm text-gray-400 mb-1.5 block">
+              Телефон 1 (для ссылки tel:)
+            </label>
+            <input
+              type="text"
+              value={settings.phoneRaw}
+              onChange={(e) => update("phoneRaw", e.target.value)}
+              placeholder="+79255372825"
+              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accent/40 transition-colors"
+            />
+          </div>
+          <div>
+            <label className="text-sm text-gray-400 mb-1.5 block">
+              Телефон 2 (отображаемый)
+            </label>
+            <div className="relative">
+              <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600" />
+              <input
+                type="text"
+                value={settings.phone2}
+                onChange={(e) => update("phone2", e.target.value)}
+                placeholder="8 (916) 641-32-73"
+                className="w-full bg-white/5 border border-white/10 rounded-xl pl-11 pr-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accent/40 transition-colors"
+              />
+            </div>
+          </div>
+          <div>
+            <label className="text-sm text-gray-400 mb-1.5 block">
+              Телефон 2 (для ссылки tel:)
+            </label>
+            <input
+              type="text"
+              value={settings.phoneRaw2}
+              onChange={(e) => update("phoneRaw2", e.target.value)}
+              placeholder="+79166413273"
+              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accent/40 transition-colors"
+            />
           </div>
           <div>
             <label className="text-sm text-gray-400 mb-1.5 block">
@@ -309,6 +386,18 @@ export default function SettingsPage() {
               value={settings.email}
               onChange={(e) => update("email", e.target.value)}
               className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-accent/40 transition-colors"
+            />
+          </div>
+          <div>
+            <label className="text-sm text-gray-400 mb-1.5 block">
+              Город
+            </label>
+            <input
+              type="text"
+              value={settings.city}
+              onChange={(e) => update("city", e.target.value)}
+              placeholder="г. Люберцы"
+              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accent/40 transition-colors"
             />
           </div>
           <div>

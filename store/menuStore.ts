@@ -26,6 +26,20 @@ interface ApiCategory {
   is_active: boolean;
 }
 
+// API'ден туура эмес жазылган категорияларды slug'ка которуу
+const categoryAliases: Record<string, string> = {
+  "ПИЦЦА": "pizza",
+  "пицца": "pizza",
+  "Пицца": "pizza",
+  "завтраки": "breakfast",
+  "ЗАВТРАКИ": "breakfast",
+  "Завтраки": "breakfast",
+};
+
+function normalizeCategorySlug(raw: string): string {
+  return categoryAliases[raw] || raw;
+}
+
 function mapApiItem(item: ApiMenuItem): MenuItem {
   return {
     id: item.ID,
@@ -35,7 +49,7 @@ function mapApiItem(item: ApiMenuItem): MenuItem {
     price4: item.price4 || undefined,
     oldPrice: item.old_price || undefined,
     image: item.image,
-    category: item.category as MenuItem["category"],
+    category: normalizeCategorySlug(item.category) as MenuItem["category"],
     weight: item.weight || undefined,
     pieces: item.pieces || undefined,
     isPopular: item.is_popular,

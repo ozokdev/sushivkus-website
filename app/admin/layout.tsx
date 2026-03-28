@@ -40,7 +40,7 @@ const allNavItems = [
   { href: "/admin/notifications", label: "Уведомления", icon: Bell, roles: ["admin"] },
   { href: "/admin/telegram", label: "Telegram", icon: Bot, roles: ["admin"] },
   { href: "/admin/export", label: "Экспорт", icon: Download, roles: ["admin"] },
-  { href: "/admin/settings", label: "Настройки", icon: Settings, roles: ["admin"] },
+  { href: "/admin/settings", label: "Настройки", icon: Settings, roles: ["admin", "menu_editor"] },
 ];
 
 function getPageTitle(pathname: string) {

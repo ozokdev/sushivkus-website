@@ -43,8 +43,19 @@ export default function CategoryPageClient({
   const cartItems = useCartStore((s) => s.items);
   const menuItems = useMenuStore((s) => s.items);
   const fetchMenu = useMenuStore((s) => s.fetchMenu);
+  const [apiDescription, setApiDescription] = useState("");
 
   useEffect(() => { fetchMenu(); }, [fetchMenu]);
+
+  useEffect(() => {
+    fetch("https://api.sushivkus.ru/api/categories")
+      .then((r) => r.json())
+      .then((data: { slug: string; description: string }[]) => {
+        const found = data.find((c) => c.slug === category.slug || c.slug === category.id);
+        if (found?.description) setApiDescription(found.description);
+      })
+      .catch(() => {});
+  }, [category.slug, category.id]);
 
   useEffect(() => {
     const timer = setTimeout(() => setDebouncedQuery(searchQuery), 300);
@@ -52,9 +63,11 @@ export default function CategoryPageClient({
   }, [searchQuery]);
 
   // API'ден жүктөлсө — аны колдонуу, жоксо — статик fallback
-  const items = menuItems.length > 0
+  const apiFiltered = menuItems.length > 0
     ? menuItems.filter((i) => i.category === category.id)
-    : staticItems;
+    : [];
+  // Эгер API'де бул категорияга товар жок болсо, статик данныйларды колдон
+  const items = apiFiltered.length > 0 ? apiFiltered : staticItems;
 
   const getItemCount = (id: number) => {
     const item = cartItems.find((i) => i.id === id);
@@ -144,7 +157,7 @@ export default function CategoryPageClient({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           {/* SEO текст */}
           <p className="text-gray-500 text-sm mb-6 leading-relaxed max-w-2xl">
-            {category.description}
+            {apiDescription || category.description}
           </p>
 
           {/* Поиск */}

@@ -1,20 +1,63 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { menuItems } from "@/data/menu";
+import { menuItems as staticMenuItems } from "@/data/menu";
 import { categoryList } from "@/data/categories";
-import type { Category } from "@/data/menu";
+import type { Category, MenuItem } from "@/data/menu";
+import { useMenuStore } from "@/store/menuStore";
 
-function getCategoryStats(catId: Category) {
-  const items = menuItems.filter((item) => item.category === catId);
+interface ApiCategory {
+  ID: number;
+  slug: string;
+  name: string;
+  icon: string;
+  image: string;
+  min_price: number;
+  is_active: boolean;
+}
+
+function getCategoryStats(catId: Category, items: MenuItem[]) {
+  const filtered = items.filter((item) => item.category === catId);
   const minPrice =
-    items.length > 0 ? Math.min(...items.map((i) => i.price)) : 0;
-  return { count: items.length, minPrice };
+    filtered.length > 0 ? Math.min(...filtered.map((i) => i.price)) : 0;
+  return { count: filtered.length, minPrice };
 }
 
 export default function CategoryGrid() {
+  const [apiImages, setApiImages] = useState<Record<string, string>>({});
+  const [apiPrices, setApiPrices] = useState<Record<string, number>>({});
+  const [disabledSlugs, setDisabledSlugs] = useState<Set<string>>(new Set());
+  const storeItems = useMenuStore((s) => s.items);
+  const fetchMenu = useMenuStore((s) => s.fetchMenu);
+  // API'ден товар жүктөлсө — аны колдон, жоксо — статик
+  const allItems = storeItems.length > 0 ? storeItems : staticMenuItems;
+
+  useEffect(() => {
+    fetchMenu();
+  }, [fetchMenu]);
+
+  useEffect(() => {
+    fetch("https://api.sushivkus.ru/api/categories")
+      .then((r) => r.json())
+      .then((data: ApiCategory[]) => {
+        const imgMap: Record<string, string> = {};
+        const priceMap: Record<string, number> = {};
+        const disabled = new Set<string>();
+        data.forEach((c) => {
+          if (c.image) imgMap[c.slug] = c.image;
+          if (c.min_price > 0) priceMap[c.slug] = c.min_price;
+          if (!c.is_active) disabled.add(c.slug);
+        });
+        setApiImages(imgMap);
+        setApiPrices(priceMap);
+        setDisabledSlugs(disabled);
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <section className="py-4 sm:py-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,8 +71,15 @@ export default function CategoryGrid() {
         </motion.h2>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
-          {categoryList.map((card, index) => {
-            const stats = getCategoryStats(card.id);
+          {categoryList
+            .filter((card) => !disabledSlugs.has(card.slug) && !disabledSlugs.has(card.id))
+            .map((card, index) => {
+            const stats = getCategoryStats(card.id, allItems);
+            const apiImg = apiImages[card.slug];
+            const imageSrc = apiImg ? `https://sushivkus.ru${apiImg}` : card.image;
+            // API'де min_price коюлса — аны колдон, жоксо — эсептелген бааны
+            const displayPrice = apiPrices[card.slug] || apiPrices[card.id] || stats.minPrice;
+
             return (
               <motion.div
                 key={card.id}
@@ -43,12 +93,13 @@ export default function CategoryGrid() {
                   className="relative aspect-square rounded-2xl overflow-hidden cursor-pointer group block keep-white"
                 >
                   <Image
-                    src={card.image}
+                    src={imageSrc}
                     alt={card.nameFull}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                     sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
                     priority={index < 4}
+                    unoptimized={!!apiImg}
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent" />
@@ -58,7 +109,7 @@ export default function CategoryGrid() {
                       {card.nameFull}
                     </h3>
                     <p className="text-white font-extrabold text-base sm:text-xl drop-shadow-lg mt-0.5">
-                      ОТ {stats.minPrice} ₽
+                      ОТ {displayPrice} ₽
                     </p>
                   </div>
 

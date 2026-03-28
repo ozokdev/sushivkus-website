@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import {
   Plus,
   Pencil,
@@ -13,6 +14,8 @@ import {
   ArrowDown,
   CheckCircle,
   Loader2,
+  ImageIcon,
+  Upload,
 } from "lucide-react";
 
 const API_URL = "https://api.sushivkus.ru/api";
@@ -85,11 +88,94 @@ function EmojiPicker({ value, onChange }: { value: string; onChange: (v: string)
   );
 }
 
+function ImageUploader({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+  const [uploading, setUploading] = useState(false);
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  const handleUpload = async (file: File) => {
+    setUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append("image", file);
+      const token = localStorage.getItem("admin_token") || "";
+      const res = await fetch(`${API_URL}/upload`, {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}` },
+        body: formData,
+      });
+      if (res.ok) {
+        const data = await res.json();
+        onChange(data.path);
+      }
+    } catch {
+      // ignore
+    }
+    setUploading(false);
+  };
+
+  return (
+    <div className="flex items-center gap-3">
+      <input
+        ref={fileRef}
+        type="file"
+        accept="image/jpeg,image/png,image/webp"
+        className="hidden"
+        onChange={(e) => {
+          const f = e.target.files?.[0];
+          if (f) handleUpload(f);
+        }}
+      />
+      {value ? (
+        <div className="relative w-16 h-16 rounded-xl overflow-hidden border border-white/10 flex-shrink-0 group">
+          <Image
+            src={`https://sushivkus.ru${value}`}
+            alt="category"
+            fill
+            className="object-cover"
+            unoptimized
+          />
+          <div
+            className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer"
+            onClick={() => fileRef.current?.click()}
+          >
+            <Upload className="w-5 h-5 text-white" />
+          </div>
+        </div>
+      ) : (
+        <button
+          type="button"
+          onClick={() => fileRef.current?.click()}
+          disabled={uploading}
+          className="w-16 h-16 rounded-xl border-2 border-dashed border-white/20 hover:border-accent/50 flex items-center justify-center transition-colors cursor-pointer"
+        >
+          {uploading ? (
+            <Loader2 className="w-5 h-5 text-accent animate-spin" />
+          ) : (
+            <ImageIcon className="w-5 h-5 text-gray-500" />
+          )}
+        </button>
+      )}
+      {value && (
+        <button
+          type="button"
+          onClick={() => onChange("")}
+          className="text-xs text-gray-500 hover:text-red-400 transition-colors"
+        >
+          Удалить
+        </button>
+      )}
+    </div>
+  );
+}
+
 interface CategoryItem {
   ID: number;
   slug: string;
   name: string;
+  description: string;
   icon: string;
+  image: string;
+  min_price: number;
   sort_order: number;
   is_active: boolean;
 }
@@ -99,8 +185,8 @@ export default function CategoriesPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [editId, setEditId] = useState<number | null>(null);
-  const [editForm, setEditForm] = useState({ name: "", slug: "", icon: "" });
-  const [addForm, setAddForm] = useState({ name: "", slug: "", icon: "" });
+  const [editForm, setEditForm] = useState({ name: "", slug: "", icon: "", image: "", min_price: 0, description: "" });
+  const [addForm, setAddForm] = useState({ name: "", slug: "", icon: "", image: "", min_price: 0, description: "" });
   const [isAdding, setIsAdding] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
 
@@ -142,14 +228,17 @@ export default function CategoriesPage() {
         body: JSON.stringify({
           name: addForm.name,
           slug: addForm.slug || addForm.name.toLowerCase().replace(/\s+/g, "_"),
+          description: addForm.description || "",
           icon: addForm.icon || "📋",
+          image: addForm.image || "",
+          min_price: addForm.min_price || 0,
           sort_order: categories.length,
           is_active: true,
         }),
       });
       if (res.ok) {
         showToast("Категория кошулду");
-        setAddForm({ name: "", slug: "", icon: "" });
+        setAddForm({ name: "", slug: "", icon: "", image: "", min_price: 0, description: "" });
         setIsAdding(false);
         fetchCategories();
       } else {
@@ -174,7 +263,10 @@ export default function CategoriesPage() {
         body: JSON.stringify({
           name: editForm.name,
           slug: editForm.slug || cat.slug,
+          description: editForm.description || "",
           icon: editForm.icon || cat.icon,
+          image: editForm.image,
+          min_price: editForm.min_price || 0,
           sort_order: cat.sort_order,
           is_active: cat.is_active,
         }),
@@ -242,7 +334,6 @@ export default function CategoriesPage() {
     newCats.forEach((c, i) => (c.sort_order = i));
     setCategories(newCats);
 
-    // Save both to API
     try {
       await Promise.all(
         [newCats[index], newCats[swapIndex]].map((c) =>
@@ -262,7 +353,6 @@ export default function CategoriesPage() {
         )
       );
     } catch {
-      // revert on error
       fetchCategories();
     }
   };
@@ -271,7 +361,7 @@ export default function CategoriesPage() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="space-y-6 max-w-3xl"
+      className="space-y-6 max-w-4xl"
     >
       {/* Toast */}
       <AnimatePresence>
@@ -302,7 +392,7 @@ export default function CategoriesPage() {
         <button
           onClick={() => {
             setIsAdding(true);
-            setAddForm({ name: "", slug: "", icon: "" });
+            setAddForm({ name: "", slug: "", icon: "", image: "", min_price: 0, description: "" });
           }}
           className="flex items-center gap-2 bg-accent hover:bg-accent-hover text-white rounded-xl px-4 py-2.5 text-sm font-medium transition-all"
         >
@@ -321,30 +411,36 @@ export default function CategoriesPage() {
             className="bg-[#111] border border-accent/30 rounded-2xl p-5 overflow-hidden"
           >
             <h3 className="font-semibold mb-4">Новая категория</h3>
-            <div className="grid sm:grid-cols-3 gap-3">
-              <div>
-                <label className="text-sm text-gray-400 mb-1 block">Название</label>
-                <input
-                  type="text"
-                  value={addForm.name}
-                  onChange={(e) => setAddForm({ ...addForm, name: e.target.value })}
-                  placeholder="Напитки"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-accent/40"
-                />
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="space-y-3">
+                <div>
+                  <label className="text-sm text-gray-400 mb-1 block">Название</label>
+                  <input
+                    type="text"
+                    value={addForm.name}
+                    onChange={(e) => setAddForm({ ...addForm, name: e.target.value })}
+                    placeholder="Напитки"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-accent/40"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm text-gray-400 mb-1 block">Slug (ID)</label>
+                  <input
+                    type="text"
+                    value={addForm.slug}
+                    onChange={(e) => setAddForm({ ...addForm, slug: e.target.value })}
+                    placeholder="drinks (авто)"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-accent/40"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm text-gray-400 mb-1 block">Иконка</label>
+                  <EmojiPicker value={addForm.icon} onChange={(v) => setAddForm({ ...addForm, icon: v })} />
+                </div>
               </div>
               <div>
-                <label className="text-sm text-gray-400 mb-1 block">Slug (ID)</label>
-                <input
-                  type="text"
-                  value={addForm.slug}
-                  onChange={(e) => setAddForm({ ...addForm, slug: e.target.value })}
-                  placeholder="drinks (авто)"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-accent/40"
-                />
-              </div>
-              <div>
-                <label className="text-sm text-gray-400 mb-1 block">Иконка</label>
-                <EmojiPicker value={addForm.icon} onChange={(v) => setAddForm({ ...addForm, icon: v })} />
+                <label className="text-sm text-gray-400 mb-1 block">Фото категории</label>
+                <ImageUploader value={addForm.image} onChange={(v) => setAddForm({ ...addForm, image: v })} />
               </div>
             </div>
             <div className="flex gap-2 mt-4">
@@ -378,88 +474,102 @@ export default function CategoriesPage() {
             <motion.div
               key={cat.ID}
               layout
-              className={`bg-[#111] border rounded-xl p-4 flex items-center gap-3 transition-opacity ${
+              className={`bg-[#111] border rounded-xl p-4 transition-opacity ${
                 cat.is_active ? "border-white/10" : "border-white/5 opacity-50"
               }`}
             >
-              {/* Sort arrows */}
-              <div className="flex flex-col gap-0.5">
-                <button
-                  onClick={() => handleMove(index, "up")}
-                  disabled={index === 0}
-                  className="p-0.5 text-gray-500 hover:text-white disabled:opacity-20"
-                >
-                  <ArrowUp className="w-3.5 h-3.5" />
-                </button>
-                <button
-                  onClick={() => handleMove(index, "down")}
-                  disabled={index === categories.length - 1}
-                  className="p-0.5 text-gray-500 hover:text-white disabled:opacity-20"
-                >
-                  <ArrowDown className="w-3.5 h-3.5" />
-                </button>
-              </div>
-
-              <GripVertical className="w-4 h-4 text-gray-600 flex-shrink-0" />
-
-              {/* Content */}
-              <div className="flex-1 min-w-0">
-                {editId === cat.ID ? (
-                  <div className="flex gap-2">
+              {editId === cat.ID ? (
+                /* === EDIT MODE === */
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="flex flex-col gap-0.5">
+                      <button onClick={() => handleMove(index, "up")} disabled={index === 0} className="p-0.5 text-gray-500 hover:text-white disabled:opacity-20"><ArrowUp className="w-3.5 h-3.5" /></button>
+                      <button onClick={() => handleMove(index, "down")} disabled={index === categories.length - 1} className="p-0.5 text-gray-500 hover:text-white disabled:opacity-20"><ArrowDown className="w-3.5 h-3.5" /></button>
+                    </div>
                     <EmojiPicker value={editForm.icon} onChange={(v) => setEditForm({ ...editForm, icon: v })} />
                     <input
                       type="text"
                       value={editForm.name}
                       onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
-                      className="flex-1 bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-sm text-white focus:outline-none focus:border-accent/40"
+                      className="flex-1 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accent/40"
                     />
                     <input
                       type="text"
                       value={editForm.slug}
                       onChange={(e) => setEditForm({ ...editForm, slug: e.target.value })}
                       placeholder="slug"
-                      className="w-32 bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-sm text-gray-400 focus:outline-none focus:border-accent/40"
+                      className="w-36 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-gray-400 focus:outline-none focus:border-accent/40"
                     />
+                    <div className="flex items-center gap-1">
+                      <span className="text-xs text-gray-500">от</span>
+                      <input
+                        type="number"
+                        value={editForm.min_price || ""}
+                        onChange={(e) => setEditForm({ ...editForm, min_price: parseInt(e.target.value) || 0 })}
+                        placeholder="0"
+                        className="w-20 bg-white/5 border border-white/10 rounded-lg px-2 py-2 text-sm text-accent font-medium focus:outline-none focus:border-accent/40"
+                      />
+                      <span className="text-xs text-gray-500">₽</span>
+                    </div>
+                    <button onClick={() => setEditId(null)} className="p-1.5 text-gray-500 hover:text-white rounded-lg hover:bg-white/5"><X className="w-4 h-4" /></button>
+                    <button onClick={() => handleUpdate(cat)} disabled={saving} className="p-1.5 text-accent hover:text-white rounded-lg hover:bg-accent/10">
+                      {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle className="w-4 h-4" />}
+                    </button>
                   </div>
-                ) : (
-                  <div className="flex items-center gap-3">
-                    <span className="text-lg">{cat.icon || "📋"}</span>
-                    <span className="font-medium text-sm">{cat.name}</span>
-                    <span className="text-xs text-gray-500 bg-white/5 px-2 py-0.5 rounded">
-                      {cat.slug}
-                    </span>
+                  <div className="pl-10 space-y-3">
+                    <div>
+                      <label className="text-xs text-gray-500 mb-1 block">Описание (SEO текст на странице категории)</label>
+                      <input
+                        type="text"
+                        value={editForm.description}
+                        onChange={(e) => setEditForm({ ...editForm, description: e.target.value })}
+                        placeholder="Выгодные сеты роллов с доставкой..."
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accent/40"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-xs text-gray-500 mb-1 block">Фото категории</label>
+                      <ImageUploader value={editForm.image} onChange={(v) => setEditForm({ ...editForm, image: v })} />
+                    </div>
                   </div>
-                )}
-              </div>
+                </div>
+              ) : (
+                /* === VIEW MODE === */
+                <div className="flex items-center gap-3">
+                  <div className="flex flex-col gap-0.5">
+                    <button onClick={() => handleMove(index, "up")} disabled={index === 0} className="p-0.5 text-gray-500 hover:text-white disabled:opacity-20"><ArrowUp className="w-3.5 h-3.5" /></button>
+                    <button onClick={() => handleMove(index, "down")} disabled={index === categories.length - 1} className="p-0.5 text-gray-500 hover:text-white disabled:opacity-20"><ArrowDown className="w-3.5 h-3.5" /></button>
+                  </div>
 
-              {/* Actions */}
-              <div className="flex items-center gap-2 flex-shrink-0">
-                {editId === cat.ID ? (
-                  <>
-                    <button
-                      onClick={() => setEditId(null)}
-                      className="p-1.5 text-gray-500 hover:text-white rounded-lg hover:bg-white/5"
-                    >
-                      <X className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={() => handleUpdate(cat)}
-                      disabled={saving}
-                      className="p-1.5 text-accent hover:text-white rounded-lg hover:bg-accent/10"
-                    >
-                      {saving ? (
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                      ) : (
-                        <CheckCircle className="w-4 h-4" />
+                  <GripVertical className="w-4 h-4 text-gray-600 flex-shrink-0" />
+
+                  {/* Thumbnail */}
+                  {cat.image ? (
+                    <div className="relative w-12 h-12 rounded-lg overflow-hidden border border-white/10 flex-shrink-0">
+                      <Image src={`https://sushivkus.ru${cat.image}`} alt={cat.name} fill className="object-cover" unoptimized />
+                    </div>
+                  ) : (
+                    <div className="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-xl">{cat.icon || "📋"}</span>
+                    </div>
+                  )}
+
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg">{cat.icon || "📋"}</span>
+                      <span className="font-medium text-sm">{cat.name}</span>
+                      <span className="text-xs text-gray-500 bg-white/5 px-2 py-0.5 rounded">{cat.slug}</span>
+                      {cat.min_price > 0 && (
+                        <span className="text-xs text-accent font-medium">от {cat.min_price} ₽</span>
                       )}
-                    </button>
-                  </>
-                ) : (
-                  <>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 flex-shrink-0">
                     <button
                       onClick={() => {
                         setEditId(cat.ID);
-                        setEditForm({ name: cat.name, slug: cat.slug, icon: cat.icon || "📋" });
+                        setEditForm({ name: cat.name, slug: cat.slug, icon: cat.icon || "📋", image: cat.image || "", min_price: cat.min_price || 0, description: cat.description || "" });
                       }}
                       className="p-1.5 text-gray-500 hover:text-white rounded-lg hover:bg-white/5"
                     >
@@ -481,9 +591,9 @@ export default function CategoriesPage() {
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>
-                  </>
-                )}
-              </div>
+                  </div>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
