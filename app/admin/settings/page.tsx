@@ -274,6 +274,46 @@ export default function SettingsPage() {
         </button>
       </motion.div>
 
+      {/* Тез башкаруу */}
+      <motion.div
+        variants={item}
+        className="bg-[#111] border border-accent/20 rounded-2xl p-5"
+      >
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
+            <Truck className="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h2 className="font-semibold text-lg">Быстрые переключатели</h2>
+            <p className="text-xs text-gray-500">Мгновенное включение/отключение</p>
+          </div>
+        </div>
+        <div className="space-y-3">
+          <div className="flex items-center justify-between p-4 bg-white/[0.03] rounded-xl">
+            <div className="flex items-center gap-3">
+              <Truck className="w-5 h-5 text-accent" />
+              <div>
+                <p className="text-sm font-medium">Модал «Доставка / Самовывоз»</p>
+                <p className="text-xs text-gray-500 mt-0.5">Всплывающее окно при входе на сайт</p>
+              </div>
+            </div>
+            <button
+              onClick={() => { toggleSection("show_delivery_choice"); }}
+              className={`relative w-14 h-7 rounded-full transition-colors ${
+                sections.show_delivery_choice ? "bg-accent" : "bg-gray-700"
+              }`}
+            >
+              <div
+                className={`absolute top-0.5 w-6 h-6 bg-white rounded-full transition-transform shadow-md ${
+                  sections.show_delivery_choice ? "left-[30px]" : "left-0.5"
+                }`}
+              />
+            </button>
+          </div>
+        </div>
+        <p className="text-[11px] text-gray-600 mt-3">* Не забудьте нажать «Сохранить» после переключения</p>
+      </motion.div>
+
       {/* Основная информация */}
       <motion.div
         variants={item}
