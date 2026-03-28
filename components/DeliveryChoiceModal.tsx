@@ -48,7 +48,8 @@ export default function DeliveryChoiceModal() {
           initial={{ opacity: 0, scale: 0.92, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 350, damping: 28 }}
-          className="relative w-full max-w-[400px] bg-white rounded-3xl shadow-2xl overflow-hidden"
+          className="relative w-full max-w-[400px] rounded-3xl shadow-2xl overflow-hidden"
+          style={{ background: "#fff", color: "#111" }}
         >
           {/* Top accent line */}
           <div className="h-1 bg-gradient-to-r from-accent via-red-400 to-accent" />
@@ -58,10 +59,10 @@ export default function DeliveryChoiceModal() {
             <div className="w-16 h-16 mx-auto mb-4 bg-accent/10 rounded-2xl flex items-center justify-center">
               <span className="text-3xl">🍣</span>
             </div>
-            <h2 className="text-2xl font-extrabold text-gray-900 tracking-tight">
+            <h2 className="text-2xl font-extrabold tracking-tight" style={{ color: "#111" }}>
               Способ получения
             </h2>
-            <p className="text-sm text-gray-400 mt-1.5">Как вы хотите получить заказ?</p>
+            <p className="text-sm mt-1.5" style={{ color: "#999" }}>Как вы хотите получить заказ?</p>
           </div>
 
           {/* Options */}
@@ -88,7 +89,8 @@ export default function DeliveryChoiceModal() {
             {/* Pickup */}
             <button
               onClick={() => choose("pickup")}
-              className="w-full group relative flex items-center gap-4 px-5 py-5 bg-gray-900 hover:bg-gray-800 text-white rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-gray-900/30 active:scale-[0.97] cursor-pointer overflow-hidden"
+              className="w-full group relative flex items-center gap-4 px-5 py-5 bg-gray-900 hover:bg-gray-800 rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-gray-900/30 active:scale-[0.97] cursor-pointer overflow-hidden"
+              style={{ color: "#fff" }}
             >
               <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-300" />
               <div className="relative w-14 h-14 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center flex-shrink-0">
@@ -107,7 +109,7 @@ export default function DeliveryChoiceModal() {
 
           {/* Footer hint */}
           <div className="px-6 pb-6">
-            <p className="text-[11px] text-gray-300 text-center">
+            <p className="text-[11px] text-center" style={{ color: "#aaa" }}>
               Можно изменить в корзине при оформлении
             </p>
           </div>
