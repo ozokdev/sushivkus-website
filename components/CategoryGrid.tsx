@@ -9,6 +9,18 @@ import { categoryList } from "@/data/categories";
 import type { Category, MenuItem } from "@/data/menu";
 import { useMenuStore } from "@/store/menuStore";
 
+// API'деги кирилл slug'ларды фронтенд slug'ка которуу
+const slugAliases: Record<string, string> = {
+  "ПИЦЦА": "pizza",
+  "пицца": "pizza",
+  "завтраки": "breakfast",
+  "ЗАВТРАКИ": "breakfast",
+  "zapecheni_midii": "zapecheni-midii",
+};
+function normalizeSlug(slug: string): string {
+  return slugAliases[slug] || slug;
+}
+
 interface ApiCategory {
   ID: number;
   slug: string;
@@ -47,9 +59,10 @@ export default function CategoryGrid() {
         const priceMap: Record<string, number> = {};
         const disabled = new Set<string>();
         data.forEach((c) => {
-          if (c.image) imgMap[c.slug] = c.image;
-          if (c.min_price > 0) priceMap[c.slug] = c.min_price;
-          if (!c.is_active) disabled.add(c.slug);
+          const slug = normalizeSlug(c.slug);
+          if (c.image) imgMap[slug] = c.image;
+          if (c.min_price > 0) priceMap[slug] = c.min_price;
+          if (!c.is_active) disabled.add(slug);
         });
         setApiImages(imgMap);
         setApiPrices(priceMap);

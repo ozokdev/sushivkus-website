@@ -44,15 +44,25 @@ export default function CategoryPageClient({
   const menuItems = useMenuStore((s) => s.items);
   const fetchMenu = useMenuStore((s) => s.fetchMenu);
   const [apiDescription, setApiDescription] = useState("");
+  const [apiImage, setApiImage] = useState("");
+
+  const slugAliases: Record<string, string> = {
+    "ПИЦЦА": "pizza", "пицца": "pizza",
+    "завтраки": "breakfast", "zapecheni_midii": "zapecheni-midii",
+  };
 
   useEffect(() => { fetchMenu(); }, [fetchMenu]);
 
   useEffect(() => {
     fetch("https://api.sushivkus.ru/api/categories")
       .then((r) => r.json())
-      .then((data: { slug: string; description: string }[]) => {
-        const found = data.find((c) => c.slug === category.slug || c.slug === category.id);
+      .then((data: { slug: string; description: string; image: string }[]) => {
+        const found = data.find((c) => {
+          const normalized = slugAliases[c.slug] || c.slug;
+          return normalized === category.slug || normalized === category.id || c.slug === category.slug || c.slug === category.id;
+        });
         if (found?.description) setApiDescription(found.description);
+        if (found?.image) setApiImage(`https://sushivkus.ru${found.image}`);
       })
       .catch(() => {});
   }, [category.slug, category.id]);
@@ -104,7 +114,8 @@ export default function CategoryPageClient({
         {/* Баннер категории */}
         <div className="relative h-48 sm:h-64 md:h-80 overflow-hidden">
           <Image
-            src={category.image}
+            src={apiImage || category.image}
+            unoptimized={!!apiImage}
             alt={category.nameFull}
             fill
             className="object-cover"
