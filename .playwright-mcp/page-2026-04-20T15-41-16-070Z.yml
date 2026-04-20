@@ -1,0 +1,3372 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - link "ул. Шоссейная, 42, г. Люберцы" [ref=e4] [cursor=pointer]:
+      - /url: https://yandex.ru/maps/-/CDaZjT
+      - img [ref=e5]
+      - generic [ref=e8]: ул. Шоссейная, 42, г. Люберцы
+    - generic [ref=e9]:
+      - generic [ref=e10]: 🔥 Скидка 10% с 10:00 до 17:00 при заказе от 2000₽ (Пн-Пт)
+      - button [ref=e11] [cursor=pointer]:
+        - img [ref=e12]
+  - banner [ref=e15]:
+    - generic [ref=e17]:
+      - link "СушиВкус Доставка вкусной еды!" [ref=e18] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e19]: СушиВкус
+        - generic [ref=e21]: Доставка вкусной еды!
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - img [ref=e24]
+          - generic [ref=e27]: г. Люберцы
+        - generic [ref=e28]:
+          - link "8 (925) 537-28-25" [ref=e29] [cursor=pointer]:
+            - /url: tel:+79255372825
+            - img [ref=e30]
+            - text: 8 (925) 537-28-25
+          - link "8 (916) 641-32-73" [ref=e32] [cursor=pointer]:
+            - /url: tel:+79166413273
+            - img [ref=e33]
+            - text: 8 (916) 641-32-73
+        - generic [ref=e35]:
+          - img [ref=e36]
+          - generic [ref=e39]: 10:00 – 22:00
+        - generic [ref=e40]:
+          - link "WhatsApp" [ref=e41] [cursor=pointer]:
+            - /url: https://wa.me/79255372825
+            - img [ref=e42]
+          - link "Telegram" [ref=e44] [cursor=pointer]:
+            - /url: https://t.me/kelechek_sushi
+            - img [ref=e45]
+      - generic [ref=e48]:
+        - button "Переключить тему" [ref=e49] [cursor=pointer]:
+          - img [ref=e51]
+        - button "Открыть корзину" [ref=e57] [cursor=pointer]:
+          - img [ref=e59]
+  - main [ref=e63]:
+    - generic [ref=e65]:
+      - img [ref=e66]
+      - generic [ref=e69]:
+        - text: Принимаем заказы! Осталось
+        - strong [ref=e70]: 4ч 20мин
+    - generic [ref=e72]:
+      - heading "Меню" [level=2] [ref=e73]
+      - generic [ref=e74]:
+        - link "Роллы Роллы от 390 ₽ 26 поз." [ref=e76] [cursor=pointer]:
+          - /url: /category/rolls
+          - img "Роллы" [ref=e77]
+          - generic [ref=e79]:
+            - heading "Роллы" [level=3] [ref=e80]
+            - paragraph [ref=e81]: от 390 ₽
+          - generic [ref=e83]: 26 поз.
+        - link "Сеты Сеты от 890 ₽ 19 поз." [ref=e85] [cursor=pointer]:
+          - /url: /category/sets
+          - img "Сеты" [ref=e86]
+          - generic [ref=e88]:
+            - heading "Сеты" [level=3] [ref=e89]
+            - paragraph [ref=e90]: от 890 ₽
+          - generic [ref=e92]: 19 поз.
+        - link "Пицца Пицца от 690 ₽ 19 поз." [ref=e94] [cursor=pointer]:
+          - /url: /category/pizza
+          - img "Пицца" [ref=e95]
+          - generic [ref=e97]:
+            - heading "Пицца" [level=3] [ref=e98]
+            - paragraph [ref=e99]: от 690 ₽
+          - generic [ref=e101]: 19 поз.
+        - link "Супы Супы от 490 ₽ 11 поз." [ref=e103] [cursor=pointer]:
+          - /url: /category/soups
+          - img "Супы" [ref=e104]
+          - generic [ref=e106]:
+            - heading "Супы" [level=3] [ref=e107]
+            - paragraph [ref=e108]: от 490 ₽
+          - generic [ref=e110]: 11 поз.
+        - link "Закуски Закуски от 250 ₽ 8 поз." [ref=e112] [cursor=pointer]:
+          - /url: /category/snacks
+          - img "Закуски" [ref=e113]
+          - generic [ref=e115]:
+            - heading "Закуски" [level=3] [ref=e116]
+            - paragraph [ref=e117]: от 250 ₽
+          - generic [ref=e119]: 8 поз.
+        - link "Салаты Салаты от 290 ₽ 14 поз." [ref=e121] [cursor=pointer]:
+          - /url: /category/salads
+          - img "Салаты" [ref=e122]
+          - generic [ref=e124]:
+            - heading "Салаты" [level=3] [ref=e125]
+            - paragraph [ref=e126]: от 290 ₽
+          - generic [ref=e128]: 14 поз.
+        - link "Соусы и добавки Соусы и добавки от 25 ₽ 8 поз." [ref=e130] [cursor=pointer]:
+          - /url: /category/sauces
+          - img "Соусы и добавки" [ref=e131]
+          - generic [ref=e133]:
+            - heading "Соусы и добавки" [level=3] [ref=e134]
+            - paragraph [ref=e135]: от 25 ₽
+          - generic [ref=e137]: 8 поз.
+        - link "Вок Вок от 599 ₽ 9 поз." [ref=e139] [cursor=pointer]:
+          - /url: /category/wok
+          - img "Вок" [ref=e140]
+          - generic [ref=e142]:
+            - heading "Вок" [level=3] [ref=e143]
+            - paragraph [ref=e144]: от 599 ₽
+          - generic [ref=e146]: 9 поз.
+        - link "Новинки Новинки от 690 ₽ 4 поз." [ref=e148] [cursor=pointer]:
+          - /url: /category/novinki
+          - img "Новинки" [ref=e149]
+          - generic [ref=e151]:
+            - heading "Новинки" [level=3] [ref=e152]
+            - paragraph [ref=e153]: от 690 ₽
+          - generic [ref=e155]: 4 поз.
+        - link "Десерты Десерты от 550 ₽ 3 поз." [ref=e157] [cursor=pointer]:
+          - /url: /category/desert
+          - img "Десерты" [ref=e158]
+          - generic [ref=e160]:
+            - heading "Десерты" [level=3] [ref=e161]
+            - paragraph [ref=e162]: от 550 ₽
+          - generic [ref=e164]: 3 поз.
+        - link "Сашими Сашими от 700 ₽ 6 поз." [ref=e166] [cursor=pointer]:
+          - /url: /category/sashami
+          - img "Сашими" [ref=e167]
+          - generic [ref=e169]:
+            - heading "Сашими" [level=3] [ref=e170]
+            - paragraph [ref=e171]: от 700 ₽
+          - generic [ref=e173]: 6 поз.
+    - generic [ref=e174]:
+      - generic [ref=e177]:
+        - button "Прокрутить вправо" [ref=e178] [cursor=pointer]:
+          - img [ref=e179]
+        - generic [ref=e181]:
+          - button "🍱 Все" [ref=e182] [cursor=pointer]:
+            - generic [ref=e183]: 🍱
+            - text: Все
+          - button "🍣 Роллы" [ref=e184] [cursor=pointer]:
+            - generic [ref=e185]: 🍣
+            - text: Роллы
+          - button "🍤 Жареные роллы" [ref=e186] [cursor=pointer]:
+            - generic [ref=e187]: 🍤
+            - text: Жареные роллы
+          - button "🔥 Запечённые роллы" [ref=e188] [cursor=pointer]:
+            - generic [ref=e189]: 🔥
+            - text: Запечённые роллы
+          - button "🍱 Классические роллы" [ref=e190] [cursor=pointer]:
+            - generic [ref=e191]: 🍱
+            - text: Классические роллы
+          - button "🍣 Суши и гунканы" [ref=e192] [cursor=pointer]:
+            - generic [ref=e193]: 🍣
+            - text: Суши и гунканы
+          - button "🎁 Сеты" [ref=e194] [cursor=pointer]:
+            - generic [ref=e195]: 🎁
+            - text: Сеты
+          - button "🍕 ПИЦЦА" [ref=e196] [cursor=pointer]:
+            - generic [ref=e197]: 🍕
+            - text: ПИЦЦА
+          - button "🍜 Wok" [ref=e198] [cursor=pointer]:
+            - generic [ref=e199]: 🍜
+            - text: Wok
+          - button "🥘 Супы" [ref=e200] [cursor=pointer]:
+            - generic [ref=e201]: 🥘
+            - text: Супы
+          - button "🍟 Снеки" [ref=e202] [cursor=pointer]:
+            - generic [ref=e203]: 🍟
+            - text: Снеки
+          - button "🥬 Салаты" [ref=e204] [cursor=pointer]:
+            - generic [ref=e205]: 🥬
+            - text: Салаты
+          - button "🍜 Соусы" [ref=e206] [cursor=pointer]:
+            - generic [ref=e207]: 🍜
+            - text: Соусы
+          - button "🍱 Завтраки" [ref=e208] [cursor=pointer]:
+            - generic [ref=e209]: 🍱
+            - text: Завтраки
+          - button "🍰 Десерты" [ref=e210] [cursor=pointer]:
+            - generic [ref=e211]: 🍰
+            - text: Десерты
+          - button "🎉 Новинки" [ref=e212] [cursor=pointer]:
+            - generic [ref=e213]: 🎉
+            - text: Новинки
+          - button "💎 Сашими" [ref=e214] [cursor=pointer]:
+            - generic [ref=e215]: 💎
+            - text: Сашими
+          - button "🍹 Напитки" [ref=e216] [cursor=pointer]:
+            - generic [ref=e217]: 🍹
+            - text: Напитки
+          - button "🦀 Роллы Люкс" [ref=e218] [cursor=pointer]:
+            - generic [ref=e219]: 🦀
+            - text: Роллы Люкс
+          - button "🥢 Запеченные Гунканы" [ref=e220] [cursor=pointer]:
+            - generic [ref=e221]: 🥢
+            - text: Запеченные Гунканы
+          - button "🦪 Запеченные мидии" [ref=e222] [cursor=pointer]:
+            - generic [ref=e223]: 🦪
+            - text: Запеченные мидии
+      - generic [ref=e224]:
+        - generic [ref=e225]:
+          - img
+          - textbox "Поиск по меню..." [ref=e226]
+        - generic [ref=e227]:
+          - generic [ref=e228]:
+            - heading "Роллы" [level=2] [ref=e229]
+            - generic [ref=e230]: "26"
+          - generic [ref=e231]:
+            - generic [ref=e232]:
+              - generic [ref=e233] [cursor=pointer]:
+                - img "Филадельфия Классик. 8шт" [ref=e234]
+                - generic [ref=e235]:
+                  - button "Добавить в избранное" [ref=e236]:
+                    - img [ref=e237]
+                  - generic [ref=e239]: HIT
+              - generic [ref=e240]:
+                - heading "Филадельфия Классик. 8шт" [level=3] [ref=e241] [cursor=pointer]
+                - paragraph [ref=e242]: Рис, нори, сливочный сыр, огурец, лосось.
+                - generic [ref=e243]:
+                  - generic [ref=e245]: 595 ₽
+                  - button "В корзину" [ref=e246] [cursor=pointer]:
+                    - img [ref=e247]
+                    - generic [ref=e248]: В корзину
+            - generic [ref=e249]:
+              - generic [ref=e250] [cursor=pointer]:
+                - img "Ролл овощной. 8шт" [ref=e251]
+                - button "Добавить в избранное" [ref=e253]:
+                  - img [ref=e254]
+              - generic [ref=e256]:
+                - heading "Ролл овощной. 8шт" [level=3] [ref=e257] [cursor=pointer]
+                - paragraph [ref=e258]: Рис, нори, помидор, салаты айсберг, соус, такуан , салат айсберг.
+                - generic [ref=e259]:
+                  - generic [ref=e261]: 390 ₽
+                  - button "В корзину" [ref=e262] [cursor=pointer]:
+                    - img [ref=e263]
+                    - generic [ref=e264]: В корзину
+            - generic [ref=e265]:
+              - generic [ref=e266] [cursor=pointer]:
+                - img "Ролл цезарь. 8шт" [ref=e267]
+                - button "Добавить в избранное" [ref=e269]:
+                  - img [ref=e270]
+              - generic [ref=e272]:
+                - heading "Ролл цезарь. 8шт" [level=3] [ref=e273] [cursor=pointer]
+                - paragraph [ref=e274]: Рис, нори, курица, помидор, салаты айсберг, соус цезарь, твердый сыр
+                - generic [ref=e275]:
+                  - generic [ref=e277]: 415 ₽
+                  - button "В корзину" [ref=e278] [cursor=pointer]:
+                    - img [ref=e279]
+                    - generic [ref=e280]: В корзину
+            - generic [ref=e281]:
+              - generic [ref=e282] [cursor=pointer]:
+                - img "Окинава. 8шт" [ref=e283]
+                - button "Добавить в избранное" [ref=e285]:
+                  - img [ref=e286]
+              - generic [ref=e288]:
+                - heading "Окинава. 8шт" [level=3] [ref=e289] [cursor=pointer]
+                - paragraph [ref=e290]: Рис, нори, сыр, креветки , огурец, икра масаго.
+                - generic [ref=e291]:
+                  - generic [ref=e293]: 490 ₽
+                  - button "В корзину" [ref=e294] [cursor=pointer]:
+                    - img [ref=e295]
+                    - generic [ref=e296]: В корзину
+            - generic [ref=e297]:
+              - generic [ref=e298] [cursor=pointer]:
+                - img "Калифорния классик. 8шт" [ref=e299]
+                - button "Добавить в избранное" [ref=e301]:
+                  - img [ref=e302]
+              - generic [ref=e304]:
+                - heading "Калифорния классик. 8шт" [level=3] [ref=e305] [cursor=pointer]
+                - paragraph [ref=e306]: Рис, нори, краб микс, огурец, икра масаго.
+                - generic [ref=e307]:
+                  - generic [ref=e309]: 399 ₽
+                  - button "В корзину" [ref=e310] [cursor=pointer]:
+                    - img [ref=e311]
+                    - generic [ref=e312]: В корзину
+            - generic [ref=e313]:
+              - generic [ref=e314] [cursor=pointer]:
+                - img "Калифорния эби. 8шт" [ref=e315]
+                - button "Добавить в избранное" [ref=e317]:
+                  - img [ref=e318]
+              - generic [ref=e320]:
+                - heading "Калифорния эби. 8шт" [level=3] [ref=e321] [cursor=pointer]
+                - paragraph [ref=e322]: Рис, нори, СЫР, креветки огурец, икра масаго.
+                - generic [ref=e323]:
+                  - generic [ref=e325]: 510 ₽
+                  - button "В корзину" [ref=e326] [cursor=pointer]:
+                    - img [ref=e327]
+                    - generic [ref=e328]: В корзину
+            - generic [ref=e329]:
+              - generic [ref=e330] [cursor=pointer]:
+                - img "Калифорния сяке. 8шт" [ref=e331]
+                - button "Добавить в избранное" [ref=e333]:
+                  - img [ref=e334]
+              - generic [ref=e336]:
+                - heading "Калифорния сяке. 8шт" [level=3] [ref=e337] [cursor=pointer]
+                - paragraph [ref=e338]: Рис, нори, майонез, лосось, огурец, икра масаго.
+                - generic [ref=e339]:
+                  - generic [ref=e341]: 520 ₽
+                  - button "В корзину" [ref=e342] [cursor=pointer]:
+                    - img [ref=e343]
+                    - generic [ref=e344]: В корзину
+            - generic [ref=e345]:
+              - generic [ref=e346] [cursor=pointer]:
+                - img "БОНИТО МАГУРО. 8шт" [ref=e347]
+                - button "Добавить в избранное" [ref=e349]:
+                  - img [ref=e350]
+              - generic [ref=e352]:
+                - heading "БОНИТО МАГУРО. 8шт" [level=3] [ref=e353] [cursor=pointer]
+                - paragraph [ref=e354]: Рис, нори, сыр СЛИВОЧНЫЙ, огурец, тунец, стружка тунца.
+                - generic [ref=e355]:
+                  - generic [ref=e357]: 495 ₽
+                  - button "В корзину" [ref=e358] [cursor=pointer]:
+                    - img [ref=e359]
+                    - generic [ref=e360]: В корзину
+            - generic [ref=e361]:
+              - generic [ref=e362] [cursor=pointer]:
+                - img "БОНИТО СЯКЕ. 8шт" [ref=e363]
+                - button "Добавить в избранное" [ref=e365]:
+                  - img [ref=e366]
+              - generic [ref=e368]:
+                - heading "БОНИТО СЯКЕ. 8шт" [level=3] [ref=e369] [cursor=pointer]
+                - paragraph [ref=e370]: Рис, нори, сыр СЛИВОЧНЫЙ, огурец, Лосось, стружка тунца.
+                - generic [ref=e371]:
+                  - generic [ref=e373]: 510 ₽
+                  - button "В корзину" [ref=e374] [cursor=pointer]:
+                    - img [ref=e375]
+                    - generic [ref=e376]: В корзину
+            - generic [ref=e377]:
+              - generic [ref=e378] [cursor=pointer]:
+                - img "Лава сяке. 8шт" [ref=e379]
+                - button "Добавить в избранное" [ref=e381]:
+                  - img [ref=e382]
+              - generic [ref=e384]:
+                - heading "Лава сяке. 8шт" [level=3] [ref=e385] [cursor=pointer]
+                - paragraph [ref=e386]: Рис, нори, сыр, огурец, Лосось, Икра масаго, лава соус.
+                - generic [ref=e387]:
+                  - generic [ref=e389]: 515 ₽
+                  - button "В корзину" [ref=e390] [cursor=pointer]:
+                    - img [ref=e391]
+                    - generic [ref=e392]: В корзину
+            - generic [ref=e393]:
+              - generic [ref=e394] [cursor=pointer]:
+                - img "Филадельфия эби. 8шт" [ref=e395]
+                - button "Добавить в избранное" [ref=e397]:
+                  - img [ref=e398]
+              - generic [ref=e400]:
+                - heading "Филадельфия эби. 8шт" [level=3] [ref=e401] [cursor=pointer]
+                - paragraph [ref=e402]: Рис, нори, сливочный сыр , креветки лосось, , огурец.
+                - generic [ref=e403]:
+                  - generic [ref=e405]: 640 ₽
+                  - button "В корзину" [ref=e406] [cursor=pointer]:
+                    - img [ref=e407]
+                    - generic [ref=e408]: В корзину
+            - generic [ref=e409]:
+              - generic [ref=e410] [cursor=pointer]:
+                - img "Магуро 8шт" [ref=e411]
+                - button "Добавить в избранное" [ref=e413]:
+                  - img [ref=e414]
+              - generic [ref=e416]:
+                - heading "Магуро 8шт" [level=3] [ref=e417] [cursor=pointer]
+                - paragraph [ref=e418]: Рис, нори, сливочный сыр , тунец, огурец, пряный соус
+                - generic [ref=e419]:
+                  - generic [ref=e421]: 510 ₽
+                  - button "В корзину" [ref=e422] [cursor=pointer]:
+                    - img [ref=e423]
+                    - generic [ref=e424]: В корзину
+            - generic [ref=e425]:
+              - generic [ref=e426] [cursor=pointer]:
+                - img "Сакура. 8шт" [ref=e427]
+                - button "Добавить в избранное" [ref=e429]:
+                  - img [ref=e430]
+              - generic [ref=e432]:
+                - heading "Сакура. 8шт" [level=3] [ref=e433] [cursor=pointer]
+                - paragraph [ref=e434]: Рис, нори, сливочный сыр , лосось, огурец, угорь, кунжут.унаги соус
+                - generic [ref=e435]:
+                  - generic [ref=e437]: 660 ₽
+                  - button "В корзину" [ref=e438] [cursor=pointer]:
+                    - img [ref=e439]
+                    - generic [ref=e440]: В корзину
+            - generic [ref=e441]:
+              - generic [ref=e442] [cursor=pointer]:
+                - img "Дракон. 8шт" [ref=e443]
+                - button "Добавить в избранное" [ref=e445]:
+                  - img [ref=e446]
+              - generic [ref=e448]:
+                - heading "Дракон. 8шт" [level=3] [ref=e449] [cursor=pointer]
+                - paragraph [ref=e450]: Рис, нори, сливочный сыр огурец, угорь, кунжут.унаги соус
+                - generic [ref=e451]:
+                  - generic [ref=e453]: 650 ₽
+                  - button "В корзину" [ref=e454] [cursor=pointer]:
+                    - img [ref=e455]
+                    - generic [ref=e456]: В корзину
+            - generic [ref=e457]:
+              - generic [ref=e458] [cursor=pointer]:
+                - img "Нежный с угрём. 8шт" [ref=e459]
+                - button "Добавить в избранное" [ref=e461]:
+                  - img [ref=e462]
+              - generic [ref=e464]:
+                - heading "Нежный с угрём. 8шт" [level=3] [ref=e465] [cursor=pointer]
+                - paragraph [ref=e466]: Рис, нори, сливочный сыр, угорь, кунжут.унаги соус
+                - generic [ref=e467]:
+                  - generic [ref=e469]: 660 ₽
+                  - button "В корзину" [ref=e470] [cursor=pointer]:
+                    - img [ref=e471]
+                    - generic [ref=e472]: В корзину
+            - generic [ref=e473]:
+              - generic [ref=e474] [cursor=pointer]:
+                - img "Атлантический. 8шт" [ref=e475]
+                - button "Добавить в избранное" [ref=e477]:
+                  - img [ref=e478]
+              - generic [ref=e480]:
+                - heading "Атлантический. 8шт" [level=3] [ref=e481] [cursor=pointer]
+                - paragraph [ref=e482]: Рис, нори, сливочный сыр, лосось, огурец, угорь, кунжут.
+                - generic [ref=e483]:
+                  - generic [ref=e485]: 650 ₽
+                  - button "В корзину" [ref=e486] [cursor=pointer]:
+                    - img [ref=e487]
+                    - generic [ref=e488]: В корзину
+            - generic [ref=e489]:
+              - generic [ref=e490] [cursor=pointer]:
+                - img "Филадельфия спешл. 8шт" [ref=e491]
+                - button "Добавить в избранное" [ref=e493]:
+                  - img [ref=e494]
+              - generic [ref=e496]:
+                - heading "Филадельфия спешл. 8шт" [level=3] [ref=e497] [cursor=pointer]
+                - paragraph [ref=e498]: Рис, нори, сливочный сыр, лосось, огурец, кунжут.
+                - generic [ref=e499]:
+                  - generic [ref=e501]: 490 ₽
+                  - button "В корзину" [ref=e502] [cursor=pointer]:
+                    - img [ref=e503]
+                    - generic [ref=e504]: В корзину
+            - generic [ref=e505]:
+              - generic [ref=e506] [cursor=pointer]:
+                - img "Филадельфия Лайт. 8шт" [ref=e507]
+                - button "Добавить в избранное" [ref=e509]:
+                  - img [ref=e510]
+              - generic [ref=e512]:
+                - heading "Филадельфия Лайт. 8шт" [level=3] [ref=e513] [cursor=pointer]
+                - paragraph [ref=e514]: Рис, нори, сливочный сыр, огурец, лосось.
+                - generic [ref=e515]:
+                  - generic [ref=e517]: 495 ₽
+                  - button "В корзину" [ref=e518] [cursor=pointer]:
+                    - img [ref=e519]
+                    - generic [ref=e520]: В корзину
+            - generic [ref=e521]:
+              - generic [ref=e522] [cursor=pointer]:
+                - img "Филадельфия нежный. 8шт" [ref=e523]
+                - button "Добавить в избранное" [ref=e525]:
+                  - img [ref=e526]
+              - generic [ref=e528]:
+                - heading "Филадельфия нежный. 8шт" [level=3] [ref=e529] [cursor=pointer]
+                - paragraph [ref=e530]: Рис, нори, сливочный сыр, лосось.
+                - generic [ref=e531]:
+                  - generic [ref=e533]: 610 ₽
+                  - button "В корзину" [ref=e534] [cursor=pointer]:
+                    - img [ref=e535]
+                    - generic [ref=e536]: В корзину
+            - generic [ref=e537]:
+              - generic [ref=e538] [cursor=pointer]:
+                - img "Ролл лосось орурец. 8шт" [ref=e539]
+                - button "Добавить в избранное" [ref=e541]:
+                  - img [ref=e542]
+              - generic [ref=e544]:
+                - heading "Ролл лосось орурец. 8шт" [level=3] [ref=e545] [cursor=pointer]
+                - paragraph [ref=e546]: лосось, огурец, сыр сл, рис, нори
+                - generic [ref=e547]:
+                  - generic [ref=e549]: 490 ₽
+                  - button "В корзину" [ref=e550] [cursor=pointer]:
+                    - img [ref=e551]
+                    - generic [ref=e552]: В корзину
+            - generic [ref=e553]:
+              - generic [ref=e554] [cursor=pointer]:
+                - img "Ролл тунец огурец. 8шт" [ref=e555]
+                - button "Добавить в избранное" [ref=e557]:
+                  - img [ref=e558]
+              - generic [ref=e560]:
+                - heading "Ролл тунец огурец. 8шт" [level=3] [ref=e561] [cursor=pointer]
+                - paragraph [ref=e562]: тунец, огурец, сыр сл, нори, сыр сл.
+                - generic [ref=e563]:
+                  - generic [ref=e565]: 490 ₽
+                  - button "В корзину" [ref=e566] [cursor=pointer]:
+                    - img [ref=e567]
+                    - generic [ref=e568]: В корзину
+            - generic [ref=e569]:
+              - generic [ref=e570] [cursor=pointer]:
+                - img "Ролл томат и сливочный сыр . 8шт" [ref=e571]
+                - generic [ref=e572]:
+                  - button "Добавить в избранное" [ref=e573]:
+                    - img [ref=e574]
+                  - generic [ref=e576]: NEW
+              - generic [ref=e577]:
+                - heading "Ролл томат и сливочный сыр . 8шт" [level=3] [ref=e578] [cursor=pointer]
+                - paragraph [ref=e579]: томаты, сыр сл, рис, нори.
+                - generic [ref=e580]:
+                  - generic [ref=e582]: 390 ₽
+                  - button "В корзину" [ref=e583] [cursor=pointer]:
+                    - img [ref=e584]
+                    - generic [ref=e585]: В корзину
+            - generic [ref=e586]:
+              - generic [ref=e587] [cursor=pointer]:
+                - img "Ролл \"лосось и сливочный сыр \" 8шт" [ref=e588]
+                - generic [ref=e589]:
+                  - button "Добавить в избранное" [ref=e590]:
+                    - img [ref=e591]
+                  - generic [ref=e593]: NEW
+              - generic [ref=e594]:
+                - heading "Ролл \"лосось и сливочный сыр \" 8шт" [level=3] [ref=e595] [cursor=pointer]
+                - paragraph [ref=e596]: Лосось, сыр сл, рис, нори
+                - generic [ref=e597]:
+                  - generic [ref=e599]: 490 ₽
+                  - button "В корзину" [ref=e600] [cursor=pointer]:
+                    - img [ref=e601]
+                    - generic [ref=e602]: В корзину
+            - generic [ref=e603]:
+              - generic [ref=e604] [cursor=pointer]:
+                - img "Ролл \"хот-дог с креветкой\"" [ref=e605]
+                - button "Добавить в избранное" [ref=e607]:
+                  - img [ref=e608]
+              - generic [ref=e610]:
+                - heading "Ролл \"хот-дог с креветкой\"" [level=3] [ref=e611] [cursor=pointer]
+                - paragraph [ref=e612]: креветки, массово, сыр сливочный, айсберг, огурец, рис, нори
+                - generic [ref=e613]:
+                  - generic [ref=e615]: 590 ₽
+                  - button "В корзину" [ref=e616] [cursor=pointer]:
+                    - img [ref=e617]
+                    - generic [ref=e618]: В корзину
+            - generic [ref=e619]:
+              - generic [ref=e620] [cursor=pointer]:
+                - img "Ролл \"хот-дог МИКС\"" [ref=e621]
+                - generic [ref=e622]:
+                  - button "Добавить в избранное" [ref=e623]:
+                    - img [ref=e624]
+                  - generic [ref=e626]: NEW
+              - generic [ref=e627]:
+                - heading "Ролл \"хот-дог МИКС\"" [level=3] [ref=e628] [cursor=pointer]
+                - paragraph [ref=e629]: тунец, лосось, сыр, огурец, , рис, нори
+                - generic [ref=e630]:
+                  - generic [ref=e632]: 690 ₽
+                  - button "В корзину" [ref=e633] [cursor=pointer]:
+                    - img [ref=e634]
+                    - generic [ref=e635]: В корзину
+            - generic [ref=e636]:
+              - generic [ref=e637] [cursor=pointer]:
+                - img "Ролл \" хот-дог с лососем\"" [ref=e638]
+                - button "Добавить в избранное" [ref=e640]:
+                  - img [ref=e641]
+              - generic [ref=e643]:
+                - heading "Ролл \" хот-дог с лососем\"" [level=3] [ref=e644] [cursor=pointer]
+                - paragraph [ref=e645]: лосось, авокадо, рис, нори
+                - generic [ref=e646]:
+                  - generic [ref=e648]: 690 ₽
+                  - button "В корзину" [ref=e649] [cursor=pointer]:
+                    - img [ref=e650]
+                    - generic [ref=e651]: В корзину
+        - generic [ref=e652]:
+          - generic [ref=e653]:
+            - heading "Жареные роллы" [level=2] [ref=e654]
+            - generic [ref=e655]: "14"
+          - generic [ref=e656]:
+            - generic [ref=e657]:
+              - generic [ref=e658] [cursor=pointer]:
+                - img "Калифорния Темпура" [ref=e659]
+                - generic [ref=e660]:
+                  - button "Добавить в избранное" [ref=e661]:
+                    - img [ref=e662]
+                  - generic [ref=e664]: HIT
+              - generic [ref=e665]:
+                - heading "Калифорния Темпура" [level=3] [ref=e666] [cursor=pointer]
+                - paragraph [ref=e667]: Рис, нори, сыр, краб микс, сливочный сыр, огурец, сухари панировочные, смесь темпура, икра масаго,
+                - generic [ref=e668]:
+                  - generic [ref=e670]: 490 ₽
+                  - button "В корзину" [ref=e671] [cursor=pointer]:
+                    - img [ref=e672]
+                    - generic [ref=e673]: В корзину
+            - generic [ref=e674]:
+              - generic [ref=e675] [cursor=pointer]:
+                - img "Эби Темпура" [ref=e676]
+                - button "Добавить в избранное" [ref=e678]:
+                  - img [ref=e679]
+              - generic [ref=e681]:
+                - heading "Эби Темпура" [level=3] [ref=e682] [cursor=pointer]
+                - paragraph [ref=e683]: Рис, нори, креветки, огурец, сухари панировочные, смесь темпура, ореховый соус.
+                - generic [ref=e684]:
+                  - generic [ref=e686]: 590 ₽
+                  - button "В корзину" [ref=e687] [cursor=pointer]:
+                    - img [ref=e688]
+                    - generic [ref=e689]: В корзину
+            - generic [ref=e690]:
+              - generic [ref=e691] [cursor=pointer]:
+                - img "Тори Темпура" [ref=e692]
+                - button "Добавить в избранное" [ref=e694]:
+                  - img [ref=e695]
+              - generic [ref=e697]:
+                - heading "Тори Темпура" [level=3] [ref=e698] [cursor=pointer]
+                - paragraph [ref=e699]: Рис, нори, сыр, огурец, курица, смесь темпура, сухари панировочные.
+                - generic [ref=e700]:
+                  - generic [ref=e702]: 510 ₽
+                  - button "В корзину" [ref=e703] [cursor=pointer]:
+                    - img [ref=e704]
+                    - generic [ref=e705]: В корзину
+            - generic [ref=e706]:
+              - generic [ref=e707] [cursor=pointer]:
+                - img "Миди горячие Темпера" [ref=e708]
+                - generic [ref=e709]:
+                  - button "Добавить в избранное" [ref=e710]:
+                    - img [ref=e711]
+                  - generic [ref=e713]: 🌶️ ОСТР.
+              - generic [ref=e714]:
+                - heading "Миди горячие Темпера" [level=3] [ref=e715] [cursor=pointer]
+                - paragraph [ref=e716]: Рис, нори, сыр, миди, салат чука, огурец, сухари панировочные, смесь темпура, ореховый соус
+                - generic [ref=e717]:
+                  - generic [ref=e719]: 510 ₽
+                  - button "В корзину" [ref=e720] [cursor=pointer]:
+                    - img [ref=e721]
+                    - generic [ref=e722]: В корзину
+            - generic [ref=e723]:
+              - generic [ref=e724] [cursor=pointer]:
+                - img "Горячий сяке Темпура" [ref=e725]
+                - button "Добавить в избранное" [ref=e727]:
+                  - img [ref=e728]
+              - generic [ref=e730]:
+                - heading "Горячий сяке Темпура" [level=3] [ref=e731] [cursor=pointer]
+                - paragraph [ref=e732]: Рис, нори, сыр, огурец, лосось, смесь темпера, сухари панированные.
+                - generic [ref=e733]:
+                  - generic [ref=e735]: 590 ₽
+                  - button "В корзину" [ref=e736] [cursor=pointer]:
+                    - img [ref=e737]
+                    - generic [ref=e738]: В корзину
+            - generic [ref=e739]:
+              - generic [ref=e740] [cursor=pointer]:
+                - img "Манчестер Темпура" [ref=e741]
+                - button "Добавить в избранное" [ref=e743]:
+                  - img [ref=e744]
+              - generic [ref=e746]:
+                - heading "Манчестер Темпура" [level=3] [ref=e747] [cursor=pointer]
+                - paragraph [ref=e748]: Рис, нори, сыр, огурец, лосось, угорь, смесь темпера, сухари панированные, соус унаги.
+                - generic [ref=e749]:
+                  - generic [ref=e751]: 650 ₽
+                  - button "В корзину" [ref=e752] [cursor=pointer]:
+                    - img [ref=e753]
+                    - generic [ref=e754]: В корзину
+            - generic [ref=e755]:
+              - generic [ref=e756] [cursor=pointer]:
+                - img "Горячий с тунцом. 8шт" [ref=e757]
+                - generic [ref=e758]:
+                  - button "Добавить в избранное" [ref=e759]:
+                    - img [ref=e760]
+                  - generic [ref=e762]: NEW
+              - generic [ref=e763]:
+                - heading "Горячий с тунцом. 8шт" [level=3] [ref=e764] [cursor=pointer]
+                - paragraph [ref=e765]: тунец, авокадо, сыр сливочный. рис, нори, сухари полировочные .
+                - generic [ref=e766]:
+                  - generic [ref=e768]: 650 ₽
+                  - button "В корзину" [ref=e769] [cursor=pointer]:
+                    - img [ref=e770]
+                    - generic [ref=e771]: В корзину
+            - generic [ref=e772]:
+              - generic [ref=e773] [cursor=pointer]:
+                - img "Горячий с угрем. 8шт" [ref=e774]
+                - generic [ref=e775]:
+                  - button "Добавить в избранное" [ref=e776]:
+                    - img [ref=e777]
+                  - generic [ref=e779]: NEW
+              - generic [ref=e780]:
+                - heading "Горячий с угрем. 8шт" [level=3] [ref=e781] [cursor=pointer]
+                - paragraph [ref=e782]: Угорь, авакадо, сыр сливочный, сухари панир, рис, нори, соус-унаги.
+                - generic [ref=e783]:
+                  - generic [ref=e785]: 690 ₽
+                  - button "В корзину" [ref=e786] [cursor=pointer]:
+                    - img [ref=e787]
+                    - generic [ref=e788]: В корзину
+            - generic [ref=e789]:
+              - generic [ref=e790] [cursor=pointer]:
+                - img "Горячий с лососем. 8шт" [ref=e791]
+                - generic [ref=e792]:
+                  - button "Добавить в избранное" [ref=e793]:
+                    - img [ref=e794]
+                  - generic [ref=e796]: NEW
+              - generic [ref=e797]:
+                - heading "Горячий с лососем. 8шт" [level=3] [ref=e798] [cursor=pointer]
+                - paragraph [ref=e799]: Лосось, авокадо , сливочный сыр, рис, нори, сухари панир , соус-унаги.
+                - generic [ref=e800]:
+                  - generic [ref=e802]: 650 ₽
+                  - button "В корзину" [ref=e803] [cursor=pointer]:
+                    - img [ref=e804]
+                    - generic [ref=e805]: В корзину
+            - generic [ref=e806]:
+              - generic [ref=e807] [cursor=pointer]:
+                - img "Японский Хот-дог №1" [ref=e808]
+                - generic [ref=e809]:
+                  - button "Добавить в избранное" [ref=e810]:
+                    - img [ref=e811]
+                  - generic [ref=e813]: NEW
+              - generic [ref=e814]:
+                - heading "Японский Хот-дог №1" [level=3] [ref=e815] [cursor=pointer]
+                - paragraph [ref=e816]: лосось копченный , масаго, помидор, лист салата, сыр сл, соус по желанию , кунжут.
+                - generic [ref=e817]:
+                  - generic [ref=e819]: 660 ₽
+                  - button "В корзину" [ref=e820] [cursor=pointer]:
+                    - img [ref=e821]
+                    - generic [ref=e822]: В корзину
+            - generic [ref=e823]:
+              - generic [ref=e824] [cursor=pointer]:
+                - img "Японский хот-дог №2" [ref=e825]
+                - button "Добавить в избранное" [ref=e827]:
+                  - img [ref=e828]
+              - generic [ref=e830]:
+                - heading "Японский хот-дог №2" [level=3] [ref=e831] [cursor=pointer]
+                - paragraph [ref=e832]: креветки, угорь, лист салата, огурцы, масаго, сыр сл, рис, нори, универсальный соус 2/1
+                - generic [ref=e833]:
+                  - generic [ref=e835]: 690 ₽
+                  - button "В корзину" [ref=e836] [cursor=pointer]:
+                    - img [ref=e837]
+                    - generic [ref=e838]: В корзину
+            - generic [ref=e839]:
+              - generic [ref=e840] [cursor=pointer]:
+                - img "Японский хот-дог №3" [ref=e841]
+                - generic [ref=e842]:
+                  - button "Добавить в избранное" [ref=e843]:
+                    - img [ref=e844]
+                  - generic [ref=e846]: NEW
+              - generic [ref=e847]:
+                - heading "Японский хот-дог №3" [level=3] [ref=e848] [cursor=pointer]
+                - paragraph [ref=e849]: курица, огурец сол, сыр сл, рис, нори, соус-спайс (соус-унаги)
+                - generic [ref=e850]:
+                  - generic [ref=e852]: 550 ₽
+                  - button "В корзину" [ref=e853] [cursor=pointer]:
+                    - img [ref=e854]
+                    - generic [ref=e855]: В корзину
+            - generic [ref=e856]:
+              - generic [ref=e857] [cursor=pointer]:
+                - img "Сэндвич с лососем" [ref=e858]
+                - generic [ref=e859]:
+                  - button "Добавить в избранное" [ref=e860]:
+                    - img [ref=e861]
+                  - generic [ref=e863]: NEW
+              - generic [ref=e864]:
+                - heading "Сэндвич с лососем" [level=3] [ref=e865] [cursor=pointer]
+                - paragraph [ref=e866]: лосось, сыр, салат айсберг, рис , нори,сухари панированные
+                - generic [ref=e867]:
+                  - generic [ref=e869]: 690 ₽
+                  - button "В корзину" [ref=e870] [cursor=pointer]:
+                    - img [ref=e871]
+                    - generic [ref=e872]: В корзину
+            - generic [ref=e873]:
+              - generic [ref=e874] [cursor=pointer]:
+                - img "Сэндвич с курицей" [ref=e875]
+                - generic [ref=e876]:
+                  - button "Добавить в избранное" [ref=e877]:
+                    - img [ref=e878]
+                  - generic [ref=e880]: NEW
+              - generic [ref=e881]:
+                - heading "Сэндвич с курицей" [level=3] [ref=e882] [cursor=pointer]
+                - paragraph [ref=e883]: курица, масаго, сыр, нори, рис.
+                - generic [ref=e884]:
+                  - generic [ref=e886]: 550 ₽
+                  - button "В корзину" [ref=e887] [cursor=pointer]:
+                    - img [ref=e888]
+                    - generic [ref=e889]: В корзину
+        - generic [ref=e890]:
+          - generic [ref=e891]:
+            - heading "Запечённые роллы" [level=2] [ref=e892]
+            - generic [ref=e893]: "18"
+          - generic [ref=e894]:
+            - generic [ref=e895]:
+              - generic [ref=e896] [cursor=pointer]:
+                - img "Лава Запечённая" [ref=e897]
+                - button "Добавить в избранное" [ref=e899]:
+                  - img [ref=e900]
+              - generic [ref=e902]:
+                - heading "Лава Запечённая" [level=3] [ref=e903] [cursor=pointer]
+                - paragraph [ref=e904]: Рис ,нори, лосось, сыр сливочное , краб микс, икра масаго, лава соус.
+                - generic [ref=e905]:
+                  - generic [ref=e907]: 530 ₽
+                  - button "В корзину" [ref=e908] [cursor=pointer]:
+                    - img [ref=e909]
+                    - generic [ref=e910]: В корзину
+            - generic [ref=e911]:
+              - generic [ref=e912] [cursor=pointer]:
+                - img "Мистер Крабс" [ref=e913]
+                - button "Добавить в избранное" [ref=e915]:
+                  - img [ref=e916]
+              - generic [ref=e918]:
+                - heading "Мистер Крабс" [level=3] [ref=e919] [cursor=pointer]
+                - paragraph [ref=e920]: Рис, нори, майонез, огурец, микс краб, кунжут, фирменный соус.
+                - generic [ref=e921]:
+                  - generic [ref=e923]: 390 ₽
+                  - button "В корзину" [ref=e924] [cursor=pointer]:
+                    - img [ref=e925]
+                    - generic [ref=e926]: В корзину
+            - generic [ref=e927]:
+              - generic [ref=e928] [cursor=pointer]:
+                - img "Ролл Чеддер" [ref=e929]
+                - button "Добавить в избранное" [ref=e931]:
+                  - img [ref=e932]
+              - generic [ref=e934]:
+                - heading "Ролл Чеддер" [level=3] [ref=e935] [cursor=pointer]
+                - paragraph [ref=e936]: Рис, нори, сыр сливочное, сыр чеддер, угорь, твердый сыр.унаги соус.
+                - generic [ref=e937]:
+                  - generic [ref=e939]: 490 ₽
+                  - button "В корзину" [ref=e940] [cursor=pointer]:
+                    - img [ref=e941]
+                    - generic [ref=e942]: В корзину
+            - generic [ref=e943]:
+              - generic [ref=e944] [cursor=pointer]:
+                - img "Лава Запеченный" [ref=e945]
+                - button "Добавить в избранное" [ref=e947]:
+                  - img [ref=e948]
+              - generic [ref=e950]:
+                - heading "Лава Запеченный" [level=3] [ref=e951] [cursor=pointer]
+                - paragraph [ref=e952]: Рис, нори, сыр сливочное, Микс КРАБ , лосось, икра масаго, Лава соус.
+                - generic [ref=e953]:
+                  - generic [ref=e955]: 530 ₽
+                  - button "В корзину" [ref=e956] [cursor=pointer]:
+                    - img [ref=e957]
+                    - generic [ref=e958]: В корзину
+            - generic [ref=e959]:
+              - generic [ref=e960] [cursor=pointer]:
+                - img "Калифорния Запеченный" [ref=e961]
+                - generic [ref=e962]:
+                  - button "Добавить в избранное" [ref=e963]:
+                    - img [ref=e964]
+                  - generic [ref=e966]: 🌶️ ОСТР.
+              - generic [ref=e967]:
+                - heading "Калифорния Запеченный" [level=3] [ref=e968] [cursor=pointer]
+                - paragraph [ref=e969]: Рис, нори, сыр сливочное, краб микс, огурец, икра масаго, спайс соус, твердый сыр.
+                - generic [ref=e970]:
+                  - generic [ref=e972]: 495 ₽
+                  - button "В корзину" [ref=e973] [cursor=pointer]:
+                    - img [ref=e974]
+                    - generic [ref=e975]: В корзину
+            - generic [ref=e976]:
+              - generic [ref=e977] [cursor=pointer]:
+                - img "Тори Запеченный 🌶️" [ref=e978]
+                - generic [ref=e979]:
+                  - button "Добавить в избранное" [ref=e980]:
+                    - img [ref=e981]
+                  - generic [ref=e983]: 🌶️ ОСТР.
+              - generic [ref=e984]:
+                - heading "Тори Запеченный 🌶️" [level=3] [ref=e985] [cursor=pointer]
+                - paragraph [ref=e986]: Рис, нори, сыр сливочное, курица, огурец, кунжут жареный, спайс соус, твердый сыр.
+                - generic [ref=e987]:
+                  - generic [ref=e989]: 415 ₽
+                  - button "В корзину" [ref=e990] [cursor=pointer]:
+                    - img [ref=e991]
+                    - generic [ref=e992]: В корзину
+            - generic [ref=e993]:
+              - generic [ref=e994] [cursor=pointer]:
+                - img "Опаленный карамель" [ref=e995]
+                - button "Добавить в избранное" [ref=e997]:
+                  - img [ref=e998]
+              - generic [ref=e1000]:
+                - heading "Опаленный карамель" [level=3] [ref=e1001] [cursor=pointer]
+                - paragraph [ref=e1002]: Рис, нори, сыр сливочный, огурец, лосось, сахар.
+                - generic [ref=e1003]:
+                  - generic [ref=e1005]: 590 ₽
+                  - button "В корзину" [ref=e1006] [cursor=pointer]:
+                    - img [ref=e1007]
+                    - generic [ref=e1008]: В корзину
+            - generic [ref=e1009]:
+              - generic [ref=e1010] [cursor=pointer]:
+                - img "Магуро Запеченный 🌶️" [ref=e1011]
+                - generic [ref=e1012]:
+                  - button "Добавить в избранное" [ref=e1013]:
+                    - img [ref=e1014]
+                  - generic [ref=e1016]: 🌶️ ОСТР.
+              - generic [ref=e1017]:
+                - heading "Магуро Запеченный 🌶️" [level=3] [ref=e1018] [cursor=pointer]
+                - paragraph [ref=e1019]: Рис, нори, сыр сливочный, микс краб . тунец, спайс соус, твердый сыр, огурец.
+                - generic [ref=e1020]:
+                  - generic [ref=e1022]: 495 ₽
+                  - button "В корзину" [ref=e1023] [cursor=pointer]:
+                    - img [ref=e1024]
+                    - generic [ref=e1025]: В корзину
+            - generic [ref=e1026]:
+              - generic [ref=e1027] [cursor=pointer]:
+                - img "Сяке Запеченный 🌶️" [ref=e1028]
+                - button "Добавить в избранное" [ref=e1030]:
+                  - img [ref=e1031]
+              - generic [ref=e1033]:
+                - heading "Сяке Запеченный 🌶️" [level=3] [ref=e1034] [cursor=pointer]
+                - paragraph [ref=e1035]: Рис, нори, сыр сливочный, лосось, огурец, икра масаго, спайс соус, твердый сыр.
+                - generic [ref=e1036]:
+                  - generic [ref=e1038]: 590 ₽
+                  - button "В корзину" [ref=e1039] [cursor=pointer]:
+                    - img [ref=e1040]
+                    - generic [ref=e1041]: В корзину
+            - generic [ref=e1042]:
+              - generic [ref=e1043] [cursor=pointer]:
+                - img "Филадельфия Запеченный 🌶️" [ref=e1044]
+                - generic [ref=e1045]:
+                  - button "Добавить в избранное" [ref=e1046]:
+                    - img [ref=e1047]
+                  - generic [ref=e1049]: 🌶️ ОСТР.
+              - generic [ref=e1050]:
+                - heading "Филадельфия Запеченный 🌶️" [level=3] [ref=e1051] [cursor=pointer]
+                - paragraph [ref=e1052]: Рис, нори, сыр сливочный, лосось, огурец, микс краб, кунжут жареный, спайс соус, твердый сыр.
+                - generic [ref=e1053]:
+                  - generic [ref=e1055]: 490 ₽
+                  - button "В корзину" [ref=e1056] [cursor=pointer]:
+                    - img [ref=e1057]
+                    - generic [ref=e1058]: В корзину
+            - generic [ref=e1059]:
+              - generic [ref=e1060] [cursor=pointer]:
+                - img "Хоккайдо" [ref=e1061]
+                - button "Добавить в избранное" [ref=e1063]:
+                  - img [ref=e1064]
+              - generic [ref=e1066]:
+                - heading "Хоккайдо" [level=3] [ref=e1067] [cursor=pointer]
+                - paragraph [ref=e1068]: Рис, нори, сыр сливочный, салат айсберг, помидор, курица , фирменный соус.
+                - generic [ref=e1069]:
+                  - generic [ref=e1071]: 490 ₽
+                  - button "В корзину" [ref=e1072] [cursor=pointer]:
+                    - img [ref=e1073]
+                    - generic [ref=e1074]: В корзину
+            - generic [ref=e1075]:
+              - generic [ref=e1076] [cursor=pointer]:
+                - img "Запеченный МИДИ" [ref=e1077]
+                - button "Добавить в избранное" [ref=e1079]:
+                  - img [ref=e1080]
+              - generic [ref=e1082]:
+                - heading "Запеченный МИДИ" [level=3] [ref=e1083] [cursor=pointer]
+                - paragraph [ref=e1084]: Рис, нори, сыр сливочный, миди, Микс краб, огурец , фирменный соус.
+                - generic [ref=e1085]:
+                  - generic [ref=e1087]: 420 ₽
+                  - button "В корзину" [ref=e1088] [cursor=pointer]:
+                    - img [ref=e1089]
+                    - generic [ref=e1090]: В корзину
+            - generic [ref=e1091]:
+              - generic [ref=e1092] [cursor=pointer]:
+                - img "Эби Запеченный" [ref=e1093]
+                - button "Добавить в избранное" [ref=e1095]:
+                  - img [ref=e1096]
+              - generic [ref=e1098]:
+                - heading "Эби Запеченный" [level=3] [ref=e1099] [cursor=pointer]
+                - paragraph [ref=e1100]: Рис, нори, сыр сливочный, креветки, огурец, икра масаго, фирменный соус.
+                - generic [ref=e1101]:
+                  - generic [ref=e1103]: 520 ₽
+                  - button "В корзину" [ref=e1104] [cursor=pointer]:
+                    - img [ref=e1105]
+                    - generic [ref=e1106]: В корзину
+            - generic [ref=e1107]:
+              - generic [ref=e1108] [cursor=pointer]:
+                - img "Горячий Краб" [ref=e1109]
+                - button "Добавить в избранное" [ref=e1111]:
+                  - img [ref=e1112]
+              - generic [ref=e1114]:
+                - heading "Горячий Краб" [level=3] [ref=e1115] [cursor=pointer]
+                - paragraph [ref=e1116]: Рис, нори, Краб микс, такуан, икра масаго, сыр моцарелла
+                - generic [ref=e1117]:
+                  - generic [ref=e1119]: 490 ₽
+                  - button "В корзину" [ref=e1120] [cursor=pointer]:
+                    - img [ref=e1121]
+                    - generic [ref=e1122]: В корзину
+            - generic [ref=e1123]:
+              - generic [ref=e1124] [cursor=pointer]:
+                - img "Запеченный МЕЧТА" [ref=e1125]
+                - button "Добавить в избранное" [ref=e1127]:
+                  - img [ref=e1128]
+              - generic [ref=e1130]:
+                - heading "Запеченный МЕЧТА" [level=3] [ref=e1131] [cursor=pointer]
+                - paragraph [ref=e1132]: Рис, нори, угорь, креветка, огурец, сыр сливочный.икра масаго, фирменный соус, унаги соус.
+                - generic [ref=e1133]:
+                  - generic [ref=e1135]: 620 ₽
+                  - button "В корзину" [ref=e1136] [cursor=pointer]:
+                    - img [ref=e1137]
+                    - generic [ref=e1138]: В корзину
+            - generic [ref=e1139]:
+              - generic [ref=e1140] [cursor=pointer]:
+                - img "Запеченный угорь" [ref=e1141]
+                - button "Добавить в избранное" [ref=e1143]:
+                  - img [ref=e1144]
+              - generic [ref=e1146]:
+                - heading "Запеченный угорь" [level=3] [ref=e1147] [cursor=pointer]
+                - paragraph [ref=e1148]: Рис, нори, угорь, огурец, сыр сливочный.икра масаго, фирменный соус, унаги соус.
+                - generic [ref=e1149]:
+                  - generic [ref=e1151]: 590 ₽
+                  - button "В корзину" [ref=e1152] [cursor=pointer]:
+                    - img [ref=e1153]
+                    - generic [ref=e1154]: В корзину
+            - generic [ref=e1155]:
+              - generic [ref=e1156] [cursor=pointer]:
+                - img "Запеченный ролл с мидии." [ref=e1157]
+                - generic [ref=e1158]:
+                  - button "Добавить в избранное" [ref=e1159]:
+                    - img [ref=e1160]
+                  - generic [ref=e1162]: NEW
+              - generic [ref=e1163]:
+                - heading "Запеченный ролл с мидии." [level=3] [ref=e1164] [cursor=pointer]
+                - paragraph [ref=e1165]: Рис, нори, мидии, огурец, авокадо, яки-соус, унаги-соус, кунжут, сыр.
+                - generic [ref=e1166]:
+                  - generic [ref=e1168]: 650 ₽
+                  - button "В корзину" [ref=e1169] [cursor=pointer]:
+                    - img [ref=e1170]
+                    - generic [ref=e1171]: В корзину
+            - generic [ref=e1172]:
+              - generic [ref=e1173] [cursor=pointer]:
+                - img "Запеченный Маасдам с угрем. 8шт" [ref=e1174]
+                - generic [ref=e1175]:
+                  - button "Добавить в избранное" [ref=e1176]:
+                    - img [ref=e1177]
+                  - generic [ref=e1179]: NEW
+              - generic [ref=e1180]:
+                - heading "Запеченный Маасдам с угрем. 8шт" [level=3] [ref=e1181] [cursor=pointer]
+                - paragraph [ref=e1182]: угорь, сыр Маасдам, яки- соус, огурец , масаго
+                - generic [ref=e1183]:
+                  - generic [ref=e1185]: 690 ₽
+                  - button "В корзину" [ref=e1186] [cursor=pointer]:
+                    - img [ref=e1187]
+                    - generic [ref=e1188]: В корзину
+        - generic [ref=e1189]:
+          - generic [ref=e1190]:
+            - heading "Классические роллы" [level=2] [ref=e1191]
+            - generic [ref=e1192]: "10"
+          - generic [ref=e1193]:
+            - generic [ref=e1194]:
+              - generic [ref=e1195] [cursor=pointer]:
+                - img "Ролл лосось 8шт" [ref=e1196]
+                - generic [ref=e1198]: 8шт
+                - button "Добавить в избранное" [ref=e1200]:
+                  - img [ref=e1201]
+              - generic [ref=e1203]:
+                - heading "Ролл лосось 8шт" [level=3] [ref=e1204] [cursor=pointer]
+                - paragraph [ref=e1205]: Рис, нори, лосось 8-150
+                - generic [ref=e1206]:
+                  - generic [ref=e1208]: 350 ₽
+                  - button "В корзину" [ref=e1209] [cursor=pointer]:
+                    - img [ref=e1210]
+                    - generic [ref=e1211]: В корзину
+            - generic [ref=e1212]:
+              - generic [ref=e1213] [cursor=pointer]:
+                - img "Ролл угорь" [ref=e1214]
+                - generic [ref=e1216]: 8шт
+                - button "Добавить в избранное" [ref=e1218]:
+                  - img [ref=e1219]
+              - generic [ref=e1221]:
+                - heading "Ролл угорь" [level=3] [ref=e1222] [cursor=pointer]
+                - paragraph [ref=e1223]: Рис, нори, угорь, унаги соус, кунжут. 8-150
+                - generic [ref=e1224]:
+                  - generic [ref=e1226]: 360 ₽
+                  - button "В корзину" [ref=e1227] [cursor=pointer]:
+                    - img [ref=e1228]
+                    - generic [ref=e1229]: В корзину
+            - generic [ref=e1230]:
+              - generic [ref=e1231] [cursor=pointer]:
+                - img "Ролл креветка" [ref=e1232]
+                - button "Добавить в избранное" [ref=e1234]:
+                  - img [ref=e1235]
+              - generic [ref=e1237]:
+                - heading "Ролл креветка" [level=3] [ref=e1238] [cursor=pointer]
+                - paragraph [ref=e1239]: Рис, нори, креветки
+                - generic [ref=e1240]:
+                  - generic [ref=e1242]: 350 ₽
+                  - button "В корзину" [ref=e1243] [cursor=pointer]:
+                    - img [ref=e1244]
+                    - generic [ref=e1245]: В корзину
+            - generic [ref=e1246]:
+              - generic [ref=e1247] [cursor=pointer]:
+                - img "Ролл тунец" [ref=e1248]
+                - generic [ref=e1250]: 8шт
+                - button "Добавить в избранное" [ref=e1252]:
+                  - img [ref=e1253]
+              - generic [ref=e1255]:
+                - heading "Ролл тунец" [level=3] [ref=e1256] [cursor=pointer]
+                - paragraph [ref=e1257]: Рис, нори, тунец
+                - generic [ref=e1258]:
+                  - generic [ref=e1260]: 350 ₽
+                  - button "В корзину" [ref=e1261] [cursor=pointer]:
+                    - img [ref=e1262]
+                    - generic [ref=e1263]: В корзину
+            - generic [ref=e1264]:
+              - generic [ref=e1265] [cursor=pointer]:
+                - img "Ролл краб" [ref=e1266]
+                - generic [ref=e1268]: 8шт
+                - button "Добавить в избранное" [ref=e1270]:
+                  - img [ref=e1271]
+              - generic [ref=e1273]:
+                - heading "Ролл краб" [level=3] [ref=e1274] [cursor=pointer]
+                - paragraph [ref=e1275]: Рис, нори, краб микс
+                - generic [ref=e1276]:
+                  - generic [ref=e1278]: 300 ₽
+                  - button "В корзину" [ref=e1279] [cursor=pointer]:
+                    - img [ref=e1280]
+                    - generic [ref=e1281]: В корзину
+            - generic [ref=e1282]:
+              - generic [ref=e1283] [cursor=pointer]:
+                - img "Ролл огурец" [ref=e1284]
+                - generic [ref=e1286]: 8шт
+                - button "Добавить в избранное" [ref=e1288]:
+                  - img [ref=e1289]
+              - generic [ref=e1291]:
+                - heading "Ролл огурец" [level=3] [ref=e1292] [cursor=pointer]
+                - paragraph [ref=e1293]: Рис, нори, огурцы, кунжут жареный.
+                - generic [ref=e1294]:
+                  - generic [ref=e1296]: 220 ₽
+                  - button "В корзину" [ref=e1297] [cursor=pointer]:
+                    - img [ref=e1298]
+                    - generic [ref=e1299]: В корзину
+            - generic [ref=e1300]:
+              - generic [ref=e1301] [cursor=pointer]:
+                - img "Маки \"ролл Чука\" 8шт" [ref=e1302]
+                - button "Добавить в избранное" [ref=e1304]:
+                  - img [ref=e1305]
+              - generic [ref=e1307]:
+                - heading "Маки \"ролл Чука\" 8шт" [level=3] [ref=e1308] [cursor=pointer]
+                - paragraph
+                - generic [ref=e1309]:
+                  - generic [ref=e1311]: 220 ₽
+                  - button "В корзину" [ref=e1312] [cursor=pointer]:
+                    - img [ref=e1313]
+                    - generic [ref=e1314]: В корзину
+            - generic [ref=e1315]:
+              - generic [ref=e1316] [cursor=pointer]:
+                - img "Маки \"ролл такуан\" 8шт" [ref=e1317]
+                - button "Добавить в избранное" [ref=e1319]:
+                  - img [ref=e1320]
+              - generic [ref=e1322]:
+                - heading "Маки \"ролл такуан\" 8шт" [level=3] [ref=e1323] [cursor=pointer]
+                - paragraph
+                - generic [ref=e1324]:
+                  - generic [ref=e1326]: 250 ₽
+                  - button "В корзину" [ref=e1327] [cursor=pointer]:
+                    - img [ref=e1328]
+                    - generic [ref=e1329]: В корзину
+            - generic [ref=e1330]:
+              - generic [ref=e1331] [cursor=pointer]:
+                - img "Маки \"ролл авокадо\". 8шт" [ref=e1332]
+                - generic [ref=e1333]:
+                  - button "Добавить в избранное" [ref=e1334]:
+                    - img [ref=e1335]
+                  - generic [ref=e1337]: NEW
+              - generic [ref=e1338]:
+                - heading "Маки \"ролл авокадо\". 8шт" [level=3] [ref=e1339] [cursor=pointer]
+                - paragraph
+                - generic [ref=e1340]:
+                  - generic [ref=e1342]: 290 ₽
+                  - button "В корзину" [ref=e1343] [cursor=pointer]:
+                    - img [ref=e1344]
+                    - generic [ref=e1345]: В корзину
+            - generic [ref=e1346]:
+              - generic [ref=e1347] [cursor=pointer]:
+                - img "Маки \"ролл манго\". 8шт" [ref=e1348]
+                - generic [ref=e1349]:
+                  - button "Добавить в избранное" [ref=e1350]:
+                    - img [ref=e1351]
+                  - generic [ref=e1353]: NEW
+              - generic [ref=e1354]:
+                - heading "Маки \"ролл манго\". 8шт" [level=3] [ref=e1355] [cursor=pointer]
+                - paragraph [ref=e1356]: Манго, рис, нори
+                - generic [ref=e1357]:
+                  - generic [ref=e1359]: 290 ₽
+                  - button "В корзину" [ref=e1360] [cursor=pointer]:
+                    - img [ref=e1361]
+                    - generic [ref=e1362]: В корзину
+        - generic [ref=e1363]:
+          - generic [ref=e1364]:
+            - heading "Суши и гунканы" [level=2] [ref=e1365]
+            - generic [ref=e1366]: "26"
+          - generic [ref=e1367]:
+            - generic [ref=e1368]:
+              - generic [ref=e1369] [cursor=pointer]:
+                - img "Гункан сет креветка 6шт" [ref=e1370]
+                - generic [ref=e1372]: 6шт
+                - button "Добавить в избранное" [ref=e1374]:
+                  - img [ref=e1375]
+              - generic [ref=e1377]:
+                - heading "Гункан сет креветка 6шт" [level=3] [ref=e1378] [cursor=pointer]
+                - paragraph [ref=e1379]: Нори, рис, креветки, спайс соус.
+                - generic [ref=e1380]:
+                  - generic [ref=e1382]: 690 ₽
+                  - button "В корзину" [ref=e1383] [cursor=pointer]:
+                    - img [ref=e1384]
+                    - generic [ref=e1385]: В корзину
+            - generic [ref=e1386]:
+              - generic [ref=e1387] [cursor=pointer]:
+                - img "Гункан сет краб 6шт" [ref=e1388]
+                - generic [ref=e1390]: 6шт
+                - button "Добавить в избранное" [ref=e1392]:
+                  - img [ref=e1393]
+              - generic [ref=e1395]:
+                - heading "Гункан сет краб 6шт" [level=3] [ref=e1396] [cursor=pointer]
+                - paragraph [ref=e1397]: Нори, рис, спайс соус, КРАБ.
+                - generic [ref=e1398]:
+                  - generic [ref=e1400]: 690 ₽
+                  - button "В корзину" [ref=e1401] [cursor=pointer]:
+                    - img [ref=e1402]
+                    - generic [ref=e1403]: В корзину
+            - generic [ref=e1404]:
+              - generic [ref=e1405] [cursor=pointer]:
+                - img "Гункан сет угорь 6шт" [ref=e1406]
+                - generic [ref=e1408]: 6шт
+                - button "Добавить в избранное" [ref=e1410]:
+                  - img [ref=e1411]
+              - generic [ref=e1413]:
+                - heading "Гункан сет угорь 6шт" [level=3] [ref=e1414] [cursor=pointer]
+                - paragraph [ref=e1415]: Нори, рис, угорь, спайс соус.
+                - generic [ref=e1416]:
+                  - generic [ref=e1418]: 720 ₽
+                  - button "В корзину" [ref=e1419] [cursor=pointer]:
+                    - img [ref=e1420]
+                    - generic [ref=e1421]: В корзину
+            - generic [ref=e1422]:
+              - generic [ref=e1423] [cursor=pointer]:
+                - img "Гункан сет лосось 6шт" [ref=e1424]
+                - button "Добавить в избранное" [ref=e1426]:
+                  - img [ref=e1427]
+              - generic [ref=e1429]:
+                - heading "Гункан сет лосось 6шт" [level=3] [ref=e1430] [cursor=pointer]
+                - paragraph [ref=e1431]: Нори, рис, лосось, спайс соус.
+                - generic [ref=e1432]:
+                  - generic [ref=e1434]: 720 ₽
+                  - button "В корзину" [ref=e1435] [cursor=pointer]:
+                    - img [ref=e1436]
+                    - generic [ref=e1437]: В корзину
+            - generic [ref=e1438]:
+              - generic [ref=e1439] [cursor=pointer]:
+                - img "Гункан сет с тунцом 6шт" [ref=e1440]
+                - generic [ref=e1442]: 6шт
+                - button "Добавить в избранное" [ref=e1444]:
+                  - img [ref=e1445]
+              - generic [ref=e1447]:
+                - heading "Гункан сет с тунцом 6шт" [level=3] [ref=e1448] [cursor=pointer]
+                - paragraph [ref=e1449]: Нори, рис, тунец, спайс соус.
+                - generic [ref=e1450]:
+                  - generic [ref=e1452]: 690 ₽
+                  - button "В корзину" [ref=e1453] [cursor=pointer]:
+                    - img [ref=e1454]
+                    - generic [ref=e1455]: В корзину
+            - generic [ref=e1456]:
+              - generic [ref=e1457] [cursor=pointer]:
+                - img "Суши сет с угрём 210гр (6шт)" [ref=e1458]
+                - generic [ref=e1460]: 6шт
+                - button "Добавить в избранное" [ref=e1462]:
+                  - img [ref=e1463]
+              - generic [ref=e1465]:
+                - heading "Суши сет с угрём 210гр (6шт)" [level=3] [ref=e1466] [cursor=pointer]
+                - paragraph [ref=e1467]: РИС, НОРИ, УГОРЬ, СОУС УНАГИ, КУНЖУТ.
+                - generic [ref=e1468]:
+                  - generic [ref=e1470]: 750 ₽
+                  - button "В корзину" [ref=e1471] [cursor=pointer]:
+                    - img [ref=e1472]
+                    - generic [ref=e1473]: В корзину
+            - generic [ref=e1474]:
+              - generic [ref=e1475] [cursor=pointer]:
+                - img "Суши сет креветками 210гр (6шт)" [ref=e1476]
+                - generic [ref=e1478]: 6шт
+                - button "Добавить в избранное" [ref=e1480]:
+                  - img [ref=e1481]
+              - generic [ref=e1483]:
+                - heading "Суши сет креветками 210гр (6шт)" [level=3] [ref=e1484] [cursor=pointer]
+                - paragraph [ref=e1485]: РИС,КРЕВЕТКИ.
+                - generic [ref=e1486]:
+                  - generic [ref=e1488]: 690 ₽
+                  - button "В корзину" [ref=e1489] [cursor=pointer]:
+                    - img [ref=e1490]
+                    - generic [ref=e1491]: В корзину
+            - generic [ref=e1492]:
+              - generic [ref=e1493] [cursor=pointer]:
+                - img "Суши сет с лососем 210гр (6шт)" [ref=e1494]
+                - generic [ref=e1496]: 6шт
+                - button "Добавить в избранное" [ref=e1498]:
+                  - img [ref=e1499]
+              - generic [ref=e1501]:
+                - heading "Суши сет с лососем 210гр (6шт)" [level=3] [ref=e1502] [cursor=pointer]
+                - paragraph
+                - generic [ref=e1503]:
+                  - generic [ref=e1505]: 720 ₽
+                  - button "В корзину" [ref=e1506] [cursor=pointer]:
+                    - img [ref=e1507]
+                    - generic [ref=e1508]: В корзину
+            - generic [ref=e1509]:
+              - generic [ref=e1510] [cursor=pointer]:
+                - img "Гункан спайс с тунцом" [ref=e1511]
+                - button "Добавить в избранное" [ref=e1513]:
+                  - img [ref=e1514]
+              - generic [ref=e1516]:
+                - heading "Гункан спайс с тунцом" [level=3] [ref=e1517] [cursor=pointer]
+                - paragraph [ref=e1518]: Рис, НОРИ, тунец, спайс соус. 35г
+                - generic [ref=e1519]:
+                  - generic [ref=e1521]: 150 ₽
+                  - button "В корзину" [ref=e1522] [cursor=pointer]:
+                    - img [ref=e1523]
+                    - generic [ref=e1524]: В корзину
+            - generic [ref=e1525]:
+              - generic [ref=e1526] [cursor=pointer]:
+                - img "Гункан спайс с угрём" [ref=e1527]
+                - button "Добавить в избранное" [ref=e1529]:
+                  - img [ref=e1530]
+              - generic [ref=e1532]:
+                - heading "Гункан спайс с угрём" [level=3] [ref=e1533] [cursor=pointer]
+                - paragraph [ref=e1534]: Рис, нори, угорь, спайс соус. 35г
+                - generic [ref=e1535]:
+                  - generic [ref=e1537]: 150 ₽
+                  - button "В корзину" [ref=e1538] [cursor=pointer]:
+                    - img [ref=e1539]
+                    - generic [ref=e1540]: В корзину
+            - generic [ref=e1541]:
+              - generic [ref=e1542] [cursor=pointer]:
+                - img "Гункан спайс с крабом" [ref=e1543]
+                - button "Добавить в избранное" [ref=e1545]:
+                  - img [ref=e1546]
+              - generic [ref=e1548]:
+                - heading "Гункан спайс с крабом" [level=3] [ref=e1549] [cursor=pointer]
+                - paragraph [ref=e1550]: Рис, нори, крабмикс, спайс соус. 35г
+                - generic [ref=e1551]:
+                  - generic [ref=e1553]: 145 ₽
+                  - button "В корзину" [ref=e1554] [cursor=pointer]:
+                    - img [ref=e1555]
+                    - generic [ref=e1556]: В корзину
+            - generic [ref=e1557]:
+              - generic [ref=e1558] [cursor=pointer]:
+                - img "Гункан спайс с креветками" [ref=e1559]
+                - button "Добавить в избранное" [ref=e1561]:
+                  - img [ref=e1562]
+              - generic [ref=e1564]:
+                - heading "Гункан спайс с креветками" [level=3] [ref=e1565] [cursor=pointer]
+                - paragraph [ref=e1566]: Рис, нори, креветки, спайс соус. 35г
+                - generic [ref=e1567]:
+                  - generic [ref=e1569]: 150 ₽
+                  - button "В корзину" [ref=e1570] [cursor=pointer]:
+                    - img [ref=e1571]
+                    - generic [ref=e1572]: В корзину
+            - generic [ref=e1573]:
+              - generic [ref=e1574] [cursor=pointer]:
+                - img "Гункан спайси с лососем" [ref=e1575]
+                - button "Добавить в избранное" [ref=e1577]:
+                  - img [ref=e1578]
+              - generic [ref=e1580]:
+                - heading "Гункан спайси с лососем" [level=3] [ref=e1581] [cursor=pointer]
+                - paragraph [ref=e1582]: Рис, нори, лосось, спайс соус. 35г
+                - generic [ref=e1583]:
+                  - generic [ref=e1585]: 150 ₽
+                  - button "В корзину" [ref=e1586] [cursor=pointer]:
+                    - img [ref=e1587]
+                    - generic [ref=e1588]: В корзину
+            - generic [ref=e1589]:
+              - generic [ref=e1590] [cursor=pointer]:
+                - img "Суши угорь" [ref=e1591]
+                - button "Добавить в избранное" [ref=e1593]:
+                  - img [ref=e1594]
+              - generic [ref=e1596]:
+                - heading "Суши угорь" [level=3] [ref=e1597] [cursor=pointer]
+                - paragraph [ref=e1598]: Рис креветка 35г
+                - generic [ref=e1599]:
+                  - generic [ref=e1601]: 160 ₽
+                  - button "В корзину" [ref=e1602] [cursor=pointer]:
+                    - img [ref=e1603]
+                    - generic [ref=e1604]: В корзину
+            - generic [ref=e1605]:
+              - generic [ref=e1606] [cursor=pointer]:
+                - img "Суши креветка" [ref=e1607]
+                - button "Добавить в избранное" [ref=e1609]:
+                  - img [ref=e1610]
+              - generic [ref=e1612]:
+                - heading "Суши креветка" [level=3] [ref=e1613] [cursor=pointer]
+                - paragraph [ref=e1614]: Рис креветка 35г
+                - generic [ref=e1615]:
+                  - generic [ref=e1617]: 150 ₽
+                  - button "В корзину" [ref=e1618] [cursor=pointer]:
+                    - img [ref=e1619]
+                    - generic [ref=e1620]: В корзину
+            - generic [ref=e1621]:
+              - generic [ref=e1622] [cursor=pointer]:
+                - img "Суши тунец" [ref=e1623]
+                - button "Добавить в избранное" [ref=e1625]:
+                  - img [ref=e1626]
+              - generic [ref=e1628]:
+                - heading "Суши тунец" [level=3] [ref=e1629] [cursor=pointer]
+                - paragraph [ref=e1630]: Рис тунец 35г
+                - generic [ref=e1631]:
+                  - generic [ref=e1633]: 150 ₽
+                  - button "В корзину" [ref=e1634] [cursor=pointer]:
+                    - img [ref=e1635]
+                    - generic [ref=e1636]: В корзину
+            - generic [ref=e1637]:
+              - generic [ref=e1638] [cursor=pointer]:
+                - img "Суши лосось" [ref=e1639]
+                - button "Добавить в избранное" [ref=e1641]:
+                  - img [ref=e1642]
+              - generic [ref=e1644]:
+                - heading "Суши лосось" [level=3] [ref=e1645] [cursor=pointer]
+                - paragraph [ref=e1646]: Рис лосось 35г
+                - generic [ref=e1647]:
+                  - generic [ref=e1649]: 150 ₽
+                  - button "В корзину" [ref=e1650] [cursor=pointer]:
+                    - img [ref=e1651]
+                    - generic [ref=e1652]: В корзину
+            - generic [ref=e1653]:
+              - generic [ref=e1654] [cursor=pointer]:
+                - img "Суши сет ассорти. 6шт" [ref=e1655]
+                - button "Добавить в избранное" [ref=e1657]:
+                  - img [ref=e1658]
+              - generic [ref=e1660]:
+                - heading "Суши сет ассорти. 6шт" [level=3] [ref=e1661] [cursor=pointer]
+                - paragraph
+                - generic [ref=e1662]:
+                  - generic [ref=e1664]: 600 ₽
+                  - button "В корзину" [ref=e1665] [cursor=pointer]:
+                    - img [ref=e1666]
+                    - generic [ref=e1667]: В корзину
+            - generic [ref=e1668]:
+              - generic [ref=e1669] [cursor=pointer]:
+                - img "набор три суши. 9шт" [ref=e1670]
+                - button "Добавить в избранное" [ref=e1672]:
+                  - img [ref=e1673]
+              - generic [ref=e1675]:
+                - heading "набор три суши. 9шт" [level=3] [ref=e1676] [cursor=pointer]
+                - paragraph [ref=e1677]: Рис, лосось, угорь, креветки.
+                - generic [ref=e1678]:
+                  - generic [ref=e1680]: 1050 ₽
+                  - button "В корзину" [ref=e1681] [cursor=pointer]:
+                    - img [ref=e1682]
+                    - generic [ref=e1683]: В корзину
+            - generic [ref=e1684]:
+              - generic [ref=e1685] [cursor=pointer]:
+                - img "набор суши. 4шт" [ref=e1686]
+                - button "Добавить в избранное" [ref=e1688]:
+                  - img [ref=e1689]
+              - generic [ref=e1691]:
+                - heading "набор суши. 4шт" [level=3] [ref=e1692] [cursor=pointer]
+                - paragraph [ref=e1693]: рис , нори, лосось, креветки, угорь.
+                - generic [ref=e1694]:
+                  - generic [ref=e1696]: 550 ₽
+                  - button "В корзину" [ref=e1697] [cursor=pointer]:
+                    - img [ref=e1698]
+                    - generic [ref=e1699]: В корзину
+            - generic [ref=e1700]:
+              - generic [ref=e1701] [cursor=pointer]:
+                - img "Суши с лососем 4шт" [ref=e1702]
+                - generic [ref=e1703]:
+                  - button "Добавить в избранное" [ref=e1704]:
+                    - img [ref=e1705]
+                  - generic [ref=e1707]: NEW
+              - generic [ref=e1708]:
+                - heading "Суши с лососем 4шт" [level=3] [ref=e1709] [cursor=pointer]
+                - paragraph [ref=e1710]: рис, лосось
+                - generic [ref=e1711]:
+                  - generic [ref=e1713]: 550 ₽
+                  - button "В корзину" [ref=e1714] [cursor=pointer]:
+                    - img [ref=e1715]
+                    - generic [ref=e1716]: В корзину
+            - generic [ref=e1717]:
+              - generic [ref=e1718] [cursor=pointer]:
+                - img "Суши с угрем. 4шт" [ref=e1719]
+                - generic [ref=e1720]:
+                  - button "Добавить в избранное" [ref=e1721]:
+                    - img [ref=e1722]
+                  - generic [ref=e1724]: NEW
+              - generic [ref=e1725]:
+                - heading "Суши с угрем. 4шт" [level=3] [ref=e1726] [cursor=pointer]
+                - paragraph [ref=e1727]: рис, угорь, соус унаги, кунжут
+                - generic [ref=e1728]:
+                  - generic [ref=e1730]: 590 ₽
+                  - button "В корзину" [ref=e1731] [cursor=pointer]:
+                    - img [ref=e1732]
+                    - generic [ref=e1733]: В корзину
+            - generic [ref=e1734]:
+              - generic [ref=e1735] [cursor=pointer]:
+                - img "Суши с креветками. 4шт" [ref=e1736]
+                - generic [ref=e1737]:
+                  - button "Добавить в избранное" [ref=e1738]:
+                    - img [ref=e1739]
+                  - generic [ref=e1741]: NEW
+              - generic [ref=e1742]:
+                - heading "Суши с креветками. 4шт" [level=3] [ref=e1743] [cursor=pointer]
+                - paragraph [ref=e1744]: рис, креветки
+                - generic [ref=e1745]:
+                  - generic [ref=e1747]: 550 ₽
+                  - button "В корзину" [ref=e1748] [cursor=pointer]:
+                    - img [ref=e1749]
+                    - generic [ref=e1750]: В корзину
+            - generic [ref=e1751]:
+              - generic [ref=e1752] [cursor=pointer]:
+                - img "Суши с тунцом 4шт" [ref=e1753]
+                - button "Добавить в избранное" [ref=e1755]:
+                  - img [ref=e1756]
+              - generic [ref=e1758]:
+                - heading "Суши с тунцом 4шт" [level=3] [ref=e1759] [cursor=pointer]
+                - paragraph [ref=e1760]: тунец, рис
+                - generic [ref=e1761]:
+                  - generic [ref=e1763]: 550 ₽
+                  - button "В корзину" [ref=e1764] [cursor=pointer]:
+                    - img [ref=e1765]
+                    - generic [ref=e1766]: В корзину
+            - generic [ref=e1767]:
+              - generic [ref=e1768] [cursor=pointer]:
+                - img "Суши гребешок" [ref=e1769]
+                - generic [ref=e1770]:
+                  - button "Добавить в избранное" [ref=e1771]:
+                    - img [ref=e1772]
+                  - generic [ref=e1774]: NEW
+              - generic [ref=e1775]:
+                - heading "Суши гребешок" [level=3] [ref=e1776] [cursor=pointer]
+                - paragraph [ref=e1777]: гребешок, рис, нори.
+                - generic [ref=e1778]:
+                  - generic [ref=e1780]: 150 ₽
+                  - button "В корзину" [ref=e1781] [cursor=pointer]:
+                    - img [ref=e1782]
+                    - generic [ref=e1783]: В корзину
+            - generic [ref=e1784]:
+              - generic [ref=e1785] [cursor=pointer]:
+                - img "Гункан с гребешком" [ref=e1786]
+                - button "Добавить в избранное" [ref=e1788]:
+                  - img [ref=e1789]
+              - generic [ref=e1791]:
+                - heading "Гункан с гребешком" [level=3] [ref=e1792] [cursor=pointer]
+                - paragraph [ref=e1793]: гребешок, сяки-соус , рис нори
+                - generic [ref=e1794]:
+                  - generic [ref=e1796]: 150 ₽
+                  - button "В корзину" [ref=e1797] [cursor=pointer]:
+                    - img [ref=e1798]
+                    - generic [ref=e1799]: В корзину
+        - generic [ref=e1800]:
+          - generic [ref=e1801]:
+            - heading "Сеты" [level=2] [ref=e1802]
+            - generic [ref=e1803]: "19"
+          - generic [ref=e1804]:
+            - generic [ref=e1805]:
+              - generic [ref=e1806] [cursor=pointer]:
+                - img "Сет БОНИ КЛАЙД 48шт." [ref=e1807]
+                - generic [ref=e1809]: 48шт
+                - button "Добавить в избранное" [ref=e1811]:
+                  - img [ref=e1812]
+              - generic [ref=e1814]:
+                - heading "Сет БОНИ КЛАЙД 48шт." [level=3] [ref=e1815] [cursor=pointer]
+                - paragraph [ref=e1816]: Карамель 8шт, дракон 8шт, Калифорния классик 8шт, ролл цезарь 8шт, окинава 8шт, лосось острый 8шт.
+                - generic [ref=e1817]:
+                  - generic [ref=e1819]: 3190 ₽
+                  - button "В корзину" [ref=e1820] [cursor=pointer]:
+                    - img [ref=e1821]
+                    - generic [ref=e1822]: В корзину
+            - generic [ref=e1823]:
+              - generic [ref=e1824] [cursor=pointer]:
+                - img "Сет КАЛИФОРНИЯ 32шт" [ref=e1825]
+                - generic [ref=e1827]: 32шт
+                - button "Добавить в избранное" [ref=e1829]:
+                  - img [ref=e1830]
+              - generic [ref=e1832]:
+                - heading "Сет КАЛИФОРНИЯ 32шт" [level=3] [ref=e1833] [cursor=pointer]
+                - paragraph [ref=e1834]: Калифорния классик 8шт, Калифорния сяке 8шт, Лава сяке 8шт, Калифорния Запеченный 8шт, 1000гр.
+                - generic [ref=e1835]:
+                  - generic [ref=e1837]: 1750 ₽
+                  - button "В корзину" [ref=e1838] [cursor=pointer]:
+                    - img [ref=e1839]
+                    - generic [ref=e1840]: В корзину
+            - generic [ref=e1841]:
+              - generic [ref=e1842] [cursor=pointer]:
+                - img "Сет КОРПОРАТИВНЫЙ 56шт." [ref=e1843]
+                - generic [ref=e1845]: 56шт
+                - button "Добавить в избранное" [ref=e1847]:
+                  - img [ref=e1848]
+              - generic [ref=e1850]:
+                - heading "Сет КОРПОРАТИВНЫЙ 56шт." [level=3] [ref=e1851] [cursor=pointer]
+                - paragraph [ref=e1852]: Филадельфия классик 8шт, Филадельфия спешл 8шт, Калифорния классик 8шт, Окинава 8шт, ролл огурец 8шт, тори Запеченный 8шт, Лава Запеченный 8шт
+                - generic [ref=e1853]:
+                  - generic [ref=e1855]: 2680 ₽
+                  - button "В корзину" [ref=e1856] [cursor=pointer]:
+                    - img [ref=e1857]
+                    - generic [ref=e1858]: В корзину
+            - generic [ref=e1859]:
+              - generic [ref=e1860] [cursor=pointer]:
+                - img "Сет ЭЛИТА 40шт." [ref=e1861]
+                - generic [ref=e1863]: 40шт
+                - generic [ref=e1864]:
+                  - button "Добавить в избранное" [ref=e1865]:
+                    - img [ref=e1866]
+                  - generic [ref=e1868]: HIT
+              - generic [ref=e1869]:
+                - heading "Сет ЭЛИТА 40шт." [level=3] [ref=e1870] [cursor=pointer]
+                - paragraph [ref=e1871]: .Филадельфия классик 8шт, дракон 8шт.тори запеченный 8шт, Мр-крабс 8шт.Калифорния темпура 8шт.
+                - generic [ref=e1872]:
+                  - generic [ref=e1874]: 2290 ₽
+                  - button "В корзину" [ref=e1875] [cursor=pointer]:
+                    - img [ref=e1876]
+                    - generic [ref=e1877]: В корзину
+            - generic [ref=e1878]:
+              - generic [ref=e1879] [cursor=pointer]:
+                - img "Сет Филамания 24шт" [ref=e1880]
+                - generic [ref=e1882]: 24шт
+                - button "Добавить в избранное" [ref=e1884]:
+                  - img [ref=e1885]
+              - generic [ref=e1887]:
+                - heading "Сет Филамания 24шт" [level=3] [ref=e1888] [cursor=pointer]
+                - paragraph [ref=e1889]: Филадельфия классик 8шт. Филадельфия Лайт 8шт. Филадельфия спешл 8шт. 800гр.
+                - generic [ref=e1890]:
+                  - generic [ref=e1892]: 1390 ₽
+                  - button "В корзину" [ref=e1893] [cursor=pointer]:
+                    - img [ref=e1894]
+                    - generic [ref=e1895]: В корзину
+            - generic [ref=e1896]:
+              - generic [ref=e1897] [cursor=pointer]:
+                - img "Сет мечта 56шт" [ref=e1898]
+                - generic [ref=e1900]: 56шт
+                - generic [ref=e1901]:
+                  - button "Добавить в избранное" [ref=e1902]:
+                    - img [ref=e1903]
+                  - generic [ref=e1905]: HIT
+              - generic [ref=e1906]:
+                - heading "Сет мечта 56шт" [level=3] [ref=e1907] [cursor=pointer]
+                - paragraph [ref=e1908]: Филадельфия классик 8шт Калифорния классик 8шт Миди запечённый 8шт Мистер Крабс 8шт Горячий сяке 8шт Калифорния темпуре 8шт Ролл огурец 8шт
+                - generic [ref=e1909]:
+                  - generic [ref=e1911]: 2890 ₽
+                  - button "В корзину" [ref=e1912] [cursor=pointer]:
+                    - img [ref=e1913]
+                    - generic [ref=e1914]: В корзину
+            - generic [ref=e1915]:
+              - generic [ref=e1916] [cursor=pointer]:
+                - img "Сет МИНИ ТЕПЛЫЙ 24шт" [ref=e1917]
+                - generic [ref=e1919]: 24шт
+                - button "Добавить в избранное" [ref=e1921]:
+                  - img [ref=e1922]
+              - generic [ref=e1924]:
+                - heading "Сет МИНИ ТЕПЛЫЙ 24шт" [level=3] [ref=e1925] [cursor=pointer]
+                - paragraph [ref=e1926]: Запеченный лосось 8шт. Запеченный курица 8шт. Запеченный краб 8шт. 600гр.
+                - generic [ref=e1927]:
+                  - generic [ref=e1929]: 890 ₽
+                  - button "В корзину" [ref=e1930] [cursor=pointer]:
+                    - img [ref=e1931]
+                    - generic [ref=e1932]: В корзину
+            - generic [ref=e1933]:
+              - generic [ref=e1934] [cursor=pointer]:
+                - img "Сет ОБЛАКА 32шт" [ref=e1935]
+                - generic [ref=e1937]: 32шт
+                - button "Добавить в избранное" [ref=e1939]:
+                  - img [ref=e1940]
+              - generic [ref=e1942]:
+                - heading "Сет ОБЛАКА 32шт" [level=3] [ref=e1943] [cursor=pointer]
+                - paragraph [ref=e1944]: Сяке Запеченный 8шт, Мр крабс 8шт, Калифорния темпура 8шт, тори темура 8шт. 1000гр.
+                - generic [ref=e1945]:
+                  - generic [ref=e1947]: 1740 ₽
+                  - button "В корзину" [ref=e1948] [cursor=pointer]:
+                    - img [ref=e1949]
+                    - generic [ref=e1950]: В корзину
+            - generic [ref=e1951]:
+              - generic [ref=e1952] [cursor=pointer]:
+                - img "Сет РОМАНТИКА 40шт." [ref=e1953]
+                - generic [ref=e1955]: 40шт
+                - button "Добавить в избранное" [ref=e1957]:
+                  - img [ref=e1958]
+              - generic [ref=e1960]:
+                - heading "Сет РОМАНТИКА 40шт." [level=3] [ref=e1961] [cursor=pointer]
+                - paragraph [ref=e1962]: Филадельфия классик 8шт, Филадельфия лайт 8шт, Калифорния классик 8шт, Мр-крабс 8шт, Ролл огурцы 8шт.
+                - generic [ref=e1963]:
+                  - generic [ref=e1965]: 1890 ₽
+                  - button "В корзину" [ref=e1966] [cursor=pointer]:
+                    - img [ref=e1967]
+                    - generic [ref=e1968]: В корзину
+            - generic [ref=e1969]:
+              - generic [ref=e1970] [cursor=pointer]:
+                - img "Сет ТЕПЛЫЙ 32шт" [ref=e1971]
+                - generic [ref=e1973]: 32шт
+                - button "Добавить в избранное" [ref=e1975]:
+                  - img [ref=e1976]
+              - generic [ref=e1978]:
+                - heading "Сет ТЕПЛЫЙ 32шт" [level=3] [ref=e1979] [cursor=pointer]
+                - paragraph [ref=e1980]: Миди запечённый 8шт, Mr-крабс 8шт.запеченный лава 8шт.хокойдо 8шт. 1100гр.
+                - generic [ref=e1981]:
+                  - generic [ref=e1983]: 1690 ₽
+                  - button "В корзину" [ref=e1984] [cursor=pointer]:
+                    - img [ref=e1985]
+                    - generic [ref=e1986]: В корзину
+            - generic [ref=e1987]:
+              - generic [ref=e1988] [cursor=pointer]:
+                - img "Сет ЖАРА 24шт." [ref=e1989]
+                - generic [ref=e1991]: 24шт
+                - button "Добавить в избранное" [ref=e1993]:
+                  - img [ref=e1994]
+              - generic [ref=e1996]:
+                - heading "Сет ЖАРА 24шт." [level=3] [ref=e1997] [cursor=pointer]
+                - paragraph [ref=e1998]: СЯКЕ темпура 8шт. Калифорния темпура 8шт Миди темпура 8шт. 800гр.
+                - generic [ref=e1999]:
+                  - generic [ref=e2001]: 1450 ₽
+                  - button "В корзину" [ref=e2002] [cursor=pointer]:
+                    - img [ref=e2003]
+                    - generic [ref=e2004]: В корзину
+            - generic [ref=e2005]:
+              - generic [ref=e2006] [cursor=pointer]:
+                - img "Сет все включено 96шт" [ref=e2007]
+                - generic [ref=e2009]: 96шт
+                - generic [ref=e2010]:
+                  - button "Добавить в избранное" [ref=e2011]:
+                    - img [ref=e2012]
+                  - generic [ref=e2014]: HIT
+              - generic [ref=e2015]:
+                - heading "Сет все включено 96шт" [level=3] [ref=e2016] [cursor=pointer]
+                - paragraph [ref=e2017]: Сакура 8шт, Бонито магуро 8шт, Филадельфия классик 8шт, Калифорния классик 8шт, ролл чеддер 8шт, лава сяке 8шт, , миди запечённый 8шт, Калифорния темпура 8шт, ролл огурец 8шт, ролл лосось 8шт, ролл краб 8шт. 2690гр.
+                - generic [ref=e2018]:
+                  - generic [ref=e2020]: 4690 ₽
+                  - button "В корзину" [ref=e2021] [cursor=pointer]:
+                    - img [ref=e2022]
+                    - generic [ref=e2023]: В корзину
+            - generic [ref=e2024]:
+              - generic [ref=e2025] [cursor=pointer]:
+                - img "Сет ТРИОэски 24шт." [ref=e2026]
+                - generic [ref=e2028]: 24шт
+                - button "Добавить в избранное" [ref=e2030]:
+                  - img [ref=e2031]
+              - generic [ref=e2033]:
+                - heading "Сет ТРИОэски 24шт." [level=3] [ref=e2034] [cursor=pointer]
+                - paragraph [ref=e2035]: Филадельфия классик 8шт. Филадельфия спешл 8шт. Калифорния классик 8шт. 800гр.
+                - generic [ref=e2036]:
+                  - generic [ref=e2038]: 1390 ₽
+                  - button "В корзину" [ref=e2039] [cursor=pointer]:
+                    - img [ref=e2040]
+                    - generic [ref=e2041]: В корзину
+            - generic [ref=e2042]:
+              - generic [ref=e2043] [cursor=pointer]:
+                - img "Сет Хит. 24шт" [ref=e2044]
+                - generic [ref=e2045]:
+                  - button "Добавить в избранное" [ref=e2046]:
+                    - img [ref=e2047]
+                  - generic [ref=e2049]: NEW
+              - generic [ref=e2050]:
+                - heading "Сет Хит. 24шт" [level=3] [ref=e2051] [cursor=pointer]
+                - paragraph
+                - generic [ref=e2052]:
+                  - generic [ref=e2054]: 2000 ₽
+                  - button "В корзину" [ref=e2055] [cursor=pointer]:
+                    - img [ref=e2056]
+                    - generic [ref=e2057]: В корзину
+            - generic [ref=e2058]:
+              - generic [ref=e2059] [cursor=pointer]:
+                - img "Сет Классический. 40шт" [ref=e2060]
+                - button "Добавить в избранное" [ref=e2062]:
+                  - img [ref=e2063]
+              - generic [ref=e2065]:
+                - heading "Сет Классический. 40шт" [level=3] [ref=e2066] [cursor=pointer]
+                - paragraph
+                - generic [ref=e2067]:
+                  - generic [ref=e2069]: 1490 ₽
+                  - button "В корзину" [ref=e2070] [cursor=pointer]:
+                    - img [ref=e2071]
+                    - generic [ref=e2072]: В корзину
+            - generic [ref=e2073]:
+              - generic [ref=e2074] [cursor=pointer]:
+                - img "Сет Гурман" [ref=e2075]
+                - generic [ref=e2076]:
+                  - button "Добавить в избранное" [ref=e2077]:
+                    - img [ref=e2078]
+                  - generic [ref=e2080]: NEW
+              - generic [ref=e2081]:
+                - heading "Сет Гурман" [level=3] [ref=e2082] [cursor=pointer]
+                - paragraph
+                - generic [ref=e2083]:
+                  - generic [ref=e2085]: 1900 ₽
+                  - button "В корзину" [ref=e2086] [cursor=pointer]:
+                    - img [ref=e2087]
+                    - generic [ref=e2088]: В корзину
+            - generic [ref=e2089]:
+              - generic [ref=e2090] [cursor=pointer]:
+                - img "Сет Кураж. 24шт" [ref=e2091]
+                - generic [ref=e2092]:
+                  - button "Добавить в избранное" [ref=e2093]:
+                    - img [ref=e2094]
+                  - generic [ref=e2096]: NEW
+              - generic [ref=e2097]:
+                - heading "Сет Кураж. 24шт" [level=3] [ref=e2098] [cursor=pointer]
+                - paragraph
+                - generic [ref=e2099]:
+                  - generic [ref=e2101]: 1690 ₽
+                  - button "В корзину" [ref=e2102] [cursor=pointer]:
+                    - img [ref=e2103]
+                    - generic [ref=e2104]: В корзину
+            - generic [ref=e2105]:
+              - generic [ref=e2106] [cursor=pointer]:
+                - img "Сет \"ТОП\". 32шт." [ref=e2107]
+                - generic [ref=e2108]:
+                  - button "Добавить в избранное" [ref=e2109]:
+                    - img [ref=e2110]
+                  - generic [ref=e2112]: NEW
+              - generic [ref=e2113]:
+                - heading "Сет \"ТОП\". 32шт." [level=3] [ref=e2114] [cursor=pointer]
+                - paragraph
+                - generic [ref=e2115]:
+                  - generic [ref=e2117]: 1800 ₽
+                  - button "В корзину" [ref=e2118] [cursor=pointer]:
+                    - img [ref=e2119]
+                    - generic [ref=e2120]: В корзину
+            - generic [ref=e2121]:
+              - generic [ref=e2122] [cursor=pointer]:
+                - img "Сет 4 -филадельфии. 32шт" [ref=e2123]
+                - generic [ref=e2124]:
+                  - button "Добавить в избранное" [ref=e2125]:
+                    - img [ref=e2126]
+                  - generic [ref=e2128]: NEW
+              - generic [ref=e2129]:
+                - heading "Сет 4 -филадельфии. 32шт" [level=3] [ref=e2130] [cursor=pointer]
+                - paragraph
+                - generic [ref=e2131]:
+                  - generic [ref=e2133]: 2550 ₽
+                  - button "В корзину" [ref=e2134] [cursor=pointer]:
+                    - img [ref=e2135]
+                    - generic [ref=e2136]: В корзину
+        - generic [ref=e2137]:
+          - generic [ref=e2138]:
+            - heading "ПИЦЦА" [level=2] [ref=e2139]
+            - generic [ref=e2140]: "19"
+          - generic [ref=e2141]:
+            - generic [ref=e2142]:
+              - generic [ref=e2143] [cursor=pointer]:
+                - img "Пицца\"Цезарь\" 30см" [ref=e2144]
+                - button "Добавить в избранное" [ref=e2146]:
+                  - img [ref=e2147]
+              - generic [ref=e2149]:
+                - heading "Пицца\"Цезарь\" 30см" [level=3] [ref=e2150] [cursor=pointer]
+                - paragraph [ref=e2151]: Тесто кл, сыр моцарелла, сыр пармнезан, соус цезарь, куриные грудки, помидоры, салат айсберг,
+                - generic [ref=e2152]:
+                  - generic [ref=e2154]: 750 ₽
+                  - button "В корзину" [ref=e2155] [cursor=pointer]:
+                    - img [ref=e2156]
+                    - generic [ref=e2157]: В корзину
+            - generic [ref=e2158]:
+              - generic [ref=e2159] [cursor=pointer]:
+                - img "Пицца\"Четыре Сыра\". 30 см" [ref=e2160]
+                - button "Добавить в избранное" [ref=e2162]:
+                  - img [ref=e2163]
+              - generic [ref=e2165]:
+                - heading "Пицца\"Четыре Сыра\". 30 см" [level=3] [ref=e2166] [cursor=pointer]
+                - paragraph [ref=e2167]: Тесто кл, соус-сливочный, сыр моцарелла, сыр сл, сыр чеддер, пармезан
+                - generic [ref=e2168]:
+                  - generic [ref=e2170]: 750 ₽
+                  - button "В корзину" [ref=e2171] [cursor=pointer]:
+                    - img [ref=e2172]
+                    - generic [ref=e2173]: В корзину
+            - generic [ref=e2174]:
+              - generic [ref=e2175] [cursor=pointer]:
+                - img "Пицца\"Маргарита\" 30 см" [ref=e2176]
+                - button "Добавить в избранное" [ref=e2178]:
+                  - img [ref=e2179]
+              - generic [ref=e2181]:
+                - heading "Пицца\"Маргарита\" 30 см" [level=3] [ref=e2182] [cursor=pointer]
+                - paragraph [ref=e2183]: тесто кл, сыр моцарелла, томатный соус, помидоры, орегано.
+                - generic [ref=e2184]:
+                  - generic [ref=e2186]: 690 ₽
+                  - button "В корзину" [ref=e2187] [cursor=pointer]:
+                    - img [ref=e2188]
+                    - generic [ref=e2189]: В корзину
+            - generic [ref=e2190]:
+              - generic [ref=e2191] [cursor=pointer]:
+                - img "Пицца\"пеперони\" 30 см" [ref=e2192]
+                - generic [ref=e2193]:
+                  - button "Добавить в избранное" [ref=e2194]:
+                    - img [ref=e2195]
+                  - generic [ref=e2197]: HIT
+              - generic [ref=e2198]:
+                - heading "Пицца\"пеперони\" 30 см" [level=3] [ref=e2199] [cursor=pointer]
+                - paragraph [ref=e2200]: Тесто кл, сыр моцарелла, соус томатный, пепперони.
+                - generic [ref=e2201]:
+                  - generic [ref=e2203]: 690 ₽
+                  - button "В корзину" [ref=e2204] [cursor=pointer]:
+                    - img [ref=e2205]
+                    - generic [ref=e2206]: В корзину
+            - generic [ref=e2207]:
+              - generic [ref=e2208] [cursor=pointer]:
+                - img "Пицца\"Филадельфия\". 30 см" [ref=e2209]
+                - button "Добавить в избранное" [ref=e2211]:
+                  - img [ref=e2212]
+              - generic [ref=e2214]:
+                - heading "Пицца\"Филадельфия\". 30 см" [level=3] [ref=e2215] [cursor=pointer]
+                - paragraph [ref=e2216]: Тесто кл, сыр моцарелла, Сливочный соус, лосось.
+                - generic [ref=e2217]:
+                  - generic [ref=e2219]: 760 ₽
+                  - button "В корзину" [ref=e2220] [cursor=pointer]:
+                    - img [ref=e2221]
+                    - generic [ref=e2222]: В корзину
+            - generic [ref=e2223]:
+              - generic [ref=e2224] [cursor=pointer]:
+                - img "Пицца \"ветчина с Грибами\" 30 см" [ref=e2225]
+                - button "Добавить в избранное" [ref=e2227]:
+                  - img [ref=e2228]
+              - generic [ref=e2230]:
+                - heading "Пицца \"ветчина с Грибами\" 30 см" [level=3] [ref=e2231] [cursor=pointer]
+                - paragraph [ref=e2232]: тесто кл, сыр моцарелла, томатный соус, ветчина, грибы шампиньоны.
+                - generic [ref=e2233]:
+                  - generic [ref=e2235]: 730 ₽
+                  - button "В корзину" [ref=e2236] [cursor=pointer]:
+                    - img [ref=e2237]
+                    - generic [ref=e2238]: В корзину
+            - generic [ref=e2239]:
+              - generic [ref=e2240] [cursor=pointer]:
+                - img "Пицца \"Супер море\". 33 см" [ref=e2241]
+                - generic [ref=e2242]:
+                  - button "Добавить в избранное" [ref=e2243]:
+                    - img [ref=e2244]
+                  - generic [ref=e2246]: NEW
+              - generic [ref=e2247]:
+                - heading "Пицца \"Супер море\". 33 см" [level=3] [ref=e2248] [cursor=pointer]
+                - paragraph [ref=e2249]: Тесто кл, соус томатный, сыр моцарелла, лосось., тунец .
+                - generic [ref=e2250]:
+                  - generic [ref=e2252]: 1299 ₽
+                  - button "В корзину" [ref=e2253] [cursor=pointer]:
+                    - img [ref=e2254]
+                    - generic [ref=e2255]: В корзину
+            - generic [ref=e2256]:
+              - generic [ref=e2257] [cursor=pointer]:
+                - img "Пицца \"Сочная\" 33 см" [ref=e2258]
+                - generic [ref=e2259]:
+                  - button "Добавить в избранное" [ref=e2260]:
+                    - img [ref=e2261]
+                  - generic [ref=e2263]: NEW
+              - generic [ref=e2264]:
+                - heading "Пицца \"Сочная\" 33 см" [level=3] [ref=e2265] [cursor=pointer]
+                - paragraph [ref=e2266]: Тесто кл, томатный соус, сыр мацарелла , томаты , аригано.
+                - generic [ref=e2267]:
+                  - generic [ref=e2269]: 990 ₽
+                  - button "В корзину" [ref=e2270] [cursor=pointer]:
+                    - img [ref=e2271]
+                    - generic [ref=e2272]: В корзину
+            - generic [ref=e2273]:
+              - generic [ref=e2274] [cursor=pointer]:
+                - img "Пицца \"сырная\". 33 см" [ref=e2275]
+                - generic [ref=e2276]:
+                  - button "Добавить в избранное" [ref=e2277]:
+                    - img [ref=e2278]
+                  - generic [ref=e2280]: NEW
+              - generic [ref=e2281]:
+                - heading "Пицца \"сырная\". 33 см" [level=3] [ref=e2282] [cursor=pointer]
+                - paragraph [ref=e2283]: Тесто кл, соус томатный, сыр моцарелла , пармезан, сливочный сыр, кедровые орехи.
+                - generic [ref=e2284]:
+                  - generic [ref=e2286]: 1199 ₽
+                  - button "В корзину" [ref=e2287] [cursor=pointer]:
+                    - img [ref=e2288]
+                    - generic [ref=e2289]: В корзину
+            - generic [ref=e2290]:
+              - generic [ref=e2291] [cursor=pointer]:
+                - img "Пицца \"Суприм\". 33 см" [ref=e2292]
+                - generic [ref=e2293]:
+                  - button "Добавить в избранное" [ref=e2294]:
+                    - img [ref=e2295]
+                  - generic [ref=e2297]: NEW
+              - generic [ref=e2298]:
+                - heading "Пицца \"Суприм\". 33 см" [level=3] [ref=e2299] [cursor=pointer]
+                - paragraph [ref=e2300]: Тесто кл, томатный соус, сыр моцарелла , ветчина, пепперони, грибы.
+                - generic [ref=e2301]:
+                  - generic [ref=e2303]: 1090 ₽
+                  - button "В корзину" [ref=e2304] [cursor=pointer]:
+                    - img [ref=e2305]
+                    - generic [ref=e2306]: В корзину
+            - generic [ref=e2307]:
+              - generic [ref=e2308] [cursor=pointer]:
+                - img "Пицца \"С Мидиями\". 33 см" [ref=e2309]
+                - generic [ref=e2310]:
+                  - button "Добавить в избранное" [ref=e2311]:
+                    - img [ref=e2312]
+                  - generic [ref=e2314]: NEW
+              - generic [ref=e2315]:
+                - heading "Пицца \"С Мидиями\". 33 см" [level=3] [ref=e2316] [cursor=pointer]
+                - paragraph [ref=e2317]: Тесто кл, томатный соус, мидии, сыр моцарелла, томаты, маслины.
+                - generic [ref=e2318]:
+                  - generic [ref=e2320]: 1100 ₽
+                  - button "В корзину" [ref=e2321] [cursor=pointer]:
+                    - img [ref=e2322]
+                    - generic [ref=e2323]: В корзину
+            - generic [ref=e2324]:
+              - generic [ref=e2325] [cursor=pointer]:
+                - img "Пицца \"№2\" 33см." [ref=e2326]
+                - generic [ref=e2327]:
+                  - button "Добавить в избранное" [ref=e2328]:
+                    - img [ref=e2329]
+                  - generic [ref=e2331]: NEW
+              - generic [ref=e2332]:
+                - heading "Пицца \"№2\" 33см." [level=3] [ref=e2333] [cursor=pointer]
+                - paragraph [ref=e2334]: Тесто классическое, соус томатный, сыр моцарелла, ветчина, томаты, зелень, маслины.
+                - generic [ref=e2335]:
+                  - generic [ref=e2337]: 999 ₽
+                  - button "В корзину" [ref=e2338] [cursor=pointer]:
+                    - img [ref=e2339]
+                    - generic [ref=e2340]: В корзину
+            - generic [ref=e2341]:
+              - generic [ref=e2342] [cursor=pointer]:
+                - img "Пицца \"цезарь с креветками\". 33см" [ref=e2343]
+                - generic [ref=e2344]:
+                  - button "Добавить в избранное" [ref=e2345]:
+                    - img [ref=e2346]
+                  - generic [ref=e2348]: NEW
+              - generic [ref=e2349]:
+                - heading "Пицца \"цезарь с креветками\". 33см" [level=3] [ref=e2350] [cursor=pointer]
+                - paragraph [ref=e2351]: Тесто кл, соус сливочный, креветки, сыр моцарелла, сыр пармезан, томаты(черри), айсберг(руккола), соус цезарь.
+                - generic [ref=e2352]:
+                  - generic [ref=e2354]: 1290 ₽
+                  - button "В корзину" [ref=e2355] [cursor=pointer]:
+                    - img [ref=e2356]
+                    - generic [ref=e2357]: В корзину
+            - generic [ref=e2358]:
+              - generic [ref=e2359] [cursor=pointer]:
+                - img "Пицца \" тунцом\" 33см" [ref=e2360]
+                - generic [ref=e2361]:
+                  - button "Добавить в избранное" [ref=e2362]:
+                    - img [ref=e2363]
+                  - generic [ref=e2365]: NEW
+              - generic [ref=e2366]:
+                - heading "Пицца \" тунцом\" 33см" [level=3] [ref=e2367] [cursor=pointer]
+                - paragraph [ref=e2368]: Тесто кл, соус томатный , сыр моцарелла, тунец.
+                - generic [ref=e2369]:
+                  - generic [ref=e2371]: 1199 ₽
+                  - button "В корзину" [ref=e2372] [cursor=pointer]:
+                    - img [ref=e2373]
+                    - generic [ref=e2374]: В корзину
+            - generic [ref=e2375]:
+              - generic [ref=e2376] [cursor=pointer]:
+                - img "Пицца\" филадельфия новинка\" 33см" [ref=e2377]
+                - generic [ref=e2378]:
+                  - button "Добавить в избранное" [ref=e2379]:
+                    - img [ref=e2380]
+                  - generic [ref=e2382]: NEW
+              - generic [ref=e2383]:
+                - heading "Пицца\" филадельфия новинка\" 33см" [level=3] [ref=e2384] [cursor=pointer]
+                - paragraph [ref=e2385]: Тесто кл, соус сырный, лосось, томаты. салат руккола.
+                - generic [ref=e2386]:
+                  - generic [ref=e2388]: 1290 ₽
+                  - button "В корзину" [ref=e2389] [cursor=pointer]:
+                    - img [ref=e2390]
+                    - generic [ref=e2391]: В корзину
+            - generic [ref=e2392]:
+              - generic [ref=e2393] [cursor=pointer]:
+                - img "Пицца \" №1 33см" [ref=e2394]
+                - generic [ref=e2395]:
+                  - button "Добавить в избранное" [ref=e2396]:
+                    - img [ref=e2397]
+                  - generic [ref=e2399]: NEW
+              - generic [ref=e2400]:
+                - heading "Пицца \" №1 33см" [level=3] [ref=e2401] [cursor=pointer]
+                - paragraph [ref=e2402]: Тесто кл. томатный соус, сыр моцарелла, куриная грудка, шампиньоны, томаты.
+                - generic [ref=e2403]:
+                  - generic [ref=e2405]: 999 ₽
+                  - button "В корзину" [ref=e2406] [cursor=pointer]:
+                    - img [ref=e2407]
+                    - generic [ref=e2408]: В корзину
+            - generic [ref=e2409]:
+              - generic [ref=e2410] [cursor=pointer]:
+                - img "Пицца\"Филадельфия соусом унаги\"." [ref=e2411]
+                - generic [ref=e2412]:
+                  - button "Добавить в избранное" [ref=e2413]:
+                    - img [ref=e2414]
+                  - generic [ref=e2416]: NEW
+              - generic [ref=e2417]:
+                - heading "Пицца\"Филадельфия соусом унаги\"." [level=3] [ref=e2418] [cursor=pointer]
+                - paragraph [ref=e2419]: Тесто кл, томатный соус, сыр моцарелла, лосось, соус-унаги
+                - generic [ref=e2420]:
+                  - generic [ref=e2422]: 1190 ₽
+                  - button "В корзину" [ref=e2423] [cursor=pointer]:
+                    - img [ref=e2424]
+                    - generic [ref=e2425]: В корзину
+            - generic [ref=e2426]:
+              - generic [ref=e2427] [cursor=pointer]:
+                - img "Пицца \"Острое\" 33см" [ref=e2428]
+                - generic [ref=e2429]:
+                  - button "Добавить в избранное" [ref=e2430]:
+                    - img [ref=e2431]
+                  - generic [ref=e2433]: 🌶️ ОСТР.
+              - generic [ref=e2434]:
+                - heading "Пицца \"Острое\" 33см" [level=3] [ref=e2435] [cursor=pointer]
+                - paragraph [ref=e2436]: тесто кл, соус томатный, сыр моцарелла, пепперони, халапенье.
+                - generic [ref=e2437]:
+                  - generic [ref=e2439]: 990 ₽
+                  - button "В корзину" [ref=e2440] [cursor=pointer]:
+                    - img [ref=e2441]
+                    - generic [ref=e2442]: В корзину
+            - generic [ref=e2443]:
+              - generic [ref=e2444] [cursor=pointer]:
+                - img "Пицца \" сладкий перец\". 33см" [ref=e2445]
+                - button "Добавить в избранное" [ref=e2447]:
+                  - img [ref=e2448]
+              - generic [ref=e2450]:
+                - heading "Пицца \" сладкий перец\". 33см" [level=3] [ref=e2451] [cursor=pointer]
+                - paragraph [ref=e2452]: тесто кл, соус томатный, сыр моцарелла, перец болгарский, лук.
+                - generic [ref=e2453]:
+                  - generic [ref=e2455]: 990 ₽
+                  - button "В корзину" [ref=e2456] [cursor=pointer]:
+                    - img [ref=e2457]
+                    - generic [ref=e2458]: В корзину
+        - generic [ref=e2459]:
+          - generic [ref=e2460]:
+            - heading "Wok" [level=2] [ref=e2461]
+            - generic [ref=e2462]: "9"
+          - generic [ref=e2463]:
+            - generic [ref=e2464]:
+              - generic [ref=e2465] [cursor=pointer]:
+                - img "удон с говядиной" [ref=e2466]
+                - button "Добавить в избранное" [ref=e2468]:
+                  - img [ref=e2469]
+              - generic [ref=e2471]:
+                - heading "удон с говядиной" [level=3] [ref=e2472] [cursor=pointer]
+                - paragraph [ref=e2473]: "пшеничная лапша, растительное масло, говядина, овощи, соевый соус. СОУС основной : терияки, барбекю, острый, кисло сладкий. P.S(выбранный основной соус написать в комментариях)"
+                - generic [ref=e2474]:
+                  - generic [ref=e2476]: 699 ₽
+                  - button "В корзину" [ref=e2477] [cursor=pointer]:
+                    - img [ref=e2478]
+                    - generic [ref=e2479]: В корзину
+            - generic [ref=e2480]:
+              - generic [ref=e2481] [cursor=pointer]:
+                - img "Удон с курицей." [ref=e2482]
+                - button "Добавить в избранное" [ref=e2484]:
+                  - img [ref=e2485]
+              - generic [ref=e2487]:
+                - heading "Удон с курицей." [level=3] [ref=e2488] [cursor=pointer]
+                - paragraph [ref=e2489]: "Пшеничная лапша, масло растительное, филе куриное , овощи. СОУС основной: терияки , барбекю, острый, кисло-сладкий. P.S(выбранный основной соус написать в комментариях к заказу)"
+                - generic [ref=e2490]:
+                  - generic [ref=e2492]: 599 ₽
+                  - button "В корзину" [ref=e2493] [cursor=pointer]:
+                    - img [ref=e2494]
+                    - generic [ref=e2495]: В корзину
+            - generic [ref=e2496]:
+              - generic [ref=e2497] [cursor=pointer]:
+                - img "Удон с креветками" [ref=e2498]
+                - button "Добавить в избранное" [ref=e2500]:
+                  - img [ref=e2501]
+              - generic [ref=e2503]:
+                - heading "Удон с креветками" [level=3] [ref=e2504] [cursor=pointer]
+                - paragraph [ref=e2505]: "Лапша пшеничная, креветки, растительное масло, овощи, соевый соус. СОУСосновной : кисло-сладкий , острый, терияки , барбекю. PS(выбранный основной соус написать в комментариях) P.S( Выбранный соус писать в комментариях к заказу)"
+                - generic [ref=e2506]:
+                  - generic [ref=e2508]: 690 ₽
+                  - button "В корзину" [ref=e2509] [cursor=pointer]:
+                    - img [ref=e2510]
+                    - generic [ref=e2511]: В корзину
+            - generic [ref=e2512]:
+              - generic [ref=e2513] [cursor=pointer]:
+                - img "Удон овощной." [ref=e2514]
+                - button "Добавить в избранное" [ref=e2516]:
+                  - img [ref=e2517]
+              - generic [ref=e2519]:
+                - heading "Удон овощной." [level=3] [ref=e2520] [cursor=pointer]
+                - paragraph [ref=e2521]: "Лапша пшеничная, масло растительное, овощи, кунжут, соевый соус. СОУС основной: терияки, барбекю, острый, кисло-сладкий. P.S(выбранный соус писать в комментариях к заказу)"
+                - generic [ref=e2522]:
+                  - generic [ref=e2524]: 699 ₽
+                  - button "В корзину" [ref=e2525] [cursor=pointer]:
+                    - img [ref=e2526]
+                    - generic [ref=e2527]: В корзину
+            - generic [ref=e2528]:
+              - generic [ref=e2529] [cursor=pointer]:
+                - img "Тяхань с креветками" [ref=e2530]
+                - button "Добавить в избранное" [ref=e2532]:
+                  - img [ref=e2533]
+              - generic [ref=e2535]:
+                - heading "Тяхань с креветками" [level=3] [ref=e2536] [cursor=pointer]
+                - paragraph [ref=e2537]: "Рис, креветки, масло растительное, овощи, кунжут, соевый соус. СОУС основной: терияки , барбекю, кисло сладкий, острый соус. P.S(выбранный соус писать в комментариях к заказу)"
+                - generic [ref=e2538]:
+                  - generic [ref=e2540]: 699 ₽
+                  - button "В корзину" [ref=e2541] [cursor=pointer]:
+                    - img [ref=e2542]
+                    - generic [ref=e2543]: В корзину
+            - generic [ref=e2544]:
+              - generic [ref=e2545] [cursor=pointer]:
+                - img "Тяхань с говядиной" [ref=e2546]
+                - button "Добавить в избранное" [ref=e2548]:
+                  - img [ref=e2549]
+              - generic [ref=e2551]:
+                - heading "Тяхань с говядиной" [level=3] [ref=e2552] [cursor=pointer]
+                - paragraph [ref=e2553]: "Рис, говядина, масло растительное, овощи, кунжут, соевый соус.СОУС основной: терияки, острый, барбекю, кисло-сладкий. P.S(выбранный основной соус писать в комментариях к заказу) P.S(выбранный соус писать в комментариях к заказу)"
+                - generic [ref=e2554]:
+                  - generic [ref=e2556]: 699 ₽
+                  - button "В корзину" [ref=e2557] [cursor=pointer]:
+                    - img [ref=e2558]
+                    - generic [ref=e2559]: В корзину
+            - generic [ref=e2560]:
+              - generic [ref=e2561] [cursor=pointer]:
+                - img "Тяхань с курицей" [ref=e2562]
+                - button "Добавить в избранное" [ref=e2564]:
+                  - img [ref=e2565]
+              - generic [ref=e2567]:
+                - heading "Тяхань с курицей" [level=3] [ref=e2568] [cursor=pointer]
+                - paragraph [ref=e2569]: "Рис, куриная грудка, растительное масло, кунжут, овощи, соевый соус. СОУС основной: терияки, барбекю, острый, кисло-сладкий. P.S(выбранный основной соус писать комментариях к заказу) P.S(выбранный соус писать в комментариях к заказу)"
+                - generic [ref=e2570]:
+                  - generic [ref=e2572]: 599 ₽
+                  - button "В корзину" [ref=e2573] [cursor=pointer]:
+                    - img [ref=e2574]
+                    - generic [ref=e2575]: В корзину
+            - generic [ref=e2576]:
+              - generic [ref=e2577] [cursor=pointer]:
+                - img "Соба с креветками" [ref=e2578]
+                - button "Добавить в избранное" [ref=e2580]:
+                  - img [ref=e2581]
+              - generic [ref=e2583]:
+                - heading "Соба с креветками" [level=3] [ref=e2584] [cursor=pointer]
+                - paragraph [ref=e2585]: "Лапша гречневая, креветки, масло растительное, кунжут, овощи, соевый соус. СОУС основной: терияки, барбекю, острый, кисло-сладкий. P.S(выбранный соус писать в комментариях к заказу)"
+                - generic [ref=e2586]:
+                  - generic [ref=e2588]: 690 ₽
+                  - button "В корзину" [ref=e2589] [cursor=pointer]:
+                    - img [ref=e2590]
+                    - generic [ref=e2591]: В корзину
+            - generic [ref=e2592]:
+              - generic [ref=e2593] [cursor=pointer]:
+                - img "Соба с говядиной" [ref=e2594]
+                - button "Добавить в избранное" [ref=e2596]:
+                  - img [ref=e2597]
+              - generic [ref=e2599]:
+                - heading "Соба с говядиной" [level=3] [ref=e2600] [cursor=pointer]
+                - paragraph [ref=e2601]: "Лапша гречневая, говядина, овощи, кунжут, масло растительное, соевый соус.СОУС основной на выбор: терияки, барбекю, острый, кисло-сладкий. P.S(выбранный соус писать в комментариях к заказу)"
+                - generic [ref=e2602]:
+                  - generic [ref=e2604]: 690 ₽
+                  - button "В корзину" [ref=e2605] [cursor=pointer]:
+                    - img [ref=e2606]
+                    - generic [ref=e2607]: В корзину
+        - generic [ref=e2608]:
+          - generic [ref=e2609]:
+            - heading "Супы" [level=2] [ref=e2610]
+            - generic [ref=e2611]: "11"
+          - generic [ref=e2612]:
+            - generic [ref=e2613]:
+              - generic [ref=e2614] [cursor=pointer]:
+                - img "Мисо Суп с креветкой" [ref=e2615]
+                - button "Добавить в избранное" [ref=e2617]:
+                  - img [ref=e2618]
+              - generic [ref=e2620]:
+                - heading "Мисо Суп с креветкой" [level=3] [ref=e2621] [cursor=pointer]
+                - paragraph [ref=e2622]: Мисо суп, хондаши, сыр тофу, креветки, зелень.
+                - generic [ref=e2623]:
+                  - generic [ref=e2625]: 490 ₽
+                  - button "В корзину" [ref=e2626] [cursor=pointer]:
+                    - img [ref=e2627]
+                    - generic [ref=e2628]: В корзину
+            - generic [ref=e2629]:
+              - generic [ref=e2630] [cursor=pointer]:
+                - img "Мисо Суп с Лососем" [ref=e2631]
+                - button "Добавить в избранное" [ref=e2633]:
+                  - img [ref=e2634]
+              - generic [ref=e2636]:
+                - heading "Мисо Суп с Лососем" [level=3] [ref=e2637] [cursor=pointer]
+                - paragraph [ref=e2638]: Мисо суп, хондаши, сыр тофу, лосось, зелень.
+                - generic [ref=e2639]:
+                  - generic [ref=e2641]: 490 ₽
+                  - button "В корзину" [ref=e2642] [cursor=pointer]:
+                    - img [ref=e2643]
+                    - generic [ref=e2644]: В корзину
+            - generic [ref=e2645]:
+              - generic [ref=e2646] [cursor=pointer]:
+                - img "Том Ям с курицей" [ref=e2647]
+                - button "Добавить в избранное" [ref=e2649]:
+                  - img [ref=e2650]
+              - generic [ref=e2652]:
+                - heading "Том Ям с курицей" [level=3] [ref=e2653] [cursor=pointer]
+                - paragraph [ref=e2654]: Паста том-ям, грибы, курица, кокосовое молоко, помидоры (черри), куриный порошок, рыбный соус.
+                - generic [ref=e2655]:
+                  - generic [ref=e2657]: 550 ₽
+                  - button "В корзину" [ref=e2658] [cursor=pointer]:
+                    - img [ref=e2659]
+                    - generic [ref=e2660]: В корзину
+            - generic [ref=e2661]:
+              - generic [ref=e2662] [cursor=pointer]:
+                - img "Том Ям с морепродуктами" [ref=e2663]
+                - generic [ref=e2664]:
+                  - button "Добавить в избранное" [ref=e2665]:
+                    - img [ref=e2666]
+                  - generic [ref=e2668]: HIT
+              - generic [ref=e2669]:
+                - heading "Том Ям с морепродуктами" [level=3] [ref=e2670] [cursor=pointer]
+                - paragraph [ref=e2671]: Паста том-ям, кокосовое молоко, Креветки, рыбный соус, помидоры (черри), грибы, рис, куриный порошок.
+                - generic [ref=e2672]:
+                  - generic [ref=e2674]: 590 ₽
+                  - button "В корзину" [ref=e2675] [cursor=pointer]:
+                    - img [ref=e2676]
+                    - generic [ref=e2677]: В корзину
+            - generic [ref=e2678]:
+              - generic [ref=e2679] [cursor=pointer]:
+                - img "Миса суп сливочный с креветками. морепродуктами." [ref=e2680]
+                - generic [ref=e2681]:
+                  - button "Добавить в избранное" [ref=e2682]:
+                    - img [ref=e2683]
+                  - generic [ref=e2685]: NEW
+              - generic [ref=e2686]:
+                - heading "Миса суп сливочный с креветками. морепродуктами." [level=3] [ref=e2687] [cursor=pointer]
+                - paragraph [ref=e2688]: Мисо, тофу, сливки, креветки, рис, рыбный бульен.
+                - generic [ref=e2689]:
+                  - generic [ref=e2691]: 590 ₽
+                  - button "В корзину" [ref=e2692] [cursor=pointer]:
+                    - img [ref=e2693]
+                    - generic [ref=e2694]: В корзину
+            - generic [ref=e2695]:
+              - generic [ref=e2696] [cursor=pointer]:
+                - img "Мисо суп сливочный с лососем" [ref=e2697]
+                - generic [ref=e2698]:
+                  - button "Добавить в избранное" [ref=e2699]:
+                    - img [ref=e2700]
+                  - generic [ref=e2702]: NEW
+              - generic [ref=e2703]:
+                - heading "Мисо суп сливочный с лососем" [level=3] [ref=e2704] [cursor=pointer]
+                - paragraph [ref=e2705]: Мисо, тофу, сливки, лосось, рис, рыбный бульон
+                - generic [ref=e2706]:
+                  - generic [ref=e2708]: 590 ₽
+                  - button "В корзину" [ref=e2709] [cursor=pointer]:
+                    - img [ref=e2710]
+                    - generic [ref=e2711]: В корзину
+            - generic [ref=e2712]:
+              - generic [ref=e2713] [cursor=pointer]:
+                - img "рис отварной" [ref=e2714]
+                - button "Добавить в избранное" [ref=e2716]:
+                  - img [ref=e2717]
+              - generic [ref=e2719]:
+                - heading "рис отварной" [level=3] [ref=e2720] [cursor=pointer]
+                - paragraph
+                - generic [ref=e2721]:
+                  - generic [ref=e2723]: 200 ₽
+                  - button "В корзину" [ref=e2724] [cursor=pointer]:
+                    - img [ref=e2725]
+                    - generic [ref=e2726]: В корзину
+            - generic [ref=e2727]:
+              - generic [ref=e2728] [cursor=pointer]:
+                - img "Суп Кимчи лососем" [ref=e2729]
+                - generic [ref=e2730]:
+                  - button "Добавить в избранное" [ref=e2731]:
+                    - img [ref=e2732]
+                  - generic [ref=e2734]: NEW
+              - generic [ref=e2735]:
+                - heading "Суп Кимчи лососем" [level=3] [ref=e2736] [cursor=pointer]
+                - paragraph [ref=e2737]: Мясо, лосось, сыр тофу, яйцо, острый соус. Также можно с креветками оформить заказ, в комментариях напишите пожалуйста креветкой.
+                - generic [ref=e2738]:
+                  - generic [ref=e2740]: 590 ₽
+                  - button "В корзину" [ref=e2741] [cursor=pointer]:
+                    - img [ref=e2742]
+                    - generic [ref=e2743]: В корзину
+            - generic [ref=e2744]:
+              - generic [ref=e2745] [cursor=pointer]:
+                - img "Суп Кимчи креветками" [ref=e2746]
+                - generic [ref=e2747]:
+                  - button "Добавить в избранное" [ref=e2748]:
+                    - img [ref=e2749]
+                  - generic [ref=e2751]: NEW
+              - generic [ref=e2752]:
+                - heading "Суп Кимчи креветками" [level=3] [ref=e2753] [cursor=pointer]
+                - paragraph [ref=e2754]: мисо суп, креветки, сыр тофу, яйцо, острый соус.
+                - generic [ref=e2755]:
+                  - generic [ref=e2757]: 590 ₽
+                  - button "В корзину" [ref=e2758] [cursor=pointer]:
+                    - img [ref=e2759]
+                    - generic [ref=e2760]: В корзину
+            - generic [ref=e2761]:
+              - generic [ref=e2762] [cursor=pointer]:
+                - img "Том Ям с лососем" [ref=e2763]
+                - button "Добавить в избранное" [ref=e2765]:
+                  - img [ref=e2766]
+              - generic [ref=e2768]:
+                - heading "Том Ям с лососем" [level=3] [ref=e2769] [cursor=pointer]
+                - paragraph [ref=e2770]: Паста том-ям, кокосовое молоко, лосось, рыбный соус, помидоры(черри), грибы, рис, куриный порошок.
+                - generic [ref=e2771]:
+                  - generic [ref=e2773]: 590 ₽
+                  - button "В корзину" [ref=e2774] [cursor=pointer]:
+                    - img [ref=e2775]
+                    - generic [ref=e2776]: В корзину
+            - generic [ref=e2777]:
+              - generic [ref=e2778] [cursor=pointer]:
+                - img "Мисо Суп с лапшой" [ref=e2779]
+                - generic [ref=e2780]:
+                  - button "Добавить в избранное" [ref=e2781]:
+                    - img [ref=e2782]
+                  - generic [ref=e2784]: NEW
+              - generic [ref=e2785]:
+                - heading "Мисо Суп с лапшой" [level=3] [ref=e2786] [cursor=pointer]
+                - paragraph [ref=e2787]: Мисо суп, сыр тофу, креветки, лапша пшеничная, зелень.
+                - generic [ref=e2788]:
+                  - generic [ref=e2790]: 590 ₽
+                  - button "В корзину" [ref=e2791] [cursor=pointer]:
+                    - img [ref=e2792]
+                    - generic [ref=e2793]: В корзину
+        - generic [ref=e2794]:
+          - generic [ref=e2795]:
+            - heading "Снеки" [level=2] [ref=e2796]
+            - generic [ref=e2797]: "8"
+          - generic [ref=e2798]:
+            - generic [ref=e2799]:
+              - generic [ref=e2800] [cursor=pointer]:
+                - img "Картошка по деревенски" [ref=e2801]
+                - button "Добавить в избранное" [ref=e2803]:
+                  - img [ref=e2804]
+              - generic [ref=e2806]:
+                - heading "Картошка по деревенски" [level=3] [ref=e2807] [cursor=pointer]
+                - paragraph
+                - generic [ref=e2808]:
+                  - generic [ref=e2810]: 250 ₽
+                  - button "В корзину" [ref=e2811] [cursor=pointer]:
+                    - img [ref=e2812]
+                    - generic [ref=e2813]: В корзину
+            - generic [ref=e2814]:
+              - generic [ref=e2815] [cursor=pointer]:
+                - img "Картошка Фри" [ref=e2816]
+                - button "Добавить в избранное" [ref=e2818]:
+                  - img [ref=e2819]
+              - generic [ref=e2821]:
+                - heading "Картошка Фри" [level=3] [ref=e2822] [cursor=pointer]
+                - paragraph
+                - generic [ref=e2823]:
+                  - generic [ref=e2825]: 260 ₽
+                  - button "В корзину" [ref=e2826] [cursor=pointer]:
+                    - img [ref=e2827]
+                    - generic [ref=e2828]: В корзину
+            - generic [ref=e2829]:
+              - generic [ref=e2830] [cursor=pointer]:
+                - img "Креветки темпура" [ref=e2831]
+                - button "Добавить в избранное" [ref=e2833]:
+                  - img [ref=e2834]
+              - generic [ref=e2836]:
+                - heading "Креветки темпура" [level=3] [ref=e2837] [cursor=pointer]
+                - paragraph [ref=e2838]: Креветки жареные
+                - generic [ref=e2839]:
+                  - generic [ref=e2841]: 520 ₽
+                  - button "В корзину" [ref=e2842] [cursor=pointer]:
+                    - img [ref=e2843]
+                    - generic [ref=e2844]: В корзину
+            - generic [ref=e2845]:
+              - generic [ref=e2846] [cursor=pointer]:
+                - img "Нагетсы куриные." [ref=e2847]
+                - button "Добавить в избранное" [ref=e2849]:
+                  - img [ref=e2850]
+              - generic [ref=e2852]:
+                - heading "Нагетсы куриные." [level=3] [ref=e2853] [cursor=pointer]
+                - paragraph
+                - generic [ref=e2854]:
+                  - generic [ref=e2856]: 290 ₽
+                  - button "В корзину" [ref=e2857] [cursor=pointer]:
+                    - img [ref=e2858]
+                    - generic [ref=e2859]: В корзину
+            - generic [ref=e2860]:
+              - generic [ref=e2861] [cursor=pointer]:
+                - img "Сырные палочки" [ref=e2862]
+                - button "Добавить в избранное" [ref=e2864]:
+                  - img [ref=e2865]
+              - generic [ref=e2867]:
+                - heading "Сырные палочки" [level=3] [ref=e2868] [cursor=pointer]
+                - paragraph
+                - generic [ref=e2869]:
+                  - generic [ref=e2871]: 380 ₽
+                  - button "В корзину" [ref=e2872] [cursor=pointer]:
+                    - img [ref=e2873]
+                    - generic [ref=e2874]: В корзину
+            - generic [ref=e2875]:
+              - generic [ref=e2876] [cursor=pointer]:
+                - img "Комбо-наборы" [ref=e2877]
+                - button "Добавить в избранное" [ref=e2879]:
+                  - img [ref=e2880]
+              - generic [ref=e2882]:
+                - heading "Комбо-наборы" [level=3] [ref=e2883] [cursor=pointer]
+                - paragraph
+                - generic [ref=e2884]:
+                  - generic [ref=e2886]: 550 ₽
+                  - button "В корзину" [ref=e2887] [cursor=pointer]:
+                    - img [ref=e2888]
+                    - generic [ref=e2889]: В корзину
+            - generic [ref=e2890]:
+              - generic [ref=e2891] [cursor=pointer]:
+                - img "Комбо-наборы 3х" [ref=e2892]
+                - button "Добавить в избранное" [ref=e2894]:
+                  - img [ref=e2895]
+              - generic [ref=e2897]:
+                - heading "Комбо-наборы 3х" [level=3] [ref=e2898] [cursor=pointer]
+                - paragraph
+                - generic [ref=e2899]:
+                  - generic [ref=e2901]: 850 ₽
+                  - button "В корзину" [ref=e2902] [cursor=pointer]:
+                    - img [ref=e2903]
+                    - generic [ref=e2904]: В корзину
+            - generic [ref=e2905]:
+              - generic [ref=e2906] [cursor=pointer]:
+                - img "Комбо-наборы . три в одном" [ref=e2907]
+                - button "Добавить в избранное" [ref=e2909]:
+                  - img [ref=e2910]
+              - generic [ref=e2912]:
+                - heading "Комбо-наборы . три в одном" [level=3] [ref=e2913] [cursor=pointer]
+                - paragraph
+                - generic [ref=e2914]:
+                  - generic [ref=e2916]: 990 ₽
+                  - button "В корзину" [ref=e2917] [cursor=pointer]:
+                    - img [ref=e2918]
+                    - generic [ref=e2919]: В корзину
+        - generic [ref=e2920]:
+          - generic [ref=e2921]:
+            - heading "Салаты" [level=2] [ref=e2922]
+            - generic [ref=e2923]: "14"
+          - generic [ref=e2924]:
+            - generic [ref=e2925]:
+              - generic [ref=e2926] [cursor=pointer]:
+                - img "Поке с Угрём" [ref=e2927]
+                - button "Добавить в избранное" [ref=e2929]:
+                  - img [ref=e2930]
+              - generic [ref=e2932]:
+                - heading "Поке с Угрём" [level=3] [ref=e2933] [cursor=pointer]
+                - paragraph [ref=e2934]: Рис, УГОРЬ, УНАГИ СОУС, соус поке, помидор черри(томаты), огурец, салат чука, такуан, редиска, ореховый соус, кунжут, Икра масаго.
+                - generic [ref=e2935]:
+                  - generic [ref=e2937]: 590 ₽
+                  - button "В корзину" [ref=e2938] [cursor=pointer]:
+                    - img [ref=e2939]
+                    - generic [ref=e2940]: В корзину
+            - generic [ref=e2941]:
+              - generic [ref=e2942] [cursor=pointer]:
+                - img "Поке с Лососем" [ref=e2943]
+                - generic [ref=e2944]:
+                  - button "Добавить в избранное" [ref=e2945]:
+                    - img [ref=e2946]
+                  - generic [ref=e2948]: HIT
+              - generic [ref=e2949]:
+                - heading "Поке с Лососем" [level=3] [ref=e2950] [cursor=pointer]
+                - paragraph [ref=e2951]: Рис, ЛОСОСЬ соус поке, помидор черри, огурец, салат чука, такуан, редиска, ореховый соус, кунжут, Икра масаго.
+                - generic [ref=e2952]:
+                  - generic [ref=e2954]: 590 ₽
+                  - button "В корзину" [ref=e2955] [cursor=pointer]:
+                    - img [ref=e2956]
+                    - generic [ref=e2957]: В корзину
+            - generic [ref=e2958]:
+              - generic [ref=e2959] [cursor=pointer]:
+                - img "Поке с Креветкой" [ref=e2960]
+                - button "Добавить в избранное" [ref=e2962]:
+                  - img [ref=e2963]
+              - generic [ref=e2965]:
+                - heading "Поке с Креветкой" [level=3] [ref=e2966] [cursor=pointer]
+                - paragraph [ref=e2967]: Рис, КРЕВЕТКА соус поке, помидор черри, огурец, салат чука, такуан, редиска, ореховый соус, икра масаго, кунжут.
+                - generic [ref=e2968]:
+                  - generic [ref=e2970]: 590 ₽
+                  - button "В корзину" [ref=e2971] [cursor=pointer]:
+                    - img [ref=e2972]
+                    - generic [ref=e2973]: В корзину
+            - generic [ref=e2974]:
+              - generic [ref=e2975] [cursor=pointer]:
+                - img "Поке с Тунцом" [ref=e2976]
+                - generic [ref=e2977]:
+                  - button "Добавить в избранное" [ref=e2978]:
+                    - img [ref=e2979]
+                  - generic [ref=e2981]: NEW
+              - generic [ref=e2982]:
+                - heading "Поке с Тунцом" [level=3] [ref=e2983] [cursor=pointer]
+                - paragraph [ref=e2984]: Рис, ТУНЕЦ соус поке, помидор черри, огурец, салат чука, такуан, редиска, ореховый соус, кунжут, Икра масаго.
+                - generic [ref=e2985]:
+                  - generic [ref=e2987]: 590 ₽
+                  - button "В корзину" [ref=e2988] [cursor=pointer]:
+                    - img [ref=e2989]
+                    - generic [ref=e2990]: В корзину
+            - generic [ref=e2991]:
+              - generic [ref=e2992] [cursor=pointer]:
+                - img "Салат Цезарь" [ref=e2993]
+                - button "Добавить в избранное" [ref=e2995]:
+                  - img [ref=e2996]
+              - generic [ref=e2998]:
+                - heading "Салат Цезарь" [level=3] [ref=e2999] [cursor=pointer]
+                - paragraph [ref=e3000]: Салат айсберг, куриные грудки, соус Цезарь, помидоры черри, Сыр гауда, сухари.
+                - generic [ref=e3001]:
+                  - generic [ref=e3003]: 390 ₽
+                  - button "В корзину" [ref=e3004] [cursor=pointer]:
+                    - img [ref=e3005]
+                    - generic [ref=e3006]: В корзину
+            - generic [ref=e3007]:
+              - generic [ref=e3008] [cursor=pointer]:
+                - img "Салат Чука" [ref=e3009]
+                - button "Добавить в избранное" [ref=e3011]:
+                  - img [ref=e3012]
+              - generic [ref=e3014]:
+                - heading "Салат Чука" [level=3] [ref=e3015] [cursor=pointer]
+                - paragraph [ref=e3016]: Салат чука водоросли, ореховый соус, кунжут, лимоный сок.
+                - generic [ref=e3017]:
+                  - generic [ref=e3019]: 290 ₽
+                  - button "В корзину" [ref=e3020] [cursor=pointer]:
+                    - img [ref=e3021]
+                    - generic [ref=e3022]: В корзину
+            - generic [ref=e3023]:
+              - generic [ref=e3024] [cursor=pointer]:
+                - img "Поке с КРЕВЕТКАМИ" [ref=e3025]
+                - button "Добавить в избранное" [ref=e3027]:
+                  - img [ref=e3028]
+              - generic [ref=e3030]:
+                - heading "Поке с КРЕВЕТКАМИ" [level=3] [ref=e3031] [cursor=pointer]
+                - paragraph [ref=e3032]: Рис, КРЕВЕТКИ, соус поке, помидор черри, огурец, салат чука, такуан, редиска, ореховый соус, Икра масаго.
+                - generic [ref=e3033]:
+                  - generic [ref=e3035]: 590 ₽
+                  - button "В корзину" [ref=e3036] [cursor=pointer]:
+                    - img [ref=e3037]
+                    - generic [ref=e3038]: В корзину
+            - generic [ref=e3039]:
+              - generic [ref=e3040] [cursor=pointer]:
+                - img "Поке с угрём" [ref=e3041]
+                - button "Добавить в избранное" [ref=e3043]:
+                  - img [ref=e3044]
+              - generic [ref=e3046]:
+                - heading "Поке с угрём" [level=3] [ref=e3047] [cursor=pointer]
+                - paragraph [ref=e3048]: Рис, УГОРЬ, УНАГИ СОУС, соус поке, помидор черри, огурец, салат чука, такуан, редиска, ореховый соус, Икра масаго.
+                - generic [ref=e3049]:
+                  - generic [ref=e3051]: 590 ₽
+                  - button "В корзину" [ref=e3052] [cursor=pointer]:
+                    - img [ref=e3053]
+                    - generic [ref=e3054]: В корзину
+            - generic [ref=e3055]:
+              - generic [ref=e3056] [cursor=pointer]:
+                - img "Поке с тунцом" [ref=e3057]
+                - button "Добавить в избранное" [ref=e3059]:
+                  - img [ref=e3060]
+              - generic [ref=e3062]:
+                - heading "Поке с тунцом" [level=3] [ref=e3063] [cursor=pointer]
+                - paragraph [ref=e3064]: Рис, ТУНЕЦ соус поке, помидор черри, огурец, салат чука, такуан, редиска, ореховый соус, Икра масаго.
+                - generic [ref=e3065]:
+                  - generic [ref=e3067]: 590 ₽
+                  - button "В корзину" [ref=e3068] [cursor=pointer]:
+                    - img [ref=e3069]
+                    - generic [ref=e3070]: В корзину
+            - generic [ref=e3071]:
+              - generic [ref=e3072] [cursor=pointer]:
+                - img "Салат цезарь с креветками" [ref=e3073]
+                - generic [ref=e3074]:
+                  - button "Добавить в избранное" [ref=e3075]:
+                    - img [ref=e3076]
+                  - generic [ref=e3078]: NEW
+              - generic [ref=e3079]:
+                - heading "Салат цезарь с креветками" [level=3] [ref=e3080] [cursor=pointer]
+                - paragraph [ref=e3081]: заправка-соус цезарь, салат айсберг , креветки , сыр пармезан, томаты , чесночные гренки.
+                - generic [ref=e3082]:
+                  - generic [ref=e3084]: 590 ₽
+                  - button "В корзину" [ref=e3085] [cursor=pointer]:
+                    - img [ref=e3086]
+                    - generic [ref=e3087]: В корзину
+            - generic [ref=e3088]:
+              - generic [ref=e3089] [cursor=pointer]:
+                - img "Хрустящий баклажан" [ref=e3090]
+                - generic [ref=e3091]:
+                  - button "Добавить в избранное" [ref=e3092]:
+                    - img [ref=e3093]
+                  - generic [ref=e3095]: NEW
+              - generic [ref=e3096]:
+                - heading "Хрустящий баклажан" [level=3] [ref=e3097] [cursor=pointer]
+                - paragraph [ref=e3098]: Баклажан, томаты , перец болгарский , кунжут, кисло сладкий соус, растительное масло.
+                - generic [ref=e3099]:
+                  - generic [ref=e3101]: 590 ₽
+                  - button "В корзину" [ref=e3102] [cursor=pointer]:
+                    - img [ref=e3103]
+                    - generic [ref=e3104]: В корзину
+            - generic [ref=e3105]:
+              - generic [ref=e3106] [cursor=pointer]:
+                - img "Рукола с креветками" [ref=e3107]
+                - generic [ref=e3108]:
+                  - button "Добавить в избранное" [ref=e3109]:
+                    - img [ref=e3110]
+                  - generic [ref=e3112]: NEW
+              - generic [ref=e3113]:
+                - heading "Рукола с креветками" [level=3] [ref=e3114] [cursor=pointer]
+                - paragraph [ref=e3115]: заправка, креветки, рукола, томаты, кедровые орехи .
+                - generic [ref=e3116]:
+                  - generic [ref=e3118]: 690 ₽
+                  - button "В корзину" [ref=e3119] [cursor=pointer]:
+                    - img [ref=e3120]
+                    - generic [ref=e3121]: В корзину
+            - generic [ref=e3122]:
+              - generic [ref=e3123] [cursor=pointer]:
+                - img "греческий салат" [ref=e3124]
+                - generic [ref=e3125]:
+                  - button "Добавить в избранное" [ref=e3126]:
+                    - img [ref=e3127]
+                  - generic [ref=e3129]: NEW
+              - generic [ref=e3130]:
+                - heading "греческий салат" [level=3] [ref=e3131] [cursor=pointer]
+                - paragraph [ref=e3132]: заправка, сыр фитакса, салатные листья, маслины, огурцы, томаты, лук.
+                - generic [ref=e3133]:
+                  - generic [ref=e3135]: 590 ₽
+                  - button "В корзину" [ref=e3136] [cursor=pointer]:
+                    - img [ref=e3137]
+                    - generic [ref=e3138]: В корзину
+            - generic [ref=e3139]:
+              - generic [ref=e3140] [cursor=pointer]:
+                - img "Томаты и моцарелла" [ref=e3141]
+                - button "Добавить в избранное" [ref=e3143]:
+                  - img [ref=e3144]
+              - generic [ref=e3146]:
+                - heading "Томаты и моцарелла" [level=3] [ref=e3147] [cursor=pointer]
+                - paragraph [ref=e3148]: сыр моцарелла, томаты(черри), рукола, соус бальзамик.
+                - generic [ref=e3149]:
+                  - generic [ref=e3151]: 590 ₽
+                  - button "В корзину" [ref=e3152] [cursor=pointer]:
+                    - img [ref=e3153]
+                    - generic [ref=e3154]: В корзину
+        - generic [ref=e3155]:
+          - generic [ref=e3156]:
+            - heading "Соусы" [level=2] [ref=e3157]
+            - generic [ref=e3158]: "8"
+          - generic [ref=e3159]:
+            - generic [ref=e3160]:
+              - generic [ref=e3161] [cursor=pointer]:
+                - img "Кисло-сладкий соус" [ref=e3162]
+                - button "Добавить в избранное" [ref=e3164]:
+                  - img [ref=e3165]
+              - generic [ref=e3167]:
+                - heading "Кисло-сладкий соус" [level=3] [ref=e3168] [cursor=pointer]
+                - paragraph [ref=e3169]: Кисло-сладкий соус
+                - generic [ref=e3170]:
+                  - generic [ref=e3172]: 50 ₽
+                  - button "В корзину" [ref=e3173] [cursor=pointer]:
+                    - img [ref=e3174]
+                    - generic [ref=e3175]: В корзину
+            - generic [ref=e3176]:
+              - generic [ref=e3177] [cursor=pointer]:
+                - img "Ореховый соус" [ref=e3178]
+                - button "Добавить в избранное" [ref=e3180]:
+                  - img [ref=e3181]
+              - generic [ref=e3183]:
+                - heading "Ореховый соус" [level=3] [ref=e3184] [cursor=pointer]
+                - paragraph [ref=e3185]: Ореховый соус
+                - generic [ref=e3186]:
+                  - generic [ref=e3188]: 50 ₽
+                  - button "В корзину" [ref=e3189] [cursor=pointer]:
+                    - img [ref=e3190]
+                    - generic [ref=e3191]: В корзину
+            - generic [ref=e3192]:
+              - generic [ref=e3193] [cursor=pointer]:
+                - img "Соевый соус" [ref=e3194]
+                - button "Добавить в избранное" [ref=e3196]:
+                  - img [ref=e3197]
+              - generic [ref=e3199]:
+                - heading "Соевый соус" [level=3] [ref=e3200] [cursor=pointer]
+                - paragraph
+                - generic [ref=e3201]:
+                  - generic [ref=e3203]: 25 ₽
+                  - button "В корзину" [ref=e3204] [cursor=pointer]:
+                    - img [ref=e3205]
+                    - generic [ref=e3206]: В корзину
+            - generic [ref=e3207]:
+              - generic [ref=e3208] [cursor=pointer]:
+                - img "Спайси соус" [ref=e3209]
+                - button "Добавить в избранное" [ref=e3211]:
+                  - img [ref=e3212]
+              - generic [ref=e3214]:
+                - heading "Спайси соус" [level=3] [ref=e3215] [cursor=pointer]
+                - paragraph [ref=e3216]: Спайси соус
+                - generic [ref=e3217]:
+                  - generic [ref=e3219]: 50 ₽
+                  - button "В корзину" [ref=e3220] [cursor=pointer]:
+                    - img [ref=e3221]
+                    - generic [ref=e3222]: В корзину
+            - generic [ref=e3223]:
+              - generic [ref=e3224] [cursor=pointer]:
+                - img "Сырный соус" [ref=e3225]
+                - button "Добавить в избранное" [ref=e3227]:
+                  - img [ref=e3228]
+              - generic [ref=e3230]:
+                - heading "Сырный соус" [level=3] [ref=e3231] [cursor=pointer]
+                - paragraph [ref=e3232]: Сырный соус
+                - generic [ref=e3233]:
+                  - generic [ref=e3235]: 50 ₽
+                  - button "В корзину" [ref=e3236] [cursor=pointer]:
+                    - img [ref=e3237]
+                    - generic [ref=e3238]: В корзину
+            - generic [ref=e3239]:
+              - generic [ref=e3240] [cursor=pointer]:
+                - img "Васаби" [ref=e3241]
+                - button "Добавить в избранное" [ref=e3243]:
+                  - img [ref=e3244]
+              - generic [ref=e3246]:
+                - heading "Васаби" [level=3] [ref=e3247] [cursor=pointer]
+                - paragraph [ref=e3248]: Васаби
+                - generic [ref=e3249]:
+                  - generic [ref=e3251]: 30 ₽
+                  - button "В корзину" [ref=e3252] [cursor=pointer]:
+                    - img [ref=e3253]
+                    - generic [ref=e3254]: В корзину
+            - generic [ref=e3255]:
+              - generic [ref=e3256] [cursor=pointer]:
+                - img "Имбирь" [ref=e3257]
+                - button "Добавить в избранное" [ref=e3259]:
+                  - img [ref=e3260]
+              - generic [ref=e3262]:
+                - heading "Имбирь" [level=3] [ref=e3263] [cursor=pointer]
+                - paragraph
+                - generic [ref=e3264]:
+                  - generic [ref=e3266]: 40 ₽
+                  - button "В корзину" [ref=e3267] [cursor=pointer]:
+                    - img [ref=e3268]
+                    - generic [ref=e3269]: В корзину
+            - generic [ref=e3270]:
+              - generic [ref=e3271] [cursor=pointer]:
+                - img "Терияки соус" [ref=e3272]
+                - button "Добавить в избранное" [ref=e3274]:
+                  - img [ref=e3275]
+              - generic [ref=e3277]:
+                - heading "Терияки соус" [level=3] [ref=e3278] [cursor=pointer]
+                - paragraph
+                - generic [ref=e3279]:
+                  - generic [ref=e3281]: 50 ₽
+                  - button "В корзину" [ref=e3282] [cursor=pointer]:
+                    - img [ref=e3283]
+                    - generic [ref=e3284]: В корзину
+        - generic [ref=e3285]:
+          - generic [ref=e3286]:
+            - heading "Завтраки" [level=2] [ref=e3287]
+            - generic [ref=e3288]: "5"
+          - generic [ref=e3289]:
+            - generic [ref=e3290]:
+              - generic [ref=e3291] [cursor=pointer]:
+                - img "Каша рисовая №2" [ref=e3292]
+                - generic [ref=e3293]:
+                  - button "Добавить в избранное" [ref=e3294]:
+                    - img [ref=e3295]
+                  - generic [ref=e3297]: NEW
+              - generic [ref=e3298]:
+                - heading "Каша рисовая №2" [level=3] [ref=e3299] [cursor=pointer]
+                - paragraph [ref=e3300]: СЛИВКИ, рупа рисовая, рис, масло сливочное, сахар, соль.
+                - generic [ref=e3301]:
+                  - generic [ref=e3303]: 450 ₽
+                  - button "В корзину" [ref=e3304] [cursor=pointer]:
+                    - img [ref=e3305]
+                    - generic [ref=e3306]: В корзину
+            - generic [ref=e3307]:
+              - generic [ref=e3308] [cursor=pointer]:
+                - img "Каша рисовая №1" [ref=e3309]
+                - generic [ref=e3310]:
+                  - button "Добавить в избранное" [ref=e3311]:
+                    - img [ref=e3312]
+                  - generic [ref=e3314]: NEW
+              - generic [ref=e3315]:
+                - heading "Каша рисовая №1" [level=3] [ref=e3316] [cursor=pointer]
+                - paragraph [ref=e3317]: МОЛОКО, крупа рисовая, рис, сахар, соль, масло сливочное.
+                - generic [ref=e3318]:
+                  - generic [ref=e3320]: 350 ₽
+                  - button "В корзину" [ref=e3321] [cursor=pointer]:
+                    - img [ref=e3322]
+                    - generic [ref=e3323]: В корзину
+            - generic [ref=e3324]:
+              - generic [ref=e3325] [cursor=pointer]:
+                - img "Рис отварной" [ref=e3326]
+                - generic [ref=e3327]:
+                  - button "Добавить в избранное" [ref=e3328]:
+                    - img [ref=e3329]
+                  - generic [ref=e3331]: NEW
+              - generic [ref=e3332]:
+                - heading "Рис отварной" [level=3] [ref=e3333] [cursor=pointer]
+                - paragraph
+                - generic [ref=e3334]:
+                  - generic [ref=e3336]: 200 ₽
+                  - button "В корзину" [ref=e3337] [cursor=pointer]:
+                    - img [ref=e3338]
+                    - generic [ref=e3339]: В корзину
+            - generic [ref=e3340]:
+              - generic [ref=e3341] [cursor=pointer]:
+                - img "Каша овсяная №1" [ref=e3342]
+                - generic [ref=e3343]:
+                  - button "Добавить в избранное" [ref=e3344]:
+                    - img [ref=e3345]
+                  - generic [ref=e3347]: NEW
+              - generic [ref=e3348]:
+                - heading "Каша овсяная №1" [level=3] [ref=e3349] [cursor=pointer]
+                - paragraph [ref=e3350]: МОЛОКО, геркулес, соль, сахар, сливочное масло.
+                - generic [ref=e3351]:
+                  - generic [ref=e3353]: 350 ₽
+                  - button "В корзину" [ref=e3354] [cursor=pointer]:
+                    - img [ref=e3355]
+                    - generic [ref=e3356]: В корзину
+            - generic [ref=e3357]:
+              - generic [ref=e3358] [cursor=pointer]:
+                - img "Каша овсяное №2." [ref=e3359]
+                - generic [ref=e3360]:
+                  - button "Добавить в избранное" [ref=e3361]:
+                    - img [ref=e3362]
+                  - generic [ref=e3364]: NEW
+              - generic [ref=e3365]:
+                - heading "Каша овсяное №2." [level=3] [ref=e3366] [cursor=pointer]
+                - paragraph [ref=e3367]: СЛИВКИ, овсянка, сливочное масло, соль, сахар.
+                - generic [ref=e3368]:
+                  - generic [ref=e3370]: 450 ₽
+                  - button "В корзину" [ref=e3371] [cursor=pointer]:
+                    - img [ref=e3372]
+                    - generic [ref=e3373]: В корзину
+        - generic [ref=e3374]:
+          - generic [ref=e3375]:
+            - heading "Десерты" [level=2] [ref=e3376]
+            - generic [ref=e3377]: "3"
+          - generic [ref=e3378]:
+            - generic [ref=e3379]:
+              - generic [ref=e3380] [cursor=pointer]:
+                - img "Ролл\" Роше\" 8шт" [ref=e3381]
+                - generic [ref=e3382]:
+                  - button "Добавить в избранное" [ref=e3383]:
+                    - img [ref=e3384]
+                  - generic [ref=e3386]: NEW
+              - generic [ref=e3387]:
+                - heading "Ролл\" Роше\" 8шт" [level=3] [ref=e3388] [cursor=pointer]
+                - paragraph [ref=e3389]: Сыр сл, манго, бананы.
+                - generic [ref=e3390]:
+                  - generic [ref=e3392]: 590 ₽
+                  - button "В корзину" [ref=e3393] [cursor=pointer]:
+                    - img [ref=e3394]
+                    - generic [ref=e3395]: В корзину
+            - generic [ref=e3396]:
+              - generic [ref=e3397] [cursor=pointer]:
+                - img "Ролл \"Райское наслаждение\"" [ref=e3398]
+                - generic [ref=e3399]:
+                  - button "Добавить в избранное" [ref=e3400]:
+                    - img [ref=e3401]
+                  - generic [ref=e3403]: NEW
+              - generic [ref=e3404]:
+                - heading "Ролл \"Райское наслаждение\"" [level=3] [ref=e3405] [cursor=pointer]
+                - paragraph [ref=e3406]: Сыр сл, бананы, киви.
+                - generic [ref=e3407]:
+                  - generic [ref=e3409]: 550 ₽
+                  - button "В корзину" [ref=e3410] [cursor=pointer]:
+                    - img [ref=e3411]
+                    - generic [ref=e3412]: В корзину
+            - generic [ref=e3413]:
+              - generic [ref=e3414] [cursor=pointer]:
+                - img "Ролл \"Фруктовое наслаждение\"" [ref=e3415]
+                - generic [ref=e3416]:
+                  - button "Добавить в избранное" [ref=e3417]:
+                    - img [ref=e3418]
+                  - generic [ref=e3420]: NEW
+              - generic [ref=e3421]:
+                - heading "Ролл \"Фруктовое наслаждение\"" [level=3] [ref=e3422] [cursor=pointer]
+                - paragraph [ref=e3423]: Сыр сл, киви, яблоки, бананы.
+                - generic [ref=e3424]:
+                  - generic [ref=e3426]: 550 ₽
+                  - button "В корзину" [ref=e3427] [cursor=pointer]:
+                    - img [ref=e3428]
+                    - generic [ref=e3429]: В корзину
+        - generic [ref=e3430]:
+          - generic [ref=e3431]:
+            - heading "Новинки" [level=2] [ref=e3432]
+            - generic [ref=e3433]: "4"
+          - generic [ref=e3434]:
+            - generic [ref=e3435]:
+              - generic [ref=e3436] [cursor=pointer]:
+                - img "Ролл лосось с Чукой. 8шт" [ref=e3437]
+                - generic [ref=e3438]:
+                  - button "Добавить в избранное" [ref=e3439]:
+                    - img [ref=e3440]
+                  - generic [ref=e3442]: NEW
+              - generic [ref=e3443]:
+                - heading "Ролл лосось с Чукой. 8шт" [level=3] [ref=e3444] [cursor=pointer]
+                - paragraph [ref=e3445]: Нори. рис, сыр сливочный, Чука, лосось, кунжут
+                - generic [ref=e3446]:
+                  - generic [ref=e3448]: 690 ₽
+                  - button "В корзину" [ref=e3449] [cursor=pointer]:
+                    - img [ref=e3450]
+                    - generic [ref=e3451]: В корзину
+            - generic [ref=e3452]:
+              - generic [ref=e3453] [cursor=pointer]:
+                - img "Ролл \"Хрустящий лук\". 8шт" [ref=e3454]
+                - generic [ref=e3455]:
+                  - button "Добавить в избранное" [ref=e3456]:
+                    - img [ref=e3457]
+                  - generic [ref=e3459]: NEW
+              - generic [ref=e3460]:
+                - heading "Ролл \"Хрустящий лук\". 8шт" [level=3] [ref=e3461] [cursor=pointer]
+                - paragraph [ref=e3462]: лосось, тунец, сыр сливочный, огурец, лук жаренный , рис, нори
+                - generic [ref=e3463]:
+                  - generic [ref=e3465]: 730 ₽
+                  - button "В корзину" [ref=e3466] [cursor=pointer]:
+                    - img [ref=e3467]
+                    - generic [ref=e3468]: В корзину
+            - generic [ref=e3469]:
+              - generic [ref=e3470] [cursor=pointer]:
+                - img "\"Фламинго\" 8шт" [ref=e3471]
+                - generic [ref=e3472]:
+                  - button "Добавить в избранное" [ref=e3473]:
+                    - img [ref=e3474]
+                  - generic [ref=e3476]: NEW
+              - generic [ref=e3477]:
+                - heading "\"Фламинго\" 8шт" [level=3] [ref=e3478] [cursor=pointer]
+                - paragraph [ref=e3479]: лосось, креветки, манго, сливочный сыр, рис, нори
+                - generic [ref=e3480]:
+                  - generic [ref=e3482]: 890 ₽
+                  - button "В корзину" [ref=e3483] [cursor=pointer]:
+                    - img [ref=e3484]
+                    - generic [ref=e3485]: В корзину
+            - generic [ref=e3486]:
+              - generic [ref=e3487] [cursor=pointer]:
+                - img "Ролл сырная" [ref=e3488]
+                - generic [ref=e3489]:
+                  - button "Добавить в избранное" [ref=e3490]:
+                    - img [ref=e3491]
+                  - generic [ref=e3493]: NEW
+              - generic [ref=e3494]:
+                - heading "Ролл сырная" [level=3] [ref=e3495] [cursor=pointer]
+                - paragraph [ref=e3496]: креветки, авакадо, сыр чедар, сыр сливочный, авакадо, нори, соус на выбор
+                - generic [ref=e3497]:
+                  - generic [ref=e3499]: 690 ₽
+                  - button "В корзину" [ref=e3500] [cursor=pointer]:
+                    - img [ref=e3501]
+                    - generic [ref=e3502]: В корзину
+        - generic [ref=e3503]:
+          - generic [ref=e3504]:
+            - heading "Сашими" [level=2] [ref=e3505]
+            - generic [ref=e3506]: "6"
+          - generic [ref=e3507]:
+            - generic [ref=e3508]:
+              - generic [ref=e3509] [cursor=pointer]:
+                - img "Ролл \"сашими\" №1. 8шт" [ref=e3510]
+                - generic [ref=e3511]:
+                  - button "Добавить в избранное" [ref=e3512]:
+                    - img [ref=e3513]
+                  - generic [ref=e3515]: NEW
+              - generic [ref=e3516]:
+                - heading "Ролл \"сашими\" №1. 8шт" [level=3] [ref=e3517] [cursor=pointer]
+                - paragraph [ref=e3518]: лосось, тунец, угорь, креветки, манго, авакадо, сыр сливочный, нори
+                - generic [ref=e3519]:
+                  - generic [ref=e3521]: 990 ₽
+                  - button "В корзину" [ref=e3522] [cursor=pointer]:
+                    - img [ref=e3523]
+                    - generic [ref=e3524]: В корзину
+            - generic [ref=e3525]:
+              - generic [ref=e3526] [cursor=pointer]:
+                - img "Ролл \"Сашими \" №2. 8шт" [ref=e3527]
+                - generic [ref=e3528]:
+                  - button "Добавить в избранное" [ref=e3529]:
+                    - img [ref=e3530]
+                  - generic [ref=e3532]: NEW
+              - generic [ref=e3533]:
+                - heading "Ролл \"Сашими \" №2. 8шт" [level=3] [ref=e3534] [cursor=pointer]
+                - paragraph [ref=e3535]: лосось, масаго, сыр сливочный, манго, нори
+                - generic [ref=e3536]:
+                  - generic [ref=e3538]: 890 ₽
+                  - button "В корзину" [ref=e3539] [cursor=pointer]:
+                    - img [ref=e3540]
+                    - generic [ref=e3541]: В корзину
+            - generic [ref=e3542]:
+              - generic [ref=e3543] [cursor=pointer]:
+                - img "Лосось Сашими" [ref=e3544]
+                - generic [ref=e3545]:
+                  - button "Добавить в избранное" [ref=e3546]:
+                    - img [ref=e3547]
+                  - generic [ref=e3549]: NEW
+              - generic [ref=e3550]:
+                - heading "Лосось Сашими" [level=3] [ref=e3551] [cursor=pointer]
+                - paragraph [ref=e3552]: Лосось подается лимон,ом и огурецом
+                - generic [ref=e3553]:
+                  - generic [ref=e3555]: 800 ₽
+                  - button "В корзину" [ref=e3556] [cursor=pointer]:
+                    - img [ref=e3557]
+                    - generic [ref=e3558]: В корзину
+            - generic [ref=e3559]:
+              - generic [ref=e3560] [cursor=pointer]:
+                - img "Угорь Сашими" [ref=e3561]
+                - generic [ref=e3562]:
+                  - button "Добавить в избранное" [ref=e3563]:
+                    - img [ref=e3564]
+                  - generic [ref=e3566]: NEW
+              - generic [ref=e3567]:
+                - heading "Угорь Сашими" [level=3] [ref=e3568] [cursor=pointer]
+                - paragraph [ref=e3569]: Угорь подается лимоном, и огурецом
+                - generic [ref=e3570]:
+                  - generic [ref=e3572]: 800 ₽
+                  - button "В корзину" [ref=e3573] [cursor=pointer]:
+                    - img [ref=e3574]
+                    - generic [ref=e3575]: В корзину
+            - generic [ref=e3576]:
+              - generic [ref=e3577] [cursor=pointer]:
+                - img "Креветка нашими" [ref=e3578]
+                - button "Добавить в избранное" [ref=e3580]:
+                  - img [ref=e3581]
+              - generic [ref=e3583]:
+                - heading "Креветка нашими" [level=3] [ref=e3584] [cursor=pointer]
+                - paragraph [ref=e3585]: креветки подаются лимоном и огурцом.
+                - generic [ref=e3586]:
+                  - generic [ref=e3588]: 700 ₽
+                  - button "В корзину" [ref=e3589] [cursor=pointer]:
+                    - img [ref=e3590]
+                    - generic [ref=e3591]: В корзину
+            - generic [ref=e3592]:
+              - generic [ref=e3593] [cursor=pointer]:
+                - img "Сет Сашими ТОП" [ref=e3594]
+                - generic [ref=e3595]:
+                  - button "Добавить в избранное" [ref=e3596]:
+                    - img [ref=e3597]
+                  - generic [ref=e3599]: NEW
+              - generic [ref=e3600]:
+                - heading "Сет Сашими ТОП" [level=3] [ref=e3601] [cursor=pointer]
+                - paragraph [ref=e3602]: Креветки, лосось, угорь, тунец подается с водорослями Чука и лимоном
+                - generic [ref=e3603]:
+                  - generic [ref=e3605]: 2500 ₽
+                  - button "В корзину" [ref=e3606] [cursor=pointer]:
+                    - img [ref=e3607]
+                    - generic [ref=e3608]: В корзину
+        - generic [ref=e3609]:
+          - generic [ref=e3610]:
+            - heading "Роллы Люкс" [level=2] [ref=e3611]
+            - generic [ref=e3612]: "8"
+          - generic [ref=e3613]:
+            - generic [ref=e3614]:
+              - generic [ref=e3615] [cursor=pointer]:
+                - img "Ролл лосось чука. 8шт" [ref=e3616]
+                - generic [ref=e3617]:
+                  - button "Добавить в избранное" [ref=e3618]:
+                    - img [ref=e3619]
+                  - generic [ref=e3621]: NEW
+              - generic [ref=e3622]:
+                - heading "Ролл лосось чука. 8шт" [level=3] [ref=e3623] [cursor=pointer]
+                - paragraph [ref=e3624]: Нори, рис, сыр сливочный двойной, Чука, лосось.
+                - generic [ref=e3625]:
+                  - generic [ref=e3627]: 790 ₽
+                  - button "В корзину" [ref=e3628] [cursor=pointer]:
+                    - img [ref=e3629]
+                    - generic [ref=e3630]: В корзину
+            - generic [ref=e3631]:
+              - generic [ref=e3632] [cursor=pointer]:
+                - img "Атлантический №2. 8шт" [ref=e3633]
+                - generic [ref=e3634]:
+                  - button "Добавить в избранное" [ref=e3635]:
+                    - img [ref=e3636]
+                  - generic [ref=e3638]: NEW
+              - generic [ref=e3639]:
+                - heading "Атлантический №2. 8шт" [level=3] [ref=e3640] [cursor=pointer]
+                - paragraph [ref=e3641]: Нори, рис, огурец, лосось, угорь, сыр сливочный двойной соус унаги, кунжут
+                - generic [ref=e3642]:
+                  - generic [ref=e3644]: 800 ₽
+                  - button "В корзину" [ref=e3645] [cursor=pointer]:
+                    - img [ref=e3646]
+                    - generic [ref=e3647]: В корзину
+            - generic [ref=e3648]:
+              - generic [ref=e3649] [cursor=pointer]:
+                - img "филадельфия креветка. 8шт" [ref=e3650]
+                - generic [ref=e3651]:
+                  - button "Добавить в избранное" [ref=e3652]:
+                    - img [ref=e3653]
+                  - generic [ref=e3655]: NEW
+              - generic [ref=e3656]:
+                - heading "филадельфия креветка. 8шт" [level=3] [ref=e3657] [cursor=pointer]
+                - paragraph [ref=e3658]: Нори,рис, сыр сливочный двойной, креветки, лосось.
+                - generic [ref=e3659]:
+                  - generic [ref=e3661]: 850 ₽
+                  - button "В корзину" [ref=e3662] [cursor=pointer]:
+                    - img [ref=e3663]
+                    - generic [ref=e3664]: В корзину
+            - generic [ref=e3665]:
+              - generic [ref=e3666] [cursor=pointer]:
+                - img "Филадельфия нежный-2. 8шт" [ref=e3667]
+                - generic [ref=e3669]: 8шт
+                - generic [ref=e3670]:
+                  - button "Добавить в избранное" [ref=e3671]:
+                    - img [ref=e3672]
+                  - generic [ref=e3674]: NEW
+              - generic [ref=e3675]:
+                - heading "Филадельфия нежный-2. 8шт" [level=3] [ref=e3676] [cursor=pointer]
+                - paragraph [ref=e3677]: нори, рис, ласось, сливочный сыр двойной.
+                - generic [ref=e3678]:
+                  - generic [ref=e3680]: 990 ₽
+                  - button "В корзину" [ref=e3681] [cursor=pointer]:
+                    - img [ref=e3682]
+                    - generic [ref=e3683]: В корзину
+            - generic [ref=e3684]:
+              - generic [ref=e3685] [cursor=pointer]:
+                - img "Ролл креветки 8шт" [ref=e3686]
+                - generic [ref=e3687]:
+                  - button "Добавить в избранное" [ref=e3688]:
+                    - img [ref=e3689]
+                  - generic [ref=e3691]: NEW
+              - generic [ref=e3692]:
+                - heading "Ролл креветки 8шт" [level=3] [ref=e3693] [cursor=pointer]
+                - paragraph [ref=e3694]: Нори, рис, креветки, авокадо, двойной сливочный сыр.
+                - generic [ref=e3695]:
+                  - generic [ref=e3697]: 790 ₽
+                  - button "В корзину" [ref=e3698] [cursor=pointer]:
+                    - img [ref=e3699]
+                    - generic [ref=e3700]: В корзину
+            - generic [ref=e3701]:
+              - generic [ref=e3702] [cursor=pointer]:
+                - img "Микс ролл угорь, креветка. 8шт" [ref=e3703]
+                - generic [ref=e3704]:
+                  - button "Добавить в избранное" [ref=e3705]:
+                    - img [ref=e3706]
+                  - generic [ref=e3708]: NEW
+              - generic [ref=e3709]:
+                - heading "Микс ролл угорь, креветка. 8шт" [level=3] [ref=e3710] [cursor=pointer]
+                - paragraph [ref=e3711]: Нори, рис, сливочный сыр двойной ,авокадо, унаги соус, креветки, угорь, соус унаги.
+                - generic [ref=e3712]:
+                  - generic [ref=e3714]: 850 ₽
+                  - button "В корзину" [ref=e3715] [cursor=pointer]:
+                    - img [ref=e3716]
+                    - generic [ref=e3717]: В корзину
+            - generic [ref=e3718]:
+              - generic [ref=e3719] [cursor=pointer]:
+                - img "Филадельфия Оранж. 8шт" [ref=e3720]
+                - generic [ref=e3721]:
+                  - button "Добавить в избранное" [ref=e3722]:
+                    - img [ref=e3723]
+                  - generic [ref=e3725]: NEW
+              - generic [ref=e3726]:
+                - heading "Филадельфия Оранж. 8шт" [level=3] [ref=e3727] [cursor=pointer]
+                - paragraph [ref=e3728]: Рис, нори, сливочный сыр двойной, лосось, огурец, масаго.
+                - generic [ref=e3729]:
+                  - generic [ref=e3731]: 850 ₽
+                  - button "В корзину" [ref=e3732] [cursor=pointer]:
+                    - img [ref=e3733]
+                    - generic [ref=e3734]: В корзину
+            - generic [ref=e3735]:
+              - generic [ref=e3736] [cursor=pointer]:
+                - img "Микс ролл креветки и лосось. 8шт" [ref=e3737]
+                - generic [ref=e3738]:
+                  - button "Добавить в избранное" [ref=e3739]:
+                    - img [ref=e3740]
+                  - generic [ref=e3742]: NEW
+              - generic [ref=e3743]:
+                - heading "Микс ролл креветки и лосось. 8шт" [level=3] [ref=e3744] [cursor=pointer]
+                - paragraph [ref=e3745]: Рис, нори, сливочный сыр двойной, авокадо, лосось, креветки.
+                - generic [ref=e3746]:
+                  - generic [ref=e3748]: 850 ₽
+                  - button "В корзину" [ref=e3749] [cursor=pointer]:
+                    - img [ref=e3750]
+                    - generic [ref=e3751]: В корзину
+        - generic [ref=e3752]:
+          - generic [ref=e3753]:
+            - heading "Запеченные Гунканы" [level=2] [ref=e3754]
+            - generic [ref=e3755]: "6"
+          - generic [ref=e3756]:
+            - generic [ref=e3757]:
+              - generic [ref=e3758] [cursor=pointer]:
+                - img "Сет гункан запеченный с угрем. 4шт" [ref=e3759]
+                - generic [ref=e3760]:
+                  - button "Добавить в избранное" [ref=e3761]:
+                    - img [ref=e3762]
+                  - generic [ref=e3764]: NEW
+              - generic [ref=e3765]:
+                - heading "Сет гункан запеченный с угрем. 4шт" [level=3] [ref=e3766] [cursor=pointer]
+                - paragraph [ref=e3767]: Нори, рис, угорь, сыр, яки-соус, масаго, соус унаги, кунжут.
+                - generic [ref=e3768]:
+                  - generic [ref=e3770]: 750 ₽
+                  - button "В корзину" [ref=e3771] [cursor=pointer]:
+                    - img [ref=e3772]
+                    - generic [ref=e3773]: В корзину
+            - generic [ref=e3774]:
+              - generic [ref=e3775] [cursor=pointer]:
+                - img "Сет гункан запеченный с креветками 4шт" [ref=e3776]
+                - button "Добавить в избранное" [ref=e3778]:
+                  - img [ref=e3779]
+              - generic [ref=e3781]:
+                - heading "Сет гункан запеченный с креветками 4шт" [level=3] [ref=e3782] [cursor=pointer]
+                - paragraph [ref=e3783]: креветки, масаго,сыр, яки-соус , унаги-соус, кунжут, рис, нори
+                - generic [ref=e3784]:
+                  - generic [ref=e3786]: 690 ₽
+                  - button "В корзину" [ref=e3787] [cursor=pointer]:
+                    - img [ref=e3788]
+                    - generic [ref=e3789]: В корзину
+            - generic [ref=e3790]:
+              - generic [ref=e3791] [cursor=pointer]:
+                - img "Сет гункан запеченный с тунцом 4шт" [ref=e3792]
+                - generic [ref=e3793]:
+                  - button "Добавить в избранное" [ref=e3794]:
+                    - img [ref=e3795]
+                  - generic [ref=e3797]: NEW
+              - generic [ref=e3798]:
+                - heading "Сет гункан запеченный с тунцом 4шт" [level=3] [ref=e3799] [cursor=pointer]
+                - paragraph [ref=e3800]: тунец, масаго, сыр, яки-соус, рис, нори
+                - generic [ref=e3801]:
+                  - generic [ref=e3803]: 690 ₽
+                  - button "В корзину" [ref=e3804] [cursor=pointer]:
+                    - img [ref=e3805]
+                    - generic [ref=e3806]: В корзину
+            - generic [ref=e3807]:
+              - generic [ref=e3808] [cursor=pointer]:
+                - img "Сет гункан запеченный с крабом. 4шт" [ref=e3809]
+                - generic [ref=e3810]:
+                  - button "Добавить в избранное" [ref=e3811]:
+                    - img [ref=e3812]
+                  - generic [ref=e3814]: NEW
+              - generic [ref=e3815]:
+                - heading "Сет гункан запеченный с крабом. 4шт" [level=3] [ref=e3816] [cursor=pointer]
+                - paragraph [ref=e3817]: яки-соус, краб, масаго, сыр, рис, нори
+                - generic [ref=e3818]:
+                  - generic [ref=e3820]: 690 ₽
+                  - button "В корзину" [ref=e3821] [cursor=pointer]:
+                    - img [ref=e3822]
+                    - generic [ref=e3823]: В корзину
+            - generic [ref=e3824]:
+              - generic [ref=e3825] [cursor=pointer]:
+                - img "Сет гункан запеченный с лососем. 4шт." [ref=e3826]
+                - generic [ref=e3827]:
+                  - button "Добавить в избранное" [ref=e3828]:
+                    - img [ref=e3829]
+                  - generic [ref=e3831]: NEW
+              - generic [ref=e3832]:
+                - heading "Сет гункан запеченный с лососем. 4шт." [level=3] [ref=e3833] [cursor=pointer]
+                - paragraph [ref=e3834]: лосось, масаго, сыр, яки соус, рис, нори
+                - generic [ref=e3835]:
+                  - generic [ref=e3837]: 750 ₽
+                  - button "В корзину" [ref=e3838] [cursor=pointer]:
+                    - img [ref=e3839]
+                    - generic [ref=e3840]: В корзину
+            - generic [ref=e3841]:
+              - generic [ref=e3842] [cursor=pointer]:
+                - img "Сет гункан запеченный с гребешком" [ref=e3843]
+                - button "Добавить в избранное" [ref=e3845]:
+                  - img [ref=e3846]
+              - generic [ref=e3848]:
+                - heading "Сет гункан запеченный с гребешком" [level=3] [ref=e3849] [cursor=pointer]
+                - paragraph [ref=e3850]: гребешок, яки-соус,рис, нори.
+                - generic [ref=e3851]:
+                  - generic [ref=e3853]: 690 ₽
+                  - button "В корзину" [ref=e3854] [cursor=pointer]:
+                    - img [ref=e3855]
+                    - generic [ref=e3856]: В корзину
+        - generic [ref=e3857]:
+          - generic [ref=e3858]:
+            - heading "Запеченные мидии" [level=2] [ref=e3859]
+            - generic [ref=e3860]: "1"
+          - generic [ref=e3862]:
+            - generic [ref=e3863] [cursor=pointer]:
+              - img "Мидии запеченные. 5шт" [ref=e3864]
+              - button "Добавить в избранное" [ref=e3866]:
+                - img [ref=e3867]
+            - generic [ref=e3869]:
+              - heading "Мидии запеченные. 5шт" [level=3] [ref=e3870] [cursor=pointer]
+              - paragraph [ref=e3871]: мидии,спайси соус
+              - generic [ref=e3872]:
+                - generic [ref=e3874]: 640 ₽
+                - button "В корзину" [ref=e3875] [cursor=pointer]:
+                  - img [ref=e3876]
+                  - generic [ref=e3877]: В корзину
+    - generic [ref=e3879]:
+      - generic [ref=e3880]:
+        - generic [ref=e3881]:
+          - img [ref=e3882]
+          - text: Мы в соцсетях
+        - heading "Наши блюда в деле" [level=2] [ref=e3885]
+        - paragraph [ref=e3886]: Реальные фото наших блюд — никаких стоковых картинок
+      - generic [ref=e3887]:
+        - generic [ref=e3888] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 1" [ref=e3889]
+          - img [ref=e3891]
+        - generic [ref=e3894] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 2" [ref=e3895]
+          - img [ref=e3897]
+        - generic [ref=e3900] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 3" [ref=e3901]
+          - img [ref=e3903]
+        - generic [ref=e3906] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 4" [ref=e3907]
+          - img [ref=e3909]
+        - generic [ref=e3912] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 5" [ref=e3913]
+          - img [ref=e3915]
+        - generic [ref=e3918] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 6" [ref=e3919]
+          - img [ref=e3921]
+        - generic [ref=e3924] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 7" [ref=e3925]
+          - img [ref=e3927]
+        - generic [ref=e3930] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 8" [ref=e3931]
+          - img [ref=e3933]
+      - link "Подписаться в Instagram" [ref=e3937] [cursor=pointer]:
+        - /url: https://instagram.com/sushivkus_lybertsy
+        - img [ref=e3938]
+        - text: Подписаться в Instagram
+  - contentinfo [ref=e3941]:
+    - generic [ref=e3943]:
+      - generic [ref=e3944]:
+        - generic [ref=e3945]:
+          - heading "Суши Вкус" [level=3] [ref=e3946]
+          - paragraph [ref=e3947]: Доставка вкусной еды! Готовим с любовью из качественных ингредиентов.
+          - generic [ref=e3948]:
+            - link "WhatsApp" [ref=e3949] [cursor=pointer]:
+              - /url: https://wa.me/79255372825
+              - img [ref=e3950]
+            - link "Telegram" [ref=e3952] [cursor=pointer]:
+              - /url: https://t.me/kelechek_sushi
+              - img [ref=e3953]
+            - link "Instagram" [ref=e3956] [cursor=pointer]:
+              - /url: https://instagram.com/sushivkus_lybertsy
+              - img [ref=e3957]
+        - generic [ref=e3960]:
+          - heading "Контакты" [level=4] [ref=e3961]
+          - generic [ref=e3962]:
+            - generic [ref=e3963]:
+              - img [ref=e3964]
+              - generic [ref=e3967]: ул. Шоссейная, 42, г. Люберцы
+            - generic [ref=e3968]:
+              - img [ref=e3969]
+              - generic [ref=e3971]:
+                - link "8 (925) 537-28-25" [ref=e3972] [cursor=pointer]:
+                  - /url: tel:+79255372825
+                - link "8 (916) 641-32-73" [ref=e3973] [cursor=pointer]:
+                  - /url: tel:+79166413273
+            - generic [ref=e3974]:
+              - img [ref=e3975]
+              - generic [ref=e3978]: "Ежедневно: 10:00 – 22:00"
+        - generic [ref=e3979]:
+          - heading "Навигация" [level=4] [ref=e3980]
+          - generic [ref=e3981]:
+            - link "Меню" [ref=e3982] [cursor=pointer]:
+              - /url: "#menu"
+            - link "Акции" [ref=e3983] [cursor=pointer]:
+              - /url: "#promo"
+            - link "Доставка" [ref=e3984] [cursor=pointer]:
+              - /url: "#delivery"
+            - link "Контакты" [ref=e3985] [cursor=pointer]:
+              - /url: "#contacts"
+      - generic [ref=e3986]: © 2026 Суши Вкус. Все права защищены.
+  - alert [ref=e3990]
