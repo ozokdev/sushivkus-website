@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { useSettingsStore } from "./settingsStore";
 
 // Тип товара в корзине
 export interface CartItem {
@@ -10,24 +11,9 @@ export interface CartItem {
   description?: string; // WOK конструктор опциялары
 }
 
-export let MIN_ORDER = 500;
-
-// API'ден минималдуу заказ суммасын жүктөө
-export async function loadMinOrder() {
-  try {
-    const res = await fetch("https://api.sushivkus.ru/api/site-settings");
-    const data = await res.json();
-    if (data && data.min_order_amount) {
-      MIN_ORDER = parseInt(data.min_order_amount, 10) || 500;
-    }
-  } catch {
-    // fallback 500
-  }
-}
-
-// Дароо жүктөө
-if (typeof window !== "undefined") {
-  loadMinOrder();
+// Минималдуу заказ — settingsStore'дон алынат
+export function getMinOrder(): number {
+  return useSettingsStore.getState().settings.minOrderAmount;
 }
 
 export const PROMO_CODES: Record<string, number> = {

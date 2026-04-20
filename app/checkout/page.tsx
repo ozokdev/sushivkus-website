@@ -5,8 +5,9 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { Phone, ShoppingBag, ChevronLeft, Banknote, CreditCard, Globe, Minus, Plus, Trash2, CheckCircle, Package, Clock, Tag, X } from "lucide-react";
-import { useCartStore, MIN_ORDER } from "@/store/cartStore";
+import { useCartStore } from "@/store/cartStore";
 import { useOrderStore } from "@/store/orderStore";
+import { useSettingsStore } from "@/store/settingsStore";
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -228,6 +229,7 @@ export default function CheckoutPage() {
   const discount = getDiscount();
   const discountAmount = getDiscountAmount();
   const finalPrice = getFinalPrice();
+  const MIN_ORDER = useSettingsStore((s) => s.settings.minOrderAmount);
   const isBelowMinimum = totalPrice < MIN_ORDER;
 
   return (

@@ -115,11 +115,11 @@ export default function CategoryPageClient({
         <div className="relative h-48 sm:h-64 md:h-80 overflow-hidden">
           <Image
             src={apiImage || category.image}
-            unoptimized={!!apiImage}
             alt={category.nameFull}
             fill
             className="object-cover"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/50 to-black/30" />
           <div className="absolute inset-0 flex flex-col justify-end">

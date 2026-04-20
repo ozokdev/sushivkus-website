@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { X, Minus, Plus, ShoppingBag, Trash2, Tag, AlertCircle } from "lucide-react";
-import { useCartStore, MIN_ORDER } from "@/store/cartStore";
+import { useCartStore } from "@/store/cartStore";
+import { useSettingsStore } from "@/store/settingsStore";
 import { useMenuStore } from "@/store/menuStore";
 
 export default function Cart() {
@@ -29,6 +30,7 @@ export default function Cart() {
 
   const [promoCode, setPromoCode] = useState("");
   const [promoError, setPromoError] = useState("");
+  const MIN_ORDER = useSettingsStore((s) => s.settings.minOrderAmount);
 
   const total = getTotalPrice();
   const discount = getDiscount();

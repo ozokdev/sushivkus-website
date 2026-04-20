@@ -2,27 +2,38 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Truck, Store, MapPin, Clock, ChevronRight } from "lucide-react";
+import { Truck, Store, MapPin, Clock, ChevronRight, X } from "lucide-react";
+import { useSettingsStore } from "@/store/settingsStore";
 
 export default function DeliveryChoiceModal() {
   const [show, setShow] = useState(false);
-  const [enabled, setEnabled] = useState(true);
+  const settings = useSettingsStore((s) => s.settings);
+  const loaded = useSettingsStore((s) => s.loaded);
+  const fetchSettings = useSettingsStore((s) => s.fetchSettings);
 
   useEffect(() => {
-    fetch("https://api.sushivkus.ru/api/site-settings")
-      .then((r) => r.json())
-      .then((data) => {
-        if (data?.show_delivery_choice === "false") {
-          setEnabled(false);
-          return;
-        }
-        const chosen = localStorage.getItem("delivery_type");
-        if (!chosen) {
-          setShow(true);
-        }
-      })
-      .catch(() => {});
-  }, []);
+    fetchSettings();
+  }, [fetchSettings]);
+
+  useEffect(() => {
+    if (!loaded) return;
+    if (!settings.showDeliveryChoice) return;
+    const chosen = localStorage.getItem("delivery_type");
+    if (!chosen) setShow(true);
+  }, [loaded, settings.showDeliveryChoice]);
+
+  useEffect(() => {
+    if (!show) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+    };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [show]);
 
   const choose = (type: "delivery" | "pickup") => {
     localStorage.setItem("delivery_type", type);
@@ -30,7 +41,12 @@ export default function DeliveryChoiceModal() {
     window.dispatchEvent(new CustomEvent("deliveryTypeChanged", { detail: type }));
   };
 
-  if (!enabled || !show) return null;
+  const close = () => {
+    localStorage.setItem("delivery_type", "delivery");
+    setShow(false);
+  };
+
+  if (!settings.showDeliveryChoice || !show) return null;
 
   return (
     <AnimatePresence>
@@ -41,16 +57,31 @@ export default function DeliveryChoiceModal() {
         className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
       >
         {/* Backdrop */}
-        <div className="absolute inset-0 bg-black/50 backdrop-blur-md" />
+        <div
+          className="absolute inset-0 bg-black/60 backdrop-blur-md"
+          onClick={close}
+          aria-hidden
+        />
 
         {/* Modal */}
         <motion.div
           initial={{ opacity: 0, scale: 0.92, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 350, damping: 28 }}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="delivery-choice-title"
           className="relative w-full max-w-[400px] rounded-3xl shadow-2xl overflow-hidden"
           style={{ background: "#fff", color: "#111" }}
         >
+          <button
+            onClick={close}
+            aria-label="Закрыть"
+            className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-black/5 hover:bg-black/10 transition-colors z-10"
+          >
+            <X className="w-4 h-4 text-gray-600" />
+          </button>
+
           {/* Top accent line */}
           <div className="h-1 bg-gradient-to-r from-accent via-red-400 to-accent" />
 
@@ -59,7 +90,7 @@ export default function DeliveryChoiceModal() {
             <div className="w-16 h-16 mx-auto mb-4 bg-accent/10 rounded-2xl flex items-center justify-center">
               <span className="text-3xl">🍣</span>
             </div>
-            <h2 className="text-2xl font-extrabold tracking-tight" style={{ color: "#111" }}>
+            <h2 id="delivery-choice-title" className="text-2xl font-extrabold tracking-tight" style={{ color: "#111" }}>
               Способ получения
             </h2>
             <p className="text-sm mt-1.5" style={{ color: "#999" }}>Как вы хотите получить заказ?</p>
@@ -80,7 +111,7 @@ export default function DeliveryChoiceModal() {
                 <span className="font-bold text-lg block tracking-wide">ДОСТАВКА</span>
                 <span className="text-white/70 text-xs flex items-center gap-1 mt-0.5">
                   <Clock className="w-3 h-3" />
-                  45-60 мин до вашей двери
+                  {settings.deliveryTime || "45-60 мин"} до вашей двери
                 </span>
               </div>
               <ChevronRight className="relative w-5 h-5 text-white/50 group-hover:text-white group-hover:translate-x-1 transition-all" />
@@ -100,7 +131,7 @@ export default function DeliveryChoiceModal() {
                 <span className="font-bold text-lg block tracking-wide">САМОВЫВОЗ</span>
                 <span className="text-white/50 text-xs flex items-center gap-1 mt-0.5">
                   <MapPin className="w-3 h-3" />
-                  Шоссейная 42, Люберцы
+                  {settings.address}
                 </span>
               </div>
               <ChevronRight className="relative w-5 h-5 text-white/30 group-hover:text-white/60 group-hover:translate-x-1 transition-all" />

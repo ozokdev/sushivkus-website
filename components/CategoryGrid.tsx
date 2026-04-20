@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { menuItems as staticMenuItems } from "@/data/menu";
 import { categoryList } from "@/data/categories";
 import type { Category, MenuItem } from "@/data/menu";
 import { useMenuStore } from "@/store/menuStore";
@@ -42,10 +41,9 @@ export default function CategoryGrid() {
   const [apiImages, setApiImages] = useState<Record<string, string>>({});
   const [apiPrices, setApiPrices] = useState<Record<string, number>>({});
   const [disabledSlugs, setDisabledSlugs] = useState<Set<string>>(new Set());
+  const [loaded, setLoaded] = useState(false);
   const storeItems = useMenuStore((s) => s.items);
   const fetchMenu = useMenuStore((s) => s.fetchMenu);
-  // API'ден товар жүктөлсө — аны колдон, жоксо — статик
-  const allItems = storeItems.length > 0 ? storeItems : staticMenuItems;
 
   useEffect(() => {
     fetchMenu();
@@ -68,8 +66,13 @@ export default function CategoryGrid() {
         setApiPrices(priceMap);
         setDisabledSlugs(disabled);
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => setLoaded(true));
   }, []);
+
+  const visibleCards = categoryList.filter(
+    (card) => !disabledSlugs.has(card.slug) && !disabledSlugs.has(card.id)
+  );
 
   return (
     <section className="py-4 sm:py-6">
@@ -84,57 +87,74 @@ export default function CategoryGrid() {
         </motion.h2>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
-          {categoryList
-            .filter((card) => !disabledSlugs.has(card.slug) && !disabledSlugs.has(card.id))
-            .map((card, index) => {
-            const stats = getCategoryStats(card.id, allItems);
-            const apiImg = apiImages[card.slug];
-            const imageSrc = apiImg ? `https://sushivkus.ru${apiImg}` : card.image;
-            // API'де min_price коюлса — аны колдон, жоксо — эсептелген бааны
-            const displayPrice = apiPrices[card.slug] || apiPrices[card.id] || stats.minPrice;
+          {!loaded
+            ? Array.from({ length: 8 }).map((_, i) => (
+                <div
+                  key={`sk-${i}`}
+                  className="relative aspect-square rounded-2xl overflow-hidden bg-white/[0.04] animate-pulse"
+                />
+              ))
+            : visibleCards.map((card, index) => {
+                const stats = getCategoryStats(card.id, storeItems);
+                const apiImg = apiImages[card.slug];
+                const imageSrc = apiImg ? `https://sushivkus.ru${apiImg}` : card.image;
+                const displayPrice =
+                  apiPrices[card.slug] || apiPrices[card.id] || stats.minPrice;
 
-            return (
-              <motion.div
-                key={card.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-30px" }}
-                transition={{ delay: Math.min(index * 0.06, 0.35) }}
-              >
-                <Link
-                  href={`/category/${card.slug}`}
-                  className="relative aspect-square rounded-2xl overflow-hidden cursor-pointer group block keep-white"
-                >
-                  <Image
-                    src={imageSrc}
-                    alt={card.nameFull}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
-                    priority={index < 4}
-                    unoptimized={!!apiImg}
-                  />
+                // Товар жок категорияны көрсөтпөйбүз
+                if (stats.count === 0 && displayPrice === 0) return null;
 
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent" />
+                return (
+                  <motion.div
+                    key={card.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-30px" }}
+                    transition={{ delay: Math.min(index * 0.06, 0.35) }}
+                  >
+                    <Link
+                      href={`/category/${card.slug}`}
+                      className="relative aspect-square rounded-2xl overflow-hidden cursor-pointer group block keep-white"
+                    >
+                      <Image
+                        src={imageSrc}
+                        alt={card.nameFull}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                        sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+                        priority={index < 4}
+                      />
 
-                  <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
-                    <h3 className="text-white font-bold text-sm sm:text-base drop-shadow-lg leading-tight">
-                      {card.nameFull}
-                    </h3>
-                    <p className="text-white font-extrabold text-base sm:text-xl drop-shadow-lg mt-0.5">
-                      ОТ {displayPrice} ₽
-                    </p>
-                  </div>
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/25 to-black/60" />
 
-                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4">
-                    <span className="bg-white/90 backdrop-blur-sm text-gray-700 text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded-full shadow-sm">
-                      {stats.count} поз.
-                    </span>
-                  </div>
-                </Link>
-              </motion.div>
-            );
-          })}
+                      <div className="absolute top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4">
+                        <h3
+                          className="text-white font-bold text-sm sm:text-base leading-tight"
+                          style={{ textShadow: "0 2px 8px rgba(0,0,0,0.6)" }}
+                        >
+                          {card.nameFull}
+                        </h3>
+                        {displayPrice > 0 && (
+                          <p
+                            className="text-white font-extrabold text-lg sm:text-xl mt-0.5"
+                            style={{ textShadow: "0 2px 10px rgba(0,0,0,0.7)" }}
+                          >
+                            от {displayPrice} ₽
+                          </p>
+                        )}
+                      </div>
+
+                      {stats.count > 0 && (
+                        <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4">
+                          <span className="bg-white/95 backdrop-blur-sm text-gray-800 text-[10px] sm:text-xs font-semibold px-2.5 py-1 rounded-full shadow-md">
+                            {stats.count} поз.
+                          </span>
+                        </div>
+                      )}
+                    </Link>
+                  </motion.div>
+                );
+              })}
         </div>
       </div>
     </section>

@@ -1,0 +1,321 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - link "ул. Шоссейная, 42, г. Люберцы" [ref=e4] [cursor=pointer]:
+      - /url: https://yandex.ru/maps/?text=г.+Люберцы,+ул.+Шоссейная,+42
+      - img [ref=e5]
+      - generic [ref=e8]: ул. Шоссейная, 42, г. Люберцы
+    - generic [ref=e9]:
+      - generic [ref=e10]: 🔥 Скидка 10% с 10:00 до 17:00 при заказе от 2000₽ (Пн-Пт)
+      - button [ref=e11] [cursor=pointer]:
+        - img [ref=e12]
+  - banner [ref=e15]:
+    - generic [ref=e17]:
+      - link "СушиВкус Свежие роллы. Быстрая доставка." [ref=e18] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e19]: СушиВкус
+        - generic [ref=e21]: Свежие роллы. Быстрая доставка.
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - img [ref=e24]
+          - generic [ref=e27]: г. Люберцы
+        - generic [ref=e28]:
+          - link "+7 (925) 537-28-25" [ref=e29] [cursor=pointer]:
+            - /url: tel:+79255372825
+            - img [ref=e30]
+            - text: +7 (925) 537-28-25
+          - link "+7 (916) 641-32-73" [ref=e32] [cursor=pointer]:
+            - /url: tel:+79166413273
+            - img [ref=e33]
+            - text: +7 (916) 641-32-73
+        - generic [ref=e35]:
+          - img [ref=e36]
+          - generic [ref=e39]: 10:00 – 22:00
+        - generic [ref=e40]:
+          - link "WhatsApp" [ref=e41] [cursor=pointer]:
+            - /url: https://wa.me/79255372825
+            - img [ref=e42]
+          - link "Telegram" [ref=e44] [cursor=pointer]:
+            - /url: https://t.me/sushi_vkus_lyubertsy
+            - img [ref=e45]
+      - generic [ref=e48]:
+        - button "Переключить тему" [ref=e49] [cursor=pointer]:
+          - img [ref=e51]
+        - button "Открыть корзину" [ref=e57] [cursor=pointer]:
+          - img [ref=e59]
+  - main [ref=e63]:
+    - generic [ref=e65]:
+      - img [ref=e66]
+      - generic [ref=e69]:
+        - text: Принимаем заказы! Осталось
+        - strong [ref=e70]: 5ч 32мин
+    - generic [ref=e72]:
+      - heading "Меню" [level=2] [ref=e73]
+      - generic [ref=e74]:
+        - link "Роллы Роллы от 390 ₽ 15 поз." [ref=e76] [cursor=pointer]:
+          - /url: /category/rolls
+          - img "Роллы" [ref=e77]
+          - generic [ref=e79]:
+            - heading "Роллы" [level=3] [ref=e80]
+            - paragraph [ref=e81]: от 390 ₽
+          - generic [ref=e83]: 15 поз.
+        - link "Сеты Сеты от 840 ₽ 14 поз." [ref=e85] [cursor=pointer]:
+          - /url: /category/sets
+          - img "Сеты" [ref=e86]
+          - generic [ref=e88]:
+            - heading "Сеты" [level=3] [ref=e89]
+            - paragraph [ref=e90]: от 840 ₽
+          - generic [ref=e92]: 14 поз.
+        - link "Пицца Пицца от 690 ₽ 6 поз." [ref=e94] [cursor=pointer]:
+          - /url: /category/pizza
+          - img "Пицца" [ref=e95]
+          - generic [ref=e97]:
+            - heading "Пицца" [level=3] [ref=e98]
+            - paragraph [ref=e99]: от 690 ₽
+          - generic [ref=e101]: 6 поз.
+        - link "Поке Поке от 590 ₽ 4 поз." [ref=e103] [cursor=pointer]:
+          - /url: /category/poke
+          - img "Поке" [ref=e104]
+          - generic [ref=e106]:
+            - heading "Поке" [level=3] [ref=e107]
+            - paragraph [ref=e108]: от 590 ₽
+          - generic [ref=e110]: 4 поз.
+        - link "Супы Супы от 290 ₽ 4 поз." [ref=e112] [cursor=pointer]:
+          - /url: /category/soups
+          - img "Супы" [ref=e113]
+          - generic [ref=e115]:
+            - heading "Супы" [level=3] [ref=e116]
+            - paragraph [ref=e117]: от 290 ₽
+          - generic [ref=e119]: 4 поз.
+        - link "Закуски Закуски от 250 ₽ 6 поз." [ref=e121] [cursor=pointer]:
+          - /url: /category/snacks
+          - img "Закуски" [ref=e122]
+          - generic [ref=e124]:
+            - heading "Закуски" [level=3] [ref=e125]
+            - paragraph [ref=e126]: от 250 ₽
+          - generic [ref=e128]: 6 поз.
+        - link "Салаты Салаты от 290 ₽ 2 поз." [ref=e130] [cursor=pointer]:
+          - /url: /category/salads
+          - img "Салаты" [ref=e131]
+          - generic [ref=e133]:
+            - heading "Салаты" [level=3] [ref=e134]
+            - paragraph [ref=e135]: от 290 ₽
+          - generic [ref=e137]: 2 поз.
+        - link "Соусы и добавки Соусы и добавки от 30 ₽ 7 поз." [ref=e139] [cursor=pointer]:
+          - /url: /category/sauces
+          - img "Соусы и добавки" [ref=e140]
+          - generic [ref=e142]:
+            - heading "Соусы и добавки" [level=3] [ref=e143]
+            - paragraph [ref=e144]: от 30 ₽
+          - generic [ref=e146]: 7 поз.
+        - link "Вок Вок от 0 ₽ 0 поз." [ref=e148] [cursor=pointer]:
+          - /url: /category/wok
+          - img "Вок" [ref=e149]
+          - generic [ref=e151]:
+            - heading "Вок" [level=3] [ref=e152]
+            - paragraph [ref=e153]: от 0 ₽
+          - generic [ref=e155]: 0 поз.
+        - link "Напитки Напитки от 0 ₽ 0 поз." [ref=e157] [cursor=pointer]:
+          - /url: /category/napitki
+          - img "Напитки" [ref=e158]
+          - generic [ref=e160]:
+            - heading "Напитки" [level=3] [ref=e161]
+            - paragraph [ref=e162]: от 0 ₽
+          - generic [ref=e164]: 0 поз.
+        - link "Новинки Новинки от 0 ₽ 0 поз." [ref=e166] [cursor=pointer]:
+          - /url: /category/novinki
+          - img "Новинки" [ref=e167]
+          - generic [ref=e169]:
+            - heading "Новинки" [level=3] [ref=e170]
+            - paragraph [ref=e171]: от 0 ₽
+          - generic [ref=e173]: 0 поз.
+        - link "Десерты Десерты от 0 ₽ 0 поз." [ref=e175] [cursor=pointer]:
+          - /url: /category/desert
+          - img "Десерты" [ref=e176]
+          - generic [ref=e178]:
+            - heading "Десерты" [level=3] [ref=e179]
+            - paragraph [ref=e180]: от 0 ₽
+          - generic [ref=e182]: 0 поз.
+        - link "Сашими Сашими от 0 ₽ 0 поз." [ref=e184] [cursor=pointer]:
+          - /url: /category/sashami
+          - img "Сашими" [ref=e185]
+          - generic [ref=e187]:
+            - heading "Сашими" [level=3] [ref=e188]
+            - paragraph [ref=e189]: от 0 ₽
+          - generic [ref=e191]: 0 поз.
+        - link "Запеченные мидии Запеченные мидии от 0 ₽ 0 поз." [ref=e193] [cursor=pointer]:
+          - /url: /category/zapecheni-midii
+          - img "Запеченные мидии" [ref=e194]
+          - generic [ref=e196]:
+            - heading "Запеченные мидии" [level=3] [ref=e197]
+            - paragraph [ref=e198]: от 0 ₽
+          - generic [ref=e200]: 0 поз.
+    - generic [ref=e204]:
+      - button "Прокрутить вправо" [ref=e205] [cursor=pointer]:
+        - img [ref=e206]
+      - generic [ref=e208]:
+        - button "🍱 Все" [ref=e209] [cursor=pointer]:
+          - generic [ref=e210]: 🍱
+          - text: Все
+        - button "🍣 Роллы" [ref=e211] [cursor=pointer]:
+          - generic [ref=e212]: 🍣
+          - text: Роллы
+        - button "🍤 Жареные роллы" [ref=e213] [cursor=pointer]:
+          - generic [ref=e214]: 🍤
+          - text: Жареные роллы
+        - button "🔥 Запечённые роллы" [ref=e215] [cursor=pointer]:
+          - generic [ref=e216]: 🔥
+          - text: Запечённые роллы
+        - button "🍙 Классические роллы" [ref=e217] [cursor=pointer]:
+          - generic [ref=e218]: 🍙
+          - text: Классические роллы
+        - button "🍣 Суши и гунканы" [ref=e219] [cursor=pointer]:
+          - generic [ref=e220]: 🍣
+          - text: Суши и гунканы
+        - button "🎁 Сеты" [ref=e221] [cursor=pointer]:
+          - generic [ref=e222]: 🎁
+          - text: Сеты
+        - button "🍕 Пицца" [ref=e223] [cursor=pointer]:
+          - generic [ref=e224]: 🍕
+          - text: Пицца
+        - button "🥗 Поке" [ref=e225] [cursor=pointer]:
+          - generic [ref=e226]: 🥗
+          - text: Поке
+        - button "🍜 Супы" [ref=e227] [cursor=pointer]:
+          - generic [ref=e228]: 🍜
+          - text: Супы
+        - button "🍟 Закуски" [ref=e229] [cursor=pointer]:
+          - generic [ref=e230]: 🍟
+          - text: Закуски
+        - button "🥬 Салаты" [ref=e231] [cursor=pointer]:
+          - generic [ref=e232]: 🥬
+          - text: Салаты
+        - button "🥢 Соусы и добавки" [ref=e233] [cursor=pointer]:
+          - generic [ref=e234]: 🥢
+          - text: Соусы и добавки
+        - button "🍜 Вок" [ref=e235] [cursor=pointer]:
+          - generic [ref=e236]: 🍜
+          - text: Вок
+        - button "🥤 Напитки" [ref=e237] [cursor=pointer]:
+          - generic [ref=e238]: 🥤
+          - text: Напитки
+        - button "🆕 Новинки" [ref=e239] [cursor=pointer]:
+          - generic [ref=e240]: 🆕
+          - text: Новинки
+        - button "🍰 Десерты" [ref=e241] [cursor=pointer]:
+          - generic [ref=e242]: 🍰
+          - text: Десерты
+        - button "🐟 Сашими" [ref=e243] [cursor=pointer]:
+          - generic [ref=e244]: 🐟
+          - text: Сашими
+        - button "🦪 Запеч. мидии" [ref=e245] [cursor=pointer]:
+          - generic [ref=e246]: 🦪
+          - text: Запеч. мидии
+    - generic [ref=e249]:
+      - generic [ref=e250]:
+        - generic [ref=e251]:
+          - img [ref=e252]
+          - text: Мы в соцсетях
+        - heading "Наши блюда в деле" [level=2] [ref=e255]
+        - paragraph [ref=e256]: Реальные фото наших блюд — никаких стоковых картинок
+      - generic [ref=e257]:
+        - generic [ref=e258] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 1" [ref=e259]
+          - img [ref=e261]
+        - generic [ref=e264] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 2" [ref=e265]
+          - img [ref=e267]
+        - generic [ref=e270] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 3" [ref=e271]
+          - img [ref=e273]
+        - generic [ref=e276] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 4" [ref=e277]
+          - img [ref=e279]
+        - generic [ref=e282] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 5" [ref=e283]
+          - img [ref=e285]
+        - generic [ref=e288] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 6" [ref=e289]
+          - img [ref=e291]
+        - generic [ref=e294] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 7" [ref=e295]
+          - img [ref=e297]
+        - generic [ref=e300] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 8" [ref=e301]
+          - img [ref=e303]
+      - link "Подписаться в Instagram" [ref=e307] [cursor=pointer]:
+        - /url: https://instagram.com/sushivkus_lybertsy
+        - img [ref=e308]
+        - text: Подписаться в Instagram
+    - generic [ref=e312]:
+      - generic [ref=e313]:
+        - generic [ref=e314]:
+          - img [ref=e315]
+          - text: Частые вопросы
+        - heading "Вопросы и ответы" [level=2] [ref=e318]
+      - generic [ref=e319]:
+        - button "Какая зона доставки?" [ref=e321] [cursor=pointer]:
+          - generic [ref=e322]: Какая зона доставки?
+          - img [ref=e324]
+        - button "Какая минимальная сумма заказа?" [ref=e327] [cursor=pointer]:
+          - generic [ref=e328]: Какая минимальная сумма заказа?
+          - img [ref=e330]
+        - button "Сколько времени занимает доставка?" [ref=e333] [cursor=pointer]:
+          - generic [ref=e334]: Сколько времени занимает доставка?
+          - img [ref=e336]
+        - button "Можно ли оплатить картой?" [ref=e339] [cursor=pointer]:
+          - generic [ref=e340]: Можно ли оплатить картой?
+          - img [ref=e342]
+        - button "Как отменить или изменить заказ?" [ref=e345] [cursor=pointer]:
+          - generic [ref=e346]: Как отменить или изменить заказ?
+          - img [ref=e348]
+        - button "Есть ли у вас акции?" [ref=e351] [cursor=pointer]:
+          - generic [ref=e352]: Есть ли у вас акции?
+          - img [ref=e354]
+        - button "Какой режим работы?" [ref=e357] [cursor=pointer]:
+          - generic [ref=e358]: Какой режим работы?
+          - img [ref=e360]
+  - contentinfo [ref=e362]:
+    - generic [ref=e364]:
+      - generic [ref=e365]:
+        - generic [ref=e366]:
+          - heading "Суши Вкус" [level=3] [ref=e367]
+          - paragraph [ref=e368]: Свежие роллы. Быстрая доставка. Готовим с любовью из качественных ингредиентов.
+          - generic [ref=e369]:
+            - link "WhatsApp" [ref=e370] [cursor=pointer]:
+              - /url: https://wa.me/79255372825
+              - img [ref=e371]
+            - link "Telegram" [ref=e373] [cursor=pointer]:
+              - /url: https://t.me/sushi_vkus_lyubertsy
+              - img [ref=e374]
+            - link "Instagram" [ref=e377] [cursor=pointer]:
+              - /url: https://instagram.com/sushivkus_lybertsy
+              - img [ref=e378]
+        - generic [ref=e381]:
+          - heading "Контакты" [level=4] [ref=e382]
+          - generic [ref=e383]:
+            - generic [ref=e384]:
+              - img [ref=e385]
+              - generic [ref=e388]: ул. Шоссейная, 42, г. Люберцы
+            - generic [ref=e389]:
+              - img [ref=e390]
+              - generic [ref=e392]:
+                - link "+7 (925) 537-28-25" [ref=e393] [cursor=pointer]:
+                  - /url: tel:+79255372825
+                - link "+7 (916) 641-32-73" [ref=e394] [cursor=pointer]:
+                  - /url: tel:+79166413273
+            - generic [ref=e395]:
+              - img [ref=e396]
+              - generic [ref=e399]: "Ежедневно: 10:00 – 22:00"
+        - generic [ref=e400]:
+          - heading "Навигация" [level=4] [ref=e401]
+          - generic [ref=e402]:
+            - link "Меню" [ref=e403] [cursor=pointer]:
+              - /url: "#menu"
+            - link "Акции" [ref=e404] [cursor=pointer]:
+              - /url: "#promo"
+            - link "Доставка" [ref=e405] [cursor=pointer]:
+              - /url: "#delivery"
+            - link "Контакты" [ref=e406] [cursor=pointer]:
+              - /url: "#contacts"
+      - generic [ref=e407]: © 2026 Суши Вкус. Все права защищены.
+  - alert [ref=e408]

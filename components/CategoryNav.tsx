@@ -14,7 +14,6 @@ export default function CategoryNav({
   onCategoryChange,
 }: CategoryNavProps) {
   const categories = useMenuStore((s) => s.categories);
-  const [isSticky, setIsSticky] = useState(false);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -24,12 +23,6 @@ export default function CategoryNav({
     if (!el) return;
     setCanScrollLeft(el.scrollLeft > 5);
     setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 5);
-  }, []);
-
-  useEffect(() => {
-    const onScroll = () => setIsSticky(window.scrollY > 500);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
@@ -67,13 +60,7 @@ export default function CategoryNav({
   };
 
   return (
-    <div
-      className={`sticky top-16 md:top-20 z-40 transition-all duration-300 ${
-        isSticky
-          ? "bg-dark/95 backdrop-blur-xl shadow-lg shadow-black/30 border-b border-white/5"
-          : "bg-transparent"
-      }`}
-    >
+    <div className="sticky top-16 md:top-20 z-40 bg-dark/95 backdrop-blur-xl shadow-lg shadow-black/20 border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative">
           {/* Солго жебе */}

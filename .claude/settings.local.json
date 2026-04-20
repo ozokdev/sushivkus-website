@@ -50,7 +50,17 @@
       "Bash(curl -s --max-time 5 \"https://api.sushivkus.ru/api/menu\")",
       "Bash(curl -s --max-time 5 \"https://api.sushivkus.ru/api/categories\")",
       "Bash(curl -v --max-time 5 \"https://api.sushivkus.ru/api/menu\")",
-      "Bash(curl -sk --max-time 5 \"https://api.sushivkus.ru/api/menu\")"
+      "Bash(curl -sk --max-time 5 \"https://api.sushivkus.ru/api/menu\")",
+      "mcp__plugin_playwright_playwright__browser_resize",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_wait_for",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "mcp__plugin_playwright_playwright__browser_evaluate",
+      "mcp__plugin_playwright_playwright__browser_console_messages",
+      "mcp__plugin_playwright_playwright__browser_network_requests",
+      "mcp__plugin_playwright_playwright__browser_close",
+      "Bash(npm run *)",
+      "Bash(ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@81.90.182.17 \"cd /var/www/sushivkus && ls node_modules/sharp 2>&1 | head -5 && echo '---' && ls node_modules/@img 2>/dev/null | head -5\")"
     ]
   }
 }
