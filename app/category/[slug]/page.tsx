@@ -20,24 +20,24 @@ export function generateMetadata({
   const minPrice = items.length > 0 ? Math.min(...items.map((i) => i.price)) : 0;
 
   return {
-    title: `${category.nameFull} — заказать с доставкой в Люберцах | Суши Вкус`,
+    title: `${category.nameFull} — заказать с доставкой в Люберцах | Аригато Суши`,
     description: `${category.description} Доставка по Люберцам от ${minPrice} ₽. Заказать онлайн на sushivkus.ru`,
-    keywords: `${category.nameFull.toLowerCase()}, доставка ${category.nameFull.toLowerCase()} Люберцы, суши, Суши Вкус, заказать ${category.nameFull.toLowerCase()}`,
+    keywords: `${category.nameFull.toLowerCase()}, доставка ${category.nameFull.toLowerCase()} Люберцы, суши, Аригато Суши, заказать ${category.nameFull.toLowerCase()}`,
     alternates: {
       canonical: `/category/${params.slug}`,
     },
     openGraph: {
-      title: `${category.nameFull} от ${minPrice} ₽ | Суши Вкус`,
+      title: `${category.nameFull} от ${minPrice} ₽ | Аригато Суши`,
       description: `${category.description} Доставка по Люберцам.`,
       type: "website",
       url: `https://sushivkus.ru/category/${params.slug}`,
       images: [category.image],
-      siteName: "Суши Вкус",
+      siteName: "Аригато Суши",
       locale: "ru_RU",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${category.nameFull} от ${minPrice} ₽ | Суши Вкус`,
+      title: `${category.nameFull} от ${minPrice} ₽ | Аригато Суши`,
       description: category.description,
       images: [category.image],
     },
@@ -77,11 +77,36 @@ export default function CategoryPage({
           availability: "https://schema.org/InStock",
           seller: {
             "@type": "Organization",
-            name: "Суши Вкус",
+            name: "Аригато Суши",
           },
         },
       },
     })),
+  };
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Главная",
+        item: "https://sushivkus.ru",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Меню",
+        item: "https://sushivkus.ru/#menu",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: category.nameFull,
+        item: `https://sushivkus.ru/category/${params.slug}`,
+      },
+    ],
   };
 
   return (
@@ -89,6 +114,10 @@ export default function CategoryPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <CategoryPageClient category={category} items={items} />
     </>

@@ -54,7 +54,7 @@ interface SiteSettings {
 }
 
 const initialSettings: SiteSettings = {
-  siteName: "Суши Вкус",
+  siteName: "Аригато Суши",
   description: "Свежие роллы. Быстрая доставка.",
   phone: "8 (925) 537-28-25",
   phone2: "8 (916) 641-32-73",

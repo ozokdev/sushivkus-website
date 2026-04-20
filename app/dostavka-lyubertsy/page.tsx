@@ -2,17 +2,17 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Доставка еды в Люберцах — суши, роллы, пицца | Суши Вкус",
+  title: "Доставка еды в Люберцах — суши, роллы, пицца | Аригато Суши",
   description:
     "Доставка еды по Люберцам: суши, роллы, пицца, поке, супы. Бесплатная доставка от 1000 ₽. Время доставки от 30 минут. Заказ онлайн на sushivkus.ru",
   keywords:
     "доставка еды Люберцы, доставка Люберцы, еда на дом Люберцы, заказать еду Люберцы",
   alternates: { canonical: "/dostavka-lyubertsy" },
   openGraph: {
-    title: "Доставка еды в Люберцах | Суши Вкус",
+    title: "Доставка еды в Люберцах | Аригато Суши",
     description: "Быстрая доставка суши, роллов и пиццы по Люберцам!",
     url: "https://sushivkus.ru/dostavka-lyubertsy",
-    siteName: "Суши Вкус",
+    siteName: "Аригато Суши",
     locale: "ru_RU",
     type: "website",
   },
@@ -45,7 +45,7 @@ export default function DostavkaLyubertsy() {
 
         <div className="prose prose-invert max-w-none mb-10 text-gray-300 leading-relaxed space-y-4">
           <p>
-            <strong>Суши Вкус</strong> доставляет суши, роллы и пиццу по всем
+            <strong>Аригато Суши</strong> доставляет суши, роллы и пиццу по всем
             районам Люберец и ближайшим населённым пунктам. Мы работаем
             ежедневно с 10:00 до 23:00.
           </p>

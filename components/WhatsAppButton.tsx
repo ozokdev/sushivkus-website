@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function WhatsAppButton() {
   const phone = "79991234567"; // ← өзүңдүн WhatsApp номериңди жаз
-  const message = encodeURIComponent("Здравствуйте! Хочу сделать заказ из Суши Вкус");
+  const message = encodeURIComponent("Здравствуйте! Хочу сделать заказ из Аригато Суши");
   const url = `https://wa.me/${phone}?text=${message}`;
 
   return (

@@ -2,29 +2,29 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Суши Вкус | Доставка суши в Люберцах — Шоссейная 42",
+  title: "Аригато Суши Люберцы | Доставка суши и роллов — Шоссейная 42",
   description:
-    "Суши Вкус — доставка суши, роллов и пиццы в Люберцах. Адрес: Шоссейная 42. Быстрая доставка, свежие ингредиенты, доступные цены. Заказ онлайн!",
+    "Аригато Суши — доставка суши, роллов и пиццы в Люберцах. Шоссейная 42. Свежие ингредиенты, быстрая доставка 45–60 минут. Заказ онлайн круглосуточно!",
   keywords:
-    "суши Люберцы, роллы Люберцы, доставка суши Люберцы, пицца Люберцы, Суши Вкус, Шоссейная 42, заказать суши Люберцы, доставка еды Люберцы, японская кухня Люберцы",
+    "Аригато Суши, Аригато Суши Люберцы, суши Люберцы, роллы Люберцы, доставка суши Люберцы, доставка роллов Люберцы, пицца Люберцы, Шоссейная 42, заказать суши Люберцы, доставка еды Люберцы, японская кухня Люберцы, суши доставка Некрасовка, суши Жулебино",
   metadataBase: new URL("https://sushivkus.ru"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Суши Вкус | Доставка суши в Люберцах",
+    title: "Аригато Суши Люберцы | Доставка суши и роллов",
     description:
-      "Суши Вкус — суши, роллы и пицца с доставкой в Люберцах. Шоссейная 42. Заказ онлайн!",
+      "Аригато Суши — доставка суши, роллов и пиццы в Люберцах. Шоссейная 42. Быстро 45–60 мин. Заказ онлайн!",
     type: "website",
     url: "https://sushivkus.ru",
-    siteName: "Суши Вкус",
+    siteName: "Аригато Суши",
     locale: "ru_RU",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Суши Вкус | Доставка суши в Люберцах",
+    title: "Аригато Суши Люберцы | Доставка суши и роллов",
     description:
-      "Суши, роллы и пицца с доставкой в Люберцах. Быстро, вкусно, доступно!",
+      "Суши, роллы и пицца с доставкой в Люберцах. Свежо, быстро, доступно!",
   },
   manifest: "/manifest.json",
   icons: {
@@ -37,9 +37,11 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "Xj0qa5j4mun69DqESTlQcKqVxhSxzRbWcym0j388kVY",
+    yandex: "b5e6fe8dcf74946a",
   },
   other: {
     "theme-color": "#e63946",
+    "yandex-verification": "b5e6fe8dcf74946a",
   },
 };
 
@@ -51,12 +53,13 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FoodEstablishment",
-    name: "Суши Вкус",
-    image: "https://sushivkus.ru/og-image.jpg",
+    name: "Аригато Суши",
+    alternateName: "Аригато Суши Люберцы",
+    image: "https://sushivkus.ru/opengraph-image",
     url: "https://sushivkus.ru",
     telephone: "+79255372825",
     priceRange: "₽₽",
-    servesCuisine: "Японская",
+    servesCuisine: ["Японская", "Суши", "Пицца"],
     address: {
       "@type": "PostalAddress",
       streetAddress: "ул. Шоссейная, 42",
@@ -88,10 +91,11 @@ export default function RootLayout({
       "@type": "DeliveryMethod",
       name: "Доставка",
     },
-    areaServed: {
-      "@type": "City",
-      name: "Люберцы",
-    },
+    areaServed: [
+      { "@type": "City", name: "Люберцы" },
+      { "@type": "City", name: "Некрасовка" },
+      { "@type": "City", name: "Жулебино" },
+    ],
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.9",
@@ -101,7 +105,7 @@ export default function RootLayout({
     },
     hasMenu: {
       "@type": "Menu",
-      name: "Меню Суши Вкус",
+      name: "Меню Аригато Суши",
       hasMenuSection: [
         {
           "@type": "MenuSection",

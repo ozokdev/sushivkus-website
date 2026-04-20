@@ -11,6 +11,6 @@ export const siteConfig = {
   telegram: "https://t.me/sushi_vkus_lyubertsy",
   whatsapp: "https://wa.me/79255372825",
   vk: "https://vk.com/sushivkus_lyubertsy",
-  siteName: "Суши Вкус",
+  siteName: "Аригато Суши",
   deliveryTime: "45-60 минут",
 } as const;

@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Суши Вкус — доставка суши в Люберцах";
+export const alt = "Аригато Суши — доставка суши в Люберцах";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -42,8 +42,8 @@ export default async function OgImage() {
             marginBottom: 16,
           }}
         >
-          <span style={{ color: "#e63946" }}>Суши</span>
-          <span style={{ color: "#fff", marginLeft: 20 }}>Вкус</span>
+          <span style={{ color: "#e63946" }}>Аригато</span>
+          <span style={{ color: "#fff", marginLeft: 20 }}>Суши</span>
         </div>
 
         <div

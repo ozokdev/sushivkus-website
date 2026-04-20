@@ -2,17 +2,17 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Доставка суши в Жулебино — от 35 минут | Суши Вкус",
+  title: "Доставка суши в Жулебино — от 35 минут | Аригато Суши",
   description:
-    "Доставка суши и роллов в Жулебино из Люберец. Быстрая доставка от 35 минут. Свежие роллы, сеты, пицца. Бесплатно от 1000 ₽. Суши Вкус.",
+    "Доставка суши и роллов в Жулебино из Люберец. Быстрая доставка от 35 минут. Свежие роллы, сеты, пицца. Бесплатно от 1000 ₽. Аригато Суши.",
   keywords:
     "доставка суши Жулебино, суши Жулебино, роллы Жулебино, доставка еды Жулебино, суши на дом Жулебино",
   alternates: { canonical: "/dostavka-zhulebino" },
   openGraph: {
-    title: "Доставка суши в Жулебино | Суши Вкус",
+    title: "Доставка суши в Жулебино | Аригато Суши",
     description: "Суши и роллы с доставкой в Жулебино от 35 минут!",
     url: "https://sushivkus.ru/dostavka-zhulebino",
-    siteName: "Суши Вкус",
+    siteName: "Аригато Суши",
     locale: "ru_RU",
     type: "website",
   },
@@ -40,7 +40,7 @@ export default function DostavkaZhulebino() {
 
         <div className="prose prose-invert max-w-none mb-10 text-gray-300 leading-relaxed space-y-4">
           <p>
-            <strong>Суши Вкус</strong> доставляет свежие суши, роллы и пиццу в
+            <strong>Аригато Суши</strong> доставляет свежие суши, роллы и пиццу в
             Жулебино. Время доставки — от <strong>35 минут</strong>.
           </p>
           <p>

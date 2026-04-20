@@ -13,7 +13,7 @@ export default function Footer() {
           {/* Логотип и описание */}
           <div>
             <h3 className="text-2xl font-black font-display mb-4">
-              <span className="text-accent">Суши</span> Вкус
+              <span className="text-accent">Аригато</span> Суши
             </h3>
             <p className="text-gray-500 leading-relaxed mb-4">
               {s.description} Готовим с любовью из качественных ингредиентов.
@@ -82,9 +82,9 @@ export default function Footer() {
             <h4 className="font-bold text-lg mb-6">Навигация</h4>
             <div className="space-y-3">
               {[
-                { href: "#menu", label: "Меню" },
-                { href: "#promo", label: "Акции" },
-                { href: "#delivery", label: "Доставка" },
+                { href: "/#menu", label: "Меню" },
+                { href: "/akcii", label: "Акции" },
+                { href: "/dostavka-sushi-lyubertsy", label: "Доставка" },
                 { href: "#contacts", label: "Контакты" },
               ].map((link) => (
                 <a
@@ -99,9 +99,24 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* SEO internal links */}
+        <div className="border-t border-white/5 mt-8 pt-6">
+          <h4 className="font-bold text-sm mb-3 text-gray-400">Популярные страницы:</h4>
+          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-gray-500">
+            <a href="/rolly-lyubertsy" className="hover:text-accent transition-colors">Роллы Люберцы</a>
+            <a href="/sety-lyubertsy" className="hover:text-accent transition-colors">Сеты Люберцы</a>
+            <a href="/dostavka-sushi-lyubertsy" className="hover:text-accent transition-colors">Доставка суши</a>
+            <a href="/yaponskaya-kuhnya-lyubertsy" className="hover:text-accent transition-colors">Японская кухня</a>
+            <a href="/dostavka-nekrasovka" className="hover:text-accent transition-colors">Доставка в Некрасовку</a>
+            <a href="/dostavka-zhulebino" className="hover:text-accent transition-colors">Доставка в Жулебино</a>
+            <a href="/dostavka-lyubertsy" className="hover:text-accent transition-colors">Доставка еды</a>
+            <a href="/akcii" className="hover:text-accent transition-colors">Акции и скидки</a>
+          </div>
+        </div>
+
         {/* Копирайт */}
         <div className="border-t border-white/5 mt-6 pt-4 text-center text-gray-600 text-sm">
-          © {new Date().getFullYear()} Суши Вкус. Все права защищены.
+          © {new Date().getFullYear()} Аригато Суши. Все права защищены.
         </div>
       </div>
     </footer>

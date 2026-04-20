@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Отслеживание заказа | Суши Вкус",
+  title: "Отслеживание заказа | Аригато Суши",
   robots: {
     index: false,
     follow: false,

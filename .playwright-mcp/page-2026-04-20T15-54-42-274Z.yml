@@ -1,0 +1,111 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - link "Главная" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - text: / Доставка суши в Люберцах
+    - heading "Доставка суши в Люберцах" [level=1] [ref=e6]
+    - generic [ref=e7]:
+      - paragraph [ref=e8]:
+        - strong [ref=e9]: Аригато Суши
+        - text: — это быстрая доставка свежих суши, роллов и пиццы по Люберцам. Мы готовим из свежих ингредиентов и доставляем заказ от
+        - strong [ref=e10]: 30 минут
+        - text: . Работаем ежедневно с 10:00 до 23:00.
+      - paragraph [ref=e11]:
+        - text: "Наш адрес:"
+        - strong [ref=e12]: ул. Шоссейная, 42, Люберцы
+        - text: . Вы можете заказать онлайн или по телефону
+        - link "+7 (925) 537-28-25" [ref=e13] [cursor=pointer]:
+          - /url: tel:+79255372825
+        - text: . Бесплатная доставка при заказе от 1000 ₽.
+      - paragraph [ref=e14]: "В нашем меню более 100 позиций: классические и запечённые роллы, большие сеты для компании, горячая пицца, поке-боулы, супы Том Ям и Мисо, свежие салаты и закуски."
+    - heading "Популярные позиции" [level=2] [ref=e15]
+    - generic [ref=e16]:
+      - link "Филадельфия Классик Филадельфия Классик 490 ₽" [ref=e17] [cursor=pointer]:
+        - /url: /category/rolls
+        - img "Филадельфия Классик" [ref=e19]
+        - generic [ref=e20]:
+          - paragraph [ref=e21]: Филадельфия Классик
+          - paragraph [ref=e22]: 490 ₽
+      - link "Калифорния Темпура Калифорния Темпура 490 ₽" [ref=e23] [cursor=pointer]:
+        - /url: /category/rolls
+        - img "Калифорния Темпура" [ref=e25]
+        - generic [ref=e26]:
+          - paragraph [ref=e27]: Калифорния Темпура
+          - paragraph [ref=e28]: 490 ₽
+      - link "Манчестер Манчестер 620 ₽" [ref=e29] [cursor=pointer]:
+        - /url: /category/rolls
+        - img "Манчестер" [ref=e31]
+        - generic [ref=e32]:
+          - paragraph [ref=e33]: Манчестер
+          - paragraph [ref=e34]: 620 ₽
+      - link "Сет Все Включено Сет Все Включено 4690 ₽" [ref=e35] [cursor=pointer]:
+        - /url: /category/sets
+        - img "Сет Все Включено" [ref=e37]
+        - generic [ref=e38]:
+          - paragraph [ref=e39]: Сет Все Включено
+          - paragraph [ref=e40]: 4690 ₽
+      - link "Сет Элита Сет Элита 2290 ₽" [ref=e41] [cursor=pointer]:
+        - /url: /category/sets
+        - img "Сет Элита" [ref=e43]
+        - generic [ref=e44]:
+          - paragraph [ref=e45]: Сет Элита
+          - paragraph [ref=e46]: 2290 ₽
+      - link "Сет Мечта Сет Мечта 2890 ₽" [ref=e47] [cursor=pointer]:
+        - /url: /category/sets
+        - img "Сет Мечта" [ref=e49]
+        - generic [ref=e50]:
+          - paragraph [ref=e51]: Сет Мечта
+          - paragraph [ref=e52]: 2890 ₽
+      - link "Пепперони Пепперони 690 ₽" [ref=e53] [cursor=pointer]:
+        - /url: /category/pizza
+        - img "Пепперони" [ref=e55]
+        - generic [ref=e56]:
+          - paragraph [ref=e57]: Пепперони
+          - paragraph [ref=e58]: 690 ₽
+      - link "Поке с Лососем Поке с Лососем 590 ₽" [ref=e59] [cursor=pointer]:
+        - /url: /category/poke
+        - img "Поке с Лососем" [ref=e61]
+        - generic [ref=e62]:
+          - paragraph [ref=e63]: Поке с Лососем
+          - paragraph [ref=e64]: 590 ₽
+    - heading "Наши категории" [level=2] [ref=e65]
+    - generic [ref=e66]:
+      - link "Роллы" [ref=e67] [cursor=pointer]:
+        - /url: /category/rolls
+        - paragraph [ref=e68]: Роллы
+      - link "Сеты" [ref=e69] [cursor=pointer]:
+        - /url: /category/sets
+        - paragraph [ref=e70]: Сеты
+      - link "Пицца" [ref=e71] [cursor=pointer]:
+        - /url: /category/pizza
+        - paragraph [ref=e72]: Пицца
+      - link "Поке" [ref=e73] [cursor=pointer]:
+        - /url: /category/poke
+        - paragraph [ref=e74]: Поке
+      - link "Супы" [ref=e75] [cursor=pointer]:
+        - /url: /category/soups
+        - paragraph [ref=e76]: Супы
+      - link "Закуски" [ref=e77] [cursor=pointer]:
+        - /url: /category/snacks
+        - paragraph [ref=e78]: Закуски
+      - link "Салаты" [ref=e79] [cursor=pointer]:
+        - /url: /category/salads
+        - paragraph [ref=e80]: Салаты
+      - link "Соусы и добавки" [ref=e81] [cursor=pointer]:
+        - /url: /category/sauces
+        - paragraph [ref=e82]: Соусы и добавки
+    - heading "Почему выбирают нас?" [level=2] [ref=e83]
+    - generic [ref=e84]:
+      - generic [ref=e85]:
+        - heading "Быстрая доставка" [level=3] [ref=e86]
+        - paragraph [ref=e87]: От 30 минут по Люберцам
+      - generic [ref=e88]:
+        - heading "Свежие ингредиенты" [level=3] [ref=e89]
+        - paragraph [ref=e90]: Готовим из свежей рыбы каждый день
+      - generic [ref=e91]:
+        - heading "Бесплатная доставка" [level=3] [ref=e92]
+        - paragraph [ref=e93]: При заказе от 1000 ₽
+    - link "Перейти в меню" [ref=e95] [cursor=pointer]:
+      - /url: /
+  - alert [ref=e96]

@@ -1,0 +1,222 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - link "ул. Шоссейная, 42, г. Люберцы" [ref=e4] [cursor=pointer]:
+      - /url: https://yandex.ru/maps/?text=г.+Люберцы,+ул.+Шоссейная,+42
+      - img [ref=e5]
+      - generic [ref=e8]: ул. Шоссейная, 42, г. Люберцы
+    - generic [ref=e9]:
+      - generic [ref=e10]: 🔥 Скидка 10% с 10:00 до 17:00 при заказе от 2000₽ (Пн-Пт)
+      - button [ref=e11] [cursor=pointer]:
+        - img [ref=e12]
+  - banner [ref=e15]:
+    - generic [ref=e17]:
+      - link "АригатоСуши Свежие роллы. Быстрая доставка." [ref=e18] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e19]: АригатоСуши
+        - generic [ref=e21]: Свежие роллы. Быстрая доставка.
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - img [ref=e24]
+          - generic [ref=e27]: г. Люберцы
+        - generic [ref=e28]:
+          - link "+7 (925) 537-28-25" [ref=e29] [cursor=pointer]:
+            - /url: tel:+79255372825
+            - img [ref=e30]
+            - text: +7 (925) 537-28-25
+          - link "+7 (916) 641-32-73" [ref=e32] [cursor=pointer]:
+            - /url: tel:+79166413273
+            - img [ref=e33]
+            - text: +7 (916) 641-32-73
+        - generic [ref=e35]:
+          - img [ref=e36]
+          - generic [ref=e39]: 10:00 – 22:00
+        - generic [ref=e40]:
+          - link "WhatsApp" [ref=e41] [cursor=pointer]:
+            - /url: https://wa.me/79255372825
+            - img [ref=e42]
+          - link "Telegram" [ref=e44] [cursor=pointer]:
+            - /url: https://t.me/sushi_vkus_lyubertsy
+            - img [ref=e45]
+      - generic [ref=e48]:
+        - button "Переключить тему" [ref=e49] [cursor=pointer]:
+          - img [ref=e51]
+        - button "Открыть корзину" [ref=e57] [cursor=pointer]:
+          - img [ref=e59]
+  - main [ref=e63]:
+    - generic [ref=e65]:
+      - img [ref=e66]
+      - generic [ref=e69]:
+        - text: Принимаем заказы! Осталось
+        - strong
+    - heading "Меню" [level=2] [ref=e72]
+    - generic [ref=e82]:
+      - generic [ref=e86]:
+        - button "🍱 Все" [ref=e87] [cursor=pointer]:
+          - generic [ref=e88]: 🍱
+          - text: Все
+        - button "🍣 Роллы" [ref=e89] [cursor=pointer]:
+          - generic [ref=e90]: 🍣
+          - text: Роллы
+        - button "🍤 Жареные роллы" [ref=e91] [cursor=pointer]:
+          - generic [ref=e92]: 🍤
+          - text: Жареные роллы
+        - button "🔥 Запечённые роллы" [ref=e93] [cursor=pointer]:
+          - generic [ref=e94]: 🔥
+          - text: Запечённые роллы
+        - button "🍙 Классические роллы" [ref=e95] [cursor=pointer]:
+          - generic [ref=e96]: 🍙
+          - text: Классические роллы
+        - button "🍣 Суши и гунканы" [ref=e97] [cursor=pointer]:
+          - generic [ref=e98]: 🍣
+          - text: Суши и гунканы
+        - button "🎁 Сеты" [ref=e99] [cursor=pointer]:
+          - generic [ref=e100]: 🎁
+          - text: Сеты
+        - button "🍕 Пицца" [ref=e101] [cursor=pointer]:
+          - generic [ref=e102]: 🍕
+          - text: Пицца
+        - button "🥗 Поке" [ref=e103] [cursor=pointer]:
+          - generic [ref=e104]: 🥗
+          - text: Поке
+        - button "🍜 Супы" [ref=e105] [cursor=pointer]:
+          - generic [ref=e106]: 🍜
+          - text: Супы
+        - button "🍟 Закуски" [ref=e107] [cursor=pointer]:
+          - generic [ref=e108]: 🍟
+          - text: Закуски
+        - button "🥬 Салаты" [ref=e109] [cursor=pointer]:
+          - generic [ref=e110]: 🥬
+          - text: Салаты
+        - button "🥢 Соусы и добавки" [ref=e111] [cursor=pointer]:
+          - generic [ref=e112]: 🥢
+          - text: Соусы и добавки
+        - button "🍜 Вок" [ref=e113] [cursor=pointer]:
+          - generic [ref=e114]: 🍜
+          - text: Вок
+        - button "🥤 Напитки" [ref=e115] [cursor=pointer]:
+          - generic [ref=e116]: 🥤
+          - text: Напитки
+        - button "🆕 Новинки" [ref=e117] [cursor=pointer]:
+          - generic [ref=e118]: 🆕
+          - text: Новинки
+        - button "🍰 Десерты" [ref=e119] [cursor=pointer]:
+          - generic [ref=e120]: 🍰
+          - text: Десерты
+        - button "🐟 Сашими" [ref=e121] [cursor=pointer]:
+          - generic [ref=e122]: 🐟
+          - text: Сашими
+        - button "🦪 Запеч. мидии" [ref=e123] [cursor=pointer]:
+          - generic [ref=e124]: 🦪
+          - text: Запеч. мидии
+      - generic [ref=e126]:
+        - img
+        - textbox "Поиск по меню..." [ref=e127]
+    - generic [ref=e129]:
+      - generic [ref=e130]:
+        - generic [ref=e131]:
+          - img [ref=e132]
+          - text: Мы в соцсетях
+        - heading "Наши блюда в деле" [level=2] [ref=e135]
+        - paragraph [ref=e136]: Реальные фото наших блюд — никаких стоковых картинок
+      - generic [ref=e137]:
+        - generic [ref=e138] [cursor=pointer]:
+          - img "Блюдо Аригато Суши 1" [ref=e139]
+          - img [ref=e141]
+        - generic [ref=e144] [cursor=pointer]:
+          - img "Блюдо Аригато Суши 2" [ref=e145]
+          - img [ref=e147]
+        - generic [ref=e150] [cursor=pointer]:
+          - img "Блюдо Аригато Суши 3" [ref=e151]
+          - img [ref=e153]
+        - generic [ref=e156] [cursor=pointer]:
+          - img "Блюдо Аригато Суши 4" [ref=e157]
+          - img [ref=e159]
+        - generic [ref=e162] [cursor=pointer]:
+          - img "Блюдо Аригато Суши 5" [ref=e163]
+          - img [ref=e165]
+        - generic [ref=e168] [cursor=pointer]:
+          - img "Блюдо Аригато Суши 6" [ref=e169]
+          - img [ref=e171]
+        - generic [ref=e174] [cursor=pointer]:
+          - img "Блюдо Аригато Суши 7" [ref=e175]
+          - img [ref=e177]
+        - generic [ref=e180] [cursor=pointer]:
+          - img "Блюдо Аригато Суши 8" [ref=e181]
+          - img [ref=e183]
+      - link "Подписаться в Instagram" [ref=e187] [cursor=pointer]:
+        - /url: https://instagram.com/sushivkus_lybertsy
+        - img [ref=e188]
+        - text: Подписаться в Instagram
+    - generic [ref=e192]:
+      - generic [ref=e193]:
+        - generic [ref=e194]:
+          - img [ref=e195]
+          - text: Частые вопросы
+        - heading "Вопросы и ответы" [level=2] [ref=e198]
+      - generic [ref=e199]:
+        - button "Какая зона доставки?" [ref=e201] [cursor=pointer]:
+          - generic [ref=e202]: Какая зона доставки?
+          - img [ref=e204]
+        - button "Какая минимальная сумма заказа?" [ref=e207] [cursor=pointer]:
+          - generic [ref=e208]: Какая минимальная сумма заказа?
+          - img [ref=e210]
+        - button "Сколько времени занимает доставка?" [ref=e213] [cursor=pointer]:
+          - generic [ref=e214]: Сколько времени занимает доставка?
+          - img [ref=e216]
+        - button "Можно ли оплатить картой?" [ref=e219] [cursor=pointer]:
+          - generic [ref=e220]: Можно ли оплатить картой?
+          - img [ref=e222]
+        - button "Как отменить или изменить заказ?" [ref=e225] [cursor=pointer]:
+          - generic [ref=e226]: Как отменить или изменить заказ?
+          - img [ref=e228]
+        - button "Есть ли у вас акции?" [ref=e231] [cursor=pointer]:
+          - generic [ref=e232]: Есть ли у вас акции?
+          - img [ref=e234]
+        - button "Какой режим работы?" [ref=e237] [cursor=pointer]:
+          - generic [ref=e238]: Какой режим работы?
+          - img [ref=e240]
+  - contentinfo [ref=e242]:
+    - generic [ref=e244]:
+      - generic [ref=e245]:
+        - generic [ref=e246]:
+          - heading "Аригато Суши" [level=3] [ref=e247]
+          - paragraph [ref=e248]: Свежие роллы. Быстрая доставка. Готовим с любовью из качественных ингредиентов.
+          - generic [ref=e249]:
+            - link "WhatsApp" [ref=e250] [cursor=pointer]:
+              - /url: https://wa.me/79255372825
+              - img [ref=e251]
+            - link "Telegram" [ref=e253] [cursor=pointer]:
+              - /url: https://t.me/sushi_vkus_lyubertsy
+              - img [ref=e254]
+            - link "Instagram" [ref=e257] [cursor=pointer]:
+              - /url: https://instagram.com/sushivkus_lybertsy
+              - img [ref=e258]
+        - generic [ref=e261]:
+          - heading "Контакты" [level=4] [ref=e262]
+          - generic [ref=e263]:
+            - generic [ref=e264]:
+              - img [ref=e265]
+              - generic [ref=e268]: ул. Шоссейная, 42, г. Люберцы
+            - generic [ref=e269]:
+              - img [ref=e270]
+              - generic [ref=e272]:
+                - link "+7 (925) 537-28-25" [ref=e273] [cursor=pointer]:
+                  - /url: tel:+79255372825
+                - link "+7 (916) 641-32-73" [ref=e274] [cursor=pointer]:
+                  - /url: tel:+79166413273
+            - generic [ref=e275]:
+              - img [ref=e276]
+              - generic [ref=e279]: "Ежедневно: 10:00 – 22:00"
+        - generic [ref=e280]:
+          - heading "Навигация" [level=4] [ref=e281]
+          - generic [ref=e282]:
+            - link "Меню" [ref=e283] [cursor=pointer]:
+              - /url: "#menu"
+            - link "Акции" [ref=e284] [cursor=pointer]:
+              - /url: "#promo"
+            - link "Доставка" [ref=e285] [cursor=pointer]:
+              - /url: "#delivery"
+            - link "Контакты" [ref=e286] [cursor=pointer]:
+              - /url: "#contacts"
+      - generic [ref=e287]: © 2026 Аригато Суши. Все права защищены.
+  - alert [ref=e288]

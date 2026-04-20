@@ -2,17 +2,17 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Доставка суши в Некрасовку — от 30 минут | Суши Вкус",
+  title: "Доставка суши в Некрасовку — от 30 минут | Аригато Суши",
   description:
-    "Доставка суши и роллов в Некрасовку из Люберец. Быстрая доставка от 30 минут. Свежие роллы, сеты, пицца. Бесплатно от 1000 ₽. Суши Вкус.",
+    "Доставка суши и роллов в Некрасовку из Люберец. Быстрая доставка от 30 минут. Свежие роллы, сеты, пицца. Бесплатно от 1000 ₽. Аригато Суши.",
   keywords:
     "доставка суши Некрасовка, суши Некрасовка, роллы Некрасовка, доставка еды Некрасовка, суши на дом Некрасовка",
   alternates: { canonical: "/dostavka-nekrasovka" },
   openGraph: {
-    title: "Доставка суши в Некрасовку | Суши Вкус",
+    title: "Доставка суши в Некрасовку | Аригато Суши",
     description: "Суши и роллы с доставкой в Некрасовку от 30 минут!",
     url: "https://sushivkus.ru/dostavka-nekrasovka",
-    siteName: "Суши Вкус",
+    siteName: "Аригато Суши",
     locale: "ru_RU",
     type: "website",
   },
@@ -40,7 +40,7 @@ export default function DostavkaNekrasovka() {
 
         <div className="prose prose-invert max-w-none mb-10 text-gray-300 leading-relaxed space-y-4">
           <p>
-            <strong>Суши Вкус</strong> доставляет свежие суши, роллы и пиццу в
+            <strong>Аригато Суши</strong> доставляет свежие суши, роллы и пиццу в
             Некрасовку из Люберец. Время доставки — от{" "}
             <strong>30 минут</strong>.
           </p>
