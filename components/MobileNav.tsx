@@ -69,13 +69,19 @@ export default function MobileNav() {
         </a>
 
         {/* Поиск */}
-        <a
-          href="#menu"
+        <button
+          onClick={() => {
+            const input = document.getElementById("menu-search") as HTMLInputElement | null;
+            if (input) {
+              input.scrollIntoView({ behavior: "smooth", block: "center" });
+              setTimeout(() => input.focus(), 400);
+            }
+          }}
           className="flex flex-col items-center justify-center gap-1 text-gray-400 hover:text-accent transition-colors"
         >
           <Search className="w-5 h-5" />
           <span className="text-[10px] font-medium">Поиск</span>
-        </a>
+        </button>
 
         {/* Мой заказ */}
         <button

@@ -1,0 +1,593 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - link "ул. Шоссейная, 42, г. Люберцы" [ref=e4] [cursor=pointer]:
+      - /url: https://yandex.ru/maps/-/CDaZjT
+      - img [ref=e5]
+      - generic [ref=e8]: ул. Шоссейная, 42, г. Люберцы
+    - generic [ref=e9]:
+      - generic [ref=e10]: −10% днём от 2000₽ (Пн-Пт)
+      - button [ref=e11] [cursor=pointer]:
+        - img [ref=e12]
+  - banner [ref=e15]:
+    - generic [ref=e17]:
+      - link "СушиВкус" [ref=e18] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e19]: СушиВкус
+      - generic [ref=e20]:
+        - button "Переключить тему" [ref=e21] [cursor=pointer]:
+          - img [ref=e23]
+        - button "Открыть корзину" [ref=e29] [cursor=pointer]:
+          - img [ref=e31]
+        - button "Открыть меню" [ref=e35] [cursor=pointer]:
+          - img [ref=e36]
+  - main [ref=e37]:
+    - generic [ref=e39]:
+      - img [ref=e40]
+      - generic [ref=e43]:
+        - text: Принимаем заказы! Осталось
+        - strong [ref=e44]: 4ч 57мин
+    - generic [ref=e46]:
+      - heading "Меню" [level=2] [ref=e47]
+      - generic [ref=e48]:
+        - link "Роллы Роллы от 390 ₽ 26 поз." [ref=e296] [cursor=pointer]:
+          - /url: /category/rolls
+          - img "Роллы" [ref=e297]
+          - generic [ref=e299]:
+            - heading "Роллы" [level=3] [ref=e300]
+            - paragraph [ref=e301]: от 390 ₽
+          - generic [ref=e303]: 26 поз.
+        - link "Сеты Сеты от 890 ₽ 19 поз." [ref=e305] [cursor=pointer]:
+          - /url: /category/sets
+          - img "Сеты" [ref=e306]
+          - generic [ref=e308]:
+            - heading "Сеты" [level=3] [ref=e309]
+            - paragraph [ref=e310]: от 890 ₽
+          - generic [ref=e312]: 19 поз.
+        - link "Пицца Пицца от 690 ₽ 19 поз." [ref=e314] [cursor=pointer]:
+          - /url: /category/pizza
+          - img "Пицца" [ref=e315]
+          - generic [ref=e317]:
+            - heading "Пицца" [level=3] [ref=e318]
+            - paragraph [ref=e319]: от 690 ₽
+          - generic [ref=e321]: 19 поз.
+        - link "Супы Супы от 490 ₽ 11 поз." [ref=e323] [cursor=pointer]:
+          - /url: /category/soups
+          - img "Супы" [ref=e324]
+          - generic [ref=e326]:
+            - heading "Супы" [level=3] [ref=e327]
+            - paragraph [ref=e328]: от 490 ₽
+          - generic [ref=e330]: 11 поз.
+        - link "Закуски Закуски от 250 ₽ 8 поз." [ref=e332] [cursor=pointer]:
+          - /url: /category/snacks
+          - img "Закуски" [ref=e333]
+          - generic [ref=e335]:
+            - heading "Закуски" [level=3] [ref=e336]
+            - paragraph [ref=e337]: от 250 ₽
+          - generic [ref=e339]: 8 поз.
+        - link "Салаты Салаты от 290 ₽ 14 поз." [ref=e341] [cursor=pointer]:
+          - /url: /category/salads
+          - img "Салаты" [ref=e342]
+          - generic [ref=e344]:
+            - heading "Салаты" [level=3] [ref=e345]
+            - paragraph [ref=e346]: от 290 ₽
+          - generic [ref=e348]: 14 поз.
+        - link "Соусы и добавки Соусы и добавки от 25 ₽ 8 поз." [ref=e350] [cursor=pointer]:
+          - /url: /category/sauces
+          - img "Соусы и добавки" [ref=e351]
+          - generic [ref=e353]:
+            - heading "Соусы и добавки" [level=3] [ref=e354]
+            - paragraph [ref=e355]: от 25 ₽
+          - generic [ref=e357]: 8 поз.
+        - link "Вок Вок от 599 ₽ 9 поз." [ref=e359] [cursor=pointer]:
+          - /url: /category/wok
+          - img "Вок" [ref=e360]
+          - generic [ref=e362]:
+            - heading "Вок" [level=3] [ref=e363]
+            - paragraph [ref=e364]: от 599 ₽
+          - generic [ref=e366]: 9 поз.
+        - link "Новинки Новинки от 690 ₽ 4 поз." [ref=e368] [cursor=pointer]:
+          - /url: /category/novinki
+          - img "Новинки" [ref=e369]
+          - generic [ref=e371]:
+            - heading "Новинки" [level=3] [ref=e372]
+            - paragraph [ref=e373]: от 690 ₽
+          - generic [ref=e375]: 4 поз.
+        - link "Десерты Десерты от 550 ₽ 3 поз." [ref=e377] [cursor=pointer]:
+          - /url: /category/desert
+          - img "Десерты" [ref=e378]
+          - generic [ref=e380]:
+            - heading "Десерты" [level=3] [ref=e381]
+            - paragraph [ref=e382]: от 550 ₽
+          - generic [ref=e384]: 3 поз.
+        - link "Сашими Сашими от 700 ₽ 6 поз." [ref=e386] [cursor=pointer]:
+          - /url: /category/sashami
+          - img "Сашими" [ref=e387]
+          - generic [ref=e389]:
+            - heading "Сашими" [level=3] [ref=e390]
+            - paragraph [ref=e391]: от 700 ₽
+          - generic [ref=e393]: 6 поз.
+    - generic [ref=e57]:
+      - generic [ref=e60]:
+        - button "Прокрутить вправо" [ref=e61] [cursor=pointer]:
+          - img [ref=e62]
+        - generic [ref=e64]:
+          - button "🍱 Все" [ref=e65] [cursor=pointer]:
+            - generic [ref=e66]: 🍱
+            - text: Все
+          - button "🍣 Роллы" [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]: 🍣
+            - text: Роллы
+          - button "🍤 Жареные роллы" [ref=e69] [cursor=pointer]:
+            - generic [ref=e70]: 🍤
+            - text: Жареные роллы
+          - button "🔥 Запечённые роллы" [ref=e71] [cursor=pointer]:
+            - generic [ref=e72]: 🔥
+            - text: Запечённые роллы
+          - button "🍱 Классические роллы" [ref=e394] [cursor=pointer]:
+            - generic [ref=e74]: 🍱
+            - text: Классические роллы
+          - button "🍣 Суши и гунканы" [ref=e75] [cursor=pointer]:
+            - generic [ref=e76]: 🍣
+            - text: Суши и гунканы
+          - button "🎁 Сеты" [ref=e77] [cursor=pointer]:
+            - generic [ref=e78]: 🎁
+            - text: Сеты
+          - button "🍕 ПИЦЦА" [ref=e395] [cursor=pointer]:
+            - generic [ref=e80]: 🍕
+            - text: ПИЦЦА
+          - button "🍜 Wok" [ref=e396] [cursor=pointer]:
+            - generic [ref=e92]: 🍜
+            - text: Wok
+          - button "🥘 Супы" [ref=e397] [cursor=pointer]:
+            - generic [ref=e84]: 🥘
+            - text: Супы
+          - button "🍟 Снеки" [ref=e398] [cursor=pointer]:
+            - generic [ref=e86]: 🍟
+            - text: Снеки
+          - button "🥬 Салаты" [ref=e87] [cursor=pointer]:
+            - generic [ref=e88]: 🥬
+            - text: Салаты
+          - button "🍜 Соусы" [ref=e399] [cursor=pointer]:
+            - generic [ref=e90]: 🍜
+            - text: Соусы
+          - button "🍱 Завтраки" [ref=e400] [cursor=pointer]:
+            - generic [ref=e401]: 🍱
+            - text: Завтраки
+          - button "🍰 Десерты" [ref=e97] [cursor=pointer]:
+            - generic [ref=e98]: 🍰
+            - text: Десерты
+          - button "🎉 Новинки" [ref=e402] [cursor=pointer]:
+            - generic [ref=e96]: 🎉
+            - text: Новинки
+          - button "💎 Сашими" [ref=e403] [cursor=pointer]:
+            - generic [ref=e100]: 💎
+            - text: Сашими
+          - button "🍹 Напитки" [ref=e404] [cursor=pointer]:
+            - generic [ref=e94]: 🍹
+            - text: Напитки
+          - button "🦀 Роллы Люкс" [ref=e405] [cursor=pointer]:
+            - generic [ref=e406]: 🦀
+            - text: Роллы Люкс
+          - button "🥢 Запеченные Гунканы" [ref=e407] [cursor=pointer]:
+            - generic [ref=e408]: 🥢
+            - text: Запеченные Гунканы
+          - button "🦪 Запеченные мидии" [ref=e409] [cursor=pointer]:
+            - generic [ref=e410]: 🦪
+            - text: Запеченные мидии
+      - generic [ref=e103]:
+        - generic [ref=e104]:
+          - img
+          - textbox "Поиск по меню..." [ref=e105]: филадел
+          - button "Очистить поиск" [ref=e4070] [cursor=pointer]:
+            - img [ref=e4071]
+        - generic [ref=e411]:
+          - generic [ref=e412]:
+            - heading "Роллы" [level=2] [ref=e413]
+            - generic [ref=e414]: "5"
+          - generic [ref=e415]:
+            - generic [ref=e416]:
+              - generic [ref=e417] [cursor=pointer]:
+                - img "Филадельфия Классик. 8шт" [ref=e418]
+                - generic [ref=e419]:
+                  - button "Добавить в избранное" [ref=e420]:
+                    - img [ref=e421]
+                  - generic [ref=e423]: HIT
+              - generic [ref=e424]:
+                - heading "Филадельфия Классик. 8шт" [level=3] [ref=e425] [cursor=pointer]
+                - paragraph [ref=e426]: Рис, нори, сливочный сыр, огурец, лосось.
+                - generic [ref=e427]:
+                  - generic [ref=e429]: 595 ₽
+                  - button "В корзину" [ref=e430] [cursor=pointer]:
+                    - img [ref=e431]
+                    - generic [ref=e432]: В корзину
+            - generic [ref=e577]:
+              - generic [ref=e578] [cursor=pointer]:
+                - img "Филадельфия эби. 8шт" [ref=e579]
+                - button "Добавить в избранное" [ref=e581]:
+                  - img [ref=e582]
+              - generic [ref=e584]:
+                - heading "Филадельфия эби. 8шт" [level=3] [ref=e585] [cursor=pointer]
+                - paragraph [ref=e586]: Рис, нори, сливочный сыр , креветки лосось, , огурец.
+                - generic [ref=e587]:
+                  - generic [ref=e589]: 640 ₽
+                  - button "В корзину" [ref=e590] [cursor=pointer]:
+                    - img [ref=e591]
+                    - generic [ref=e592]: В корзину
+            - generic [ref=e673]:
+              - generic [ref=e674] [cursor=pointer]:
+                - img "Филадельфия спешл. 8шт" [ref=e675]
+                - button "Добавить в избранное" [ref=e677]:
+                  - img [ref=e678]
+              - generic [ref=e680]:
+                - heading "Филадельфия спешл. 8шт" [level=3] [ref=e681] [cursor=pointer]
+                - paragraph [ref=e682]: Рис, нори, сливочный сыр, лосось, огурец, кунжут.
+                - generic [ref=e683]:
+                  - generic [ref=e685]: 490 ₽
+                  - button "В корзину" [ref=e686] [cursor=pointer]:
+                    - img [ref=e687]
+                    - generic [ref=e688]: В корзину
+            - generic [ref=e689]:
+              - generic [ref=e690] [cursor=pointer]:
+                - img "Филадельфия Лайт. 8шт" [ref=e691]
+                - button "Добавить в избранное" [ref=e693]:
+                  - img [ref=e694]
+              - generic [ref=e696]:
+                - heading "Филадельфия Лайт. 8шт" [level=3] [ref=e697] [cursor=pointer]
+                - paragraph [ref=e698]: Рис, нори, сливочный сыр, огурец, лосось.
+                - generic [ref=e699]:
+                  - generic [ref=e701]: 495 ₽
+                  - button "В корзину" [ref=e702] [cursor=pointer]:
+                    - img [ref=e703]
+                    - generic [ref=e704]: В корзину
+            - generic [ref=e705]:
+              - generic [ref=e706] [cursor=pointer]:
+                - img "Филадельфия нежный. 8шт" [ref=e707]
+                - button "Добавить в избранное" [ref=e709]:
+                  - img [ref=e710]
+              - generic [ref=e712]:
+                - heading "Филадельфия нежный. 8шт" [level=3] [ref=e713] [cursor=pointer]
+                - paragraph [ref=e714]: Рис, нори, сливочный сыр, лосось.
+                - generic [ref=e715]:
+                  - generic [ref=e717]: 610 ₽
+                  - button "В корзину" [ref=e718] [cursor=pointer]:
+                    - img [ref=e719]
+                    - generic [ref=e720]: В корзину
+        - generic [ref=e1074]:
+          - generic [ref=e1075]:
+            - heading "Запечённые роллы" [level=2] [ref=e1076]
+            - generic [ref=e1077]: "1"
+          - generic [ref=e1226]:
+            - generic [ref=e1227] [cursor=pointer]:
+              - img "Филадельфия Запеченный 🌶️" [ref=e1228]
+              - generic [ref=e1229]:
+                - button "Добавить в избранное" [ref=e1230]:
+                  - img [ref=e1231]
+                - generic [ref=e1233]: 🌶️ ОСТР.
+            - generic [ref=e1234]:
+              - heading "Филадельфия Запеченный 🌶️" [level=3] [ref=e1235] [cursor=pointer]
+              - paragraph [ref=e1236]: Рис, нори, сыр сливочный, лосось, огурец, микс краб, кунжут жареный, спайс соус, твердый сыр.
+              - generic [ref=e1237]:
+                - generic [ref=e1239]: 490 ₽
+                - button "В корзину" [ref=e1240] [cursor=pointer]:
+                  - img [ref=e1241]
+                  - generic [ref=e1242]: В корзину
+        - generic [ref=e1984]:
+          - generic [ref=e1985]:
+            - heading "Сеты" [level=2] [ref=e1986]
+            - generic [ref=e1987]: "8"
+          - generic [ref=e1988]:
+            - generic [ref=e2025]:
+              - generic [ref=e2026] [cursor=pointer]:
+                - img "Сет КОРПОРАТИВНЫЙ 56шт." [ref=e2027]
+                - generic [ref=e2029]: 56шт
+                - button "Добавить в избранное" [ref=e2031]:
+                  - img [ref=e2032]
+              - generic [ref=e2034]:
+                - heading "Сет КОРПОРАТИВНЫЙ 56шт." [level=3] [ref=e2035] [cursor=pointer]
+                - paragraph [ref=e2036]: Филадельфия классик 8шт, Филадельфия спешл 8шт, Калифорния классик 8шт, Окинава 8шт, ролл огурец 8шт, тори Запеченный 8шт, Лава Запеченный 8шт
+                - generic [ref=e2037]:
+                  - generic [ref=e2039]: 2680 ₽
+                  - button "В корзину" [ref=e2040] [cursor=pointer]:
+                    - img [ref=e2041]
+                    - generic [ref=e2042]: В корзину
+            - generic [ref=e2043]:
+              - generic [ref=e2044] [cursor=pointer]:
+                - img "Сет ЭЛИТА 40шт." [ref=e2045]
+                - generic [ref=e2047]: 40шт
+                - generic [ref=e2048]:
+                  - button "Добавить в избранное" [ref=e2049]:
+                    - img [ref=e2050]
+                  - generic [ref=e2052]: HIT
+              - generic [ref=e2053]:
+                - heading "Сет ЭЛИТА 40шт." [level=3] [ref=e2054] [cursor=pointer]
+                - paragraph [ref=e2055]: .Филадельфия классик 8шт, дракон 8шт.тори запеченный 8шт, Мр-крабс 8шт.Калифорния темпура 8шт.
+                - generic [ref=e2056]:
+                  - generic [ref=e2058]: 2290 ₽
+                  - button "В корзину" [ref=e2059] [cursor=pointer]:
+                    - img [ref=e2060]
+                    - generic [ref=e2061]: В корзину
+            - generic [ref=e2062]:
+              - generic [ref=e2063] [cursor=pointer]:
+                - img "Сет Филамания 24шт" [ref=e2064]
+                - generic [ref=e2066]: 24шт
+                - button "Добавить в избранное" [ref=e2068]:
+                  - img [ref=e2069]
+              - generic [ref=e2071]:
+                - heading "Сет Филамания 24шт" [level=3] [ref=e2072] [cursor=pointer]
+                - paragraph [ref=e2073]: Филадельфия классик 8шт. Филадельфия Лайт 8шт. Филадельфия спешл 8шт. 800гр.
+                - generic [ref=e2074]:
+                  - generic [ref=e2076]: 1390 ₽
+                  - button "В корзину" [ref=e2077] [cursor=pointer]:
+                    - img [ref=e2078]
+                    - generic [ref=e2079]: В корзину
+            - generic [ref=e2080]:
+              - generic [ref=e2081] [cursor=pointer]:
+                - img "Сет мечта 56шт" [ref=e2082]
+                - generic [ref=e2084]: 56шт
+                - generic [ref=e2085]:
+                  - button "Добавить в избранное" [ref=e2086]:
+                    - img [ref=e2087]
+                  - generic [ref=e2089]: HIT
+              - generic [ref=e2090]:
+                - heading "Сет мечта 56шт" [level=3] [ref=e2091] [cursor=pointer]
+                - paragraph [ref=e2092]: Филадельфия классик 8шт Калифорния классик 8шт Миди запечённый 8шт Мистер Крабс 8шт Горячий сяке 8шт Калифорния темпуре 8шт Ролл огурец 8шт
+                - generic [ref=e2093]:
+                  - generic [ref=e2095]: 2890 ₽
+                  - button "В корзину" [ref=e2096] [cursor=pointer]:
+                    - img [ref=e2097]
+                    - generic [ref=e2098]: В корзину
+            - generic [ref=e2135]:
+              - generic [ref=e2136] [cursor=pointer]:
+                - img "Сет РОМАНТИКА 40шт." [ref=e2137]
+                - generic [ref=e2139]: 40шт
+                - button "Добавить в избранное" [ref=e2141]:
+                  - img [ref=e2142]
+              - generic [ref=e2144]:
+                - heading "Сет РОМАНТИКА 40шт." [level=3] [ref=e2145] [cursor=pointer]
+                - paragraph [ref=e2146]: Филадельфия классик 8шт, Филадельфия лайт 8шт, Калифорния классик 8шт, Мр-крабс 8шт, Ролл огурцы 8шт.
+                - generic [ref=e2147]:
+                  - generic [ref=e2149]: 1890 ₽
+                  - button "В корзину" [ref=e2150] [cursor=pointer]:
+                    - img [ref=e2151]
+                    - generic [ref=e2152]: В корзину
+            - generic [ref=e2189]:
+              - generic [ref=e2190] [cursor=pointer]:
+                - img "Сет все включено 96шт" [ref=e2191]
+                - generic [ref=e2193]: 96шт
+                - generic [ref=e2194]:
+                  - button "Добавить в избранное" [ref=e2195]:
+                    - img [ref=e2196]
+                  - generic [ref=e2198]: HIT
+              - generic [ref=e2199]:
+                - heading "Сет все включено 96шт" [level=3] [ref=e2200] [cursor=pointer]
+                - paragraph [ref=e2201]: Сакура 8шт, Бонито магуро 8шт, Филадельфия классик 8шт, Калифорния классик 8шт, ролл чеддер 8шт, лава сяке 8шт, , миди запечённый 8шт, Калифорния темпура 8шт, ролл огурец 8шт, ролл лосось 8шт, ролл краб 8шт. 2690гр.
+                - generic [ref=e2202]:
+                  - generic [ref=e2204]: 4690 ₽
+                  - button "В корзину" [ref=e2205] [cursor=pointer]:
+                    - img [ref=e2206]
+                    - generic [ref=e2207]: В корзину
+            - generic [ref=e2208]:
+              - generic [ref=e2209] [cursor=pointer]:
+                - img "Сет ТРИОэски 24шт." [ref=e2210]
+                - generic [ref=e2212]: 24шт
+                - button "Добавить в избранное" [ref=e2214]:
+                  - img [ref=e2215]
+              - generic [ref=e2217]:
+                - heading "Сет ТРИОэски 24шт." [level=3] [ref=e2218] [cursor=pointer]
+                - paragraph [ref=e2219]: Филадельфия классик 8шт. Филадельфия спешл 8шт. Калифорния классик 8шт. 800гр.
+                - generic [ref=e2220]:
+                  - generic [ref=e2222]: 1390 ₽
+                  - button "В корзину" [ref=e2223] [cursor=pointer]:
+                    - img [ref=e2224]
+                    - generic [ref=e2225]: В корзину
+            - generic [ref=e2305]:
+              - generic [ref=e2306] [cursor=pointer]:
+                - img "Сет 4 -филадельфии. 32шт" [ref=e2307]
+                - generic [ref=e2308]:
+                  - button "Добавить в избранное" [ref=e2309]:
+                    - img [ref=e2310]
+                  - generic [ref=e2312]: NEW
+              - generic [ref=e2313]:
+                - heading "Сет 4 -филадельфии. 32шт" [level=3] [ref=e2314] [cursor=pointer]
+                - paragraph
+                - generic [ref=e2315]:
+                  - generic [ref=e2317]: 2550 ₽
+                  - button "В корзину" [ref=e2318] [cursor=pointer]:
+                    - img [ref=e2319]
+                    - generic [ref=e2320]: В корзину
+        - generic [ref=e2321]:
+          - generic [ref=e2322]:
+            - heading "ПИЦЦА" [level=2] [ref=e2323]
+            - generic [ref=e2324]: "3"
+          - generic [ref=e2325]:
+            - generic [ref=e2391]:
+              - generic [ref=e2392] [cursor=pointer]:
+                - img "Пицца\"Филадельфия\". 30 см" [ref=e2393]
+                - button "Добавить в избранное" [ref=e2395]:
+                  - img [ref=e2396]
+              - generic [ref=e2398]:
+                - heading "Пицца\"Филадельфия\". 30 см" [level=3] [ref=e2399] [cursor=pointer]
+                - paragraph [ref=e2400]: Тесто кл, сыр моцарелла, Сливочный соус, лосось.
+                - generic [ref=e2401]:
+                  - generic [ref=e2403]: 760 ₽
+                  - button "В корзину" [ref=e2404] [cursor=pointer]:
+                    - img [ref=e2405]
+                    - generic [ref=e2406]: В корзину
+            - generic [ref=e2559]:
+              - generic [ref=e2560] [cursor=pointer]:
+                - img "Пицца\" филадельфия новинка\" 33см" [ref=e2561]
+                - generic [ref=e2562]:
+                  - button "Добавить в избранное" [ref=e2563]:
+                    - img [ref=e2564]
+                  - generic [ref=e2566]: NEW
+              - generic [ref=e2567]:
+                - heading "Пицца\" филадельфия новинка\" 33см" [level=3] [ref=e2568] [cursor=pointer]
+                - paragraph [ref=e2569]: Тесто кл, соус сырный, лосось, томаты. салат руккола.
+                - generic [ref=e2570]:
+                  - generic [ref=e2572]: 1290 ₽
+                  - button "В корзину" [ref=e2573] [cursor=pointer]:
+                    - img [ref=e2574]
+                    - generic [ref=e2575]: В корзину
+            - generic [ref=e2593]:
+              - generic [ref=e2594] [cursor=pointer]:
+                - img "Пицца\"Филадельфия соусом унаги\"." [ref=e2595]
+                - generic [ref=e2596]:
+                  - button "Добавить в избранное" [ref=e2597]:
+                    - img [ref=e2598]
+                  - generic [ref=e2600]: NEW
+              - generic [ref=e2601]:
+                - heading "Пицца\"Филадельфия соусом унаги\"." [level=3] [ref=e2602] [cursor=pointer]
+                - paragraph [ref=e2603]: Тесто кл, томатный соус, сыр моцарелла, лосось, соус-унаги
+                - generic [ref=e2604]:
+                  - generic [ref=e2606]: 1190 ₽
+                  - button "В корзину" [ref=e2607] [cursor=pointer]:
+                    - img [ref=e2608]
+                    - generic [ref=e2609]: В корзину
+        - generic [ref=e3793]:
+          - generic [ref=e3794]:
+            - heading "Роллы Люкс" [level=2] [ref=e3795]
+            - generic [ref=e3796]: "3"
+          - generic [ref=e3797]:
+            - generic [ref=e3832]:
+              - generic [ref=e3833] [cursor=pointer]:
+                - img "филадельфия креветка. 8шт" [ref=e3834]
+                - generic [ref=e3835]:
+                  - button "Добавить в избранное" [ref=e3836]:
+                    - img [ref=e3837]
+                  - generic [ref=e3839]: NEW
+              - generic [ref=e3840]:
+                - heading "филадельфия креветка. 8шт" [level=3] [ref=e3841] [cursor=pointer]
+                - paragraph [ref=e3842]: Нори,рис, сыр сливочный двойной, креветки, лосось.
+                - generic [ref=e3843]:
+                  - generic [ref=e3845]: 850 ₽
+                  - button "В корзину" [ref=e3846] [cursor=pointer]:
+                    - img [ref=e3847]
+                    - generic [ref=e3848]: В корзину
+            - generic [ref=e3849]:
+              - generic [ref=e3850] [cursor=pointer]:
+                - img "Филадельфия нежный-2. 8шт" [ref=e3851]
+                - generic [ref=e3853]: 8шт
+                - generic [ref=e3854]:
+                  - button "Добавить в избранное" [ref=e3855]:
+                    - img [ref=e3856]
+                  - generic [ref=e3858]: NEW
+              - generic [ref=e3859]:
+                - heading "Филадельфия нежный-2. 8шт" [level=3] [ref=e3860] [cursor=pointer]
+                - paragraph [ref=e3861]: нори, рис, ласось, сливочный сыр двойной.
+                - generic [ref=e3862]:
+                  - generic [ref=e3864]: 990 ₽
+                  - button "В корзину" [ref=e3865] [cursor=pointer]:
+                    - img [ref=e3866]
+                    - generic [ref=e3867]: В корзину
+            - generic [ref=e3902]:
+              - generic [ref=e3903] [cursor=pointer]:
+                - img "Филадельфия Оранж. 8шт" [ref=e3904]
+                - generic [ref=e3905]:
+                  - button "Добавить в избранное" [ref=e3906]:
+                    - img [ref=e3907]
+                  - generic [ref=e3909]: NEW
+              - generic [ref=e3910]:
+                - heading "Филадельфия Оранж. 8шт" [level=3] [ref=e3911] [cursor=pointer]
+                - paragraph [ref=e3912]: Рис, нори, сливочный сыр двойной, лосось, огурец, масаго.
+                - generic [ref=e3913]:
+                  - generic [ref=e3915]: 850 ₽
+                  - button "В корзину" [ref=e3916] [cursor=pointer]:
+                    - img [ref=e3917]
+                    - generic [ref=e3918]: В корзину
+    - generic [ref=e107]:
+      - generic [ref=e108]:
+        - generic [ref=e109]:
+          - img [ref=e110]
+          - text: Мы в соцсетях
+        - heading "Наши блюда в деле" [level=2] [ref=e113]
+        - paragraph [ref=e114]: Реальные фото наших блюд — никаких стоковых картинок
+      - generic [ref=e115]:
+        - generic [ref=e116] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 1" [ref=e117]
+          - img [ref=e119]
+        - generic [ref=e122] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 2" [ref=e123]
+          - img [ref=e125]
+        - generic [ref=e128] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 3" [ref=e129]
+          - img [ref=e131]
+        - generic [ref=e134] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 4" [ref=e135]
+          - img [ref=e137]
+        - generic [ref=e140] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 5" [ref=e141]
+          - img [ref=e143]
+        - generic [ref=e146] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 6" [ref=e147]
+          - img [ref=e149]
+        - generic [ref=e152] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 7" [ref=e153]
+          - img [ref=e155]
+        - generic [ref=e158] [cursor=pointer]:
+          - img "Блюдо Суши Вкус 8" [ref=e159]
+          - img [ref=e161]
+      - link "Подписаться в Instagram" [ref=e165] [cursor=pointer]:
+        - /url: https://instagram.com/sushivkus_lybertsy
+        - img [ref=e166]
+        - text: Подписаться в Instagram
+  - contentinfo [ref=e220]:
+    - generic [ref=e222]:
+      - generic [ref=e223]:
+        - generic [ref=e224]:
+          - heading "Суши Вкус" [level=3] [ref=e225]
+          - paragraph [ref=e226]: Доставка вкусной еды! Готовим с любовью из качественных ингредиентов.
+          - generic [ref=e227]:
+            - link "WhatsApp" [ref=e228] [cursor=pointer]:
+              - /url: https://wa.me/79255372825
+              - img [ref=e229]
+            - link "Telegram" [ref=e231] [cursor=pointer]:
+              - /url: https://t.me/kelechek_sushi
+              - img [ref=e232]
+            - link "Instagram" [ref=e235] [cursor=pointer]:
+              - /url: https://instagram.com/sushivkus_lybertsy
+              - img [ref=e236]
+        - generic [ref=e239]:
+          - heading "Контакты" [level=4] [ref=e240]
+          - generic [ref=e241]:
+            - generic [ref=e242]:
+              - img [ref=e243]
+              - generic [ref=e246]: ул. Шоссейная, 42, г. Люберцы
+            - generic [ref=e247]:
+              - img [ref=e248]
+              - generic [ref=e250]:
+                - link "8 (925) 537-28-25" [ref=e4062] [cursor=pointer]:
+                  - /url: tel:+79255372825
+                - link "8 (916) 641-32-73" [ref=e4063] [cursor=pointer]:
+                  - /url: tel:+79166413273
+            - generic [ref=e253]:
+              - img [ref=e254]
+              - generic [ref=e257]: "Ежедневно: 10:00 – 22:00"
+        - generic [ref=e258]:
+          - heading "Навигация" [level=4] [ref=e259]
+          - generic [ref=e260]:
+            - link "Меню" [ref=e261] [cursor=pointer]:
+              - /url: "#menu"
+            - link "Акции" [ref=e262] [cursor=pointer]:
+              - /url: "#promo"
+            - link "Доставка" [ref=e263] [cursor=pointer]:
+              - /url: "#delivery"
+            - link "Контакты" [ref=e264] [cursor=pointer]:
+              - /url: "#contacts"
+      - generic [ref=e265]: © 2026 Суши Вкус. Все права защищены.
+  - button [ref=e4067] [cursor=pointer]:
+    - img [ref=e4068]
+  - generic [ref=e267]:
+    - link "Меню" [ref=e268] [cursor=pointer]:
+      - /url: "#menu"
+      - img [ref=e269]
+      - generic [ref=e274]: Меню
+    - button "Поиск" [ref=e275] [cursor=pointer]:
+      - img [ref=e276]
+      - generic [ref=e279]: Поиск
+    - button "Заказ" [ref=e280] [cursor=pointer]:
+      - img [ref=e282]
+      - generic [ref=e286]: Заказ
+    - button "Корзина" [ref=e287] [cursor=pointer]:
+      - img [ref=e289]
+      - generic [ref=e293]: Корзина
+  - alert [ref=e294]

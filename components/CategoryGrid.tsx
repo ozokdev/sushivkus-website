@@ -1,34 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { categoryList } from "@/data/categories";
 import type { Category, MenuItem } from "@/data/menu";
 import { useMenuStore } from "@/store/menuStore";
-
-// API'деги кирилл slug'ларды фронтенд slug'ка которуу
-const slugAliases: Record<string, string> = {
-  "ПИЦЦА": "pizza",
-  "пицца": "pizza",
-  "завтраки": "breakfast",
-  "ЗАВТРАКИ": "breakfast",
-  "zapecheni_midii": "zapecheni-midii",
-};
-function normalizeSlug(slug: string): string {
-  return slugAliases[slug] || slug;
-}
-
-interface ApiCategory {
-  ID: number;
-  slug: string;
-  name: string;
-  icon: string;
-  image: string;
-  min_price: number;
-  is_active: boolean;
-}
 
 function getCategoryStats(catId: Category, items: MenuItem[]) {
   const filtered = items.filter((item) => item.category === catId);
@@ -38,41 +16,19 @@ function getCategoryStats(catId: Category, items: MenuItem[]) {
 }
 
 export default function CategoryGrid() {
-  const [apiImages, setApiImages] = useState<Record<string, string>>({});
-  const [apiPrices, setApiPrices] = useState<Record<string, number>>({});
-  const [disabledSlugs, setDisabledSlugs] = useState<Set<string>>(new Set());
-  const [loaded, setLoaded] = useState(false);
   const storeItems = useMenuStore((s) => s.items);
+  const categoryMeta = useMenuStore((s) => s.categoryMeta);
+  const fetched = useMenuStore((s) => s.fetched);
   const fetchMenu = useMenuStore((s) => s.fetchMenu);
 
   useEffect(() => {
     fetchMenu();
   }, [fetchMenu]);
 
-  useEffect(() => {
-    fetch("https://api.sushivkus.ru/api/categories")
-      .then((r) => r.json())
-      .then((data: ApiCategory[]) => {
-        const imgMap: Record<string, string> = {};
-        const priceMap: Record<string, number> = {};
-        const disabled = new Set<string>();
-        data.forEach((c) => {
-          const slug = normalizeSlug(c.slug);
-          if (c.image) imgMap[slug] = c.image;
-          if (c.min_price > 0) priceMap[slug] = c.min_price;
-          if (!c.is_active) disabled.add(slug);
-        });
-        setApiImages(imgMap);
-        setApiPrices(priceMap);
-        setDisabledSlugs(disabled);
-      })
-      .catch(() => {})
-      .finally(() => setLoaded(true));
-  }, []);
-
-  const visibleCards = categoryList.filter(
-    (card) => !disabledSlugs.has(card.slug) && !disabledSlugs.has(card.id)
-  );
+  const visibleCards = categoryList.filter((card) => {
+    const meta = categoryMeta[card.slug] || categoryMeta[card.id];
+    return !meta?.disabled;
+  });
 
   return (
     <section className="py-4 sm:py-6">
@@ -87,7 +43,7 @@ export default function CategoryGrid() {
         </motion.h2>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
-          {!loaded
+          {!fetched
             ? Array.from({ length: 8 }).map((_, i) => (
                 <div
                   key={`sk-${i}`}
@@ -96,12 +52,12 @@ export default function CategoryGrid() {
               ))
             : visibleCards.map((card, index) => {
                 const stats = getCategoryStats(card.id, storeItems);
-                const apiImg = apiImages[card.slug];
-                const imageSrc = apiImg ? `https://sushivkus.ru${apiImg}` : card.image;
-                const displayPrice =
-                  apiPrices[card.slug] || apiPrices[card.id] || stats.minPrice;
+                const meta = categoryMeta[card.slug] || categoryMeta[card.id];
+                const imageSrc = meta?.image
+                  ? `https://sushivkus.ru${meta.image}`
+                  : card.image;
+                const displayPrice = meta?.minPrice || stats.minPrice;
 
-                // Товар жок категорияны көрсөтпөйбүз
                 if (stats.count === 0 && displayPrice === 0) return null;
 
                 return (

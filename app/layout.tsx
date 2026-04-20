@@ -19,21 +19,12 @@ export const metadata: Metadata = {
     url: "https://sushivkus.ru",
     siteName: "Суши Вкус",
     locale: "ru_RU",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Суши Вкус — доставка суши в Люберцах",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Суши Вкус | Доставка суши в Люберцах",
     description:
       "Суши, роллы и пицца с доставкой в Люберцах. Быстро, вкусно, доступно!",
-    images: ["/og-image.jpg"],
   },
   manifest: "/manifest.json",
   icons: {

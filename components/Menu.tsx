@@ -82,6 +82,28 @@ export default function MenuSection() {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 pb-24 md:pb-4">
+        {/* Поиск */}
+        <div className="relative mb-4">
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
+          <input
+            id="menu-search"
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Поиск по меню..."
+            className="w-full pl-10 pr-9 py-2.5 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-accent/50 focus:bg-white/[0.06] transition-colors"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery("")}
+              aria-label="Очистить поиск"
+              className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-gray-400 hover:text-white rounded-lg"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          )}
+        </div>
+
         {/* Категории */}
         {displayCategories.map((category) => {
           if (
@@ -336,10 +358,11 @@ function ProductCard({
                 e.stopPropagation();
                 onAdd();
               }}
-              className="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-medium bg-accent/10 text-accent hover:bg-accent hover:text-white transition-all duration-200"
+              aria-label="В корзину"
+              className="flex items-center gap-1 px-2.5 md:px-3 py-2 rounded-xl text-[11px] md:text-xs font-semibold whitespace-nowrap bg-accent/10 text-accent hover:bg-accent hover:text-white transition-all duration-200"
             >
-              <Plus className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">В корзину</span>
+              <Plus className="w-3.5 h-3.5 flex-shrink-0" />
+              <span>В корзину</span>
             </motion.button>
           )}
         </div>

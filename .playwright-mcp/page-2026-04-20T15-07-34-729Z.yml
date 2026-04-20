@@ -1,0 +1,17 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: "404"
+      - generic [ref=e8]: 🍣
+    - heading "Страница не найдена" [level=1] [ref=e9]
+    - paragraph [ref=e10]: Похоже, эта страница уплыла вместе с лососем. Но у нас ещё много вкусного!
+    - generic [ref=e11]:
+      - link "На главную" [ref=e12] [cursor=pointer]:
+        - /url: /
+        - img [ref=e13]
+        - text: На главную
+      - link "Меню" [ref=e16] [cursor=pointer]:
+        - /url: /#menu
+        - img [ref=e17]
+        - text: Меню
+  - alert [ref=e22]

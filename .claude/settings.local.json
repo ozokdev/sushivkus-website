@@ -60,7 +60,9 @@
       "mcp__plugin_playwright_playwright__browser_network_requests",
       "mcp__plugin_playwright_playwright__browser_close",
       "Bash(npm run *)",
-      "Bash(ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@81.90.182.17 \"cd /var/www/sushivkus && ls node_modules/sharp 2>&1 | head -5 && echo '---' && ls node_modules/@img 2>/dev/null | head -5\")"
+      "Bash(ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@81.90.182.17 \"cd /var/www/sushivkus && ls node_modules/sharp 2>&1 | head -5 && echo '---' && ls node_modules/@img 2>/dev/null | head -5\")",
+      "Bash(go get *)",
+      "Bash(export PYTHONIOENCODING=utf-8)"
     ]
   }
 }

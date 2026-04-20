@@ -22,6 +22,8 @@ interface ApiCategory {
   slug: string;
   name: string;
   icon: string;
+  image: string;
+  min_price: number;
   sort_order: number;
   is_active: boolean;
 }
@@ -34,6 +36,7 @@ const categoryAliases: Record<string, string> = {
   "завтраки": "breakfast",
   "ЗАВТРАКИ": "breakfast",
   "Завтраки": "breakfast",
+  "zapecheni_midii": "zapecheni-midii",
 };
 
 function normalizeCategorySlug(raw: string): string {
@@ -63,9 +66,16 @@ export interface CategoryDisplay {
   icon: string;
 }
 
+export interface CategoryMeta {
+  image: string;
+  minPrice: number;
+  disabled: boolean;
+}
+
 interface MenuState {
   items: MenuItem[];
   categories: CategoryDisplay[];
+  categoryMeta: Record<string, CategoryMeta>;
   loading: boolean;
   fetched: boolean;
   lastFetch: number;
@@ -73,10 +83,12 @@ interface MenuState {
 }
 
 const CACHE_TTL = 300_000; // 5 мүнөт кэш
+let inFlight: Promise<void> | null = null;
 
 export const useMenuStore = create<MenuState>((set, get) => ({
   items: [],
   categories: staticCategories,
+  categoryMeta: {},
   loading: false,
   fetched: false,
   lastFetch: 0,
@@ -84,41 +96,62 @@ export const useMenuStore = create<MenuState>((set, get) => ({
   fetchMenu: async () => {
     const now = Date.now();
     if (get().fetched && now - get().lastFetch < CACHE_TTL) return;
-    set({ loading: true });
-    try {
-      const [menuRes, catRes] = await Promise.all([
-        fetch("https://api.sushivkus.ru/api/menu"),
-        fetch("https://api.sushivkus.ru/api/categories"),
-      ]);
+    if (inFlight) return inFlight;
 
-      // Категориялар
-      if (catRes.ok) {
-        const catData: ApiCategory[] = await catRes.json();
-        if (Array.isArray(catData) && catData.length > 0) {
-          const activeCats = catData.filter((c) => c.is_active);
-          const mapped: CategoryDisplay[] = [
-            { id: "all", name: "Все", icon: "🍱" },
-            ...activeCats.map((c) => ({ id: c.slug, name: c.name, icon: c.icon || "📋" })),
-          ];
-          set({ categories: mapped });
+    inFlight = (async () => {
+      set({ loading: true });
+      try {
+        const [menuRes, catRes] = await Promise.all([
+          fetch("https://api.sushivkus.ru/api/menu"),
+          fetch("https://api.sushivkus.ru/api/categories"),
+        ]);
+
+        // Категориялар
+        if (catRes.ok) {
+          const catData: ApiCategory[] = await catRes.json();
+          if (Array.isArray(catData) && catData.length > 0) {
+            const activeCats = catData.filter((c) => c.is_active);
+            const mapped: CategoryDisplay[] = [
+              { id: "all", name: "Все", icon: "🍱" },
+              ...activeCats.map((c) => ({
+                id: normalizeCategorySlug(c.slug),
+                name: c.name,
+                icon: c.icon || "📋",
+              })),
+            ];
+            const meta: Record<string, CategoryMeta> = {};
+            catData.forEach((c) => {
+              const slug = normalizeCategorySlug(c.slug);
+              meta[slug] = {
+                image: c.image || "",
+                minPrice: c.min_price || 0,
+                disabled: !c.is_active,
+              };
+            });
+            set({ categories: mapped, categoryMeta: meta });
+          }
         }
-      }
 
-      // Меню
-      if (!menuRes.ok) throw new Error("API error");
-      const json = await menuRes.json();
-      const data: ApiMenuItem[] = Array.isArray(json) ? json : json.items || [];
-      if (data.length > 0) {
-        set({ items: data.map(mapApiItem), fetched: true, loading: false, lastFetch: now });
-      } else {
-        set({ items: staticItems, fetched: true, loading: false, lastFetch: now });
+        // Меню
+        if (!menuRes.ok) throw new Error("API error");
+        const json = await menuRes.json();
+        const data: ApiMenuItem[] = Array.isArray(json) ? json : json.items || [];
+        if (data.length > 0) {
+          set({ items: data.map(mapApiItem), fetched: true, loading: false, lastFetch: now });
+        } else {
+          set({ items: staticItems, fetched: true, loading: false, lastFetch: now });
+        }
+      } catch {
+        if (get().items.length === 0) {
+          set({ items: staticItems, loading: false });
+        } else {
+          set({ loading: false });
+        }
+      } finally {
+        inFlight = null;
       }
-    } catch {
-      if (get().items.length === 0) {
-        set({ items: staticItems, loading: false });
-      } else {
-        set({ loading: false });
-      }
-    }
+    })();
+
+    return inFlight;
   },
 }));

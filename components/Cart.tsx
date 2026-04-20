@@ -229,7 +229,7 @@ export default function Cart() {
 
             {/* Итого */}
             {items.length > 0 && (
-              <div className="p-5 border-t border-white/10 space-y-3">
+              <div className="p-5 border-t border-white/10 space-y-3 pb-[calc(1.25rem+env(safe-area-inset-bottom))] md:pb-5">
                 {/* Промокод */}
                 <div>
                   {appliedPromo ? (
