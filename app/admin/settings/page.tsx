@@ -95,7 +95,7 @@ export default function SettingsPage() {
   });
   const [saved, setSaved] = useState(false);
   const [saving, setSaving] = useState(false);
-
+  const [error, setError] = useState("");
   const getToken = useCallback(() => {
     if (typeof window !== "undefined") {
       return localStorage.getItem("admin_token") || "";
@@ -103,15 +103,16 @@ export default function SettingsPage() {
     return "";
   }, []);
 
+
   useEffect(() => {
-    fetch("https://api.sushivkus.ru/api/payment-methods")
+    fetch("https://api.sushivkus.ru/api/payment-methods", { cache: "no-store" })
       .then((r) => r.json())
       .then((data) => {
         if (Array.isArray(data)) setPaymentMethods(data);
       })
       .catch(() => {});
 
-    fetch("https://api.sushivkus.ru/api/site-settings")
+    fetch("https://api.sushivkus.ru/api/site-settings", { cache: "no-store" })
       .then((r) => r.json())
       .then((data) => {
         if (data && typeof data === "object") {
@@ -176,29 +177,38 @@ export default function SettingsPage() {
 
   const handleSave = async () => {
     setSaving(true);
+    setError("");
+    const token = getToken();
+    if (!token) {
+      setError("Нет авторизации. Войдите заново.");
+      setSaving(false);
+      return;
+    }
     try {
-      await Promise.all([
-        fetch("https://api.sushivkus.ru/api/payment-methods", {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${getToken()}`,
-          },
-          body: JSON.stringify(
-            paymentMethods.map((m, i) => ({
-              key: m.key,
-              name: m.name,
-              description: m.description,
-              enabled: m.enabled,
-              sort_order: i,
-            }))
-          ),
-        }),
+      const [pmRes, ssRes] = await Promise.all([
+        paymentMethods.length > 0
+          ? fetch("https://api.sushivkus.ru/api/payment-methods", {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify(
+                paymentMethods.map((m, i) => ({
+                  key: m.key,
+                  name: m.name,
+                  description: m.description,
+                  enabled: m.enabled,
+                  sort_order: i,
+                }))
+              ),
+            })
+          : Promise.resolve({ ok: true } as Response),
         fetch("https://api.sushivkus.ru/api/site-settings", {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${getToken()}`,
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
             site_name: settings.siteName,
@@ -226,12 +236,25 @@ export default function SettingsPage() {
           }),
         }),
       ]);
+      if (!ssRes.ok) {
+        setError(`Ошибка сохранения настроек (${ssRes.status})`);
+        return;
+      }
+      if (pmRes && !pmRes.ok) {
+        setError(`Настройки сохранены, но способы оплаты — ошибка (${pmRes.status})`);
+        return;
+      }
       setSaved(true);
-      setTimeout(() => setSaved(false), 3000);
-    } catch {
-      // error
+      setTimeout(() => setSaved(false), 6000);
+      // Скролл вверх чтобы пользователь точно увидел toast
+      if (typeof window !== "undefined") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    } catch (e) {
+      setError("Нет связи с сервером. Проверьте интернет.");
+    } finally {
+      setSaving(false);
     }
-    setSaving(false);
   };
 
   return (
@@ -241,6 +264,19 @@ export default function SettingsPage() {
       animate="show"
       className="space-y-6 max-w-4xl"
     >
+      {/* Чоң көрүнүктүү toast */}
+      {saved && (
+        <motion.div
+          initial={{ opacity: 0, y: -20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="fixed top-20 left-1/2 -translate-x-1/2 z-[100] bg-green-500 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 font-semibold"
+          style={{ boxShadow: "0 20px 60px -10px rgba(34, 197, 94, 0.5)" }}
+        >
+          <CheckCircle className="w-6 h-6" />
+          <span className="text-base">Настройки успешно сохранены!</span>
+        </motion.div>
+      )}
       {/* Заголовок */}
       <motion.div
         variants={item}
@@ -254,13 +290,19 @@ export default function SettingsPage() {
         </div>
         <button
           onClick={handleSave}
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all ${
+          disabled={saving}
+          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all disabled:opacity-60 ${
             saved
               ? "bg-green-500/20 text-green-400"
               : "bg-accent hover:bg-accent/90 text-white"
           }`}
         >
-          {saved ? (
+          {saving ? (
+            <>
+              <div className="w-4 h-4 border-2 border-white/60 border-t-transparent rounded-full animate-spin" />
+              Сохраняю...
+            </>
+          ) : saved ? (
             <>
               <CheckCircle className="w-4 h-4" />
               Сохранено
@@ -273,6 +315,12 @@ export default function SettingsPage() {
           )}
         </button>
       </motion.div>
+
+      {error && (
+        <motion.div variants={item} className="bg-red-500/10 border border-red-500/20 text-red-400 px-4 py-3 rounded-xl text-sm">
+          {error}
+        </motion.div>
+      )}
 
       {/* Тез башкаруу */}
       <motion.div

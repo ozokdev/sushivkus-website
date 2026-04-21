@@ -1,0 +1,584 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - heading "Аригато Суши" [level=1] [ref=e5]
+        - paragraph [ref=e6]: Администратор
+      - navigation [ref=e7]:
+        - link "Dashboard" [ref=e8] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=e9]
+          - text: Dashboard
+        - link "Заказы" [ref=e14] [cursor=pointer]:
+          - /url: /admin/orders
+          - img [ref=e15]
+          - text: Заказы
+        - link "Меню" [ref=e18] [cursor=pointer]:
+          - /url: /admin/menu
+          - img [ref=e19]
+          - text: Меню
+        - link "Категории" [ref=e24] [cursor=pointer]:
+          - /url: /admin/categories
+          - img [ref=e25]
+          - text: Категории
+        - link "Пицца Топпинг" [ref=e29] [cursor=pointer]:
+          - /url: /admin/pizza-toppings
+          - img [ref=e30]
+          - text: Пицца Топпинг
+        - link "WOK" [ref=e33] [cursor=pointer]:
+          - /url: /admin/wok
+          - img [ref=e34]
+          - text: WOK
+        - link "Клиенты" [ref=e39] [cursor=pointer]:
+          - /url: /admin/customers
+          - img [ref=e40]
+          - text: Клиенты
+        - link "Аналитика" [ref=e45] [cursor=pointer]:
+          - /url: /admin/analytics
+          - img [ref=e46]
+          - text: Аналитика
+        - link "Доставка" [ref=e48] [cursor=pointer]:
+          - /url: /admin/delivery
+          - img [ref=e49]
+          - text: Доставка
+        - link "Баннеры" [ref=e52] [cursor=pointer]:
+          - /url: /admin/banners
+          - img [ref=e53]
+          - text: Баннеры
+        - link "Промокоды" [ref=e57] [cursor=pointer]:
+          - /url: /admin/promos
+          - img [ref=e58]
+          - text: Промокоды
+        - link "Акции" [ref=e61] [cursor=pointer]:
+          - /url: /admin/promotions
+          - img [ref=e62]
+          - text: Акции
+        - link "Уведомления" [ref=e66] [cursor=pointer]:
+          - /url: /admin/notifications
+          - img [ref=e67]
+          - text: Уведомления
+        - link "Telegram" [ref=e70] [cursor=pointer]:
+          - /url: /admin/telegram
+          - img [ref=e71]
+          - text: Telegram
+        - link "Экспорт" [ref=e74] [cursor=pointer]:
+          - /url: /admin/export
+          - img [ref=e75]
+          - text: Экспорт
+        - link "Настройки" [ref=e78] [cursor=pointer]:
+          - /url: /admin/settings
+          - img [ref=e79]
+          - text: Настройки
+      - button "Выйти" [ref=e83] [cursor=pointer]:
+        - img [ref=e84]
+        - text: Выйти
+    - generic [ref=e87]:
+      - banner [ref=e88]:
+        - heading "Заказы" [level=2] [ref=e90]
+        - generic [ref=e91]:
+          - generic [ref=e92]: admin@sushivkus.ru
+          - img [ref=e94]
+      - main [ref=e97]:
+        - generic [ref=e98]:
+          - generic [ref=e99]:
+            - generic [ref=e100]:
+              - heading "Заказы" [level=1] [ref=e101]
+              - generic [ref=e102]: "20"
+              - button "Жаңыртуу" [ref=e103] [cursor=pointer]:
+                - img [ref=e104]
+            - generic [ref=e109]:
+              - img [ref=e110]
+              - textbox "Поиск по номеру или имени..." [ref=e113]
+          - generic [ref=e114]:
+            - button "Все 20" [ref=e136] [cursor=pointer]:
+              - text: Все
+              - generic [ref=e116]: "20"
+            - button "Новые 11" [ref=e137] [cursor=pointer]:
+              - text: Новые
+              - generic [ref=e118]: "11"
+            - button "Оплачен 7" [ref=e138] [cursor=pointer]:
+              - text: Оплачен
+              - generic [ref=e120]: "7"
+            - button "Готовится 0" [ref=e121] [cursor=pointer]:
+              - text: Готовится
+              - generic [ref=e122]: "0"
+            - button "Доставлен 1" [ref=e139] [cursor=pointer]:
+              - text: Доставлен
+              - generic [ref=e124]: "1"
+            - button "Отменён 0" [ref=e125] [cursor=pointer]:
+              - text: Отменён
+              - generic [ref=e126]: "0"
+          - table [ref=e141]:
+            - rowgroup [ref=e142]:
+              - row "№ Клиент Телефон Адрес Заказ Сумма Статус Время Связь" [ref=e143]:
+                - columnheader "№" [ref=e144]
+                - columnheader "Клиент" [ref=e145]
+                - columnheader "Телефон" [ref=e146]
+                - columnheader "Адрес" [ref=e147]
+                - columnheader "Заказ" [ref=e148]
+                - columnheader "Сумма" [ref=e149]
+                - columnheader "Статус" [ref=e150]
+                - columnheader "Время" [ref=e151]
+                - columnheader "Связь" [ref=e152]
+            - rowgroup [ref=e153]:
+              - row "#33 Екатерина +79880632292 Летчика Ларюшина,2 Сет МИНИ ТЕПЛЫЙ 24шт x1, Калифорния классик. 8шт x1, Соевый соус x2 1 339 ₽ Оплачен 20:15" [ref=e154] [cursor=pointer]:
+                - cell "#33" [ref=e155]
+                - cell "Екатерина" [ref=e156]
+                - cell "+79880632292" [ref=e157]
+                - cell "Летчика Ларюшина,2" [ref=e158]
+                - cell "Сет МИНИ ТЕПЛЫЙ 24шт x1, Калифорния классик. 8шт x1, Соевый соус x2" [ref=e159]
+                - cell "1 339 ₽" [ref=e160]
+                - cell "Оплачен" [ref=e161]:
+                  - combobox [ref=e162]:
+                    - option "Новый"
+                    - option "Оплачен" [selected]
+                    - option "Готовится"
+                    - option "Доставлен"
+                    - option "Отменён"
+                - cell "20:15" [ref=e163]
+                - cell [ref=e164]:
+                  - generic [ref=e165]:
+                    - link [ref=e166]:
+                      - /url: tel:+79880632292
+                      - img [ref=e167]
+                    - link [ref=e169]:
+                      - /url: https://wa.me/79880632292
+                      - img [ref=e170]
+              - row "#32 Pazylov Danik +79254650766 Biskek, Kyrgyzstan Ролл овощной. 8шт x3 1 170 ₽ Новый 17:04" [ref=e172] [cursor=pointer]:
+                - cell "#32" [ref=e173]
+                - cell "Pazylov Danik" [ref=e174]
+                - cell "+79254650766" [ref=e175]
+                - cell "Biskek, Kyrgyzstan" [ref=e176]
+                - cell "Ролл овощной. 8шт x3" [ref=e177]
+                - cell "1 170 ₽" [ref=e178]
+                - cell "Новый" [ref=e179]:
+                  - combobox [ref=e180]:
+                    - option "Новый" [selected]
+                    - option "Оплачен"
+                    - option "Готовится"
+                    - option "Доставлен"
+                    - option "Отменён"
+                - cell "17:04" [ref=e181]
+                - cell [ref=e182]:
+                  - generic [ref=e183]:
+                    - link [ref=e184]:
+                      - /url: tel:+79254650766
+                      - img [ref=e185]
+                    - link [ref=e187]:
+                      - /url: https://wa.me/79254650766
+                      - img [ref=e188]
+              - row "#31 Валерия +79065003676 Летчика ларюшина 6к2 Сет мечта 56шт x1, Эби Запеченный x1 3 410 ₽ Оплачен 15:04" [ref=e190] [cursor=pointer]:
+                - cell "#31" [ref=e191]
+                - cell "Валерия" [ref=e192]
+                - cell "+79065003676" [ref=e193]
+                - cell "Летчика ларюшина 6к2" [ref=e194]
+                - cell "Сет мечта 56шт x1, Эби Запеченный x1" [ref=e195]
+                - cell "3 410 ₽" [ref=e196]
+                - cell "Оплачен" [ref=e197]:
+                  - combobox [ref=e198]:
+                    - option "Новый"
+                    - option "Оплачен" [selected]
+                    - option "Готовится"
+                    - option "Доставлен"
+                    - option "Отменён"
+                - cell "15:04" [ref=e199]
+                - cell [ref=e200]:
+                  - generic [ref=e201]:
+                    - link [ref=e202]:
+                      - /url: tel:+79065003676
+                      - img [ref=e203]
+                    - link [ref=e205]:
+                      - /url: https://wa.me/79065003676
+                      - img [ref=e206]
+              - row "#30 Бакытбек Мурадил уулу +79802181808 Сосинская 8 Ролл огурец x4 880 ₽ Новый 21:54" [ref=e208] [cursor=pointer]:
+                - cell "#30" [ref=e209]
+                - cell "Бакытбек Мурадил уулу" [ref=e210]
+                - cell "+79802181808" [ref=e211]
+                - cell "Сосинская 8" [ref=e212]
+                - cell "Ролл огурец x4" [ref=e213]
+                - cell "880 ₽" [ref=e214]
+                - cell "Новый" [ref=e215]:
+                  - combobox [ref=e216]:
+                    - option "Новый" [selected]
+                    - option "Оплачен"
+                    - option "Готовится"
+                    - option "Доставлен"
+                    - option "Отменён"
+                - cell "21:54" [ref=e217]
+                - cell [ref=e218]:
+                  - generic [ref=e219]:
+                    - link [ref=e220]:
+                      - /url: tel:+79802181808
+                      - img [ref=e221]
+                    - link [ref=e223]:
+                      - /url: https://wa.me/79802181808
+                      - img [ref=e224]
+              - row "#29 Александр +79996450030 Ул. 3 почтовое отделение Атлантический 2. 8шт x1, филадельфия креветка. 8шт x1, Филадельфия эби. 8шт x1 2 290 ₽ Оплачен 21:04" [ref=e226] [cursor=pointer]:
+                - cell "#29" [ref=e227]
+                - cell "Александр" [ref=e228]
+                - cell "+79996450030" [ref=e229]
+                - cell "Ул. 3 почтовое отделение" [ref=e230]
+                - cell "Атлантический 2. 8шт x1, филадельфия креветка. 8шт x1, Филадельфия эби. 8шт x1" [ref=e231]
+                - cell "2 290 ₽" [ref=e232]
+                - cell "Оплачен" [ref=e233]:
+                  - combobox [ref=e234]:
+                    - option "Новый"
+                    - option "Оплачен" [selected]
+                    - option "Готовится"
+                    - option "Доставлен"
+                    - option "Отменён"
+                - cell "21:04" [ref=e235]
+                - cell [ref=e236]:
+                  - generic [ref=e237]:
+                    - link [ref=e238]:
+                      - /url: tel:+79996450030
+                      - img [ref=e239]
+                    - link [ref=e241]:
+                      - /url: https://wa.me/79996450030
+                      - img [ref=e242]
+              - row "#28 Сирена Аскарова +79250609092 улица 3-е Почтовое отделение, 31 Кисло-сладкий соус x1 50 ₽ Оплачен 22:09" [ref=e244] [cursor=pointer]:
+                - cell "#28" [ref=e245]
+                - cell "Сирена Аскарова" [ref=e246]
+                - cell "+79250609092" [ref=e247]
+                - cell "улица 3-е Почтовое отделение, 31" [ref=e248]
+                - cell "Кисло-сладкий соус x1" [ref=e249]
+                - cell "50 ₽" [ref=e250]
+                - cell "Оплачен" [ref=e251]:
+                  - combobox [ref=e252]:
+                    - option "Новый"
+                    - option "Оплачен" [selected]
+                    - option "Готовится"
+                    - option "Доставлен"
+                    - option "Отменён"
+                - cell "22:09" [ref=e253]
+                - cell [ref=e254]:
+                  - generic [ref=e255]:
+                    - link [ref=e256]:
+                      - /url: tel:+79250609092
+                      - img [ref=e257]
+                    - link [ref=e259]:
+                      - /url: https://wa.me/79250609092
+                      - img [ref=e260]
+              - row "#27 Данияр +79802181808 Метро Кантемировская Соевый соус x1 25 ₽ Оплачен 21:47" [ref=e262] [cursor=pointer]:
+                - cell "#27" [ref=e263]
+                - cell "Данияр" [ref=e264]
+                - cell "+79802181808" [ref=e265]
+                - cell "Метро Кантемировская" [ref=e266]
+                - cell "Соевый соус x1" [ref=e267]
+                - cell "25 ₽" [ref=e268]
+                - cell "Оплачен" [ref=e269]:
+                  - combobox [ref=e270]:
+                    - option "Новый"
+                    - option "Оплачен" [selected]
+                    - option "Готовится"
+                    - option "Доставлен"
+                    - option "Отменён"
+                - cell "21:47" [ref=e271]
+                - cell [ref=e272]:
+                  - generic [ref=e273]:
+                    - link [ref=e274]:
+                      - /url: tel:+79802181808
+                      - img [ref=e275]
+                    - link [ref=e277]:
+                      - /url: https://wa.me/79802181808
+                      - img [ref=e278]
+              - row "#26 Данияр +79802181808 Метро Кантемировская Калифорния эби x1 510 ₽ Оплачен 21:28" [ref=e280] [cursor=pointer]:
+                - cell "#26" [ref=e281]
+                - cell "Данияр" [ref=e282]
+                - cell "+79802181808" [ref=e283]
+                - cell "Метро Кантемировская" [ref=e284]
+                - cell "Калифорния эби x1" [ref=e285]
+                - cell "510 ₽" [ref=e286]
+                - cell "Оплачен" [ref=e287]:
+                  - combobox [ref=e288]:
+                    - option "Новый"
+                    - option "Оплачен" [selected]
+                    - option "Готовится"
+                    - option "Доставлен"
+                    - option "Отменён"
+                - cell "21:28" [ref=e289]
+                - cell [ref=e290]:
+                  - generic [ref=e291]:
+                    - link [ref=e292]:
+                      - /url: tel:+79802181808
+                      - img [ref=e293]
+                    - link [ref=e295]:
+                      - /url: https://wa.me/79802181808
+                      - img [ref=e296]
+              - row "#25 Сирена Аскарова +79250609092 улица 3-е Почтовое отделение, 31 Калифорния эби x1 510 ₽ Оплачен 18:59" [ref=e298] [cursor=pointer]:
+                - cell "#25" [ref=e299]
+                - cell "Сирена Аскарова" [ref=e300]
+                - cell "+79250609092" [ref=e301]
+                - cell "улица 3-е Почтовое отделение, 31" [ref=e302]
+                - cell "Калифорния эби x1" [ref=e303]
+                - cell "510 ₽" [ref=e304]
+                - cell "Оплачен" [ref=e305]:
+                  - combobox [ref=e306]:
+                    - option "Новый"
+                    - option "Оплачен" [selected]
+                    - option "Готовится"
+                    - option "Доставлен"
+                    - option "Отменён"
+                - cell "18:59" [ref=e307]
+                - cell [ref=e308]:
+                  - generic [ref=e309]:
+                    - link [ref=e310]:
+                      - /url: tel:+79250609092
+                      - img [ref=e311]
+                    - link [ref=e313]:
+                      - /url: https://wa.me/79250609092
+                      - img [ref=e314]
+              - row "#24 Диля +79250609092 улица 3-е Почтовое отделение, 31 Лава Запечённая x1 530 ₽ Новый 15:32" [ref=e316] [cursor=pointer]:
+                - cell "#24" [ref=e317]
+                - cell "Диля" [ref=e318]
+                - cell "+79250609092" [ref=e319]
+                - cell "улица 3-е Почтовое отделение, 31" [ref=e320]
+                - cell "Лава Запечённая x1" [ref=e321]
+                - cell "530 ₽" [ref=e322]
+                - cell "Новый" [ref=e323]:
+                  - combobox [ref=e324]:
+                    - option "Новый" [selected]
+                    - option "Оплачен"
+                    - option "Готовится"
+                    - option "Доставлен"
+                    - option "Отменён"
+                - cell "15:32" [ref=e325]
+                - cell [ref=e326]:
+                  - generic [ref=e327]:
+                    - link [ref=e328]:
+                      - /url: tel:+79250609092
+                      - img [ref=e329]
+                    - link [ref=e331]:
+                      - /url: https://wa.me/79250609092
+                      - img [ref=e332]
+              - row "#23 Jony +79254650766 Biskek, Kyrgyzstan Ролл овощной x2 780 ₽ Новый 15:19" [ref=e334] [cursor=pointer]:
+                - cell "#23" [ref=e335]
+                - cell "Jony" [ref=e336]
+                - cell "+79254650766" [ref=e337]
+                - cell "Biskek, Kyrgyzstan" [ref=e338]
+                - cell "Ролл овощной x2" [ref=e339]
+                - cell "780 ₽" [ref=e340]
+                - cell "Новый" [ref=e341]:
+                  - combobox [ref=e342]:
+                    - option "Новый" [selected]
+                    - option "Оплачен"
+                    - option "Готовится"
+                    - option "Доставлен"
+                    - option "Отменён"
+                - cell "15:19" [ref=e343]
+                - cell [ref=e344]:
+                  - generic [ref=e345]:
+                    - link [ref=e346]:
+                      - /url: tel:+79254650766
+                      - img [ref=e347]
+                    - link [ref=e349]:
+                      - /url: https://wa.me/79254650766
+                      - img [ref=e350]
+              - row "#22 Руслан +79802181808 Метро Кантемировская Калифорния сяке x3 1 560 ₽ Новый 15:07" [ref=e352] [cursor=pointer]:
+                - cell "#22" [ref=e353]
+                - cell "Руслан" [ref=e354]
+                - cell "+79802181808" [ref=e355]
+                - cell "Метро Кантемировская" [ref=e356]
+                - cell "Калифорния сяке x3" [ref=e357]
+                - cell "1 560 ₽" [ref=e358]
+                - cell "Новый" [ref=e359]:
+                  - combobox [ref=e360]:
+                    - option "Новый" [selected]
+                    - option "Оплачен"
+                    - option "Готовится"
+                    - option "Доставлен"
+                    - option "Отменён"
+                - cell "15:07" [ref=e361]
+                - cell [ref=e362]:
+                  - generic [ref=e363]:
+                    - link [ref=e364]:
+                      - /url: tel:+79802181808
+                      - img [ref=e365]
+                    - link [ref=e367]:
+                      - /url: https://wa.me/79802181808
+                      - img [ref=e368]
+              - row "#21 Pazylov +79254650766 Biskek, Kyrgyzstan Манчестер x2 1 240 ₽ Новый 09:56" [ref=e370] [cursor=pointer]:
+                - cell "#21" [ref=e371]
+                - cell "Pazylov" [ref=e372]
+                - cell "+79254650766" [ref=e373]
+                - cell "Biskek, Kyrgyzstan" [ref=e374]
+                - cell "Манчестер x2" [ref=e375]
+                - cell "1 240 ₽" [ref=e376]
+                - cell "Новый" [ref=e377]:
+                  - combobox [ref=e378]:
+                    - option "Новый" [selected]
+                    - option "Оплачен"
+                    - option "Готовится"
+                    - option "Доставлен"
+                    - option "Отменён"
+                - cell "09:56" [ref=e379]
+                - cell [ref=e380]:
+                  - generic [ref=e381]:
+                    - link [ref=e382]:
+                      - /url: tel:+79254650766
+                      - img [ref=e383]
+                    - link [ref=e385]:
+                      - /url: https://wa.me/79254650766
+                      - img [ref=e386]
+              - row "#20 Руслан +79802181808 Люберцы Калифорния Темпура x3 1 260 ₽ Новый 23:39" [ref=e388] [cursor=pointer]:
+                - cell "#20" [ref=e389]
+                - cell "Руслан" [ref=e390]
+                - cell "+79802181808" [ref=e391]
+                - cell "Люберцы" [ref=e392]
+                - cell "Калифорния Темпура x3" [ref=e393]
+                - cell "1 260 ₽" [ref=e394]
+                - cell "Новый" [ref=e395]:
+                  - combobox [ref=e396]:
+                    - option "Новый" [selected]
+                    - option "Оплачен"
+                    - option "Готовится"
+                    - option "Доставлен"
+                    - option "Отменён"
+                - cell "23:39" [ref=e397]
+                - cell [ref=e398]:
+                  - generic [ref=e399]:
+                    - link [ref=e400]:
+                      - /url: tel:+79802181808
+                      - img [ref=e401]
+                    - link [ref=e403]:
+                      - /url: https://wa.me/79802181808
+                      - img [ref=e404]
+              - row "#19 dfsdf sdfds +79251107559 Москва, Таганская улица, 31/22 Сет Все Включено x2 9 380 ₽ Новый 10:17" [ref=e406] [cursor=pointer]:
+                - cell "#19" [ref=e407]
+                - cell "dfsdf sdfds" [ref=e408]
+                - cell "+79251107559" [ref=e409]
+                - cell "Москва, Таганская улица, 31/22" [ref=e410]
+                - cell "Сет Все Включено x2" [ref=e411]
+                - cell "9 380 ₽" [ref=e412]
+                - cell "Новый" [ref=e413]:
+                  - combobox [ref=e414]:
+                    - option "Новый" [selected]
+                    - option "Оплачен"
+                    - option "Готовится"
+                    - option "Доставлен"
+                    - option "Отменён"
+                - cell "10:17" [ref=e415]
+                - cell [ref=e416]:
+                  - generic [ref=e417]:
+                    - link [ref=e418]:
+                      - /url: tel:+79251107559
+                      - img [ref=e419]
+                    - link [ref=e421]:
+                      - /url: https://wa.me/79251107559
+                      - img [ref=e422]
+              - row "#18 Бакытбек Мурадил уулу +79802181808 Сосинская 8 Манчестер x4 2 480 ₽ Новый 10:11" [ref=e424] [cursor=pointer]:
+                - cell "#18" [ref=e425]
+                - cell "Бакытбек Мурадил уулу" [ref=e426]
+                - cell "+79802181808" [ref=e427]
+                - cell "Сосинская 8" [ref=e428]
+                - cell "Манчестер x4" [ref=e429]
+                - cell "2 480 ₽" [ref=e430]
+                - cell "Новый" [ref=e431]:
+                  - combobox [ref=e432]:
+                    - option "Новый" [selected]
+                    - option "Оплачен"
+                    - option "Готовится"
+                    - option "Доставлен"
+                    - option "Отменён"
+                - cell "10:11" [ref=e433]
+                - cell [ref=e434]:
+                  - generic [ref=e435]:
+                    - link [ref=e436]:
+                      - /url: tel:+79802181808
+                      - img [ref=e437]
+                    - link [ref=e439]:
+                      - /url: https://wa.me/79802181808
+                      - img [ref=e440]
+              - row "#17 Бакытбек Мурадил уулу +79802181808 Сосинская 8 Сет Все Включено x3 14 070 ₽ Новый 10:07" [ref=e442] [cursor=pointer]:
+                - cell "#17" [ref=e443]
+                - cell "Бакытбек Мурадил уулу" [ref=e444]
+                - cell "+79802181808" [ref=e445]
+                - cell "Сосинская 8" [ref=e446]
+                - cell "Сет Все Включено x3" [ref=e447]
+                - cell "14 070 ₽" [ref=e448]
+                - cell "Новый" [ref=e449]:
+                  - combobox [ref=e450]:
+                    - option "Новый" [selected]
+                    - option "Оплачен"
+                    - option "Готовится"
+                    - option "Доставлен"
+                    - option "Отменён"
+                - cell "10:07" [ref=e451]
+                - cell [ref=e452]:
+                  - generic [ref=e453]:
+                    - link [ref=e454]:
+                      - /url: tel:+79802181808
+                      - img [ref=e455]
+                    - link [ref=e457]:
+                      - /url: https://wa.me/79802181808
+                      - img [ref=e458]
+              - row "#16 Бакытбек Мурадил уулу +79802181808 Сосинская 8 Манчестер x3 1 860 ₽ Новый 00:00" [ref=e460] [cursor=pointer]:
+                - cell "#16" [ref=e461]
+                - cell "Бакытбек Мурадил уулу" [ref=e462]
+                - cell "+79802181808" [ref=e463]
+                - cell "Сосинская 8" [ref=e464]
+                - cell "Манчестер x3" [ref=e465]
+                - cell "1 860 ₽" [ref=e466]
+                - cell "Новый" [ref=e467]:
+                  - combobox [ref=e468]:
+                    - option "Новый" [selected]
+                    - option "Оплачен"
+                    - option "Готовится"
+                    - option "Доставлен"
+                    - option "Отменён"
+                - cell "00:00" [ref=e469]
+                - cell [ref=e470]:
+                  - generic [ref=e471]:
+                    - link [ref=e472]:
+                      - /url: tel:+79802181808
+                      - img [ref=e473]
+                    - link [ref=e475]:
+                      - /url: https://wa.me/79802181808
+                      - img [ref=e476]
+              - row "#15 Бакытбек Мурадил уулу +79802181808 Сосинская 8 Сет Элита x2 4 580 ₽ Доставлен 13:16" [ref=e478] [cursor=pointer]:
+                - cell "#15" [ref=e479]
+                - cell "Бакытбек Мурадил уулу" [ref=e480]
+                - cell "+79802181808" [ref=e481]
+                - cell "Сосинская 8" [ref=e482]
+                - cell "Сет Элита x2" [ref=e483]
+                - cell "4 580 ₽" [ref=e484]
+                - cell "Доставлен" [ref=e485]:
+                  - combobox [ref=e486]:
+                    - option "Новый"
+                    - option "Оплачен"
+                    - option "Готовится"
+                    - option "Доставлен" [selected]
+                    - option "Отменён"
+                - cell "13:16" [ref=e487]
+                - cell [ref=e488]:
+                  - generic [ref=e489]:
+                    - link [ref=e490]:
+                      - /url: tel:+79802181808
+                      - img [ref=e491]
+                    - link [ref=e493]:
+                      - /url: https://wa.me/79802181808
+                      - img [ref=e494]
+              - row "#14 Бакытбек Мурадил уулу +79802181808 Сосинская 8 Сет All Inclusive x3 8 970 ₽ Новый 10:55" [ref=e496] [cursor=pointer]:
+                - cell "#14" [ref=e497]
+                - cell "Бакытбек Мурадил уулу" [ref=e498]
+                - cell "+79802181808" [ref=e499]
+                - cell "Сосинская 8" [ref=e500]
+                - cell "Сет All Inclusive x3" [ref=e501]
+                - cell "8 970 ₽" [ref=e502]
+                - cell "Новый" [ref=e503]:
+                  - combobox [ref=e504]:
+                    - option "Новый" [selected]
+                    - option "Оплачен"
+                    - option "Готовится"
+                    - option "Доставлен"
+                    - option "Отменён"
+                - cell "10:55" [ref=e505]
+                - cell [ref=e506]:
+                  - generic [ref=e507]:
+                    - link [ref=e508]:
+                      - /url: tel:+79802181808
+                      - img [ref=e509]
+                    - link [ref=e511]:
+                      - /url: https://wa.me/79802181808
+                      - img [ref=e512]
+  - alert [ref=e135]

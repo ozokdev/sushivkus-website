@@ -337,6 +337,7 @@ export default function AdminOrders() {
                           style={{ backgroundColor: "transparent" }}
                         >
                           <option value="new" className="bg-[#1a1a1a] text-white">Новый</option>
+                          <option value="paid" className="bg-[#1a1a1a] text-white">Оплачен</option>
                           <option value="preparing" className="bg-[#1a1a1a] text-white">Готовится</option>
                           <option value="delivered" className="bg-[#1a1a1a] text-white">Доставлен</option>
                           <option value="cancelled" className="bg-[#1a1a1a] text-white">Отменён</option>

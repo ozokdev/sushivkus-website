@@ -57,8 +57,8 @@ export default function AdminLogin() {
           {/* Логотип */}
           <div className="text-center mb-8">
             <h1 className="text-2xl font-black">
-              <span className="text-accent">Суши</span>{" "}
-              <span className="text-white">Вкус</span>
+              <span className="text-accent">Аригато</span>{" "}
+              <span className="text-white">Суши</span>
             </h1>
             <p className="text-gray-500 text-sm mt-1">Панель управления</p>
           </div>

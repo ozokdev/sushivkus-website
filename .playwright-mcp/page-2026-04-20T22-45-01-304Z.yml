@@ -1,0 +1,259 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - heading "Аригато Суши" [level=1] [ref=e5]
+        - paragraph [ref=e6]: Администратор
+      - navigation [ref=e7]:
+        - link "Dashboard" [ref=e8] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=e9]
+          - text: Dashboard
+        - link "Заказы" [ref=e14] [cursor=pointer]:
+          - /url: /admin/orders
+          - img [ref=e15]
+          - text: Заказы
+        - link "Меню" [ref=e18] [cursor=pointer]:
+          - /url: /admin/menu
+          - img [ref=e19]
+          - text: Меню
+        - link "Категории" [ref=e24] [cursor=pointer]:
+          - /url: /admin/categories
+          - img [ref=e25]
+          - text: Категории
+        - link "Пицца Топпинг" [ref=e29] [cursor=pointer]:
+          - /url: /admin/pizza-toppings
+          - img [ref=e30]
+          - text: Пицца Топпинг
+        - link "WOK" [ref=e33] [cursor=pointer]:
+          - /url: /admin/wok
+          - img [ref=e34]
+          - text: WOK
+        - link "Клиенты" [ref=e39] [cursor=pointer]:
+          - /url: /admin/customers
+          - img [ref=e40]
+          - text: Клиенты
+        - link "Аналитика" [ref=e45] [cursor=pointer]:
+          - /url: /admin/analytics
+          - img [ref=e46]
+          - text: Аналитика
+        - link "Доставка" [ref=e48] [cursor=pointer]:
+          - /url: /admin/delivery
+          - img [ref=e49]
+          - text: Доставка
+        - link "Баннеры" [ref=e52] [cursor=pointer]:
+          - /url: /admin/banners
+          - img [ref=e53]
+          - text: Баннеры
+        - link "Промокоды" [ref=e57] [cursor=pointer]:
+          - /url: /admin/promos
+          - img [ref=e58]
+          - text: Промокоды
+        - link "Акции" [ref=e61] [cursor=pointer]:
+          - /url: /admin/promotions
+          - img [ref=e62]
+          - text: Акции
+        - link "Уведомления" [ref=e66] [cursor=pointer]:
+          - /url: /admin/notifications
+          - img [ref=e67]
+          - text: Уведомления
+        - link "Telegram" [ref=e70] [cursor=pointer]:
+          - /url: /admin/telegram
+          - img [ref=e71]
+          - text: Telegram
+        - link "Экспорт" [ref=e74] [cursor=pointer]:
+          - /url: /admin/export
+          - img [ref=e75]
+          - text: Экспорт
+        - link "Настройки" [ref=e78] [cursor=pointer]:
+          - /url: /admin/settings
+          - img [ref=e79]
+          - text: Настройки
+      - button "Выйти" [ref=e83] [cursor=pointer]:
+        - img [ref=e84]
+        - text: Выйти
+    - generic [ref=e87]:
+      - banner [ref=e88]:
+        - heading "Аналитика" [level=2] [ref=e90]
+        - generic [ref=e91]:
+          - generic [ref=e92]: admin@sushivkus.ru
+          - img [ref=e94]
+      - main [ref=e97]:
+        - generic [ref=e98]:
+          - generic [ref=e99]:
+            - generic [ref=e100]:
+              - heading "Аналитика" [level=1] [ref=e101]
+              - paragraph [ref=e102]: За последние 30 дн. · 5 заказов
+            - generic [ref=e103]:
+              - generic [ref=e104]:
+                - button "7 дн." [ref=e105] [cursor=pointer]
+                - button "30 дн." [ref=e106] [cursor=pointer]
+                - button "90 дн." [ref=e107] [cursor=pointer]
+              - button [ref=e108] [cursor=pointer]:
+                - img [ref=e109]
+          - generic [ref=e120]:
+            - generic [ref=e121]:
+              - img [ref=e123]
+              - paragraph [ref=e126]: 1 818 ₽
+              - paragraph [ref=e127]: Средний чек
+              - paragraph [ref=e128]: "Выручка: 9 089 ₽"
+            - generic [ref=e129]:
+              - img [ref=e131]
+              - paragraph [ref=e134]: 21:00
+              - paragraph [ref=e135]: Пик заказов
+              - paragraph [ref=e136]: 2 заказов
+            - generic [ref=e137]:
+              - img [ref=e139]
+              - paragraph [ref=e141]: Вс
+              - paragraph [ref=e142]: Лучший день
+              - paragraph [ref=e143]: 3 заказов
+            - generic [ref=e144]:
+              - img [ref=e146]
+              - paragraph [ref=e148]: 0 зак.
+              - paragraph [ref=e149]: Сегодня
+              - paragraph [ref=e150]: 0 ₽
+          - generic [ref=e151]:
+            - heading "Заказы по времени суток" [level=3] [ref=e152]
+            - paragraph [ref=e153]: Когда больше всего заказов
+            - application [ref=e157]:
+              - generic [ref=e166]:
+                - generic [ref=e167]:
+                  - generic [ref=e169]: 10:00
+                  - generic [ref=e171]: 11:00
+                  - generic [ref=e173]: 12:00
+                  - generic [ref=e175]: 13:00
+                  - generic [ref=e177]: 14:00
+                  - generic [ref=e179]: 15:00
+                  - generic [ref=e181]: 16:00
+                  - generic [ref=e183]: 17:00
+                  - generic [ref=e185]: 18:00
+                  - generic [ref=e187]: 19:00
+                  - generic [ref=e189]: 20:00
+                  - generic [ref=e191]: 21:00
+                  - generic [ref=e193]: 22:00
+                  - generic [ref=e195]: 23:00
+                - generic [ref=e196]:
+                  - generic [ref=e198]: "0"
+                  - generic [ref=e200]: "1"
+                  - generic [ref=e202]: "2"
+                  - generic [ref=e204]: "3"
+                  - generic [ref=e206]: "4"
+          - generic [ref=e207]:
+            - generic [ref=e208]:
+              - heading "Категории" [level=3] [ref=e209]
+              - paragraph [ref=e210]: Распределение заказов
+              - generic [ref=e211]:
+                - application [ref=e214]
+                - generic [ref=e236]:
+                  - generic [ref=e237]:
+                    - generic [ref=e239]: rolls
+                    - generic [ref=e240]: 33%
+                  - generic [ref=e241]:
+                    - generic [ref=e243]: classic_rolls
+                    - generic [ref=e244]: 27%
+                  - generic [ref=e245]:
+                    - generic [ref=e247]: sets
+                    - generic [ref=e248]: 13%
+                  - generic [ref=e249]:
+                    - generic [ref=e251]: sauces
+                    - generic [ref=e252]: 13%
+                  - generic [ref=e253]:
+                    - generic [ref=e255]: Другое
+                    - generic [ref=e256]: 7%
+                  - generic [ref=e257]:
+                    - generic [ref=e259]: rolly-lykiski
+                    - generic [ref=e260]: 7%
+            - generic [ref=e261]:
+              - heading "По дням недели" [level=3] [ref=e262]
+              - paragraph [ref=e263]: Сумма заказов за период
+              - application [ref=e267]:
+                - generic [ref=e281]:
+                  - generic [ref=e282]:
+                    - generic [ref=e284]: Пн
+                    - generic [ref=e286]: Вт
+                    - generic [ref=e288]: Ср
+                    - generic [ref=e290]: Чт
+                    - generic [ref=e292]: Пт
+                    - generic [ref=e294]: Сб
+                    - generic [ref=e296]: Вс
+                  - generic [ref=e297]:
+                    - generic [ref=e299]: "0"
+                    - generic [ref=e301]: "1"
+                    - generic [ref=e303]: "2"
+                    - generic [ref=e305]: "3"
+                    - generic [ref=e307]: "4"
+          - generic [ref=e308]:
+            - generic [ref=e309]:
+              - heading "Популярные блюда" [level=3] [ref=e310]
+              - paragraph [ref=e311]: Топ-10 по количеству заказов
+            - table [ref=e313]:
+              - rowgroup [ref=e314]:
+                - row "# Блюдо Заказов Выручка Прогресс" [ref=e315]:
+                  - columnheader "#" [ref=e316]
+                  - columnheader "Блюдо" [ref=e317]
+                  - columnheader "Заказов" [ref=e318]
+                  - columnheader "Выручка" [ref=e319]
+                  - columnheader "Прогресс" [ref=e320]
+              - rowgroup [ref=e321]:
+                - row "1 Ролл огурец 4 880 ₽" [ref=e322]:
+                  - cell "1" [ref=e323]
+                  - cell "Ролл огурец" [ref=e324]
+                  - cell "4" [ref=e325]
+                  - cell "880 ₽" [ref=e326]
+                  - cell [ref=e327]
+                - row "2 Ролл овощной. 8шт 3 1 170 ₽" [ref=e330]:
+                  - cell "2" [ref=e331]
+                  - cell "Ролл овощной. 8шт" [ref=e332]
+                  - cell "3" [ref=e333]
+                  - cell "1 170 ₽" [ref=e334]
+                  - cell [ref=e335]
+                - row "3 Соевый соус 2 50 ₽" [ref=e338]:
+                  - cell "3" [ref=e339]
+                  - cell "Соевый соус" [ref=e340]
+                  - cell "2" [ref=e341]
+                  - cell "50 ₽" [ref=e342]
+                  - cell [ref=e343]
+                - row "4 Сет МИНИ ТЕПЛЫЙ 24шт 1 890 ₽" [ref=e346]:
+                  - cell "4" [ref=e347]
+                  - cell "Сет МИНИ ТЕПЛЫЙ 24шт" [ref=e348]
+                  - cell "1" [ref=e349]
+                  - cell "890 ₽" [ref=e350]
+                  - cell [ref=e351]
+                - row "5 Калифорния классик. 8шт 1 399 ₽" [ref=e354]:
+                  - cell "5" [ref=e355]
+                  - cell "Калифорния классик. 8шт" [ref=e356]
+                  - cell "1" [ref=e357]
+                  - cell "399 ₽" [ref=e358]
+                  - cell [ref=e359]
+                - row "6 Сет мечта 56шт 1 2 890 ₽" [ref=e362]:
+                  - cell "6" [ref=e363]
+                  - cell "Сет мечта 56шт" [ref=e364]
+                  - cell "1" [ref=e365]
+                  - cell "2 890 ₽" [ref=e366]
+                  - cell [ref=e367]
+                - row "7 Атлантический 2. 8шт 1 800 ₽" [ref=e370]:
+                  - cell "7" [ref=e371]
+                  - cell "Атлантический 2. 8шт" [ref=e372]
+                  - cell "1" [ref=e373]
+                  - cell "800 ₽" [ref=e374]
+                  - cell [ref=e375]
+                - row "8 филадельфия креветка. 8шт 1 850 ₽" [ref=e378]:
+                  - cell "8" [ref=e379]
+                  - cell "филадельфия креветка. 8шт" [ref=e380]
+                  - cell "1" [ref=e381]
+                  - cell "850 ₽" [ref=e382]
+                  - cell [ref=e383]
+                - row "9 Филадельфия эби. 8шт 1 640 ₽" [ref=e386]:
+                  - cell "9" [ref=e387]
+                  - cell "Филадельфия эби. 8шт" [ref=e388]
+                  - cell "1" [ref=e389]
+                  - cell "640 ₽" [ref=e390]
+                  - cell [ref=e391]
+                - row "10 Эби Запеченный 1 520 ₽" [ref=e394]:
+                  - cell "10" [ref=e395]
+                  - cell "Эби Запеченный" [ref=e396]
+                  - cell "1" [ref=e397]
+                  - cell "520 ₽" [ref=e398]
+                  - cell [ref=e399]
+  - alert [ref=e119]
+  - generic [ref=e402]: Пн

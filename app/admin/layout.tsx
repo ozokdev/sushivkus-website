@@ -23,6 +23,7 @@ import {
   Download,
   Layers,
 } from "lucide-react";
+import NewOrderNotifier from "@/components/admin/NewOrderNotifier";
 
 const allNavItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard, roles: ["admin"] },
@@ -102,8 +103,8 @@ export default function AdminLayout({
         {/* Логотип */}
         <div className="px-6 py-5 border-b border-white/10">
           <h1 className="text-xl font-black">
-            <span className="text-accent">Суши</span>{" "}
-            <span className="text-white">Вкус</span>
+            <span className="text-accent">Аригато</span>{" "}
+            <span className="text-white">Суши</span>
           </h1>
           <p className="text-gray-500 text-xs mt-0.5">Администратор</p>
         </div>
@@ -238,6 +239,9 @@ export default function AdminLayout({
         {/* Page content */}
         <main className="flex-1 p-4 lg:p-6">{children}</main>
       </div>
+
+      {/* Жаңы заказ билдирүүчү (admin ролу гана) */}
+      {role === "admin" && <NewOrderNotifier />}
     </div>
   );
 }
